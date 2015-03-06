@@ -1,0 +1,37 @@
+    - !!models.User
+       email:    annesofie@gmail.com
+       password: hemmelig
+
+    - !!models.Vare
+        navn:     Smoothie
+        kategori: drikke
+        pris:     25
+        x:        1
+        y:        1
+        z:        1
+
+    - !!models.Vare
+        navn:     øl
+        kategori: drikke
+        pris: 25
+        x: 1
+        y: 1
+        z: 1
+
+    - !!models.Vare
+        navn: melk
+        kategori: drikke
+        pris: 25
+        x: 1
+        y: 1
+        z: 1
+
+    - !!models.Vare
+        navn: vin
+        kategori: drikke
+        pris: 25
+        x: 1
+        y: 1
+        z: 1
+
+
