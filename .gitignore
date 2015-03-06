@@ -2,3 +2,4 @@
 *.eml
 
 .idea
+target/*
