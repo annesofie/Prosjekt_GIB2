@@ -1,7 +1,165 @@
-@(message: String)
+@(message:String)
 
-@main("Welcome to Play") {
+@main("Varer") {
+    <div class="container">
 
-    @play20.welcome(message, style = "Java")
 
+        <div class="row">
+            <div class="col-xs-8">
+                <h1 class="text">clas ohlson</h1>
+            </div>
+
+            <div class="col-xs-4">
+                <div class="login">
+                    <ul>
+                        <li><a href="login.php" class="overlayLink" data-action="login-form.html">Logg inn  |</a></li>
+                        <li><a href="register.php" class="overlayLink" data-action="registration-form.html">Opprett ny bruker</a></li>
+                    </ul>
+
+                    <div class="overlay" style="display: none;">
+                        <div class="login-wrapper">
+                            <div class="login-content">
+                                <a class="close">x</a>
+                                <h3>Logg inn</h3>
+                                <form method="post" action="login.php">
+                                    <label for="username">Epost:
+                                        <input type="text" name="username" id="username" placeholder="Skriv inn din epost" pattern="^[a-zA-Z][a-zA-Z0-9-_\.]{8,20}$" required="required" />
+                                    </label>
+                                    <label for="password">
+                                        Passord:
+                                        <input type="password" name="password" id="password" placeholder="Skriv inn ditt passord" pattern="(?=^.{8,}$)((?=.*\d)|(?=.*\W+))(?![.\n])(?=.*[A-Z])(?=.*[a-z]).*$" required="required" />
+                                    </label>
+                                    <button type="submit">Logg inn</button>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <div class="row">
+            <div class="col-xs-12">
+                <div class="boxed">
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-xs-8">
+                <div class="butikk-kart">
+                    <h3>Butikk-kart</h3>
+                    <div id="leaflet-kart">
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-xs-4">
+
+                <div class="row">
+                    <div class="col-xs-12">
+                        <div class="varevalg">
+                            <h3 class="text-center"> Finn ønsket vare </h3>
+                            <div class="search">
+                                <input type="text" name="search" placeholder="Søk etter vare her"/>
+                                <button class="søkknapp" >Søk</button>
+                            </div>
+                            <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true" >
+                                <div class="panel panel-default">
+                                    <div class="panel-heading" role="tab" id="headingOne">
+                                        <h4 class="panel-title">
+                                            <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
+                                                Hjem
+                                            </a>
+                                        </h4>
+                                    </div>
+                                    <div id="collapseOne" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingOne">
+                                        <div class="list-group">
+                                            <a>stol</a> <buttom></buttom>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="panel panel-default">
+                                    <div class="panel-heading" role="tab" id="headingTwo">
+                                        <h4 class="panel-title">
+                                            <a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                                                Elektro
+                                            </a>
+                                        </h4>
+                                    </div>
+                                    <div id="collapseTwo" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo">
+                                        <div class="list-group">
+                                            <li>stikkontakt</li>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="panel panel-default">
+                                    <div class="panel-heading" role="tab" id="headingThree">
+                                        <h4 class="panel-title">
+                                            <a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                                                Fritid
+                                            </a>
+                                        </h4>
+                                    </div>
+                                    <div id="collapseThree" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingThree">
+                                        <div class="list-group">
+                                            <li>basketball</li>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="panel panel-default">
+                                    <div class="panel-heading" role="tab" id="headingFour">
+                                        <h4 class="panel-title">
+                                            <a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
+                                                Jernvare
+                                            </a>
+                                        </h4>
+                                    </div>
+                                    <div id="collapseFour" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingFour">
+                                        <div class="list-group">
+                                            <li>stekepanne</li>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="panel panel-default">
+                                    <div class="panel-heading" role="tab" id="headingFive">
+                                        <h4 class="panel-title">
+                                            <a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseFive" aria-expanded="false" aria-controls="collapseFive">
+                                                Multimedia
+                                            </a>
+                                        </h4>
+                                    </div>
+                                    <div id="collapseFive" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingFive">
+                                        <div class="list-group">
+                                            <li>stereo</li>
+                                            <li>vannkkoker</li>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+                <div class="row">
+                    <div class="col-xs-12">
+                        <div class="handleliste">
+                            <h3 class="text-center">Handleliste</h3>
+                            <ul class="Valgte varer">
+                                <li class="varer">
+
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 }
+
+
