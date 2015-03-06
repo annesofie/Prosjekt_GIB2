@@ -92,11 +92,14 @@
                                             </a>
                                         </h4>
                                     </div>
-                                    <div id="collapseTwo" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo">
-                                        <div class="list-group">
-                                            <li>stikkontakt</li>
+                                        <div id="collapseTwo" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo">
+                                            <div class="list-group">
+                                            @for(vare <- vareList) {
+                                                <li>@vare.navn</li>
+                                            }
+                                            </div>
                                         </div>
-                                    </div>
+
                                 </div>
                                 <div class="panel panel-default">
                                     <div class="panel-heading" role="tab" id="headingThree">
