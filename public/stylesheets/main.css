@@ -1,5 +1,11 @@
 
 
+body {
+    background-color: #f3f3f3;
+    color: rgb(165,165,165);
+    font-family: "Open Sans", Arial, Helvetica, sans-serif;
+    font-weight: 400;
+}
 
 .container h1{
     color:#73aafd;
@@ -16,55 +22,11 @@
     box-shadow: 3px 3px 3px #888888;
 }
 
-
-.login{
-    margin-top: 100px;
-    margin-left:150px;
-}
-
 .login li{
     display: inline;
     padding-left: 1.5%;
 }
 
-div.overlay {
-    bottom: 0;
-    left: 0;
-    position:fixed;
-    top: 0;
-    width: 100%;
-    display: -webkit-box;
-    display: -moz-box;
-    display: -ms-flexbox;
-    display: -webkit-flex;
-    display: flex;
-    justify-content: center;
-
-    z-index: auto;
-
-}
-
-div.overlay > div.login-wrapper {
-
-    align-self: center;
-    border-radius: 2px;
-    padding: 6px;
-    width: 450px;
-}
-div.overlay > div.login-wrapper > div.login-content {
-    background: white;
-    border-radius: 2px;
-    padding: 24px;
-    position: relative;
-}
-
-div.overlay > div.login-wrapper > div.login-content > h3 {
-    color: rgb(0,0,0);
-    font-family: 'Varela Round', sans-serif;
-    font-size: 1.8em;
-    margin: 0 0 1.25em;
-    padding: 0;
-}
 
 #leaflet-kart {
     height: 1000px;
@@ -76,6 +38,19 @@ div.overlay > div.login-wrapper > div.login-content > h3 {
 }
 .varevalg {
     background-color: white;
+
+}
+
+.varer{
+    border:2px solid #505965;
+    border-radius:5px;
+    border-spacing: 500px;
+    list-style-type: none;
+    padding: 15px;
+
+}
+.varer li{
+    padding-left: 10px;
 }
 
 .search {
@@ -84,10 +59,10 @@ div.overlay > div.login-wrapper > div.login-content > h3 {
 }
 
 
-.handleliste {
+.handleliste ul {
     background-color: white;
-    border: 2px solid #b5bdb2;
-    border-radius: 10px;
+    border:2px solid #505965;
+    border-radius:5px;
 }
 
 .login h3{
@@ -145,12 +120,6 @@ html {
     text-rendering: optimizeLegibility;
 }
 
-body {
-    background-color: #f3f3f3;
-    color: rgb(165,165,165);
-    font-family: "Open Sans", Arial, Helvetica, sans-serif;
-    font-weight: 400;
-}
 
 a.close {
     background-color: red;//rgb(204,204,204);
@@ -174,6 +143,14 @@ a.close:hover {
 /*
 *	LOG-IN BOX
 */
+
+.login{
+    margin-top: 100px;
+    margin-left:150px;
+}
+
+
+
 div.overlay {
     background-color: rgba(0,0,0,.25);
     bottom: 0;
@@ -185,8 +162,12 @@ div.overlay {
     width: 100%;
     height: 100%;
     z-index:1001;
-
+    display: -webkit-box;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: -webkit-flex;
 }
+
 
 div.overlay > div.login-wrapper {
     align-self: center;
