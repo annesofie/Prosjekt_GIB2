@@ -1,7 +1,28 @@
 @(message:String, vareList: List[Vare])
 
 @main("Varer") {
+
+    <div class="overlay" style="display: none;">
+        <div class="login-wrapper">
+            <div class="login-content">
+                <a class="close">x</a>
+                <h3>Logg inn</h3>
+                <form method="post" action="login.php">
+                    <label for="username">Epost:
+                        <input type="text" name="username" id="username" placeholder="Skriv inn din epost" required="required" />
+                    </label>
+                    <label for="password">
+                        Passord:
+                        <input type="password" name="password" id="password" placeholder="Skriv inn ditt passord"required="required" />
+                    </label>
+                    <button type="submit">Logg inn</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
     <div class="container">
+
 
 
         <div class="row">
@@ -16,24 +37,7 @@
                         <li><a href="register.php" class="overlayLink" data-action="registration-form.html">Opprett ny bruker</a></li>
                     </ul>
 
-                    <div class="overlay" style="display: none;">
-                        <div class="login-wrapper">
-                            <div class="login-content">
-                                <a class="close">x</a>
-                                <h3>Logg inn</h3>
-                                <form method="post" action="login.php">
-                                    <label for="username">Epost:
-                                        <input type="text" name="username" id="username" placeholder="Skriv inn din epost" pattern="^[a-zA-Z][a-zA-Z0-9-_\.]{8,20}$" required="required" />
-                                    </label>
-                                    <label for="password">
-                                        Passord:
-                                        <input type="password" name="password" id="password" placeholder="Skriv inn ditt passord" pattern="(?=^.{8,}$)((?=.*\d)|(?=.*\W+))(?![.\n])(?=.*[A-Z])(?=.*[a-z]).*$" required="required" />
-                                    </label>
-                                    <button type="submit">Logg inn</button>
-                                </form>
-                            </div>
-                        </div>
-                    </div>
+
                 </div>
 
             </div>
