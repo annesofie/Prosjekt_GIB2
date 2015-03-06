@@ -1,0 +1,115 @@
+
+
+
+.container h1{
+    color:#73aafd;
+    font-size:400%;
+    font-weight: bold;
+    text-shadow: InfoText;
+    margin-top: 70px;
+}
+
+.boxed{
+
+}
+
+.login{
+    margin-top: 100px;
+    margin-left:150px;
+}
+
+.login li{
+    display: inline;
+    padding-left: 1.5%;
+}
+
+div.overlay {
+    bottom: 0;
+    left: 0;
+    position:fixed;
+    top: 0;
+    width: 100%;
+    display: -webkit-box;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: -webkit-flex;
+    display: flex;
+    justify-content: center;
+    margin-left: 600px;
+    margin-top: 80px;
+    z-index: auto;
+}
+
+div.overlay > div.login-wrapper {
+
+    align-self: center;
+    border-radius: 2px;
+    padding: 6px;
+    width: 450px;
+}
+div.overlay > div.login-wrapper > div.login-content {
+    background: white;
+    border-radius: 2px;
+    padding: 24px;
+    position: relative;
+}
+
+div.overlay > div.login-wrapper > div.login-content > h3 {
+    color: rgb(0,0,0);
+    font-family: 'Varela Round', sans-serif;
+    font-size: 1.8em;
+    margin: 0 0 1.25em;
+    padding: 0;
+}
+
+#leaflet-kart {
+    height: 1000px;
+    border: 5px solid #b5bdb2;
+    border-radius: 10px;
+}
+.leaflet-kart {
+    height: 100px;
+}
+.varevalg {
+    background-color: white;
+}
+
+.search {
+    text-align: center;
+    padding-bottom: 10px;
+}
+
+
+.handleliste {
+    background-color: white;
+    border: 2px solid #b5bdb2;
+    border-radius: 10px;
+}
+
+.login h3{
+    font-size:small;
+}
+
+.loggetinn {
+    background-color: white;
+    border: 2px solid #b5bdb2;
+    border-radius: 10px;
+    display: none;
+}
+
+.loginknapp {
+    width: 49%;
+}
+
+.registrerknapp {
+    width: 49%;
+}
+
+h3 {
+    text-align: center;
+}
+
+.add img{
+    width: 10px;
+    height: 10px;
+}
