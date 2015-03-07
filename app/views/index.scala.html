@@ -1,4 +1,9 @@
-@(message:String, vareList: List[Vare])
+@(message:String, vareList: List[Vare],
+        elektro: List[Vare],
+        fritid:List[Vare],
+        hjem: List[Vare],
+        jernvare: List[Vare],
+        multimedia: List[Vare])
 
     @main("Varer") {
 
@@ -85,7 +90,15 @@
 
                                         <div id="collapseOne" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingOne">
                                             <div class="list-group">
-                                                <a draggable="true">heisann</a> <buttom></buttom>
+                                                <table class="table table-condensed">
+                                                @for(vare <- hjem) {
+                                                    <tr>
+                                                        <td id="vareNavn">@vare.navn </td>
+                                                        <td id="varePris">@vare.pris kr </td>
+                                                        <td><buttom class="btn btn-xs" id="addVareKnapp"><span class="glyphicon glyphicon-ok" aria-hidden="true"></span></buttom></td>
+                                                    </tr>
+                                                }
+                                                </table>
                                             </div>
                                         </div>
 
@@ -98,13 +111,22 @@
                                                 </a>
                                             </h4>
                                         </div>
-                                        <div id="collapseTwo" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo">
-                                            <div class="list-group">
 
-                                                <li draggable="true">hei</li>
+                                            <div id="collapseTwo" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo">
+                                                <div class="list-group">
+                                                    <table class="table table-condensed">
+                                                    @for(vare <- elektro) {
+                                                        <tr>
+                                                            <td id="vareNavn">@vare.navn </td>
+                                                            <td id="varePris">@vare.pris kr </td>
+                                                            <td><buttom class="btn btn-xs" id="addVareKnapp"><span class="glyphicon glyphicon-ok" aria-hidden="true"></span></buttom></td>
 
+                                                        </tr>
+                                                    }
+                                                    </table>
+                                                </div>
                                             </div>
-                                        </div>
+
 
                                     </div>
                                     <div class="panel panel-default">
@@ -117,7 +139,15 @@
                                         </div>
                                         <div id="collapseThree" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingThree">
                                             <div class="list-group">
-                                                <li draggable="true">basketball</li>
+                                                <table class="table table-condensed">
+                                                @for(vare <- fritid) {
+                                                    <tr>
+                                                        <td id="vareNavn">@vare.navn </td>
+                                                        <td id="varePris">@vare.pris kr </td>
+                                                        <td><buttom class="btn btn-xs" id="addVareKnapp"><span class="glyphicon glyphicon-ok" aria-hidden="true"></span></buttom></td>
+                                                    </tr>
+                                                }
+                                                </table>
                                             </div>
                                         </div>
                                     </div>
@@ -131,7 +161,15 @@
                                         </div>
                                         <div id="collapseFour" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingFour">
                                             <div class="list-group">
-                                                <li draggable="true">stekepanne</li>
+                                                <table class="table table-condensed">
+                                                @for(vare <- jernvare) {
+                                                    <tr>
+                                                        <td id="vareNavn">@vare.navn </td>
+                                                        <td id="varePris">@vare.pris kr </td>
+                                                        <td><buttom class="btn btn-xs" id="addVareKnapp"><span class="glyphicon glyphicon-ok" aria-hidden="true"></span></buttom></td>
+                                                    </tr>
+                                                }
+                                                </table>
                                             </div>
                                         </div>
                                     </div>
@@ -145,8 +183,15 @@
                                         </div>
                                         <div id="collapseFive" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingFive">
                                             <div class="list-group">
-                                                <li draggable="true">stereo</li>
-                                                <li draggable="true">vannkkoker</li>
+                                                <table class="table table-condensed">
+                                                @for(vare <- multimedia) {
+                                                    <tr>
+                                                        <td id="vareNavn">@vare.navn </td>
+                                                        <td id="varePris">@vare.pris kr </td>
+                                                        <td><buttom class="btn btn-xs" id="addVareKnapp"><span class="glyphicon glyphicon-ok" aria-hidden="true"></span></buttom></td>
+                                                    </tr>
+                                                }
+                                                </table>
                                             </div>
                                         </div>
                                     </div>

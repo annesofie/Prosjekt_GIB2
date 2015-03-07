@@ -3,35 +3,57 @@
        password: hemmelig
 
     - !!models.Vare
-        navn:     Smoothie
-        kategori: drikke
-        pris:     25
-        x:        1
-        y:        1
-        z:        1
+        navn:     batterilader
+        kategori: hjem
+        pris:     249
+        x:        2
+        y:        2
+        z:        2
 
     - !!models.Vare
-        navn:     øl
-        kategori: drikke
+        navn:     kulekopp
+        kategori: hjem
+        pris: 29
+        x: 2
+        y: 2
+        z: 4
+
+    - !!models.Vare
+        navn: yogamatte
+        kategori: elektro
+        pris: 249
+        x: 3
+        y: 4
+        z: 3
+
+    - !!models.Vare
+        navn: balansesykkel
+        kategori: elektro
         pris: 25
         x: 1
         y: 1
         z: 1
 
     - !!models.Vare
-        navn: melk
-        kategori: drikke
+        navn: balansesykkel
+        kategori: fritid
         pris: 25
         x: 1
         y: 1
         z: 1
 
     - !!models.Vare
-        navn: vin
-        kategori: drikke
+        navn: balansesykkel
+        kategori: jernvare
         pris: 25
         x: 1
         y: 1
         z: 1
 
-
+    - !!models.Vare
+        navn: balansesykkel
+        kategori: multimedias
+        pris: 25
+        x: 1
+        y: 1
+        z: 1
