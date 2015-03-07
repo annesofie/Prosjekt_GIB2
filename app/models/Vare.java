@@ -37,10 +37,4 @@ public class Vare extends Model {
     }
 
 
-
-
-
-
-
-
 }
