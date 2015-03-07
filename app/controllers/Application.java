@@ -16,7 +16,7 @@ public class Application extends Controller {
 
         List<Vare> alleVarer = Vare.find.all();
 
-        return ok(index.render("Finn den varen"));
+        return ok(index.render("Finn den varen",alleVarer));
     }
 
 }

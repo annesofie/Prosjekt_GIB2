@@ -12,8 +12,8 @@ var init = function() {
     });
 
     var map = L.map('leaflet-kart', {
-        maxZoom: 1,
-        minZoom: 1,
+        maxZoom: 0.4,
+        minZoom: 0.4,
         zoomControl: false,
         dragging: false,
         crs: L.CRS.Simple
