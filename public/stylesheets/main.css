@@ -57,19 +57,12 @@
 }
 
 
-form{
-    widt:200px;
-    margin: 0 auto;
-}
-
-
 .varer{
     border:2px solid #505965;
     border-radius:5px;
     border-spacing: 500px;
     list-style-type: none;
     padding: 15px;
-
 
 }
 
@@ -90,15 +83,19 @@ form{
     font-size: 15px;
 }
 
-.panelgroup{
+
+
+form{
+
+    margin: 0 auto;
 
 }
 
 .search {
     margin: 3px;
     background: url('./images/search.png') no-repeat 8px 6px;
-    position:relative;
     display: inline;
+
 
 }
 
@@ -110,10 +107,16 @@ input[type=text]{
 input [type=submit]{
     float:right;
 }
+
+.search-square{
+    z-index:1;
+
+}
 .søk-knapp {
 
-    margin-right: 90px;
-    padding: 5px 15px;
+    margin-left: 350px;
+    margin-top:6px;
+    padding: 4px 15px;
     font-family: Arial, Helvetica, sans-serif;
     font-size:14px;
     outline: none;
@@ -127,6 +130,7 @@ input [type=submit]{
     background: -moz-linear-gradient(top,  #00adee,  #0078a5);
     border-top-right-radius: 5px 5px;
     border-bottom-right-radius: 5px 5px;
+    z-index:2;
 }
 
 
@@ -267,7 +271,6 @@ form label {
     font-size: 1.25em;
     margin: .75em 0;
 }
-
 form input[type="text"],
 form input[type="email"],
 form input[type="number"],
@@ -278,7 +281,7 @@ form textarea {
     border: 1px solid rgb( 186, 186, 186 );
     border-radius: 1px;
     box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.08);
-    display: block;
+    display: inline;
     font-size: .65em;
     margin: 6px 0 12px 0;
     padding: .8em .55em;
@@ -286,6 +289,7 @@ form textarea {
     transition: all 400ms ease;
     width: 90%;
 }
+
 
 form input[type="text"]:focus,
 form input[type="email"]:focus,
