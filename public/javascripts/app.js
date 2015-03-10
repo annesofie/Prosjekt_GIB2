@@ -3,15 +3,52 @@
  */
 var init = function() {
 
-    $('.addVareKnapp').click(function() {
-        $(this).removeClass('addVareKnapp').addClass('removeVareKnapp');
+    $('.addVareKnappHjem').click(function() {
+        $(this).removeClass('addVareKnappHjem').addClass('removeVareKnappHjem');
+        $('.liste').append($(this).parent().parent());
+    });
+    $('.addVareKnappElektro').click(function() {
+        $(this).removeClass('addVareKnappElektro').addClass('removeVareKnappElektro');
+        $('.liste').append($(this).parent().parent());
+    });
+    $('.addVareKnappFritid').click(function() {
+        $(this).removeClass('addVareKnappFritid').addClass('removeVareKnappFritid');
+        $('.liste').append($(this).parent().parent());
+    });
+    $('.addVareKnappJernvare').click(function() {
+        $(this).removeClass('addVareKnappJernvare').addClass('removeVareKnappJernvare');
+        $('.liste').append($(this).parent().parent());
+    });
+    $('.addVareKnappMultimedia').click(function() {
+        $(this).removeClass('addVareKnappMultimedia').addClass('removeVareKnappMulimedia');
         $('.liste').append($(this).parent().parent());
     });
 
-    $('.removeVareKnapp').click(function() {
-        $(this).removeClass('removeVareKnapp').addClass('addVareKnapp');
+    $('.removeVareKnappHjem').click(function() {
+        $(this).removeClass('removeVareKnappHjem').addClass('addVareKnappHjem');
         $('.hjem').append($(this).parent().parent());
     });
+
+    $('.removeVareKnappElektro').click(function() {
+        $(this).removeClass('removeVareKnappElektro').addClass('addVareKnappElektro');
+        $('.hjem').append($(this).parent().parent());
+    });
+
+    $('.removeVareKnappFritid').click(function() {
+        $(this).removeClass('removeVareKnappFritid').addClass('addVareKnappFritid');
+        $('.hjem').append($(this).parent().parent());
+    });
+
+    $('.removeVareKnappJernvare').click(function() {
+        $(this).removeClass('removeVareKnappJernvare').addClass('addVareKnappJernvare');
+        $('.hjem').append($(this).parent().parent());
+    });
+
+    $('.removeVareKnappMultimedia').click(function() {
+        $(this).removeClass('removeVareKnappMultimedia').addClass('addVareKnappMultimedia');
+        $('.hjem').append($(this).parent().parent());
+    });
+
 
     var map = L.map('leaflet-kart', {
         maxZoom: 0.45,
