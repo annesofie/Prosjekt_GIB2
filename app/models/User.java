@@ -16,10 +16,10 @@ public class User extends Model  {
     public static List<Vare> handleliste;
 
 
-    public User(String email, String password, List<Vare> handeliste){
+    public User(String email, String password, List<Vare> handleliste){
         this.email = email;
         this.password = password;
-        this.handleliste=handleliste;
+        this.handleliste = handleliste;
     }
 
     public static Finder<String,User> find = new Model.Finder(String.class, User.class);
@@ -29,7 +29,6 @@ public class User extends Model  {
         return find.where()
                 .eq("email", email)
                 .eq("password", password).findUnique();
-                .eq("handleliste", handleliste);
 
     }
 
@@ -37,9 +36,6 @@ public class User extends Model  {
         User user = new User(email, passord, handleliste);
         user.save();
         return user;
-    }
-    public static User findUser(String email) {
-        Ebean.find
     }
 
 

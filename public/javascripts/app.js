@@ -2,18 +2,20 @@
  * Created by annesofiestranderichsen on 06.03.15.
  */
 var init = function() {
-    $('.søkknapp').click(function() {
-        alert("Du kan ikke søke enda, jobber med saken!");
+
+    $('.addVareKnapp').click(function() {
+        $(this).removeClass('addVareKnapp').addClass('removeVareKnapp');
+        $('.liste').append($(this).parent().parent());
     });
 
-    $('.loginknapp').click(function() {
-        $('.login').fadeOut(800);
-        $('.loggetinn').fadeIn(900);
+    $('.removeVareKnapp').click(function() {
+        $(this).removeClass('removeVareKnapp').addClass('addVareKnapp');
+        $('.hjem').append($(this).parent().parent());
     });
 
     var map = L.map('leaflet-kart', {
-        maxZoom: 0.4,
-        minZoom: 0.4,
+        maxZoom: 0.45,
+        minZoom: 0.45,
         zoomControl: false,
         dragging: false,
         crs: L.CRS.Simple
@@ -21,7 +23,7 @@ var init = function() {
 
     map.setMaxBounds(new L.LatLngBounds([0,500], [500,0]));
 
-    var imageUrl = 'http://i57.tinypic.com/2i8deac.png'
+    var imageUrl = 'http://i61.tinypic.com/30ucvfc.jpg'
     var imageBounds = [[500,0], [0,370]];
 
     L.imageOverlay(imageUrl, imageBounds).addTo(map);
