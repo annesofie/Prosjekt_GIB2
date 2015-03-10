@@ -14,6 +14,13 @@ create table kategori (
   constraint pk_kategori primary key (kategori_navn))
 ;
 
+create table noder (
+  nodenummer                integer not null,
+  position_x                integer,
+  position_y                integer,
+  constraint pk_noder primary key (nodenummer))
+;
+
 create table user (
   email                     varchar(255) not null,
   password                  varchar(255),
@@ -35,6 +42,8 @@ create sequence handleliste_seq;
 
 create sequence kategori_seq;
 
+create sequence noder_seq;
+
 create sequence user_seq;
 
 create sequence vare_seq;
@@ -50,6 +59,8 @@ drop table if exists handleliste;
 
 drop table if exists kategori;
 
+drop table if exists noder;
+
 drop table if exists user;
 
 drop table if exists vare;
@@ -59,6 +70,8 @@ SET REFERENTIAL_INTEGRITY TRUE;
 drop sequence if exists handleliste_seq;
 
 drop sequence if exists kategori_seq;
+
+drop sequence if exists noder_seq;
 
 drop sequence if exists user_seq;
 

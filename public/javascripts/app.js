@@ -2,15 +2,11 @@
  * Created by annesofiestranderichsen on 06.03.15.
  */
 var init = function() {
-    $('.søkknapp').click(function() {
-        alert("Du kan ikke søke enda, jobber med saken!");
-    });
 
-    $('.loginknapp').click(function() {
-        $('.login').fadeOut(800);
-        $('.loggetinn').fadeIn(900);
+    $('#addVareKnapp').click(function() {
+        $('<li>').text().appendTo('.varer');
     });
-
+    
     var map = L.map('leaflet-kart', {
         maxZoom: 0.4,
         minZoom: 0.4,
@@ -21,7 +17,7 @@ var init = function() {
 
     map.setMaxBounds(new L.LatLngBounds([0,500], [500,0]));
 
-    var imageUrl = 'http://i57.tinypic.com/2i8deac.png'
+    var imageUrl = 'http://tinypic.com/r/30ucvfc/8'
     var imageBounds = [[500,0], [0,370]];
 
     L.imageOverlay(imageUrl, imageBounds).addTo(map);
