@@ -58,9 +58,4 @@
         y: 1
         z: 1
 
-    -!!models.Noder
-      node: 1
-      x: 10
-      y: 20
-
 
