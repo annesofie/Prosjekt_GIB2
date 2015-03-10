@@ -16,27 +16,32 @@ public class User extends Model  {
     public static List<Vare> handleliste;
 
 
-    public User(String email, String password){
+    public User(String email, String password, List<Vare> handeliste){
         this.email = email;
         this.password = password;
+        this.handleliste=handleliste;
     }
 
     public static Finder<String,User> find = new Model.Finder(String.class, User.class);
 
 
-    public static User authenticate(String email, String password){
+    public static User authenticate(String email, String password, List<Vare> handleliste){
         return find.where()
                 .eq("email", email)
                 .eq("password", password).findUnique();
+                .eq("handleliste", handleliste);
 
     }
 
-    public static User createUser(String email, String passord){
-        User user = new User(email, passord);
-        handleliste=null;
+    public static User createUser(String email, String passord, List<Vare> handleliste){
+        User user = new User(email, passord, handleliste);
         user.save();
         return user;
     }
+    public static User findUser(String email) {
+        Ebean.find
+    }
+
 
     public static void addToHandleliste(Vare vare, String email){
         //må jeg spesifiserer hvem sin handleliste den skal legges i?
@@ -46,8 +51,11 @@ public class User extends Model  {
 
 
     public static void deleteFromHandleliste(Vare vare, String email){
+
         handleliste.remove(vare);
     }
+
+
 
 
 }
