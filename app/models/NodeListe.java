@@ -11,16 +11,16 @@ public class NodeListe {
 
 
 
-    public List<Node> linkedListNodes;
+    public List<NodeListe> linkedListNodes;
 
-    public static Model.Finder<Integer, Node> find = new Model.Finder(Integer.class, Node.class);
+    public static Model.Finder<Integer, NodeListe> find = new Model.Finder(Integer.class, NodeListe.class);
 
     public NodeListe(){
        linkedListNodes.addAll(getAllNoder());
     }
 
-    public List<Node> getAllNoder(){
-        return Node.find.all();
+    public List<NodeListe> getAllNoder(){
+        return NodeListe.find.all();
 
     }
 
