@@ -8,7 +8,7 @@ import play.db.ebean.*;
 import javax.persistence.*;
 
 @Entity
-public class Edge {
+public class Edge extends Model{
 
     @Id
     private final String id;
@@ -26,7 +26,7 @@ public class Edge {
     }
 
     public String getId() {
-        return toString();
+        return id;
     }
 
     public Vertex getDestination() {

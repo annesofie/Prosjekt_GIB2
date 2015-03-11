@@ -19,19 +19,21 @@ public class DijkstraAlgorithm{
     private Map<Vertex, Vertex> predecessors;
     private Map<Vertex, Integer> distance;
 
+    Graph graph = new Graph();
+
     public DijkstraAlgorithm(Graph graph) {
         // create a copy of the array so that we can operate on this array
-        this.nodes = new ArrayList<Vertex>(graph.getVertexes());
-        this.edges = new ArrayList<Edge>(graph.getEdges());
+        this.nodes = new ArrayList<Vertex>(graph.vertexes);
+        this.edges = new ArrayList<Edge>(graph.edges);
     }
 
-    public void execute(Vertex source) {
+    public void execute(Vertex startPoint) {
         settledNodes = new HashSet<Vertex>();
         unSettledNodes = new HashSet<Vertex>();
         distance = new HashMap<Vertex, Integer>();
         predecessors = new HashMap<Vertex, Vertex>();
-        distance.put(source, 0);
-        unSettledNodes.add(source);
+        distance.put(startPoint, 0);
+        unSettledNodes.add(startPoint);
         while (unSettledNodes.size() > 0) {
             Vertex node = getMinimum(unSettledNodes);
             settledNodes.add(node);
@@ -43,15 +45,12 @@ public class DijkstraAlgorithm{
     private void findMinimalDistances(Vertex node) {
         List<Vertex> adjacentNodes = getNeighbors(node);
         for (Vertex target : adjacentNodes) {
-            if (getShortestDistance(target) > getShortestDistance(node)
-                    + getDistance(node, target)) {
-                distance.put(target, getShortestDistance(node)
-                        + getDistance(node, target));
+            if (getShortestDistance(target) > getShortestDistance(node) + getDistance(node, target)) {
+                distance.put(target, getShortestDistance(node) + getDistance(node, target));
                 predecessors.put(target, node);
                 unSettledNodes.add(target);
             }
         }
-
     }
 
     private int getDistance(Vertex node, Vertex target) {
@@ -118,9 +117,37 @@ public class DijkstraAlgorithm{
             step = predecessors.get(step);
             path.add(step);
         }
+
         // Put it into the correct order
         Collections.reverse(path);
         return path;
+    }
+
+    public ArrayList<LinkedList> getPathToAllRelevantNodes(ArrayList<Vertex> targets) {
+
+        LinkedList<Vertex> path;
+        ArrayList<LinkedList> paths = new ArrayList<LinkedList>();
+
+        for (Vertex target : targets) {
+            path = new LinkedList<Vertex>();
+            Vertex step = target;
+            // check if a path exists
+            if (predecessors.get(step) == null) {
+                return null;
+            }
+            path.add(step);
+            while (predecessors.get(step) != null) {
+                step = predecessors.get(step);
+                path.add(step);
+            }
+            // Put it into the correct order
+            Collections.reverse(path);
+            paths.add(path);
+
+        }
+            return paths;
+
+
     }
 
 }

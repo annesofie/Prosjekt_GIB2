@@ -8,7 +8,7 @@ import play.db.ebean.*;
 import javax.persistence.*;
 
 @Entity
-public class Vertex {
+public class Vertex extends Model{
 
     @Id
     final private String id;

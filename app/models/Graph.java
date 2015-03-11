@@ -1,25 +1,32 @@
 package models;
 
+import play.db.ebean.Model;
+
 import java.util.*;
 /**
  * Created by mathilde on 10/03/15.
  */
-public class Graph {
 
-    private final List<Vertex> vertexes;
-    private final List<Edge> edges;
 
-    public Graph(List<Vertex> vertexes, List<Edge> edges) {
-        this.vertexes = vertexes;
-        this.edges = edges;
+public class Graph extends Model{
+
+    public final List<Vertex> vertexes;
+    public final List<Edge> edges;
+
+
+    public Graph() {
+        this.vertexes = getVertexes();
+        this.edges = getEdges();
     }
 
+
     public List<Vertex> getVertexes() {
-        return vertexes;
+        return Vertex.find.all();
+
     }
 
     public List<Edge> getEdges() {
-        return edges;
+        return Edge.find.all();
     }
 
 }
