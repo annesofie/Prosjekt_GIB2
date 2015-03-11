@@ -42,11 +42,13 @@ public class Path{
 
         List<Edge> allEdges= graph.getEdges();
         ArrayList<Edge>pathEdges=new ArrayList<Edge>();
-        for (Edge edge : allEdges){                                                                    ArrayList<Edge> path=
+        for (Edge edge : allEdges){
             if(noderIStiene(email).contains(edge)){
                 pathEdges.add(edge);
-            }                                                                                          for(Vertex vertex:current
+            }
         }
+
+        return pathEdges;
 
     }
 
