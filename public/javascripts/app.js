@@ -3,6 +3,7 @@
  */
 var init = function() {
 
+    /*/
     function cloneRow() {
 
         var row = document.getElementsByName("vareTabell");
@@ -27,11 +28,7 @@ var init = function() {
         var table = document.getElementsByName("liste");
         table.append(row);
     }
-    $('.addVareKnappHjem').click(function() { 
-        //cloneRow();
-        createRow(); 
-
-    });
+    */
 
 
     var map = L.map('leaflet-kart', {
