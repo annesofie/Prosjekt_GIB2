@@ -149,6 +149,11 @@ input [type=submit]{
     margin-rigth: 50px;
 }
 
+.handlelisteVarer {
+    font-size: 15px;
+    text-decoration-color: #373d47;
+}
+
 .handleliste ul {
     background-color: white;
     border:1px solid #505965;

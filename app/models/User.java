@@ -55,9 +55,12 @@ public class User extends Model  {
         return handleliste;
     }
 
-    public static void deleteFromHandleliste(Vare vare, String email){
+    public void removeFromHandleliste(Long vareid){
 
-        handleliste.remove(vare);
+        Vare vare = Vare.find.byId(vareid);
+
+        this.handleliste.remove(vare);
+        this.save();
     }
 
 

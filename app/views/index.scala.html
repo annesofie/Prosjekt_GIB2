@@ -114,7 +114,7 @@
                                                 <tr class="vareTabell">
                                                     <td class="vareNavn">@vare.navn </td>
                                                     <td id="varePris">@vare.pris kr </td>
-                                                    <td><button class="btn btn-xs addVareKnappHjem" id="addVareKnapp"><span class="glyphicon glyphicon-ok" aria-hidden="true"></span></button></td>
+                                                    <td><a href="@routes.ShoppingList.addItem(vare.vareid)" class="btn btn-xs addVareKnappHjem" id="addVareKnapp"><span class="glyphicon glyphicon-ok" aria-hidden="true"></span></a></td>
 
                                                 </tr>
                                             }
@@ -139,7 +139,7 @@
                                                 <tr class="elektro">
                                                     <td class="vareNavn">@vare.navn </td>
                                                     <td id="varePris">@vare.pris kr </td>
-                                                    <td><buttom class="btn btn-xs addVareKnappElektro" id="addVareKnapp"><span class="glyphicon glyphicon-ok" aria-hidden="true"></span></buttom></td>
+                                                    <td><a href="@routes.ShoppingList.addItem(vare.vareid)" class="btn btn-xs addVareKnappElektro" id="addVareKnapp"><span class="glyphicon glyphicon-ok" aria-hidden="true"></span></a></td>
 
                                                 </tr>
                                             }
@@ -164,7 +164,7 @@
                                                 <tr class="fritid">
                                                     <td class="vareNavn">@vare.navn </td>
                                                     <td id="varePris">@vare.pris kr </td>
-                                                    <td><buttom class="btn btn-xs addVareKnappFritid" id="addVareKnapp"><span class="glyphicon glyphicon-ok" aria-hidden="true"></span></buttom></td>
+                                                    <td><a href="@routes.ShoppingList.addItem(vare.vareid)" class="btn btn-xs addVareKnappFritid" id="addVareKnapp"><span class="glyphicon glyphicon-ok" aria-hidden="true"></span></a></td>
                                                 </tr>
                                             }
                                             </table>
@@ -186,7 +186,7 @@
                                                 <tr class="jernvare">
                                                     <td class="vareNavn">@vare.navn </td>
                                                     <td id="varePris">@vare.pris kr </td>
-                                                    <td><a href="@routes.ShoppingList.addItem(vare.vareid)" class="btn btn-xs addVareKnappJernvare" id="addVareKnapp"><span class="glyphicon glyphicon-ok" aria-hidden="true"></span></a></td>
+                                                    <td><a href="@routes.ShoppingList.addItem(vare.vareid)" class="btn btn-xs addVareKnappJernvare" id="addVareKnapp"><span class="glyphicon glyphicon-arrow-down" aria-hidden="true"></span></a></td>
                                                 </tr>
                                             }
                                             </table>
@@ -208,7 +208,7 @@
                                                 <tr class="multimedia">
                                                     <td class="vareNavn">@vare.navn </td>
                                                     <td id="varePris">@vare.pris kr </td>
-                                                    <td><button class="btn btn-xs addVareKnappMultimedia" id="addVareKnapp"><span class="glyphicon glyphicon-ok" aria-hidden="true"></span></button></td>
+                                                    <td><a href="@routes.ShoppingList.addItem(vare.vareid)" class="btn btn-xs addVareKnappMultimedia" id="addVareKnapp"><span class="glyphicon glyphicon-ok" aria-hidden="true"></span></a></td>
                                                 </tr>
                                             }
                                             </table>
@@ -226,11 +226,15 @@
                     @if(useremail != null){
                         <div class="handleliste">
                             <h3 class="text-center">Handleliste</h3>
-                            <ul class="list-unstyled">
+                            <table class="table table-condensed">
                             @for(vare <- handleliste){
-                                <li> <strong>@vare.navn</strong>  @vare.pris</li>
+                               <tr class="handlelisteVarer">
+                                   <td><strong>@vare.navn</strong></td>
+                                   <td>@vare.pris kr </td>
+                                   <td><a href="@routes.ShoppingList.removeItem(vare.vareid)" class="btn btn-xs removeVareKnapp" id="removeVareKnapp"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span></a></td>
+                               </tr>
                             }
-                            </ul>
+                            </table>
                         </div>
                     }
 

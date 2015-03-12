@@ -9,23 +9,10 @@ create table edge (
   constraint pk_edge primary key (id))
 ;
 
-create table handleliste (
-  email                     varchar(255) not null,
-  constraint pk_handleliste primary key (email))
-;
-
 create table kategori (
   kategori_navn             varchar(255) not null,
   closest_node              integer,
   constraint pk_kategori primary key (kategori_navn))
-;
-
-create table nodeskal_ikke_brukes (
-  nodenummer                integer not null,
-  position_x                integer,
-  position_y                integer,
-  kant_verdi                integer,
-  constraint pk_nodeskal_ikke_brukes primary key (nodenummer))
 ;
 
 create table user (
@@ -53,11 +40,7 @@ create table vertex (
 
 create sequence edge_seq;
 
-create sequence handleliste_seq;
-
 create sequence kategori_seq;
-
-create sequence nodeskal_ikke_brukes_seq;
 
 create sequence user_seq;
 
@@ -74,11 +57,7 @@ SET REFERENTIAL_INTEGRITY FALSE;
 
 drop table if exists edge;
 
-drop table if exists handleliste;
-
 drop table if exists kategori;
-
-drop table if exists nodeskal_ikke_brukes;
 
 drop table if exists user;
 
@@ -90,11 +69,7 @@ SET REFERENTIAL_INTEGRITY TRUE;
 
 drop sequence if exists edge_seq;
 
-drop sequence if exists handleliste_seq;
-
 drop sequence if exists kategori_seq;
-
-drop sequence if exists nodeskal_ikke_brukes_seq;
 
 drop sequence if exists user_seq;
 

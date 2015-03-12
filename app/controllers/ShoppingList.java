@@ -16,6 +16,7 @@ import java.util.List;
 
 public class ShoppingList extends Controller {
 
+    //Må ha @security over alle funksjoner som kaller på request().username()
     @Security.Authenticated(Secured.class)
     public static Result addItem(Long itemid){
 
@@ -25,5 +26,14 @@ public class ShoppingList extends Controller {
 
         return redirect(routes.Application.index());
 
+    }
+
+    @Security.Authenticated(Secured.class)
+    public static Result removeItem(Long itemid) {
+
+        User user = User.find.byId(request().username());
+        user.removeFromHandleliste(itemid);
+
+        return redirect(routes.Application.index());
     }
 }
