@@ -5,6 +5,7 @@ package models;
  */
 import play.db.ebean.*;
 import javax.persistence.*;
+import java.util.ArrayList;
 import java.util.List;
 
 @Entity
@@ -13,7 +14,9 @@ public class User extends Model  {
     @Id
     public String email;
     public String password;
-    public static List<Vare> handleliste;
+
+    @ManyToMany
+    public static List<Vare> handleliste = new ArrayList<>();
 
 
     public User(String email, String password, List<Vare> handleliste){
@@ -25,7 +28,7 @@ public class User extends Model  {
     public static Finder<String,User> find = new Model.Finder(String.class, User.class);
 
 
-    public static User authenticate(String email, String password, List<Vare> handleliste){
+    public static User authenticate(String email, String password){
         return find.where()
                 .eq("email", email)
                 .eq("password", password).findUnique();
@@ -39,12 +42,18 @@ public class User extends Model  {
     }
 
 
-    public static void addToHandleliste(Vare vare, String email){
-        //må jeg spesifiserer hvem sin handleliste den skal legges i?
-        handleliste.add(vare);
+    public void addToHandleliste(Long vareid){
+
+        Vare vare = Vare.find.byId(vareid);
+
+        this.handleliste.add(vare);
+        this.save();
 
     }
 
+    public static List<Vare> getShoppingList(){
+        return handleliste;
+    }
 
     public static void deleteFromHandleliste(Vare vare, String email){
 

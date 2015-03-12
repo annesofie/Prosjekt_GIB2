@@ -3,50 +3,34 @@
  */
 var init = function() {
 
-    $('.addVareKnappHjem').click(function() {
-        $(this).removeClass('addVareKnappHjem').addClass('removeVareKnappHjem');
-        $('.liste').append($(this).parent().parent());
-    });
-    $('.addVareKnappElektro').click(function() {
-        $(this).removeClass('addVareKnappElektro').addClass('removeVareKnappElektro');
-        $('.liste').append($(this).parent().parent());
-    });
-    $('.addVareKnappFritid').click(function() {
-        $(this).removeClass('addVareKnappFritid').addClass('removeVareKnappFritid');
-        $('.liste').append($(this).parent().parent());
-    });
-    $('.addVareKnappJernvare').click(function() {
-        $(this).removeClass('addVareKnappJernvare').addClass('removeVareKnappJernvare');
-        $('.liste').append($(this).parent().parent());
-    });
-    $('.addVareKnappMultimedia').click(function() {
-        $(this).removeClass('addVareKnappMultimedia').addClass('removeVareKnappMulimedia');
-        $('.liste').append($(this).parent().parent());
-    });
+    function cloneRow() {
 
-    $('.removeVareKnappHjem').click(function() {
-        $(this).removeClass('removeVareKnappHjem').addClass('addVareKnappHjem');
-        $('.hjem').append($(this).parent().parent());
-    });
+        var row = document.getElementsByName("vareTabell");
+        var table = document.getElementsByName("liste");
+        var clone = row.cloneNode(true);
+        clone.name = "handleTabell";
+        table.appendChild(clone);
+    }
+    function createRow() {
 
-    $('.removeVareKnappElektro').click(function() {
-        $(this).removeClass('removeVareKnappElektro').addClass('addVareKnappElektro');
-        $('.hjem').append($(this).parent().parent());
-    });
+        var row = document.createElement('tr'); //create row node
+        var col = document.createElement('td'); //create column node
+        var col2 = document.createElement('td'); //create second column node
+        //var col3 = document.createElement('td'); //create second column node
+        row.appendChild(col);
+        row.appendChild(col2);
+        //row.appendChild(col3);
+        col.innerHTML = this.navn;
+        col2.innerHTML = this.pris
+        //col3.innerHTML = button??
 
-    $('.removeVareKnappFritid').click(function() {
-        $(this).removeClass('removeVareKnappFritid').addClass('addVareKnappFritid');
-        $('.hjem').append($(this).parent().parent());
-    });
+        var table = document.getElementsByName("liste");
+        table.append(row);
+    }
+    $('.addVareKnappHjem').click(function() { 
+        //cloneRow();
+        createRow(); 
 
-    $('.removeVareKnappJernvare').click(function() {
-        $(this).removeClass('removeVareKnappJernvare').addClass('addVareKnappJernvare');
-        $('.hjem').append($(this).parent().parent());
-    });
-
-    $('.removeVareKnappMultimedia').click(function() {
-        $(this).removeClass('removeVareKnappMultimedia').addClass('addVareKnappMultimedia');
-        $('.hjem').append($(this).parent().parent());
     });
 
 

@@ -3,6 +3,12 @@
 
 # --- !Ups
 
+create table edge (
+  id                        varchar(255) not null,
+  weight                    integer,
+  constraint pk_edge primary key (id))
+;
+
 create table handleliste (
   email                     varchar(255) not null,
   constraint pk_handleliste primary key (email))
@@ -14,11 +20,12 @@ create table kategori (
   constraint pk_kategori primary key (kategori_navn))
 ;
 
-create table noder (
+create table nodeskal_ikke_brukes (
   nodenummer                integer not null,
   position_x                integer,
   position_y                integer,
-  constraint pk_noder primary key (nodenummer))
+  kant_verdi                integer,
+  constraint pk_nodeskal_ikke_brukes primary key (nodenummer))
 ;
 
 create table user (
@@ -38,15 +45,25 @@ create table vare (
   constraint pk_vare primary key (vareid))
 ;
 
+create table vertex (
+  id                        varchar(255) not null,
+  name                      varchar(255),
+  constraint pk_vertex primary key (id))
+;
+
+create sequence edge_seq;
+
 create sequence handleliste_seq;
 
 create sequence kategori_seq;
 
-create sequence noder_seq;
+create sequence nodeskal_ikke_brukes_seq;
 
 create sequence user_seq;
 
 create sequence vare_seq;
+
+create sequence vertex_seq;
 
 
 
@@ -55,25 +72,33 @@ create sequence vare_seq;
 
 SET REFERENTIAL_INTEGRITY FALSE;
 
+drop table if exists edge;
+
 drop table if exists handleliste;
 
 drop table if exists kategori;
 
-drop table if exists noder;
+drop table if exists nodeskal_ikke_brukes;
 
 drop table if exists user;
 
 drop table if exists vare;
 
+drop table if exists vertex;
+
 SET REFERENTIAL_INTEGRITY TRUE;
+
+drop sequence if exists edge_seq;
 
 drop sequence if exists handleliste_seq;
 
 drop sequence if exists kategori_seq;
 
-drop sequence if exists noder_seq;
+drop sequence if exists nodeskal_ikke_brukes_seq;
 
 drop sequence if exists user_seq;
 
 drop sequence if exists vare_seq;
+
+drop sequence if exists vertex_seq;
 
