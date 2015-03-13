@@ -12,26 +12,20 @@ public class Vertex extends Model{
 
     @Id
     final private String id;
-    final private String name;
     public int x,y;
 
 
     public static Model.Finder<String, Vertex> find = new Model.Finder(String.class, Vertex.class);
 
-    public Vertex(String id, String name, Integer x, Integer y) {
+    public Vertex(String id, Integer x, Integer y) {
         this.id = id;
-        this.name = name;
-        this.x=x;
-        this.y=y;
+        this.x = x;
+        this.y = y;
 
     }
 
     public String getId() {
         return id;
-    }
-
-    public String getName() {
-        return name;
     }
 
     @Override
@@ -57,11 +51,6 @@ public class Vertex extends Model{
         } else if (!id.equals(other.id))
             return false;
         return true;
-    }
-
-    @Override
-    public String toString() {
-        return name;
     }
 
 }
