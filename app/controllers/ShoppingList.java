@@ -20,8 +20,8 @@ public class ShoppingList extends Controller {
     @Security.Authenticated(Secured.class)
     public static Result addItem(Long itemid){
 
-        //System.out.println(request().username());
         User user = User.find.byId(request().username());
+
         if(user.handleliste.contains(Vare.find.byId(itemid))){
             //ingenting skjer, varen er allerede i listen
             System.out.println("Varen kan ikke legges til");
