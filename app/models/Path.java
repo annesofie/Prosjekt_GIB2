@@ -33,20 +33,31 @@ public class Path{
     }
 
 
+    //Returnerer en array hvor hver rad inneholder en node og kantlengden fra forrige node i stien til noden
     public ArrayList<String> FindGreedyPath(){
         //finner en graadig sti, som kun velger noden med korteste avstand som enda ikke er besøkt
         Vertex rootVertex=graph.rootNode;
-        ArrayList<String> sti=new ArrayList<>();
+        ArrayList<String> path=new ArrayList<>();
         ArrayList<Vertex> delAvSti=new ArrayList<>();
 
         for(Vertex target:findTargets()){
-            sti.add(bfs.bfs(rootVertex,delAvSti));
+            path.add(bfs.bfs(rootVertex,delAvSti));
             delAvSti.add(rootVertex);
             delAvSti.add(target);
             rootVertex=target;
         }
 
-        return sti;
+        return path;
     }
+
+    public Integer getGreedyPathLength(ArrayList<String> path){
+        int weight=0;
+        for(String vertex:path){
+            weight+=Integer.parseInt(vertex.split(",").toString());
+        }
+        return weight;
+    }
+
+
 
 }
