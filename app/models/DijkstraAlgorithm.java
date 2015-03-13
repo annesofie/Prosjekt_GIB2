@@ -42,7 +42,7 @@ public class DijkstraAlgorithm{
         }
     }
 
-    private void findMinimalDistances(Vertex node) {
+    public void findMinimalDistances(Vertex node) {
         List<Vertex> adjacentNodes = getNeighbors(node);
         for (Vertex target : adjacentNodes) {
             if (getShortestDistance(target) > getShortestDistance(node) + getDistance(node, target)) {
@@ -63,7 +63,7 @@ public class DijkstraAlgorithm{
         throw new RuntimeException("Should not happen");
     }
 
-    private List<Vertex> getNeighbors(Vertex node) {
+    public List<Vertex> getNeighbors(Vertex node) {
         List<Vertex> neighbors = new ArrayList<Vertex>();
         for (Edge edge : edges) {
             if (edge.getSource().equals(node)
@@ -123,13 +123,13 @@ public class DijkstraAlgorithm{
         return path;
     }
 
-    public ArrayList<LinkedList> getPathToAllRelevantNodes(ArrayList<Vertex> targets) {
+    public ArrayList<ArrayList<Vertex>> getPathToAllRelevantNodes(ArrayList<Vertex> targets) {
 
-        LinkedList<Vertex> path;
-        ArrayList<LinkedList> paths = new ArrayList<LinkedList>();
+        ArrayList<Vertex> path;
+        ArrayList<ArrayList<Vertex>> paths = new ArrayList<ArrayList<Vertex>>();
 
         for (Vertex target : targets) {
-            path = new LinkedList<Vertex>();
+            path = new ArrayList<Vertex>();
             Vertex step = target;
             // check if a path exists
             if (predecessors.get(step) == null) {

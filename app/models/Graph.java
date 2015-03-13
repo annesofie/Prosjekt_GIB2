@@ -15,17 +15,17 @@ public class Graph extends Model{
 
 
     public Graph() {
-        this.vertexes = getVertexes();
+        this.vertexes = getVertices();
         this.edges = getEdges();
     }
 
 
-    public List<Vertex> getVertexes() {
+    public List<Vertex> getVertices() {
         return Vertex.find.all();
 
     }
 
-    public List<Edge> getEdges() {
+    public static List<Edge> getEdges() {
         return Edge.find.all();
     }
 
