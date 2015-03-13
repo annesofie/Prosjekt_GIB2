@@ -6,60 +6,171 @@
        email:    simen_hel@hotmail.com
        password: 123
 
+    - !!models.User
+       email:    mathilde@gmail.com
+       password: mathilde
+
     - !!models.Vare
-        navn:     batterilader
+        navn:     Kaffetrakter
         kategori: hjem
-        pris:     249
+        pris:     199
         x:        2
         y:        2
-        z:        2
+        z:        1
         pic:      http://goo.gl/0Jm9Rn
 
     - !!models.Vare
-        navn:     kulekopp
+        navn:     Vannkoker
         kategori: hjem
-        pris: 29
-        x: 2
-        y: 2
-        z: 4
+        pris:     99
+        x:        2
+        y:        2
+        z:        2
 
     - !!models.Vare
-        navn: yogamatte
-        kategori: elektro
-        pris: 249
-        x: 3
-        y: 4
-        z: 3
+        navn:     Brødrister
+        kategori: hjem
+        pris:     399
+        x:        2
+        y:        2
+        z:        3
+        pic:      http://goo.gl/0Jm9Rn
 
     - !!models.Vare
-        navn: balansesykkel
-        kategori: elektro
-        pris: 25
-        x: 1
-        y: 1
-        z: 1
+        navn:     Støvsuger
+        kategori: hjem
+        pris:     499
+        x:        2
+        y:        2
+        z:        4
 
     - !!models.Vare
-        navn: balansesykkel
-        kategori: fritid
-        pris: 25
-        x: 1
-        y: 1
-        z: 1
-
-    - !!models.Vare
-        navn: balansesykkel
+        navn:     Skrutrekker
         kategori: jernvare
-        pris: 25
-        x: 1
-        y: 1
-        z: 1
+        pris:     449
+        x:        1
+        y:        1
+        z:        1
 
     - !!models.Vare
-        navn: balansesykkel
-        kategori: multimedias
-        pris: 25
-        x: 1
-        y: 1
-        z: 1
+        navn:     Multisag
+        kategori: jernvare
+        pris:     379
+        x:        1
+        y:        1
+        z:        2
+
+    - !!models.Vare
+        navn:     Arbeidslampe
+        kategori: jernvare
+        pris:     299
+        x:        1
+        y:        1
+        z:        3
+
+    - !!models.Vare
+        navn:     Kombiboks
+        kategori: jernvare
+        pris:     99
+        x:        1
+        y:        1
+        z:        4
+
+    - !!models.Vare
+        navn:     Bordvifte
+        kategori: elektro
+        pris:     399
+        x:        3
+        y:        3
+        z:        1
+
+    - !!models.Vare
+        navn:     Luftfukter
+        kategori: elektro
+        pris:     699
+        x:        3
+        y:        3
+        z:        2
+
+    - !!models.Vare
+        navn:     Lampegitter
+        kategori: elektro
+        pris:     149
+        x:        3
+        y:        3
+        z:        3
+
+    - !!models.Vare
+        navn:     Vegglampe
+        kategori: elektro
+        pris:     199
+        x:        3
+        y:        3
+        z:        4
+
+    - !!models.Vare
+        navn:     Keyboard
+        kategori: multimedia
+        pris:     799
+        x:        4
+        y:        4
+        z:        1
+
+    - !!models.Vare
+        navn:     Hodetelefon
+        kategori: multimedia
+        pris:     249
+        x:        4
+        y:        4
+        z:        2
+
+    - !!models.Vare
+        navn:     Høytaller
+        kategori: multimedia
+        pris:     799
+        x:        4
+        y:        4
+        z:        3
+
+    - !!models.Vare
+        navn:     Actionkamera
+        kategori: multimedia
+        pris:     998
+        x:        4
+        y:        4
+        z:        4
+
+    - !!models.Vare
+        navn:     Trillebår
+        kategori: fritid
+        pris:     299
+        x:        5
+        y:        5
+        z:        1
+
+    - !!models.Vare
+        navn:     Snøspade
+        kategori: fritid
+        pris:     549
+        x:        5
+        y:        5
+        z:        2
+
+    - !!models.Vare
+        navn:     Trykksprøyter
+        kategori: fritid
+        pris:     99
+        x:        5
+        y:        5
+        z:        3
+
+    - !!models.Vare
+        navn:     Blomsterhylle
+        kategori: fritid
+        pris:     199
+        x:        5
+        y:        5
+        z:        4
+
+
 
