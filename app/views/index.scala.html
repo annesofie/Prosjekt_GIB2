@@ -112,6 +112,7 @@
                                             <table class="table table-condensed hjemTabell">
                                             @for(vare <- hjem) {
                                                 <tr class="vareTabell">
+                                                    <td><img src=@vare.pic></img></td>
                                                     <td class="vareNavn">@vare.navn </td>
                                                     <td id="varePris">@vare.pris kr </td>
                                                     <td><a href="@routes.ShoppingList.addItem(vare.vareid)" class="btn btn-xs addVareKnappHjem" id="addVareKnapp"><span class="glyphicon glyphicon-ok" aria-hidden="true"></span></a></td>

@@ -29,6 +29,7 @@ create table vare (
   y                         integer,
   z                         integer,
   pris                      double,
+  pic                       varchar(255),
   constraint pk_vare primary key (vareid))
 ;
 

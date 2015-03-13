@@ -2,6 +2,10 @@
        email:    annesofie@gmail.com
        password: hemmelig
 
+    - !!models.User
+       email:    simen_hel@hotmail.com
+       password: 123
+
     - !!models.Vare
         navn:     batterilader
         kategori: hjem
@@ -9,6 +13,7 @@
         x:        2
         y:        2
         z:        2
+        pic:      http://goo.gl/0Jm9Rn
 
     - !!models.Vare
         navn:     kulekopp
@@ -57,5 +62,4 @@
         x: 1
         y: 1
         z: 1
-
 

@@ -17,11 +17,12 @@ public class Vare extends Model {
     public int x, y, z;
     public double pris;
     public Vertex vertex;
+    public String pic;
 
 
     public static Model.Finder<Long, Vare> find = new Model.Finder(Long.class, Vare.class);
 
-    public Vare(String navn, String kategori, int x, int y, int z, double pris, Vertex v){
+    public Vare(String navn, String kategori, int x, int y, int z, double pris, Vertex v, String pic){
         this.navn = navn;
         this.kategori = kategori;
         this.pris = pris;
@@ -29,6 +30,7 @@ public class Vare extends Model {
         this.y = y;
         this.z = z;
         this.vertex=v;
+        this.pic = pic;
     }
 
     public static List<Vare> vareFraKategori(String kategori){
