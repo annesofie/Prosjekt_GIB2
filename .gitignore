@@ -13,3 +13,5 @@ dist
 /.project
 /RUNNING_PID
 /.settings
+
+app/models/Vertex.java
