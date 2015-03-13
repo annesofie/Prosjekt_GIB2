@@ -13,12 +13,17 @@ public class Vertex extends Model{
     @Id
     final private String id;
     final private String name;
+    public int x,y;
+
 
     public static Model.Finder<String, Vertex> find = new Model.Finder(String.class, Vertex.class);
 
-    public Vertex(String id, String name) {
+    public Vertex(String id, String name, Integer x, Integer y) {
         this.id = id;
         this.name = name;
+        this.x=x;
+        this.y=y;
+
     }
 
     public String getId() {
