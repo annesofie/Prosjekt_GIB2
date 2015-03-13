@@ -35,7 +35,6 @@ create table vare (
 
 create table vertex (
   id                        varchar(255) not null,
-  name                      varchar(255),
   x                         integer,
   y                         integer,
   constraint pk_vertex primary key (id))
