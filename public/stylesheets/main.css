@@ -137,7 +137,7 @@ input [type=submit]{
     color: #ffffff;
     border: solid 1px #0076a3; border-right:0px;
     background: #1691bd;
-    background: -webkit-gradient(linear, left top, left bottom, from(#a9cdd8) , to(#3a8fbd));
+    background: -webkit-gradient(linear, left top, left bottom, from(#a9cdd8) , to(#73aafd));
     background: -moz-linear-gradient(top,  #00adee,  #0078a5);
     border-top-right-radius: 5px 5px;
     border-bottom-right-radius: 5px 5px;
@@ -220,7 +220,7 @@ a.close {
 }
 
 a.close:hover {
-    background-color: #50c1e9;
+    background-color: #73aafd;
     cursor: pointer;
 }
 
