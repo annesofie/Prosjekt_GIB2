@@ -34,44 +34,13 @@ public class DijkstraAlgorithm{
         predecessors = new HashMap<Vertex, Vertex>();
         distance.put(startPoint, 0);
         unSettledNodes.add(startPoint);
+
         while (unSettledNodes.size() > 0) {
             Vertex node = getMinimum(unSettledNodes);
             settledNodes.add(node);
             unSettledNodes.remove(node);
             findMinimalDistances(node);
         }
-    }
-
-    public void findMinimalDistances(Vertex node) {
-        List<Vertex> adjacentNodes = getNeighbors(node);
-        for (Vertex target : adjacentNodes) {
-            if (getShortestDistance(target) > getShortestDistance(node) + getDistance(node, target)) {
-                distance.put(target, getShortestDistance(node) + getDistance(node, target));
-                predecessors.put(target, node);
-                unSettledNodes.add(target);
-            }
-        }
-    }
-
-    private int getDistance(Vertex node, Vertex target) {
-        for (Edge edge : edges) {
-            if (edge.getSource().equals(node)
-                    && edge.getDestination().equals(target)) {
-                return edge.getWeight();
-            }
-        }
-        throw new RuntimeException("Should not happen");
-    }
-
-    public List<Vertex> getNeighbors(Vertex node) {
-        List<Vertex> neighbors = new ArrayList<Vertex>();
-        for (Edge edge : edges) {
-            if (edge.getSource().equals(node)
-                    && !isSettled(edge.getDestination())) {
-                neighbors.add(edge.getDestination());
-            }
-        }
-        return neighbors;
     }
 
     private Vertex getMinimum(Set<Vertex> vertexes) {
@@ -88,10 +57,6 @@ public class DijkstraAlgorithm{
         return minimum;
     }
 
-    private boolean isSettled(Vertex vertex) {
-        return settledNodes.contains(vertex);
-    }
-
     private int getShortestDistance(Vertex destination) {
         Integer d = distance.get(destination);
         if (d == null) {
@@ -100,6 +65,49 @@ public class DijkstraAlgorithm{
             return d;
         }
     }
+
+    //Finner nabonodene til noden, for alle naboer sjekker om
+    public void findMinimalDistances(Vertex node) {
+        List<Vertex> adjacentNodes = getNeighbors(node);
+        for (Vertex target : adjacentNodes) {
+            if (getShortestDistance(target) > getShortestDistance(node) + getDistance(node, target)) {
+                distance.put(target, getShortestDistance(node) + getDistance(node, target));
+                predecessors.put(target, node);
+                unSettledNodes.add(target);
+            }
+        }
+    }
+
+    //Finner kantverdien mellom to noder
+    private int getDistance(Vertex node, Vertex target) {
+        for (Edge edge : edges) {
+            if (edge.getSource().equals(node)
+                    && edge.getDestination().equals(target)) {
+                return edge.getWeight();
+            }
+        }
+        throw new RuntimeException("Should not happen");
+    }
+
+    //Finner nabonodene til en gitt node
+    public List<Vertex> getNeighbors(Vertex node) {
+        List<Vertex> neighbors = new ArrayList<Vertex>();
+        for (Edge edge : edges) {
+            if (edge.getSource().equals(node)
+                   ) {
+                neighbors.add(edge.getDestination());
+            }
+        }
+        return neighbors;
+    }
+
+
+
+    private boolean isSettled(Vertex vertex) {
+        return settledNodes.contains(vertex);
+    }
+
+
 
     /*
      * This method returns the path from the source to the selected target and
@@ -127,6 +135,7 @@ public class DijkstraAlgorithm{
 
         ArrayList<Vertex> path;
         ArrayList<ArrayList<Vertex>> paths = new ArrayList<ArrayList<Vertex>>();
+        int pathWeight=0;
 
         for (Vertex target : targets) {
             path = new ArrayList<Vertex>();
@@ -146,7 +155,6 @@ public class DijkstraAlgorithm{
 
         }
             return paths;
-
 
     }
 

@@ -11,14 +11,14 @@ import javax.persistence.*;
 public class Vertex extends Model{
 
     @Id
-    final private String id;
+    final private int id;
     final private String name;
     public int x,y;
 
 
     public static Model.Finder<String, Vertex> find = new Model.Finder(String.class, Vertex.class);
 
-    public Vertex(String id, String name, Integer x, Integer y) {
+    public Vertex(Integer id, String name, Integer x, Integer y) {
         this.id = id;
         this.name = name;
         this.x=x;
@@ -26,7 +26,7 @@ public class Vertex extends Model{
 
     }
 
-    public String getId() {
+    public Integer getId() {
         return id;
     }
 
@@ -34,15 +34,15 @@ public class Vertex extends Model{
         return name;
     }
 
-    @Override
+  /*  @Override
     public int hashCode() {
         final int prime = 31;
         int result = 1;
         result = prime * result + ((id == null) ? 0 : id.hashCode());
         return result;
-    }
+    }*/
 
-    @Override
+ /*   @Override
     public boolean equals(Object obj) {
         if (this == obj)
             return true;
@@ -57,7 +57,7 @@ public class Vertex extends Model{
         } else if (!id.equals(other.id))
             return false;
         return true;
-    }
+    }*/
 
     @Override
     public String toString() {
