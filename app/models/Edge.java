@@ -12,21 +12,21 @@ public class Edge extends Model{
 
     //Vi må huske å lagre to kanter mellom nodene, fordi dijsktra kjører på directed graphs, og vi oonsker at man skal kunne gå begge retninger
     @Id
-    private final String id;
-    private final Vertex source;
-    private final Vertex destination;
-    private final int weight;
+    public final int id;
+    public final Vertex source;
+    public final Vertex destination;
+
 
     public static Model.Finder<String, Edge> find = new Model.Finder(String.class, Edge.class);
 
-    public Edge(String id, Vertex source, Vertex destination, int weight) {
+    public Edge(Integer id, Vertex source, Vertex destination) {
         this.id = id;
         this.source = source;
         this.destination = destination;
-        this.weight = weight;
+
     }
 
-    public String getId() {
+    public Integer getId() {
         return id;
     }
 
@@ -37,9 +37,7 @@ public class Edge extends Model{
     public Vertex getSource() {
         return source;
     }
-    public int getWeight() {
-        return weight;
-    }
+
 
     @Override
     public String toString() {
