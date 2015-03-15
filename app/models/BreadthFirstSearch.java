@@ -35,7 +35,7 @@ public class BreadthFirstSearch {
             Vertex vertex = (Vertex) queue.remove();
             Vertex child = null;
             hight+=1; //Teller nivåer i treet, altså totallengden til noden man sjekker
-            while((child=getUnvisitedChildNode(vertex))!=null){ //Går igjennom hvert barn
+            while((child=getUnvisitedChildNodeInGraph(vertex))!=null){ //Går igjennom hvert barn
                 if(targets.contains(child)){
                     return child+","+hight;
                 }
@@ -47,9 +47,46 @@ public class BreadthFirstSearch {
 
     }
 
+    //Skal returnere en graf som viser vei fra alle target-noder til alle target-noder, et spenntre
+    public weightedGraph bfsAllToAll() {
 
-    public Vertex getUnvisitedChildNode(Vertex vertex) {
-        for (Vertex child:getChildren(vertex)){
+        int hight = 0;
+        // BFS uses Queue data structure
+        visited=new ArrayList<>();
+        Queue queue = new LinkedList();
+        ArrayList<Vertex> graphVertices=new ArrayList<>();
+        ArrayList<weightedEdge> graphEdges=new ArrayList<>();
+
+        for (Vertex rootNode:targets) {
+            queue.add(rootNode);
+            visited.add(rootNode);
+
+            while (!queue.isEmpty()) {
+                Vertex vertex = (Vertex) queue.remove();
+                Vertex child = null;
+                hight += 1; //Teller nivåer i treet, altså totallengden til noden man sjekker
+
+                while ((child = getUnvisitedChildNodeInGraph(vertex)) != null) { //Går igjennom hvert barn
+                    if (targets.contains(child)) {
+                        graphVertices.add(child);
+                        for (Edge edge : graph.edges) {
+                            if (edge.getDestination().equals(child) && edge.getSource().equals(vertex)) {
+                                graphEdges.add(new weightedEdge(vertex, child, hight));
+                            }
+                        }
+                    }
+                    visited.add(child);
+                    queue.add(child);
+                }
+            }
+        }
+
+        return new weightedGraph(graphVertices,graphEdges);
+    }
+
+
+    public Vertex getUnvisitedChildNodeInGraph(Vertex vertex) {
+        for (Vertex child:graph.getChildren(vertex)){
             if(!visited.contains(child)){
                 return child;
             }
@@ -58,15 +95,6 @@ public class BreadthFirstSearch {
     }
 
 
-    //Finner nabonodene til en gitt node
-    public List<Vertex> getChildren(Vertex node) {
-        List<Vertex> children = new ArrayList<Vertex>();
-        for (Edge edge : graph.edges) {
-            if (edge.getSource().equals(node)) {
-                children.add(edge.getDestination());
-            }
-        }
-        return children;
-    }
+
 
 }
