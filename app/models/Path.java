@@ -32,8 +32,17 @@ public class Path{
         return targets;
     }
 
+    //kjører prims-algoritme for å finne minimalt spenntre
+    public void findMinimumSpanningTree(){
 
-    //Returnerer en array hvor hver rad inneholder en node og kantlengden fra forrige node i stien til noden
+    }
+
+
+
+
+
+
+  //ugått //Returnerer en array hvor hver rad inneholder en node og kantlengden fra forrige node i stien til noden
     public ArrayList<String> FindGreedyPath(){
         //finner en graadig sti, som kun velger noden med korteste avstand som enda ikke er besøkt
         Vertex rootVertex=graph.rootNode;
