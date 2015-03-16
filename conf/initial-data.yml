@@ -63,3 +63,78 @@
         y: 1
         z: 1
 
+    - !!models.Vertex
+      xPos: 60
+      yPos: 260
+
+    - !!models.Vertex
+      xPos: 115
+      yPos: 260
+
+    - !!models.Vertex
+      xPos: 170
+      yPos: 260
+
+    - !!models.Vertex
+      xPos: 225
+      yPos: 260
+
+    - !!models.Vertex
+      xPos: 288
+      yPos: 260
+
+    - !!models.Vertex
+      xPos: 351
+      yPos: 260
+
+    - !!models.Vertex
+      xPos: 415
+      yPos: 260
+
+    - !!models.Vertex
+      xPos: 415
+      yPos: 204
+
+    - !!models.Vertex
+      xPos: 415
+      yPos: 147
+
+    - !!models.Vertex
+      xPos: 415
+      yPos: 90
+
+    - !!models.Vertex
+      xPos: 351
+      yPos: 90
+
+    - !!models.Vertex
+      xPos: 288
+      yPos: 90
+
+    - !!models.Vertex
+      xPos: 225
+      yPos: 90
+
+    - !!models.Vertex
+      xPos: 170
+      yPos: 90
+
+    - !!models.Vertex
+      xPos: 115
+      yPos: 90
+
+    - !!models.Vertex
+      xPos: 60
+      yPos: 147
+
+    - !!models.Vertex
+      xPos: 60
+      yPos: 204
+
+    - !!models.Vertex
+      xPos: 225
+      yPos: 147
+
+    - !!models.Vertex
+      xPos: 225
+      yPos: 204

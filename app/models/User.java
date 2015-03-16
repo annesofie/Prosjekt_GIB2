@@ -63,6 +63,21 @@ public class User extends Model  {
         this.save();
     }
 
+    public static List<Vare> sortShoppingList(List<Vertex> vertices) {
+
+        List<Vare> sortedShoppingList = new ArrayList<Vare>();
+
+        for (Vertex vertex: vertices) {
+            for (Vare vare: handleliste) {
+                if (vare.vertex == vertex) {
+                    sortedShoppingList.add(vare);
+                }
+            }
+        }
+
+        return sortedShoppingList;
+    }
+
 
 
 

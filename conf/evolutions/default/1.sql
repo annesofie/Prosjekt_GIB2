@@ -4,8 +4,7 @@
 # --- !Ups
 
 create table edge (
-  id                        varchar(255) not null,
-  weight                    integer,
+  id                        integer not null,
   constraint pk_edge primary key (id))
 ;
 
@@ -35,8 +34,8 @@ create table vare (
 
 create table vertex (
   id                        integer not null,
-  x                         integer,
-  y                         integer,
+  x_pos                     integer,
+  y_pos                     integer,
   constraint pk_vertex primary key (id))
 ;
 
