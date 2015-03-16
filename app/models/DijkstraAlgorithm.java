@@ -27,7 +27,7 @@ public class DijkstraAlgorithm{
         this.edges = new ArrayList<Edge>(graph.edges);
     }
 
-    public void execute(Vertex startPoint) {
+    /*public void execute(Vertex startPoint) {
         settledNodes = new HashSet<Vertex>();
         unSettledNodes = new HashSet<Vertex>();
         distance = new HashMap<Vertex, Integer>();
@@ -41,7 +41,7 @@ public class DijkstraAlgorithm{
             unSettledNodes.remove(node);
             findMinimalDistances(node);
         }
-    }
+    }*/
 
     private Vertex getMinimum(Set<Vertex> vertexes) {
         Vertex minimum = null;
