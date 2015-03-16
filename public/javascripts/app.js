@@ -38,7 +38,7 @@ var init = function() {
         dragging: false,
         crs: L.CRS.Simple
     }).setView([0, 0], 1);
-
+hvorfor
     map.setMaxBounds(new L.LatLngBounds([0,500], [500,0]));
 
     var imageUrl = 'http://i61.tinypic.com/30ucvfc.jpg'

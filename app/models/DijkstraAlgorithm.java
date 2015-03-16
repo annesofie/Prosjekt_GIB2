@@ -67,27 +67,27 @@ public class DijkstraAlgorithm{
     }
 
     //Finner nabonodene til noden, for alle naboer sjekker om
-    public void findMinimalDistances(Vertex node) {
-        List<Vertex> adjacentNodes = getNeighbors(node);
-        for (Vertex target : adjacentNodes) {
-            if (getShortestDistance(target) > getShortestDistance(node) + getDistance(node, target)) {
-                distance.put(target, getShortestDistance(node) + getDistance(node, target));
+    //public void findMinimalDistances(Vertex node) {
+    //    List<Vertex> adjacentNodes = getNeighbors(node);
+    //      for (Vertex target : adjacentNodes) {
+    //      if (getShortestDistance(target) > getShortestDistance(node) + getDistance(node, target)) {
+    /*            distance.put(target, getShortestDistance(node) + getDistance(node, target));
                 predecessors.put(target, node);
                 unSettledNodes.add(target);
             }
         }
-    }
+    }*/
 
     //Finner kantverdien mellom to noder
-    private int getDistance(Vertex node, Vertex target) {
-        for (Edge edge : edges) {
-            if (edge.getSource().equals(node)
-                    && edge.getDestination().equals(target)) {
-                return edge.getWeight();
-            }
-        }
-        throw new RuntimeException("Should not happen");
-    }
+    //private int getDistance(Vertex node, Vertex target) {
+    //    for (Edge edge : edges) {
+    //        if (edge.getSource().equals(node)
+    //                && edge.getDestination().equals(target)) {
+    //            return edge.getWeight();
+    //        }
+    //    }
+    //    throw new RuntimeException("Should not happen");
+    //}
 
     //Finner nabonodene til en gitt node
     public List<Vertex> getNeighbors(Vertex node) {
