@@ -1,0 +1,9 @@
+.overlay form button {
+    background-color: #50c1e9;
+    border: 1px solid rgba(0,0,0,.1);
+    color: rgb(255,255,255);
+    font-family: 'Varela Round', sans-serif;
+    font-size: .85em;
+    padding: .55em .9em;
+    transition: all 400ms ease;
+}

@@ -1,22 +1,28 @@
 
+/*Felles for hele siden*/
 
-.body {
-    background-color: #f3f3f3;
-    color: rgb(165,165,165);
-    font-family: "Open Sans", Arial, Helvetica, sans-serif;
-    font-weight: 400;
+h3 {
+    text-align: center;
 }
+
+
+/* ooverste kolonne på siden, setter plassering litt opp*/
+
 .toppen{
     margin-top: -60px;
 }
+
+/* Setter plassering til hele nettsiden*/
 .container h1{
     color:#73aafd;
     font-size:400%;
     font-weight: bold;
     text-shadow: InfoText;
     margin-top: 70px;
+
 }
 
+/* design til den sorte boksen */
 .boxed{
     width: auto;
     height: 50px;
@@ -24,54 +30,41 @@
     box-shadow: 3px 3px 3px #888888;
 }
 
+/* INNLOGGING og OPRETT NYE BRUKER knappene */
+
 .login li{
     display: inline;
-    padding-left: 1.5%;
 }
 
+
+.login h3{
+    font-size:small;
+}
+
+.login{
+    margin-top: 110px;
+    float:right;
+    margin-right: 5px;
+}
+
+/* kartet */
 
 #leaflet-kart {
     height: 680px;
     width: 500px;
-
-
-}
-.leaflet-kart {
-    height: 100px;
+    margin: auto;
 }
 
-.butikk-kart{
-    margin-left:50px;
-    box-shadow: 30px;
-}
+/* varesortement / varevalg*/
 
-.varevalg {
+    /* OBSOBS!!! finn ut hvordan man velger ut hver underkat. for å legge på en liten padding*/
 
-    margin-left: 50px;
-    margin-rigth: 50px;
-    list-style-type:none;
-}
-.varevalg li{
-    padding-left: 10px;
-}
-
-
-form{
-    widt:200px;
-    margin: 0 auto;
-}
-
-
-
-.varer{
-    border:2px solid #505965;
-    border-radius:5px;
-    border-spacing: 500px;
+.varevalg{
     list-style-type: none;
-    padding: 15px;
-
-
+    margin-right:40px;
+    margin-left: 20px;
 }
+
 
 #addVareKnapp {
     color: #ffffff;
@@ -104,40 +97,42 @@ form{
     font-size: 15px;
 }
 
-.panelgroup{
+/*Varesøk*/
 
-}
-
-
-
-input[type=text]{
-    color:#bcbcbc;
-
-}
-
-input [type=submit]{
-    float:right;
-}
 .søk-knapp{
-
-    margin-right: 90px;
     padding: 5px 15px;
     font-family: Arial, Helvetica, sans-serif;
-    font-size:14px;
-    outline: none;
-    cursor: pointer;
     text-align: center;
     text-decoration: none;
     color: #ffffff;
-    border: solid 1px #0076a3; border-right:0px;
-    background: #1691bd;
+    border: solid 1px #0076a3;
     background: -webkit-gradient(linear, left top, left bottom, from(#a9cdd8) , to(#73aafd));
     background: -moz-linear-gradient(top,  #00adee,  #0078a5);
     border-top-right-radius: 5px 5px;
     border-bottom-right-radius: 5px 5px;
-
+    margin-left:-6px;
 }
 
+.search{
+    margin-left:10px;
+    margin-bottom: 20px;
+    display: inline;
+    width: 80%;
+    height:33px;
+    border-top-left-radius: 3px 3px;
+    border-bottom-left-radius: 3px 3px;
+    border-top-right-radius: 3px 3px;
+    border-bottom-right-radius: 3px 3px;
+}
+
+
+.search form input[type="text"]{
+    background-color: rgb(255,255,255);
+    font-size:medium;
+    text-shadow: 0 1px 1px rgba(255, 255, 255, 1);
+}
+
+/* handleliste */
 
 .handleliste{
     margin-left: 50px;
@@ -158,45 +153,26 @@ input [type=submit]{
     padding-left: 5px;
 }
 
-.login h3{
-    font-size:small;
-}
 
 
-h3 {
-    text-align: center;
-
-}
-
-.add img{
-    width: 10px;
-    height: 10px;
-}
+/* Innloggingsvinduet, overlay klassen */
 
 
-/*
-*	RESET
-*/
-*{
-    box-sizing: border-box;
-    margin: 0;
-    outline: none;
-    padding: 0;
-}
-
-*:after,
-*:before {
-    box-sizing: border-box;
-}
-
-/*
-*	GLOBAL
-*/
-html {
-    font-size: 16px;
-    -webkit-text-size-adjust: 100%;
-    -ms-text-size-adjust: 100%;
-    text-rendering: optimizeLegibility;
+.overlay {
+    background-color: rgba(0,0,0,.25);
+    bottom: 0;
+    display:block;
+    justify-content: center;
+    left: 0;
+    position:fixed;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    z-index:1001;
+    display: -webkit-box;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: -webkit-flex;
 }
 
 
@@ -217,34 +193,6 @@ a.close {
 a.close:hover {
     background-color: #73aafd;
     cursor: pointer;
-}
-
-/*
-*	LOG-IN BOX
-*/
-
-.login{
-    margin-top: 100px;
-    margin-left:150px;
-}
-
-
-
-div.overlay {
-    background-color: rgba(0,0,0,.25);
-    bottom: 0;
-    display:block;
-    justify-content: center;
-    left: 0;
-    position:fixed;
-    top: 0;
-    width: 100%;
-    height: 100%;
-    z-index:1001;
-    display: -webkit-box;
-    display: -moz-box;
-    display: -ms-flexbox;
-    display: -webkit-flex;
 }
 
 
@@ -274,10 +222,8 @@ div.overlay > div.login-wrapper > div.login-content > h3 {
     margin: 0 0 1.25em;
     padding: 0;
 }
-/*
-*	FORM
-*/
-form label {
+
+.overlay form label {
     color: rgb(0,0,0);
     display: block;
     font-family: 'Varela Round', sans-serif;
@@ -285,25 +231,26 @@ form label {
     margin: .75em 0;
 }
 
+.overlay
 form input[type="text"],
 form input[type="email"],
 form input[type="number"],
 form input[type="search"],
 form input[type="password"],
-form textarea {
+form textarea .overlay {
     background-color: rgb(255,255,255);
     border: 1px solid rgb( 186, 186, 186 );
     border-radius: 1px;
     box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.08);
     display: block;
-    font-size: .65em;
-
+    font-size:.65em;;
     padding: .8em .55em;
     text-shadow: 0 1px 1px rgba(255, 255, 255, 1);
     transition: all 400ms ease;
     width: 90%;
 }
 
+.overlay
 form input[type="text"]:focus,
 form input[type="email"]:focus,
 form input[type="number"]:focus,
@@ -315,6 +262,7 @@ form select:focus {
     box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.1), 0 0 8px #4195fc;
 }
 
+.overlay
 form input[type="text"]:invalid:focus,
 form input[type="email"]:invalid:focus,
 form input[type="number"]:invalid:focus,
@@ -326,7 +274,7 @@ form select:invalid:focus {
     box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.1), 0 0 8px rgb(248,66,66);
 }
 
-form button {
+.overlay form button {
     background-color: #50c1e9;
     border: 1px solid rgba(0,0,0,.1);
     color: rgb(255,255,255);
@@ -336,24 +284,25 @@ form button {
     transition: all 400ms ease;
 }
 
+.overlay
 form button:hover {
     background-color: #50c1e9;
     cursor: pointer;
 }
+
+
+/*brukes ikke
 
 [draggable] {
     -moz-user-select: none;
     -khtml-user-select: none;
     -webkit-user-select: none;
     user-select: none;
-    /* Required to make elements draggable in old WebKit */
+    Required to make elements draggable in old WebKit
     -khtml-user-drag: element;
     -webkit-user-drag: element;
 }
+*/
 
-.search{
-    margin: 3px;
-    background: url('./images/search.png') no-repeat 8px 6px;
-    position:relative;
-    display: initial;
-}
+
+
