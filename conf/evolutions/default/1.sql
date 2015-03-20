@@ -36,6 +36,8 @@ create table vertex (
   id                        integer not null,
   x_pos                     integer,
   y_pos                     integer,
+  key                       integer,
+  infinite                  integer,
   constraint pk_vertex primary key (id))
 ;
 
