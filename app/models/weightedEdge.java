@@ -15,12 +15,12 @@ public class weightedEdge {
 
 
 
-
         public weightedEdge(Vertex source, Vertex destination, Integer weight) {
 
             this.source = source;
             this.destination = destination;
             this.weight=weight;
+
         }
 
         public Vertex getDestination() {
