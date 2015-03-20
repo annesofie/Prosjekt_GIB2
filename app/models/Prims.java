@@ -19,7 +19,6 @@ public class Prims {
         this.wGraph=wGraph;
         primsExecute();
 
-
     }
 
     static class vertexComparator implements Comparator<Vertex> {
