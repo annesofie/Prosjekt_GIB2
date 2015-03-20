@@ -1,34 +1,42 @@
 
 /*Felles for hele siden*/
 
-h3 {
-    text-align: center;
-}
-
-
-/* ooverste kolonne på siden, setter plassering litt opp*/
-
-.toppen{
-    margin-top: -60px;
-}
-
 /* Setter plassering til hele nettsiden*/
-.container h1{
-    color:#73aafd;
+.container{
+    margin-top:-60px;
+}
+
+.navn h1{
+    color:#57606c;
     font-size:400%;
     font-weight: bold;
     text-shadow: InfoText;
-    margin-top: 70px;
+    margin-top: 20px;
 
+
+}
+/* ooverste kolonne på siden, header*/
+
+.slagord h3{
+    font-size:large;
+    margin-top:45px;
+    margin-left:-100px;
+    color:#888888;
+}
+
+.toppen{
+    margin-top: 60px;
 }
 
 /* design til den sorte boksen */
 .boxed{
     width: auto;
-    height: 50px;
+    height: 40px;
     background-color: #505965;
     box-shadow: 3px 3px 3px #888888;
 }
+
+
 
 /* INNLOGGING og OPRETT NYE BRUKER knappene */
 
@@ -42,12 +50,16 @@ h3 {
 }
 
 .login{
-    margin-top: 110px;
+    margin-top: 50px;
     float:right;
     margin-right: 5px;
 }
 
 /* kartet */
+
+.kart h3{
+    text-align: center;
+}
 
 #leaflet-kart {
     height: 680px;
@@ -63,8 +75,13 @@ h3 {
     list-style-type: none;
     margin-right:40px;
     margin-left: 20px;
+
 }
 
+.panel-heading{
+    border:2px solid;
+    border-color:#373d47;
+}
 
 #addVareKnapp {
     color: #ffffff;
@@ -99,8 +116,12 @@ h3 {
 
 /*Varesøk*/
 
+.søkefelt{
+    margin-left: 12px;
+}
+
 .søk-knapp{
-    padding: 5px 15px;
+    padding: 7px 15px;
     font-family: Arial, Helvetica, sans-serif;
     text-align: center;
     text-decoration: none;
@@ -113,23 +134,23 @@ h3 {
     margin-left:-6px;
 }
 
-.search{
-    margin-left:10px;
+
+.søkefelt input[type="text"]{
+
+    font-size:small;
+    text-shadow: 0 1px 1px rgba(255, 255, 255, 1);
+    margin-left:0px;
     margin-bottom: 20px;
     display: inline;
-    width: 80%;
-    height:33px;
+    width: 85%;
+    height:36px;
+    padding-left:10px;
     border-top-left-radius: 3px 3px;
     border-bottom-left-radius: 3px 3px;
     border-top-right-radius: 3px 3px;
     border-bottom-right-radius: 3px 3px;
-}
-
-
-.search form input[type="text"]{
+    border: 1px solid;
     background-color: rgb(255,255,255);
-    font-size:medium;
-    text-shadow: 0 1px 1px rgba(255, 255, 255, 1);
 }
 
 /* handleliste */
