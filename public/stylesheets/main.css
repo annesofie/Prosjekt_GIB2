@@ -108,13 +108,7 @@ form{
 
 }
 
-.search {
-    margin: 3px;
-    background: url('./images/search.png') no-repeat 8px 6px;
-    position:relative;
-    display: inline;
 
-}
 
 input[type=text]{
     color:#bcbcbc;
@@ -124,7 +118,7 @@ input[type=text]{
 input [type=submit]{
     float:right;
 }
-.søk-knapp {
+.søk-knapp{
 
     margin-right: 90px;
     padding: 5px 15px;
@@ -141,6 +135,7 @@ input [type=submit]{
     background: -moz-linear-gradient(top,  #00adee,  #0078a5);
     border-top-right-radius: 5px 5px;
     border-bottom-right-radius: 5px 5px;
+
 }
 
 
@@ -302,7 +297,7 @@ form textarea {
     box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.08);
     display: block;
     font-size: .65em;
-    margin: 6px 0 12px 0;
+
     padding: .8em .55em;
     text-shadow: 0 1px 1px rgba(255, 255, 255, 1);
     transition: all 400ms ease;
@@ -354,4 +349,11 @@ form button:hover {
     /* Required to make elements draggable in old WebKit */
     -khtml-user-drag: element;
     -webkit-user-drag: element;
+}
+
+.search{
+    margin: 3px;
+    background: url('./images/search.png') no-repeat 8px 6px;
+    position:relative;
+    display: initial;
 }
