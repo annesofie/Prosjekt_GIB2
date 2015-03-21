@@ -179,7 +179,24 @@
 /* Innloggingsvinduet, overlay klassen */
 
 
-.overlay {
+.overlay-login{
+    background-color: rgba(0,0,0,.25);
+    bottom: 0;
+    display:block;
+    justify-content: center;
+    left: 0;
+    position:fixed;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    z-index:1001;
+    display: -webkit-box;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: -webkit-flex;
+}
+
+.overlay-new-user {
     background-color: rgba(0,0,0,.25);
     bottom: 0;
     display:block;
@@ -197,7 +214,7 @@
 }
 
 
-a.close {
+a.close-login {
     background-color: red;//rgb(204,204,204);
     border-radius: 50%;
     color: rgb(255,255,255);
@@ -211,13 +228,41 @@ a.close {
     right: 1.25rem;
 }
 
-a.close:hover {
+a.close-new-user {
+    background-color: red;//rgb(204,204,204);
+    border-radius: 50%;
+    color: rgb(255,255,255);
+    display: block;
+    font-family: 'Varela Round', sans-serif;
+    font-size: .8em;
+    padding: .2em .5em;
+    position:absolute;
+    top: 1.25rem;
+    transition: all 400ms ease;
+    right: 1.25rem;
+}
+
+a.close-login:hover {
+    background-color: #73aafd;
+    cursor: pointer;
+}
+a.close-new-user:hover {
     background-color: #73aafd;
     cursor: pointer;
 }
 
-
-div.overlay > div.login-wrapper {
+div.overlay-login > div.login-wrapper {
+    align-self: center;
+    position: absolute;
+    top:20%;
+    left:35%;
+    z-index: 1002;
+    background-color: rgba(0,0,0,.10);
+    border-radius: 2px;
+    padding: 6px;
+    width: 450px;
+}
+div.overlay-new-user > div.new-user-wrapper {
     align-self: center;
     position: absolute;
     top:20%;
@@ -229,14 +274,20 @@ div.overlay > div.login-wrapper {
     width: 450px;
 }
 
-div.overlay > div.login-wrapper > div.login-content {
+div.overlay-login > div.login-wrapper > div.login-content {
+    background-color: rgb(255,255,255);
+    border-radius: 2px;
+    padding: 24px;
+    position: relative;
+}
+div.overlay-new-user > div.new-user-wrapper > div.new-user-content {
     background-color: rgb(255,255,255);
     border-radius: 2px;
     padding: 24px;
     position: relative;
 }
 
-div.overlay > div.login-wrapper > div.login-content > h3 {
+div.overlay-login > div.login-wrapper > div.login-content > h3 {
     color: rgb(0,0,0);
     font-family: 'Varela Round', sans-serif;
     font-size: 1.8em;
@@ -244,7 +295,22 @@ div.overlay > div.login-wrapper > div.login-content > h3 {
     padding: 0;
 }
 
-.overlay form label {
+div.overlay-new-user > div.new-user-wrapper > div.new-user-content > h3 {
+    color: rgb(0,0,0);
+    font-family: 'Varela Round', sans-serif;
+    font-size: 1.8em;
+    margin: 0 0 1.25em;
+    padding: 0;
+}
+
+.overlay-login form label {
+    color: rgb(0,0,0);
+    display: block;
+    font-family: 'Varela Round', sans-serif;
+    font-size: 1.25em;
+    margin: .75em 0;
+}
+.overlay-new-user form label {
     color: rgb(0,0,0);
     display: block;
     font-family: 'Varela Round', sans-serif;
@@ -252,7 +318,7 @@ div.overlay > div.login-wrapper > div.login-content > h3 {
     margin: .75em 0;
 }
 
-.overlay
+.overlay-login
 form input[type="text"],
 form input[type="email"],
 form input[type="number"],
@@ -271,7 +337,26 @@ form textarea .overlay {
     width: 90%;
 }
 
-.overlay
+.overlay-new-user
+form input[type="text"],
+form input[type="email"],
+form input[type="number"],
+form input[type="search"],
+form input[type="password"],
+form textarea .overlay {
+    background-color: rgb(255,255,255);
+    border: 1px solid rgb( 186, 186, 186 );
+    border-radius: 1px;
+    box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.08);
+    display: block;
+    font-size:.65em;;
+    padding: .8em .55em;
+    text-shadow: 0 1px 1px rgba(255, 255, 255, 1);
+    transition: all 400ms ease;
+    width: 90%;
+}
+
+.overlay-login
 form input[type="text"]:focus,
 form input[type="email"]:focus,
 form input[type="number"]:focus,
@@ -283,7 +368,19 @@ form select:focus {
     box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.1), 0 0 8px #4195fc;
 }
 
-.overlay
+.overlay-new-user
+form input[type="text"]:focus,
+form input[type="email"]:focus,
+form input[type="number"]:focus,
+form input[type="search"]:focus,
+form input[type="password"]:focus,
+form textarea:focus,
+form select:focus {
+    border-color: #4195fc;
+    box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.1), 0 0 8px #4195fc;
+}
+
+.overlay-login .overlay-new-user
 form input[type="text"]:invalid:focus,
 form input[type="email"]:invalid:focus,
 form input[type="number"]:invalid:focus,
@@ -291,11 +388,22 @@ form input[type="search"]:invalid:focus,
 form input[type="password"]:invalid:focus,
 form textarea:invalid:focus,
 form select:invalid:focus {
-    border-color: rgb(248,66,66);
+    border-color:transparent #28c313;
     box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.1), 0 0 8px rgb(248,66,66);
 }
 
-.overlay form button {
+
+
+.overlay-login form button {
+    background-color: #50c1e9;
+    border: 1px solid rgba(0,0,0,.1);
+    color: rgb(255,255,255);
+    font-family: 'Varela Round', sans-serif;
+    font-size: .85em;
+    padding: .55em .9em;
+    transition: all 400ms ease;
+}
+.overlay-new-user form button {
     background-color: #50c1e9;
     border: 1px solid rgba(0,0,0,.1);
     color: rgb(255,255,255);
@@ -305,7 +413,13 @@ form select:invalid:focus {
     transition: all 400ms ease;
 }
 
-.overlay
+.overlay-login
+form button:hover {
+    background-color: #50c1e9;
+    cursor: pointer;
+}
+
+.overlay-new-user
 form button:hover {
     background-color: #50c1e9;
     cursor: pointer;

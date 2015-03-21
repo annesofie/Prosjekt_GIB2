@@ -7,212 +7,235 @@
         multimedia: List[Vare],
         loginForm: Form[Application.Login])
 
-    @main("Varer") {
+@main("Varer") {
 
-        <div class="overlay" style="display: none;">
-            <div class="login-wrapper">
-                <div class="login-content">
-                    <a class="close">x</a>
-                    <h3>Logg inn</h3>
-                    @helper.form(routes.Application.authenticate()) {
+    <div class="overlay-login" style="display: none;">
+        <div class="login-wrapper">
+            <div class="login-content">
+                <a class="close-login">x</a>
+                <h3>Logg inn</h3>
+                @helper.form(routes.Application.authenticate()) {
 
-                        @if(loginForm.hasGlobalErrors) {
-                            <p class="error">
-                            @loginForm.globalError.message
-                            </p>
-                        }
-                        <label for="email">Epost:
-                            <input type="text" name="email" id="email" placeholder="Skriv inn din epost" value="@loginForm("email").value" required />
-                        </label>
-                        <label for="password">
-                            Passord:
-                            <input type="password" name="password" id="password" placeholder="Skriv inn ditt passord" required />
-                        </label>
-                        <button type="submit">Logg inn</button>
+                    @if(loginForm.hasGlobalErrors) {
+                        <p class="error">
+                        @loginForm.globalError.message
+                        </p>
                     }
+                    <label for="email">Epost:
+                        <input type="text" name="email" id="email" placeholder="Skriv inn din epost" value="@loginForm("email").value" required />
+                    </label>
+                    <label for="password">
+                        Passord:
+                        <input type="password" name="password" id="password" placeholder="Skriv inn ditt passord" required />
+                    </label>
+                    <button type="submit">Logg inn</button>
+                }
+            </div>
+        </div>
+    </div>
+
+    <!-- Maa fikse ferdig så opprett nye bruker faar annet vindu enn innlogging-->
+    <div class="overlay-new-user" style="display: none;">
+        <div class="new-user-wrapper">
+            <div class="new-user-content">
+                <a class="close-new-user">x</a>
+                <h3>Opprett ny bruker</h3>
+                @helper.form(routes.Application.authenticate()) {
+
+                    @if(loginForm.hasGlobalErrors) {
+                        <p class="error">
+                        @loginForm.globalError.message
+                        </p>
+                    }
+                    <label for="email">Epost:
+                        <input type="text" name="email" id="email" placeholder="Skriv inn din epost" value="@loginForm("email").value" required />
+                    </label>
+                    <label for="password">
+                        Passord:
+                        <input type="password" name="password" id="password" placeholder="Skriv inn ditt passord" required />
+                    </label>
+                    <button type="submit">Opprett bruker</button>
+                }
+            </div>
+        </div>
+    </div>
+
+    <div class="container">
+
+        <div class="row">
+            <div class="toppen">
+                <div class="navn">
+                    <div class="col-xs-4">
+                        <h1 class="text">ChopShop</h1>
+
+                    </div>
+                </div>
+                <div class="slagord">
+                    <div class="col-xs-4">
+                        <h3 class="text-field">- Finn dine varer på kortest tid</h3>
+                    </div>
+                </div>
+
+                <div class="col-xs-4">
+                    <div class="login">
+                        <ul>
+                            @if(flash().contains("success")){
+                                @flash.get("success")
+                            }
+                            <li><a class="overlayLink-login" data-action="login-form.html">Logg inn</a></li>
+                            <li> | </li>
+                            <li><a class="overlayLink-new-user" data-action="registration-form.html">Opprett ny bruker</a></li>
+                        </ul>
+                    </div>
                 </div>
             </div>
         </div>
 
-        <div class="container">
 
-            <div class="row">
-                <div class="toppen">
-                    <div class="navn">
-                        <div class="col-xs-4">
-                            <h1 class="text">ChopShop</h1>
 
-                        </div>
-                    </div>
-                    <div class="slagord">
-                        <div class="col-xs-4">
-                            <h3 class="text-field">- Finn dine varer på kortest tid</h3>
-                        </div>
-                    </div>
+        <div class="row">
+            <div class="col-xs-12">
+                <div class="boxed">
+                </div>
+            </div>
+        </div>
 
-                    <div class="col-xs-4">
-                        <div class="login">
-                            <ul>
-                                @if(flash().contains("success")){
-                                    @flash.get("success")
-                                }
-
-                                <li><a class="overlayLink" data-action="login-form.html">Logg inn</a></li>
-                                <li> | </li>
-                                <li><a class="overlayLink" data-action="registration-form.html">Opprett ny bruker</a></li>
-
-                            </ul>
-                        </div>
+        <div class="row">
+            <div class="col-xs-6">
+                <div class="kart">
+                    <h3>Butikk-kart</h3>
+                    <div id="leaflet-kart">
                     </div>
                 </div>
             </div>
 
+            <div class="col-xs-6">
 
+                <div class="row">
+                    <div class="col-xs-12">
+                        <div class="varevalg">
+                            <h3 class="text-center"> Finn ønsket vare </h3>
 
-            <div class="row">
-                <div class="col-xs-12">
-                    <div class="boxed">
-                    </div>
-                </div>
-            </div>
+                            <div class="søkefelt">
+                                <input type="text" class="search square" placeholder="Søk etter varer her">
+                                <input type="submit" value= "søk"class="søk-knapp">
+                            </div>
 
-            <div class="row">
-                <div class="col-xs-6">
-                    <div class="kart">
-                        <h3>Butikk-kart</h3>
-                        <div id="leaflet-kart">
-                        </div>
-                    </div>
-                </div>
+                            <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true" >
+                                <div class="panel panel-default">
+                                    <div class="panel-heading" role="tab" id="headingOne">
+                                        <h4 class="panel-title">
+                                            <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
+                                                Hjem
+                                            </a>
+                                        </h4>
+                                    </div>
 
-                <div class="col-xs-6">
+                                    <div id="collapseOne" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingOne">
+                                        <div class="list-group">
+                                            <table class="table table-condensed hjemTabell">
+                                            @for(vare <- hjem) {
+                                                <tr class="vareTabell">
+                                                    <td class="vareNavn">@vare.navn </td>
+                                                    <td id="varePris">@vare.pris kr </td>
+                                                    <td><button class="btn btn-xs addVareKnappHjem" id="addVareKnapp"><span class="glyphicon glyphicon-ok" aria-hidden="true"></span></button></td>
 
-                    <div class="row">
-                        <div class="col-xs-12">
-                            <div class="varevalg">
-                                <h3 class="text-center"> Finn ønsket vare </h3>
+                                                </tr>
+                                            }
+                                            </table>
+                                        </div>
+                                    </div>
 
-                                <div class="søkefelt">
-                                    <input type="text" class="search square" placeholder="Søk etter varer her">
-                                    <input type="submit" value= "søk"class="søk-knapp">
                                 </div>
-
-                                <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true" >
-                                    <div class="panel panel-default">
-                                        <div class="panel-heading" role="tab" id="headingOne">
-                                            <h4 class="panel-title">
-                                                <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
-                                                    Hjem
-                                                </a>
-                                            </h4>
-                                        </div>
-
-                                        <div id="collapseOne" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingOne">
-                                            <div class="list-group">
-                                                <table class="table table-condensed hjemTabell">
-                                                @for(vare <- hjem) {
-                                                     <tr class="vareTabell">
-                                                        <td class="vareNavn">@vare.navn </td>
-                                                        <td id="varePris">@vare.pris kr </td>
-                                                        <td><button class="btn btn-xs addVareKnappHjem" id="addVareKnapp"><span class="glyphicon glyphicon-ok" aria-hidden="true"></span></button></td>
-
-                                                    </tr>
-                                                }
-                                                </table>
-                                            </div>
-                                        </div>
-
+                                <div class="panel panel-default">
+                                    <div class="panel-heading" role="tab" id="headingTwo">
+                                        <h4 class="panel-title">
+                                            <a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                                                Elektro
+                                            </a>
+                                        </h4>
                                     </div>
-                                    <div class="panel panel-default">
-                                        <div class="panel-heading" role="tab" id="headingTwo">
-                                            <h4 class="panel-title">
-                                                <a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-                                                    Elektro
-                                                </a>
-                                            </h4>
-                                        </div>
 
-                                            <div id="collapseTwo" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo">
-                                                <div class="list-group">
-                                                    <table class="table table-condensed">
-                                                    @for(vare <- elektro) {
-                                                        <tr class="elektro">
-                                                            <td class="vareNavn">@vare.navn </td>
-                                                            <td id="varePris">@vare.pris kr </td>
-                                                            <td><buttom class="btn btn-xs addVareKnappElektro" id="addVareKnapp"><span class="glyphicon glyphicon-ok" aria-hidden="true"></span></buttom></td>
+                                    <div id="collapseTwo" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo">
+                                        <div class="list-group">
+                                            <table class="table table-condensed">
+                                            @for(vare <- elektro) {
+                                                <tr class="elektro">
+                                                    <td class="vareNavn">@vare.navn </td>
+                                                    <td id="varePris">@vare.pris kr </td>
+                                                    <td><buttom class="btn btn-xs addVareKnappElektro" id="addVareKnapp"><span class="glyphicon glyphicon-ok" aria-hidden="true"></span></buttom></td>
 
-                                                        </tr>
-                                                    }
-                                                    </table>
-                                                </div>
-                                            </div>
-
-
-                                    </div>
-                                    <div class="panel panel-default">
-                                        <div class="panel-heading" role="tab" id="headingThree">
-                                            <h4 class="panel-title">
-                                                <a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
-                                                    Fritid
-                                                </a>
-                                            </h4>
-                                        </div>
-                                        <div id="collapseThree" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingThree">
-                                            <div class="list-group">
-                                                <table class="table table-condensed">
-                                                @for(vare <- fritid) {
-                                                    <tr class="fritid">
-                                                        <td class="vareNavn">@vare.navn </td>
-                                                        <td id="varePris">@vare.pris kr </td>
-                                                        <td><buttom class="btn btn-xs addVareKnappFritid" id="addVareKnapp"><span class="glyphicon glyphicon-ok" aria-hidden="true"></span></buttom></td>
-                                                    </tr>
-                                                }
-                                                </table>
-                                            </div>
+                                                </tr>
+                                            }
+                                            </table>
                                         </div>
                                     </div>
-                                    <div class="panel panel-default">
-                                        <div class="panel-heading" role="tab" id="headingFour">
-                                            <h4 class="panel-title">
-                                                <a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
-                                                    Jernvare
-                                                </a>
-                                            </h4>
-                                        </div>
-                                        <div id="collapseFour" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingFour">
-                                            <div class="list-group">
-                                                <table class="table table-condensed">
-                                                @for(vare <- jernvare) {
-                                                    <tr class="jernvare">
-                                                        <td class="vareNavn">@vare.navn </td>
-                                                        <td id="varePris">@vare.pris kr </td>
-                                                        <td><a href="@routes.ShoppingList.addItem(vare.vareid)" class="btn btn-xs addVareKnappJernvare" id="addVareKnapp"><span class="glyphicon glyphicon-ok" aria-hidden="true"></span></a></td>
-                                                    </tr>
-                                                }
-                                                </table>
-                                            </div>
+
+
+                                </div>
+                                <div class="panel panel-default">
+                                    <div class="panel-heading" role="tab" id="headingThree">
+                                        <h4 class="panel-title">
+                                            <a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                                                Fritid
+                                            </a>
+                                        </h4>
+                                    </div>
+                                    <div id="collapseThree" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingThree">
+                                        <div class="list-group">
+                                            <table class="table table-condensed">
+                                            @for(vare <- fritid) {
+                                                <tr class="fritid">
+                                                    <td class="vareNavn">@vare.navn </td>
+                                                    <td id="varePris">@vare.pris kr </td>
+                                                    <td><buttom class="btn btn-xs addVareKnappFritid" id="addVareKnapp"><span class="glyphicon glyphicon-ok" aria-hidden="true"></span></buttom></td>
+                                                </tr>
+                                            }
+                                            </table>
                                         </div>
                                     </div>
-                                    <div class="panel panel-default">
-                                        <div class="panel-heading" role="tab" id="headingFive">
-                                            <h4 class="panel-title">
-                                                <a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseFive" aria-expanded="false" aria-controls="collapseFive">
-                                                    Multimedia
-                                                </a>
-                                            </h4>
+                                </div>
+                                <div class="panel panel-default">
+                                    <div class="panel-heading" role="tab" id="headingFour">
+                                        <h4 class="panel-title">
+                                            <a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
+                                                Jernvare
+                                            </a>
+                                        </h4>
+                                    </div>
+                                    <div id="collapseFour" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingFour">
+                                        <div class="list-group">
+                                            <table class="table table-condensed">
+                                            @for(vare <- jernvare) {
+                                                <tr class="jernvare">
+                                                    <td class="vareNavn">@vare.navn </td>
+                                                    <td id="varePris">@vare.pris kr </td>
+                                                    <td><a href="@routes.ShoppingList.addItem(vare.vareid)" class="btn btn-xs addVareKnappJernvare" id="addVareKnapp"><span class="glyphicon glyphicon-ok" aria-hidden="true"></span></a></td>
+                                                </tr>
+                                            }
+                                            </table>
                                         </div>
-                                        <div id="collapseFive" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingFive">
-                                            <div class="list-group">
-                                                <table class="table table-condensed">
-                                                @for(vare <- multimedia) {
-                                                    <tr class="multimedia">
-                                                        <td class="vareNavn">@vare.navn </td>
-                                                        <td id="varePris">@vare.pris kr </td>
-                                                        <td><button class="btn btn-xs addVareKnappMultimedia" id="addVareKnapp"><span class="glyphicon glyphicon-ok" aria-hidden="true"></span></button></td>
-                                                    </tr>
-                                                }
-                                                </table>
-                                            </div>
+                                    </div>
+                                </div>
+                                <div class="panel panel-default">
+                                    <div class="panel-heading" role="tab" id="headingFive">
+                                        <h4 class="panel-title">
+                                            <a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseFive" aria-expanded="false" aria-controls="collapseFive">
+                                                Multimedia
+                                            </a>
+                                        </h4>
+                                    </div>
+                                    <div id="collapseFive" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingFive">
+                                        <div class="list-group">
+                                            <table class="table table-condensed">
+                                            @for(vare <- multimedia) {
+                                                <tr class="multimedia">
+                                                    <td class="vareNavn">@vare.navn </td>
+                                                    <td id="varePris">@vare.pris kr </td>
+                                                    <td><button class="btn btn-xs addVareKnappMultimedia" id="addVareKnapp"><span class="glyphicon glyphicon-ok" aria-hidden="true"></span></button></td>
+                                                </tr>
+                                            }
+                                            </table>
                                         </div>
                                     </div>
                                 </div>
@@ -222,4 +245,5 @@
                 </div>
             </div>
         </div>
-    }
+    </div>
+}

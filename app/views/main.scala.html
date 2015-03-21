@@ -24,10 +24,10 @@
             $(document).ready(function() {
             $("#loginLink").click(function( event ){
                 event.preventDefault();
-                $(".overlay").fadeToggle("fast");
+                $(".overlay-login").fadeToggle("fast");
             });
 
-            $(".overlayLink").click(function(event){
+            $(".overlayLink-login").click(function(event){
                 event.preventDefault();
                 var action = $(this).attr('data-action');
 
@@ -35,20 +35,50 @@
                 $( ".login-content" ).html( data );
                  });
 
-                $(".overlay").fadeToggle("fast");
+                $(".overlay-login").fadeToggle("fast");
                 });
 
-                $(".close").click(function(){
-                    $(".overlay").fadeToggle("fast");
+                $(".close-login").click(function(){
+                    $(".overlay-login").fadeToggle("fast");
                 });
 
                 $(document).keyup(function(e) {
-                    if(e.keyCode == 27 && $(".overlay").css("display") != "none" ) {
+                    if(e.keyCode == 27 && $(".overlay-login").css("display") != "none" ) {
                     event.preventDefault();
-                    $(".overlay").fadeToggle("fast");
+                    $(".overlay-login").fadeToggle("fast");
                     }
                 });
             });
+
+            $(document).ready(function() {
+            $("#loginLink").click(function( event ){
+            event.preventDefault();
+            $(".overlay-new-user").fadeToggle("fast");
+            });
+
+            $(".overlayLink-new-user").click(function(event){
+            event.preventDefault();
+            var action = $(this).attr('data-action');
+
+            $.get( "ajax/" + action, function( data ) {
+            $( ".new-user-content" ).html( data );
+            });
+
+            $(".overlay-new-user").fadeToggle("fast");
+            });
+
+            $(".close-new-user").click(function(){
+            $(".overlay-new-user").fadeToggle("fast");
+            });
+
+            $(document).keyup(function(e) {
+            if(e.keyCode == 27 && $(".overlay-new-user").css("display") != "none" ) {
+            event.preventDefault();
+            $(".overlay-new-user").fadeToggle("fast");
+            }
+            });
+            });
+
         </script>
 
         <style>

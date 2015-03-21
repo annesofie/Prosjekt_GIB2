@@ -28,6 +28,7 @@ public class Application extends Controller {
 
     }
 
+
     @Security.Authenticated(Secured.class)
     public static Result index(){
 

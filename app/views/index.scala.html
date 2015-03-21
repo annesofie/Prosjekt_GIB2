@@ -9,10 +9,10 @@
 
 @main("Varer/index") {
 
-    <div class="overlay" style="display: none;">
+    <div class="overlay-login" style="display: none;">
         <div class="login-wrapper">
             <div class="login-content">
-                <a class="close">x</a>
+                <a class="close-login">x</a>
                 <h3>Logg inn</h3>
                 @helper.form(routes.Application.authenticate()) {
 
@@ -29,6 +29,32 @@
                         <input type="password" name="password" id="password" placeholder="Skriv inn ditt passord" required />
                     </label>
                     <button type="submit">Logg inn</button>
+                }
+            </div>
+        </div>
+    </div>
+
+    <!-- Maa fikse athenticate her, for er satt likt som logg inn naa og det er feil-->
+    <div class="overlay-new-user" style="display: none;">
+        <div class="new-user-wrapper">
+            <div class="new-user-content">
+                <a class="close-new-user">x</a>
+                <h3>Opprett ny bruker</h3>
+                @helper.form(routes.Application.authenticate()) {
+
+                    @if(loginForm.hasGlobalErrors) {
+                        <p class="error">
+                        @loginForm.globalError.message
+                        </p>
+                    }
+                    <label for="email">Epost:
+                        <input type="text" name="email" id="email" placeholder="Skriv inn din epost" value="@loginForm("email").value" required />
+                    </label>
+                    <label for="password">
+                        Passord:
+                        <input type="password" name="password" id="password" placeholder="Skriv inn ditt passord" required />
+                    </label>
+                    <button type="submit">Opprett bruker</button>
                 }
             </div>
         </div>
@@ -60,9 +86,9 @@
 
                             <li>@useremail</li>
                             @if(useremail == null){
-                                <li><a class="overlayLink" data-action="login-form.html">Logg inn</a></li>
+                                <li><a class="overlayLink-login" data-action="login-form.html">Logg inn</a></li>
                                 <li> | </li>
-                                <li><a class="overlayLink" data-action="registration-form.html">Opprett ny bruker</a></li>
+                                <li><a class="overlayLink-new-user" data-action="registration-form.html">Opprett ny bruker</a></li>
                             }else{
                                 <li><a href="@routes.Application.logout()">Logg ut</a></li>
                             }
