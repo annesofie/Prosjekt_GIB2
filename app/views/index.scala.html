@@ -72,7 +72,7 @@
                </div>
                 <div class="slagord">
                     <div class="col-xs-5">
-                        <h3 class="text-field">Finn dine varer på kortest tid!</h3>
+                        <h3 class="text-field">- Finn dine varer på kortest tid!</h3>
                     </div>
                 </div>
 
@@ -281,7 +281,8 @@
                                         <h3>Det finnes ingen varer i din handleliste</h3>
                                     }
                                     @for(vare <- handleliste) {
-                                        <tr class="handle   listeVarer">
+                                        <tr class="handlelisteVarer">
+                                            <td><img src=@vare.pic alt"pic" height="30px" width="30px"></img></td>
                                             <td><strong>@vare.navn</strong></td>
                                             <td>@vare.pris kr </td>
                                             <td><a href="@routes.ShoppingList.removeItem(vare.vareid)" class="btn btn-xs removeVareKnapp" id="removeVareKnapp">
