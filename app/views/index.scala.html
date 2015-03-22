@@ -84,12 +84,14 @@
                                 @flash.get("success")
                             }
 
-                            <li>@useremail</li>
+
                             @if(useremail == null){
                                 <li><a class="overlayLink-login" data-action="login-form.html">Logg inn</a></li>
                                 <li> | </li>
                                 <li><a class="overlayLink-new-user" data-action="registration-form.html">Opprett ny bruker</a></li>
                             }else{
+                                <li>@useremail</li>
+                                <li> | </li>
                                 <li><a href="@routes.Application.logout()">Logg ut</a></li>
                             }
 
@@ -145,7 +147,7 @@
                                             <table class="table table-condensed hjemTabell">
                                             @for(vare <- hjem) {
                                                 <tr class="vareTabell">
-                                                    <td><img src=@vare.pic></img></td>
+                                                    <td><img src=@vare.pic alt"pic" height="30px" width="30px"></img></td>
                                                     <td class="vareNavn">@vare.navn </td>
                                                     <td id="varePris">@vare.pris kr </td>
                                                     <td><a href="@routes.ShoppingList.addItem(vare.vareid)" class="btn btn-xs addVareKnappHjem" id="addVareKnapp"><span class="glyphicon glyphicon-ok" aria-hidden="true"></span></a></td>
@@ -170,7 +172,8 @@
                                         <div class="list-group">
                                             <table class="table table-condensed">
                                             @for(vare <- elektro) {
-                                                <tr class="elektro">
+                                                <tr class="elektroTabell">
+                                                    <td><img src=@vare.pic alt"pic" height="30px" width="30px"></img></td>
                                                     <td class="vareNavn">@vare.navn </td>
                                                     <td id="varePris">@vare.pris kr </td>
                                                     <td><a href="@routes.ShoppingList.addItem(vare.vareid)" class="btn btn-xs addVareKnappElektro" id="addVareKnapp"><span class="glyphicon glyphicon-ok" aria-hidden="true"></span></a></td>
@@ -195,7 +198,8 @@
                                         <div class="list-group">
                                             <table class="table table-condensed">
                                             @for(vare <- fritid) {
-                                                <tr class="fritid">
+                                                <tr class="fritidTabell">
+                                                    <td><img src=@vare.pic alt"pic" height="30px" width="30px"></img></td>
                                                     <td class="vareNavn">@vare.navn </td>
                                                     <td id="varePris">@vare.pris kr </td>
                                                     <td><a href="@routes.ShoppingList.addItem(vare.vareid)" class="btn btn-xs addVareKnappFritid" id="addVareKnapp"><span class="glyphicon glyphicon-ok" aria-hidden="true"></span></a></td>
@@ -217,7 +221,8 @@
                                         <div class="list-group">
                                             <table class="table table-condensed">
                                             @for(vare <- jernvare) {
-                                                <tr class="jernvare">
+                                                <tr class="jernvareTabell">
+                                                    <td><img src=@vare.pic alt"pic" height="30px" width="30px"></img></td>
                                                     <td class="vareNavn">@vare.navn </td>
                                                     <td id="varePris">@vare.pris kr </td>
                                                     <td><a href="@routes.ShoppingList.addItem(vare.vareid)" class="btn btn-xs addVareKnappJernvare" id="addVareKnapp"><span class="glyphicon glyphicon-arrow-down" aria-hidden="true"></span></a></td>
@@ -239,7 +244,8 @@
                                         <div class="list-group">
                                             <table class="table table-condensed">
                                             @for(vare <- multimedia) {
-                                                <tr class="multimedia">
+                                                <tr class="multimediaTabell">
+                                                    <td><img src=@vare.pic alt"pic" height="30px" width="30px"></img></td>
                                                     <td class="vareNavn">@vare.navn </td>
                                                     <td id="varePris">@vare.pris kr </td>
                                                     <td><a href="@routes.ShoppingList.addItem(vare.vareid)" class="btn btn-xs addVareKnappMultimedia" id="addVareKnapp"><span class="glyphicon glyphicon-ok" aria-hidden="true"></span></a></td>
