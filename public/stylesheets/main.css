@@ -20,7 +20,6 @@
 .slagord h3{
     font-size:large;
     margin-top:45px;
-    margin-left:-100px;
     color:#888888;
 }
 
@@ -50,9 +49,10 @@
 }
 
 .login{
-    margin-top: 50px;
+    margin-top: 60px;
     float:right;
     margin-right: 5px;
+
 }
 
 /* kartet */
@@ -425,7 +425,29 @@ form button:hover {
     cursor: pointer;
 }
 
+.handleliste-innhold{
+    border: 2px solid;
+    margin-left:20px;
+    margin-right:35px;
+    border-color:#bdbab7;
+    box-shadow:#888888;
+    background:white;
+    border-radius:3px;
+}
+.handleliste-innhold h3{
+    font-size: small;
+    color:#bdbab7;
+    margin: auto;
+    margin-top:10px;
+    margin-bottom:-10px;
 
+
+}
+
+.handleliste{
+    margin-left:5px;
+
+}
 /*brukes ikke
 
 [draggable] {

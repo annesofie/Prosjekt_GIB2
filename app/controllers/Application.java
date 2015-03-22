@@ -174,7 +174,7 @@ public class Application extends Controller {
         }
 
         session().clear();
-        flash("success", "Du har blitt logget ut!");
+        flash("success");
         return ok(home.render(request().username(),shoppingList ,alleVarer, elektro, fritid, hjem, jernvare, multimedia, play.data.Form.form(Login.class)));
 
     }

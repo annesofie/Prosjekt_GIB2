@@ -21,77 +21,77 @@
         <script src="http://code.jquery.com/jquery-latest.min.js"></script>
 
         <script>
-            $(document).ready(function() {
-            $("#loginLink").click(function( event ){
-                event.preventDefault();
-                $(".overlay-login").fadeToggle("fast");
-            });
+        $(document).ready(function() {
+        $("#loginLink").click(function( event ){
+        event.preventDefault();
+        $(".overlay-login").fadeToggle("fast");
+        });
 
-            $(".overlayLink-login").click(function(event){
-                event.preventDefault();
-                var action = $(this).attr('data-action');
+        $(".overlayLink-login").click(function(event){
+        event.preventDefault();
+        var action = $(this).attr('data-action');
 
-                $.get( "ajax/" + action, function( data ) {
-                $( ".login-content" ).html( data );
-                 });
+        $.get( "ajax/" + action, function( data ) {
+        $( ".login-content" ).html( data );
+        });
 
-                $(".overlay-login").fadeToggle("fast");
-                });
+        $(".overlay-login").fadeToggle("fast");
+        });
 
-                $(".close-login").click(function(){
-                    $(".overlay-login").fadeToggle("fast");
-                });
+        $(".close-login").click(function(){
+        $(".overlay-login").fadeToggle("fast");
+        });
 
-                $(document).keyup(function(e) {
-                    if(e.keyCode == 27 && $(".overlay-login").css("display") != "none" ) {
-                    event.preventDefault();
-                    $(".overlay-login").fadeToggle("fast");
-                    }
-                });
-            });
+        $(document).keyup(function(e) {
+        if(e.keyCode == 27 && $(".overlay-login").css("display") != "none" ) {
+        event.preventDefault();
+        $(".overlay-login").fadeToggle("fast");
+        }
+        });
+        });
 
-            $(document).ready(function() {
-            $("#loginLink").click(function( event ){
-            event.preventDefault();
-            $(".overlay-new-user").fadeToggle("fast");
-            });
+        $(document).ready(function() {
+        $("#loginLink").click(function( event ){
+        event.preventDefault();
+        $(".overlay-new-user").fadeToggle("fast");
+        });
 
-            $(".overlayLink-new-user").click(function(event){
-            event.preventDefault();
-            var action = $(this).attr('data-action');
+        $(".overlayLink-new-user").click(function(event){
+        event.preventDefault();
+        var action = $(this).attr('data-action');
 
-            $.get( "ajax/" + action, function( data ) {
-            $( ".new-user-content" ).html( data );
-            });
+        $.get( "ajax/" + action, function( data ) {
+        $( ".new-user-content" ).html( data );
+        });
 
-            $(".overlay-new-user").fadeToggle("fast");
-            });
+        $(".overlay-new-user").fadeToggle("fast");
+        });
 
-            $(".close-new-user").click(function(){
-            $(".overlay-new-user").fadeToggle("fast");
-            });
+        $(".close-new-user").click(function(){
+        $(".overlay-new-user").fadeToggle("fast");
+        });
 
-            $(document).keyup(function(e) {
-            if(e.keyCode == 27 && $(".overlay-new-user").css("display") != "none" ) {
-            event.preventDefault();
-            $(".overlay-new-user").fadeToggle("fast");
-            }
-            });
-            });
+        $(document).keyup(function(e) {
+        if(e.keyCode == 27 && $(".overlay-new-user").css("display") != "none" ) {
+        event.preventDefault();
+        $(".overlay-new-user").fadeToggle("fast");
+        }
+        });
+        });
 
         </script>
 
         <style>
         body {
-            background-color: #f3f3f3;
-            color:#57606c;
-            font-family: "Open Sans", Arial, Helvetica, sans-serif;
-            font-weight: 400;
+        background-color: #f3f3f3;
+        color:#57606c;
+        font-family: "Open Sans", Arial, Helvetica, sans-serif;
+        font-weight: 400;
         }
         </style>
 
     </head>
     <body>
-        @content
+    @content
     </body>
 </html>
