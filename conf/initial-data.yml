@@ -10,6 +10,7 @@
         navn:     batterilader
         kategori: hjem
         pris:     249
+        vertexId: 4
         x:        2
         y:        2
         z:        2
@@ -19,6 +20,7 @@
         navn:     kulekopp
         kategori: hjem
         pris: 29
+        vertexId: 6
         x: 2
         y: 2
         z: 4
@@ -27,6 +29,7 @@
         navn: yogamatte
         kategori: elektro
         pris: 249
+        vertexId: 12
         x: 3
         y: 4
         z: 3
@@ -35,6 +38,7 @@
         navn: balansesykkel
         kategori: elektro
         pris: 25
+        vertexId: 13
         x: 1
         y: 1
         z: 1

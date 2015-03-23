@@ -179,12 +179,17 @@ public class Application extends Controller {
 
     }
 
-    @Security.Authenticated(Secured.class)
-    public static Result getVertices() {
+    public static Result jsRoutes() {
+        response().setContentType("text/javascript");
+        return ok(Routes.javascriptRouter("appRoutes", //appRoutes will be the JS object available in our view
+                routes.javascript.Application.getVertices()));
+    }
+
+    public static Result getTargetVertices() {
 
         List<Vertex> vertices = new ArrayList<>();
-
-        return ok("1");
+        String test = "1";
+        return ok(test.toString());
     }
 
 }

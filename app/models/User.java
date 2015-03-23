@@ -73,7 +73,7 @@ public class User extends Model  {
 
         for (Vertex vertex: vertices) {
             for (Vare vare: handleliste) {
-                if (vare.vertex == vertex) {
+                if (vare.vertexId == vertex.id) {
                     sortedShoppingList.add(vare);
                 }
             }

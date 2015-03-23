@@ -11,9 +11,6 @@ import java.util.Scanner;
 
 public class Path{
 
-    public Graph graph=new Graph();
-    public DijkstraAlgorithm dijkstra = new DijkstraAlgorithm(graph);
-    public ArrayList<Vertex>targets;
     public BreadthFirstSearch bfs=new BreadthFirstSearch();
     public static ArrayList<Vertex>finalPath;
 

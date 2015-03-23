@@ -9,11 +9,12 @@ POST        /login                   controllers.Application.authenticate()
 GET         /logout                  controllers.Application.logout()
 GET         /addVare/:vare           controllers.ShoppingList.addItem(vare: Long)
 GET         /removeVare/:vare        controllers.ShoppingList.removeItem(vare: Long)
-GET         /vertex                  controllers.Application.getVertices()
+GET         /String                  controllers.Application.getTargetVertices()
 
 
 
 # Map static resources from the /public folder to the /assets URL path
+GET         /assets/js/routes        controllers.Application.jsRoutes()
 GET         /assets/*file            controllers.Assets.at(path="/public", file)
 
     

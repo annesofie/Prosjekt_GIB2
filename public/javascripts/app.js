@@ -89,12 +89,10 @@ var init = function() {
 
     var latlngs = Array();
 
-    $(".addVareKnappHjem").click(function() {
+    $("#addVareKnapp").click(function() {
             appRoutes.controllers.Application.getVertices().ajax({
                 success: function(data) {
-                    $(data).each(function() {
-                        window.alert(data);
-                    })
+                    window.alert( data);
                 }
             });
         }

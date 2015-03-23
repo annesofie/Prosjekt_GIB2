@@ -28,6 +28,7 @@ create table vare (
   y                         integer,
   z                         integer,
   pris                      double,
+  vertex_id                 integer,
   pic                       varchar(255),
   constraint pk_vare primary key (vareid))
 ;

@@ -16,20 +16,20 @@ public class Vare extends Model {
     public String kategori;
     public int x, y, z;
     public double pris;
-    public Vertex vertex;
+    public int vertexId;
     public String pic;
 
 
     public static Model.Finder<Long, Vare> find = new Model.Finder(Long.class, Vare.class);
 
-    public Vare(String navn, String kategori, int x, int y, int z, double pris, Vertex v, String pic){
+    public Vare(String navn, String kategori, int x, int y, int z, double pris, int vertexId, String pic){
         this.navn = navn;
         this.kategori = kategori;
         this.pris = pris;
         this.x = x;
         this.y = y;
         this.z = z;
-        this.vertex=v;
+        this.vertexId=vertexId;
         this.pic = pic;
     }
 
