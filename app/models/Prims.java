@@ -18,7 +18,7 @@ public class Prims {
     public Prims(Vertex root, Vertex end, weightedGraph wGraph) {
         this.root=root;
         this.wGraph=wGraph;
-        path=primsExecute();
+        path=primsExecuteTwerked();
         this.end=end;
 
     }
@@ -69,40 +69,53 @@ public class Prims {
         return path;
     }
 
-    public ArrayList<Vertex> primsExecuteTwerked(){
-        vertexComparator comp=new vertexComparator();
-        PriorityQueue<Vertex> q = new PriorityQueue<>(wGraph.edges.size(),comp);
-        q.addAll(wGraph.vertices);
-        q.remove(end);
-        q.remove(findClosestToEndVertex());
-        ArrayList<Vertex> path=new ArrayList<>();
-        path.add(root);
-        Vertex u;
-        //har allerede satt alle noder's key til infinite, og forelder til null i Vertex klassen
-        root.key=0;
-        int min=INFINITE;
-        while(!q.isEmpty()){
-            u=q.poll();
-            for (Vertex neighbor: wGraph.getNeighbors(u)){
-                if(q.contains(neighbor)){
-                    for(weightedEdge edge:wGraph.edges){
-                        if((edge.getDestination().equals(neighbor)&&(edge.getSource().equals(u)))||(edge.getDestination().equals(u)&&(edge.getSource().equals(neighbor)))){
-                            neighbor.key=edge.weight;
-                            neighbor.parent=u;
-                            path.add(neighbor);
+    public ArrayList<Vertex> primsExecuteTwerked() {
+        ArrayList<Vertex> path = new ArrayList<>();
+
+        if (wGraph.vertices.size() < 4) {
+            path.add(root);
+            for (Vertex v : wGraph.vertices) {
+                if (!v.equals(root) && (!v.equals(end))) {
+                    path.add(v);
+                }
+            }
+            path.add(end);
+        }
+        else {
+            vertexComparator comp = new vertexComparator();
+            PriorityQueue<Vertex> q = new PriorityQueue<>(wGraph.edges.size(), comp);
+            q.addAll(wGraph.vertices);
+            q.remove(end);
+            q.remove(findClosestToEndVertex());
+
+            path.add(root);
+            Vertex u;
+            //har allerede satt alle noder's key til infinite, og forelder til null i Vertex klassen
+            root.key = 0;
+            int min = INFINITE;
+            while (!q.isEmpty()) {
+                u = q.poll();
+                for (Vertex neighbor : wGraph.getNeighbors(u)) {
+                    if (q.contains(neighbor)) {
+                        for (weightedEdge edge : wGraph.edges) {
+                            if ((edge.getDestination().equals(neighbor) && (edge.getSource().equals(u))) || (edge.getDestination().equals(u) && (edge.getSource().equals(neighbor)))) {
+                                neighbor.key = edge.weight;
+                                neighbor.parent = u;
+                                path.add(neighbor);
+                            }
                         }
                     }
                 }
             }
-        }
 
 
-        for(Vertex v:wGraph.vertices){  //Resetter alle nodenes verdier
-            v.key=INFINITE;
-            v.parent=null;
+            for (Vertex v : wGraph.vertices) {  //Resetter alle nodenes verdier
+                v.key = INFINITE;
+                v.parent = null;
+            }
+            path.add(findClosestToEndVertex());
+            path.add(end);
         }
-        path.add(findClosestToEndVertex());
-        path.add(end);
         return path;
     }
 

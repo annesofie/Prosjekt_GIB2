@@ -277,10 +277,10 @@
                         @if(useremail != null){
                             <div class="handleliste">
                                 <table class="table table-condensed">
-                                    @if(handleliste.isEmpty) {
+                                    @if(sortedHandleliste.isEmpty) {
                                         <h3>Det finnes ingen varer i din handleliste</h3>
                                     }
-                                    @for(vare <- handleliste) {
+                                    @for(vare <- sortedHandleliste) {
                                         <tr class="handlelisteVarer">
                                             <td><img src=@vare.pic alt"pic" height="30px" width="30px"></img></td>
                                             <td><strong>@vare.navn</strong></td>

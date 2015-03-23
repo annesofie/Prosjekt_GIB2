@@ -67,57 +67,6 @@
     margin: auto;
 }
 
-/* varesortement / varevalg*/
-
-    /* OBSOBS!!! finn ut hvordan man velger ut hver underkat. for å legge på en liten padding*/
-
-.varevalg{
-    list-style-type: none;
-    margin-right:40px;
-    margin-left: 20px;
-
-}
-
-a[disabled]{
-    pionter-events:none;
-    color:#505965;
-}
-
-.panel-heading{
-    border:2px solid;
-    border-color:#373d47;
-}
-
-#addVareKnapp {
-    color: #ffffff;
-    border: solid 1px rgba(50, 52, 53, 0.42); border-right:0px;
-    background: #bdbab7;
-}
-
-.removeVareKnappFritid {
-    color: #ff001a;
-    border: solid 1px rgba(50, 52, 53, 0.42); border-right:0px;
-    background: #bd0010;
-}
-
-#addVareKnapp:hover {
-    background:#73aafd;
-}
-
-#removeVareKnapp:hover {
-    background: rgba(246, 17, 12, 0.77);
-}
-
-#vareNavn {
-    color: rgba(0, 0, 0, 0.77);
-    font-family: Arial, Helvetica, sans-serif;
-    font-size: 15px;
-}
-#varePris {
-    color: rgba(0, 0, 0, 0.77);
-    font-family: Arial, Helvetica, sans-serif;
-    font-size: 15px;
-}
 
 /*Varesøk*/
 
@@ -160,27 +109,94 @@ a[disabled]{
     background-color: rgb(255,255,255);
 }
 
+/* varesortement - varevalg*/
+
+
+.varevalg{
+    list-style-type: none;
+    margin-right:40px;
+    margin-left: 20px;
+
+}
+
+a[disabled]{
+    pionter-events:none;
+    color:#505965;
+}
+
+.panel-heading{
+    border:2px solid;
+    border-color:#373d47;
+}
+
+#addVareKnapp {
+    color: #ffffff;
+    border: solid 1px rgba(50, 52, 53, 0.42);
+    background: #bdbab7;
+}
+
+
+#addVareKnapp:hover {
+    background:#73aafd;
+}
+
+
+#vareNavn {
+    color: rgba(0, 0, 0, 0.77);
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 15px;
+}
+#varePris {
+    color: rgba(0, 0, 0, 0.77);
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 15px;
+}
+
+
 /* handleliste */
 
 .handleliste{
     margin-left: 50px;
     margin-rigth: 50px;
+    margin-bottom:0;
 }
+
 
 .handlelisteVarer {
     font-size: 15px;
     text-decoration-color: #373d47;
 }
 
-.handleliste ul {
-    background-color: white;
-    border:1px solid #505965;
-    border-radius:5px;
+
+.handleliste-innhold{
+    border: 2px solid;
+    margin-left:20px;
+    margin-right:35px;
+    border-color:#bdbab7;
+    box-shadow:#888888;
+    background:white;
+    border-radius:3px;
 }
-.handleliste li {
-    padding-left: 5px;
+.handleliste-innhold h3{
+    font-size: small;
+    color:#bdbab7;
+    margin: auto;
+    margin-top:10px;
+    margin-bottom:-10px;
 }
 
+.handleliste{
+    margin-left:5px;
+}
+#removeVareKnapp{
+    color: #ffffff;
+    border: solid 1px rgba(50, 52, 53, 0.42);
+    background:#bdbab7;
+    float:right;
+}
+#removeVareKnapp:hover{
+    background:#73aafd;
+}
 
 
 /* Innloggingsvinduet, overlay klassen */
@@ -432,29 +448,9 @@ form button:hover {
     cursor: pointer;
 }
 
-.handleliste-innhold{
-    border: 2px solid;
-    margin-left:20px;
-    margin-right:35px;
-    border-color:#bdbab7;
-    box-shadow:#888888;
-    background:white;
-    border-radius:3px;
-}
-.handleliste-innhold h3{
-    font-size: small;
-    color:#bdbab7;
-    margin: auto;
-    margin-top:10px;
-    margin-bottom:-10px;
 
 
-}
 
-.handleliste{
-    margin-left:5px;
-
-}
 /*brukes ikke
 
 [draggable] {
