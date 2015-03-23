@@ -14,6 +14,8 @@ public class User extends Model  {
     @Id
     public String email;
     public String password;
+    public List<Vare> sortedHandleliste;
+    public Path path=new Path(Vertex.find.byId("0"), Vertex.find.byId("100"));
 
     @ManyToMany
     public static List<Vare> handleliste = new ArrayList<>();
@@ -23,6 +25,8 @@ public class User extends Model  {
         this.email = email;
         this.password = password;
         this.handleliste = handleliste;
+        this.sortedHandleliste=sortShoppingList(Path.finalPath);
+
     }
 
     public static Finder<String,User> find = new Model.Finder(String.class, User.class);
@@ -77,8 +81,6 @@ public class User extends Model  {
 
         return sortedShoppingList;
     }
-
-
 
 
 }

@@ -15,7 +15,7 @@ public class Path{
     public DijkstraAlgorithm dijkstra = new DijkstraAlgorithm(graph);
     public ArrayList<Vertex>targets;
     public BreadthFirstSearch bfs=new BreadthFirstSearch();
-    public ArrayList<Vertex>finalPath;
+    public static ArrayList<Vertex>finalPath;
 
 
 
