@@ -20,9 +20,9 @@ public class Vare extends Model {
     public String pic;
 
 
-    public static Model.Finder<Integer, Vertex> find = new Model.Finder(Integer.class, Vertex.class);
+    public static Model.Finder<Integer, Vertex> findVertex = new Model.Finder(Integer.class, Vertex.class);
 
-    public static Model.Finder<Long, Vare> findVare = new Model.Finder(Long.class, Vare.class);
+    public static Model.Finder<Long, Vare> find = new Model.Finder(Long.class, Vare.class);
 
     public Vare(String navn, String kategori, int x, int y, int z, double pris, Integer vertexId, String pic){
         this.navn = navn;
@@ -31,13 +31,13 @@ public class Vare extends Model {
         this.x = x;
         this.y = y;
         this.z = z;
-        this.vertex=find.byId(vertexId);
+        this.vertex=findVertex.byId(vertexId);
         this.pic = pic;
     }
 
     public static List<Vare> vareFraKategori(String kategori){
 
-        return findVare.where()
+        return find.where()
                 .eq("kategori", kategori)
                 .findList();
     }
