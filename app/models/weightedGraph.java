@@ -7,7 +7,7 @@ import java.util.*;
  */
 public class weightedGraph {
 
-    public final List<Vertex> vertices;
+    public List<Vertex> vertices;
     public final List<weightedEdge> edges;
     public Vertex rootNode;
     public Integer numberOfVertices;

@@ -5,6 +5,7 @@ import models.*;
 import play.*;
 import play.data.*;
 import play.data.Form;
+import play.libs.Json;
 import play.mvc.*;
 
 import views.html.*;
@@ -13,6 +14,10 @@ import java.util.List;
 
 
 public class Application extends Controller {
+
+    public BreadthFirstSearch bfs=new BreadthFirstSearch();
+    public static ArrayList<Vertex>finalPath;
+
 
     public static class Login {
 
@@ -182,14 +187,13 @@ public class Application extends Controller {
     public static Result jsRoutes() {
         response().setContentType("text/javascript");
         return ok(Routes.javascriptRouter("appRoutes", //appRoutes will be the JS object available in our view
-                routes.javascript.Application.getVertices()));
+                routes.javascript.Application.getTargetVertices()));
     }
 
     public static Result getTargetVertices() {
 
-        List<Vertex> vertices = new ArrayList<>();
-        String test = "1";
-        return ok(test.toString());
+        weightedGraph wGraph=bfs.bfsAllToAll();
+        return ok(Json.toJson(wGraph.vertices));
     }
 
 }
