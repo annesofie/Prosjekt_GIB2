@@ -64,6 +64,11 @@
         z: 1
 
     - !!models.Vertex
+      id:   0
+      xPos: 60
+      yPos: 317
+
+    - !!models.Vertex
       xPos: 60
       yPos: 260
 
@@ -128,6 +133,7 @@
       yPos: 147
 
     - !!models.Vertex
+      id:   100
       xPos: 60
       yPos: 204
 

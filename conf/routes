@@ -9,7 +9,7 @@ POST        /login                   controllers.Application.authenticate()
 GET         /logout                  controllers.Application.logout()
 GET         /addVare/:vare           controllers.ShoppingList.addItem(vare: Long)
 GET         /removeVare/:vare        controllers.ShoppingList.removeItem(vare: Long)
-GET         /                        controllers.Application.getVertices();
+GET         /vertex                  controllers.Application.getVertices()
 
 
 

@@ -89,13 +89,17 @@ var init = function() {
 
     var latlngs = Array();
 
-    appRoutes.controllers.Application.getVertices().ajax({
-        success: function(data) {
-            $(data).each(function() {
-                latlngs.push(data)
-            })
+    $(".addVareKnappHjem").click(function() {
+            appRoutes.controllers.Application.getVertices().ajax({
+                success: function(data) {
+                    $(data).each(function() {
+                        window.alert(data);
+                    })
+                }
+            });
         }
-    });
+    )
+
 
     latlngs.push(vertex16.getLatLng());
     latlngs.push(vertex17.getLatLng());

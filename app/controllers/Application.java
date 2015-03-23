@@ -184,7 +184,7 @@ public class Application extends Controller {
 
         List<Vertex> vertices = new ArrayList<>();
 
-        return ok(vertices);
+        return ok("1");
     }
 
 }
