@@ -16,6 +16,7 @@ public class User extends Model  {
     public String password;
     public List<Vare> sortedHandleliste;
     public Path path=new Path(Vertex.find.byId("0"), Vertex.find.byId("100"));
+    public List<Vertex> targetVertices;
 
     @ManyToMany
     public static List<Vare> handleliste = new ArrayList<>();
