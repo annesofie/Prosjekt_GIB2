@@ -78,6 +78,10 @@
 
 }
 
+a[disabled]{
+    pionter-events:none;
+    color:#505965;
+}
 
 .panel-heading{
     border:2px solid;

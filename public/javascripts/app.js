@@ -30,6 +30,28 @@ var init = function() {
     }
     */
 
+    /* metode for aa disable elementer i varelisten som allerede ligger i handlelisten*/
+    disable = new Boolean();
+
+    function highlight(a) {
+        if(disable==false)a.className='highlight'
+    }
+
+    function normal(a) {
+        a.className='normal'
+    }
+
+
+    $("td > a").on("click", function(event){
+        if ($(this).is("[disabled]")) {
+            event.preventDefault();
+        }
+    });
+
+    $("td > a").attr("disabled", "disabled");
+
+    $("td > a").removeAttr("disabled");
+
 
     var map = L.map('leaflet-kart', {
         maxZoom: 0.45,

@@ -146,11 +146,11 @@
                                         <div class="list-group">
                                             <table class="table table-condensed hjemTabell">
                                             @for(vare <- hjem) {
-                                                <tr class="vareTabell">
+                                                <tr class="vareTabell" onMouseOver="highlight(this)" onMouseOut="normal(this)">
                                                     <td><img src=@vare.pic alt"pic" height="30px" width="30px"></img></td>
                                                     <td class="vareNavn">@vare.navn </td>
                                                     <td id="varePris">@vare.pris kr </td>
-                                                    <td><a href="@routes.ShoppingList.addItem(vare.vareid)" class="btn btn-xs addVareKnappHjem" id="addVareKnapp"><span class="glyphicon glyphicon-ok" aria-hidden="true"></span></a></td>
+                                                    <td><a href="@routes.ShoppingList.addItem(vare.vareid)" class="btn btn-xs addVareKnappHjem" id="addVareKnapp" onclick="disable = true;" value="disabled"><span class="glyphicon glyphicon-ok" aria-hidden="true"></span></a></td>
 
                                                 </tr>
                                             }
@@ -225,7 +225,7 @@
                                                     <td><img src=@vare.pic alt"pic" height="30px" width="30px"></img></td>
                                                     <td class="vareNavn">@vare.navn </td>
                                                     <td id="varePris">@vare.pris kr </td>
-                                                    <td><a href="@routes.ShoppingList.addItem(vare.vareid)" class="btn btn-xs addVareKnappJernvare" id="addVareKnapp"><span class="glyphicon glyphicon-arrow-down" aria-hidden="true"></span></a></td>
+                                                    <td><a href="@routes.ShoppingList.addItem(vare.vareid)" class="btn btn-xs addVareKnappJernvare" id="addVareKnapp"><span class="glyphicon glyphicon-ok" aria-hidden="true"></span></a></td>
                                                 </tr>
                                             }
                                             </table>
