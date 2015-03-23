@@ -87,19 +87,18 @@ var init = function() {
     var vertex19 = L.marker([225, 147]).bindPopup("19").addTo(map);
     var vertex20 = L.marker([225, 204]).bindPopup("20").addTo(map);
 
-/*    appRoutes.controllers.ShoppingList.findVertices().ajax({
-        success: function(data) {
-            $(data).each
-        }
-    });*/
-
     var latlngs = Array();
 
-    latlngs.push(vertex1.getLatLng());
-    latlngs.push(vertex2.getLatLng());
-    latlngs.push(vertex3.getLatLng());
-    latlngs.push(vertex4.getLatLng());
+    appRoutes.controllers.Application.getVertices().ajax({
+        success: function(data) {
+            $(data).each(function() {
+                latlngs.push(data)
+            })
+        }
+    });
 
+    latlngs.push(vertex16.getLatLng());
+    latlngs.push(vertex17.getLatLng());
     L.imageOverlay(imageUrl, imageBounds).addTo(map);
 
     var polyline = L.polyline(latlngs, {color: 'red'}).addTo(map);

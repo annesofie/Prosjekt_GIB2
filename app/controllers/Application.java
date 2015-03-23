@@ -179,4 +179,12 @@ public class Application extends Controller {
 
     }
 
+    @Security.Authenticated(Secured.class)
+    public static Result getVertices() {
+
+        List<Vertex> vertices = new ArrayList<>();
+
+        return ok(vertices);
+    }
+
 }
