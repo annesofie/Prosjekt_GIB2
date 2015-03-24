@@ -7,17 +7,17 @@
        password: 123
 
     - !!models.Vare
-        navn:     batterilader
+        navn: batterilader
         kategori: hjem
-        pris:     249
-        vertexId: 4
-        x:        2
-        y:        2
-        z:        2
-        pic:      http://goo.gl/0Jm9Rn
+        pris: 249
+        vertexId: 0
+        x: 2
+        y: 2
+        z: 2
+        pic: http://goo.gl/0Jm9Rn
 
     - !!models.Vare
-        navn:     kulekopp
+        navn: kulekopp
         kategori: hjem
         pris: 29
         vertexId: 6
@@ -47,6 +47,7 @@
         navn: balansesykkel
         kategori: fritid
         pris: 25
+        vertexId: 14
         x: 1
         y: 1
         z: 1
@@ -55,6 +56,7 @@
         navn: balansesykkel
         kategori: jernvare
         pris: 25
+        vertexId: 15
         x: 1
         y: 1
         z: 1
@@ -63,88 +65,89 @@
         navn: balansesykkel
         kategori: multimedias
         pris: 25
+        vertexId: 16
         x: 1
         y: 1
         z: 1
-
-    - !!models.Vertex
-      id:   0
-      xPos: 60
-      yPos: 317
-
-    - !!models.Vertex
-      xPos: 60
-      yPos: 260
-
-    - !!models.Vertex
-      xPos: 115
-      yPos: 260
-
-    - !!models.Vertex
-      xPos: 170
-      yPos: 260
-
-    - !!models.Vertex
-      xPos: 225
-      yPos: 260
-
-    - !!models.Vertex
-      xPos: 288
-      yPos: 260
-
-    - !!models.Vertex
-      xPos: 351
-      yPos: 260
-
-    - !!models.Vertex
-      xPos: 415
-      yPos: 260
-
-    - !!models.Vertex
-      xPos: 415
-      yPos: 204
-
-    - !!models.Vertex
-      xPos: 415
-      yPos: 147
-
-    - !!models.Vertex
-      xPos: 415
-      yPos: 90
-
-    - !!models.Vertex
-      xPos: 351
-      yPos: 90
-
-    - !!models.Vertex
-      xPos: 288
-      yPos: 90
-
-    - !!models.Vertex
-      xPos: 225
-      yPos: 90
-
-    - !!models.Vertex
-      xPos: 170
-      yPos: 90
-
-    - !!models.Vertex
-      xPos: 115
-      yPos: 90
-
-    - !!models.Vertex
-      xPos: 60
-      yPos: 147
-
-    - !!models.Vertex
-      id:   100
-      xPos: 60
-      yPos: 204
-
-    - !!models.Vertex
-      xPos: 225
-      yPos: 147
-
-    - !!models.Vertex
-      xPos: 225
-      yPos: 204
+#
+#    - !!models.Vertex
+#      id:   0
+#      xPos: 60
+#      yPos: 317
+#
+#    - !!models.Vertex
+#      xPos: 60
+#      yPos: 260
+#
+#    - !!models.Vertex
+#      xPos: 115
+#      yPos: 260
+#
+#    - !!models.Vertex
+#      xPos: 170
+#      yPos: 260
+#
+#    - !!models.Vertex
+#      xPos: 225
+#      yPos: 260
+#
+#    - !!models.Vertex
+#      xPos: 288
+#      yPos: 260
+#
+#    - !!models.Vertex
+#      xPos: 351
+#      yPos: 260
+#
+#    - !!models.Vertex
+#      xPos: 415
+#      yPos: 260
+#
+#    - !!models.Vertex
+#      xPos: 415
+#      yPos: 204
+#
+#    - !!models.Vertex
+#      xPos: 415
+#      yPos: 147
+#
+#    - !!models.Vertex
+#      xPos: 415
+#      yPos: 90
+#
+#    - !!models.Vertex
+#      xPos: 351
+#      yPos: 90
+#
+#    - !!models.Vertex
+#      xPos: 288
+#      yPos: 90
+#
+#    - !!models.Vertex
+#      xPos: 225
+#      yPos: 90
+#
+#    - !!models.Vertex
+#      xPos: 170
+#      yPos: 90
+#
+#    - !!models.Vertex
+#      xPos: 115
+#      yPos: 90
+#
+#    - !!models.Vertex
+#      xPos: 60
+#      yPos: 147
+#
+#    - !!models.Vertex
+#      id:   100
+#      xPos: 60
+#      yPos: 204
+#
+#    - !!models.Vertex
+#      xPos: 225
+#      yPos: 147
+#
+#    - !!models.Vertex
+#      xPos: 225
+#      yPos: 204

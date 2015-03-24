@@ -18,21 +18,29 @@ public class Vare extends Model {
     public double pris;
     public Vertex vertex;
     public String pic;
+    Integer vertexId;
 
 
-    public static Model.Finder<Integer, Vertex> findVertex = new Model.Finder(Integer.class, Vertex.class);
+
 
     public static Model.Finder<Long, Vare> find = new Model.Finder(Long.class, Vare.class);
 
-    public Vare(String navn, String kategori, int x, int y, int z, double pris, Integer vertexId, String pic){
+    public Vare(String navn, String kategori, double pris, Integer vertexId, Integer x, Integer y, Integer z, String pic){
         this.navn = navn;
         this.kategori = kategori;
         this.pris = pris;
         this.x = x;
         this.y = y;
         this.z = z;
-        this.vertex=findVertex.byId(vertexId);
+        this.vertexId=vertexId;
+        this.vertex=findvertex(vertexId);
         this.pic = pic;
+    }
+
+
+    public static Vertex findvertex(Integer vertexId){
+
+        return Vertex.find.byId(vertexId);
     }
 
     public static List<Vare> vareFraKategori(String kategori){

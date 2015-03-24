@@ -15,7 +15,7 @@ import java.util.List;
 
 public class Application extends Controller {
 
-    public BreadthFirstSearch bfs=new BreadthFirstSearch();
+    public static BreadthFirstSearch bfs=new BreadthFirstSearch();
     public static ArrayList<Vertex>finalPath;
 
 

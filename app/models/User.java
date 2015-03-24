@@ -15,7 +15,7 @@ public class User extends Model  {
     public String email;
     public String password;
     public List<Vare> sortedHandleliste;
-    public Path path=new Path(Vertex.find.byId("0"), Vertex.find.byId("100"));
+    public Path path=new Path(Vertex.find.byId(0), Vertex.find.byId(16));
     public List<Vertex> targetVertices;
 
     @ManyToMany
@@ -74,7 +74,7 @@ public class User extends Model  {
 
         for (Vertex vertex: vertices) {
             for (Vare vare: handleliste) {
-                if (vare.vertexId == vertex.id) {
+                if (vare.vertex == vertex) {
                     sortedShoppingList.add(vare);
                 }
             }
