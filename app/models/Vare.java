@@ -18,7 +18,7 @@ public class Vare extends Model {
     public double pris;
     public Vertex vertex;
     public String pic;
-    Integer vertexId;
+    public Integer vertexId;
 
 
 

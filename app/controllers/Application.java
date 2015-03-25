@@ -48,6 +48,7 @@ public class Application extends Controller {
 
 
 
+
         for(Vare vare:alleVarer){
 
             if(vare.kategori.equals("elektro")){
