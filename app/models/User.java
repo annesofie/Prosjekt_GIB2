@@ -40,6 +40,7 @@ public class User extends Model  {
     }
 
     public static User createUser(String email, String passord){
+
         User user = new User(email, passord);
         user.save();
         return user;
