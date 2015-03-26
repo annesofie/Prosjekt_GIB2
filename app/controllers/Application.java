@@ -19,6 +19,7 @@ public class Application extends Controller {
     public static ArrayList<Vertex>finalPath;
 
 
+
     public static class Login {
 
         public String email;
@@ -197,4 +198,19 @@ public class Application extends Controller {
         return ok(Json.toJson(wGraph.vertices));
     }
 
+
+    public static List<Vare> sortShoppingList(List<Vertex> vertices) {
+
+        List<Vare> sortedShoppingList = new ArrayList<Vare>();
+
+        for (Vertex vertex: vertices) {
+            for (Vare vare: User.handleliste) {
+                if (vare.vertex == vertex) {
+                    sortedShoppingList.add(vare);
+                }
+            }
+        }
+
+        return sortedShoppingList;
+    }
 }

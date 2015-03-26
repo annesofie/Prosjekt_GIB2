@@ -102,8 +102,10 @@ var init = function() {
 
             var polyline = L.polyline(latlngs, {color: 'red'}).addTo(map);
 
+            appRoutes.controllers.Application.sortShoppingList();
         }
     )
+
 
 };
 
