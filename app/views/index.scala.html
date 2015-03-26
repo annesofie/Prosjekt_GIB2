@@ -40,9 +40,9 @@
             <div class="new-user-content">
                 <a class="close-new-user">x</a>
                 <h3>Opprett ny bruker</h3>
-                @helper.form(routes.Application.authenticate()) {
+                @helper.form(routes.Application.createUser()) {
 
-                    @if(loginForm.hasGlobalErrors) {
+                    @if(.hasGlobalErrors) {
                         <p class="error">
                         @loginForm.globalError.message
                         </p>
@@ -233,7 +233,7 @@
                                     </div>
                                 </div>
                                 <div class="panel panel-default">
-                                    <div class="panel-heading" role="tab" id="headingFive">
+                                     <div class="panel-heading" role="tab" id="headingFive">
                                         <h4 class="panel-title">
                                             <a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseFive" aria-expanded="false" aria-controls="collapseFive">
                                                 Multimedia

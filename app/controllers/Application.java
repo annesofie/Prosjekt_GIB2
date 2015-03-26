@@ -35,6 +35,7 @@ public class Application extends Controller {
     }
 
 
+
     @Security.Authenticated(Secured.class)
     public static Result index(){
 
@@ -104,7 +105,7 @@ public class Application extends Controller {
             }
 
         }
-        return ok(home.render(request().username(),shoppingList ,alleVarer, elektro, fritid, hjem, jernvare, multimedia, play.data.Form.form(Login.class)));
+        return ok(home.render(request().username(),shoppingList ,alleVarer, elektro, fritid, hjem, jernvare, multimedia, play.data.Form.form(Login.class), play.data.Form.form(User.class)));
     }
 
 
@@ -140,7 +141,7 @@ public class Application extends Controller {
 
         Form<Login> loginForm = Form.form(Login.class).bindFromRequest();
         if (loginForm.hasErrors()) {
-            return badRequest(home.render(request().username(),shoppingList ,alleVarer, elektro, fritid, hjem, jernvare, multimedia, loginForm));
+            return badRequest(home.render(request().username(), shoppingList, alleVarer, elektro, fritid, hjem, jernvare, multimedia, loginForm, Form.form(User.class)));
         } else {
             session().clear();
             session("email", loginForm.get().email);
@@ -182,7 +183,7 @@ public class Application extends Controller {
 
         session().clear();
         flash("success");
-        return ok(home.render(request().username(),shoppingList ,alleVarer, elektro, fritid, hjem, jernvare, multimedia, play.data.Form.form(Login.class)));
+        return ok(home.render(request().username(),shoppingList ,alleVarer, elektro, fritid, hjem, jernvare, multimedia, play.data.Form.form(Login.class), Form.form(User.class)));
 
     }
 
@@ -198,6 +199,7 @@ public class Application extends Controller {
         return ok(Json.toJson(wGraph.vertices));
     }
 
+<<<<<<< Updated upstream
 
     public static List<Vare> sortShoppingList(List<Vertex> vertices) {
 
@@ -213,4 +215,46 @@ public class Application extends Controller {
 
         return sortedShoppingList;
     }
+=======
+    public static Result createUser() {
+
+        List<Vare> alleVarer = Vare.find.all();
+        List<Vare> elektro = new ArrayList<>();
+        List<Vare> fritid = new ArrayList<>();
+        List<Vare> jernvare = new ArrayList<>();
+        List<Vare> multimedia = new ArrayList<>();
+        List<Vare> hjem = new ArrayList<>();
+        List<Vare> shoppingList = new ArrayList<>();
+
+        for(Vare vare:alleVarer) {
+
+            if (vare.kategori.equals("elektro")) {
+                elektro.add(vare);
+            }
+            if (vare.kategori.equals("fritid")) {
+                fritid.add(vare);
+            }
+            if (vare.kategori.equals("jernvare")) {
+                jernvare.add(vare);
+            }
+            if (vare.kategori.equals("multimedia")) {
+                multimedia.add(vare);
+            }
+            if (vare.kategori.equals("hjem")) {
+                hjem.add(vare);
+            }
+
+        Form<User> createUserForm = Form.form(User.class).bindFromRequest();
+        if (createUserForm.hasErrors()) {
+            return badRequest(home.render(request().username(), shoppingList, alleVarer, elektro, fritid, hjem, jernvare, multimedia, Form.form(Login.class), createUserForm));
+        } else {
+            User.createUser(createUserForm.get().email, createUserForm.get().password);
+            return redirect(
+                    routes.Application.index()
+            );
+        }
+
+    }
+
+>>>>>>> Stashed changes
 }

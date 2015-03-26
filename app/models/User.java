@@ -22,11 +22,11 @@ public class User extends Model  {
     public static List<Vare> handleliste = new ArrayList<>();
 
 
-    public User(String email, String password, List<Vare> handleliste){
+    public User(String email, String password){
         this.email = email;
         this.password = password;
-        this.handleliste = handleliste;
-        this.sortedHandleliste=sortShoppingList(Path.finalPath);
+        this.handleliste = new ArrayList<>();
+        //this.sortedHandleliste=sortShoppingList(Path.finalPath);
 
     }
 
@@ -40,8 +40,8 @@ public class User extends Model  {
 
     }
 
-    public static User createUser(String email, String passord, List<Vare> handleliste){
-        User user = new User(email, passord, handleliste);
+    public static User createUser(String email, String passord){
+        User user = new User(email, passord);
         user.save();
         return user;
     }

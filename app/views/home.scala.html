@@ -5,7 +5,8 @@
         hjem: List[Vare],
         jernvare: List[Vare],
         multimedia: List[Vare],
-        loginForm: Form[Application.Login])
+        loginForm: Form[Application.Login]
+        createUserForm: Form[User])
 
 @main("Varer") {
 
@@ -34,15 +35,14 @@
         </div>
     </div>
 
-    <!-- Maa fikse ferdig så opprett nye bruker faar annet vindu enn innlogging-->
     <div class="overlay-new-user" style="display: none;">
         <div class="new-user-wrapper">
             <div class="new-user-content">
                 <a class="close-new-user">x</a>
                 <h3>Opprett ny bruker</h3>
-                @helper.form(routes.Application.authenticate()) {
+                @helper.form(routes.Application.createUser()) {
 
-                    @if(loginForm.hasGlobalErrors) {
+                    @if(createUserForm.hasGlobalErrors) {
                         <p class="error">
                         @loginForm.globalError.message
                         </p>
