@@ -94,8 +94,8 @@ var init = function() {
 
             appRoutes.controllers.Application.getTargetVertices().ajax({
                 success: function(data) {
-                    $(data).each(function(index,value) {
-                       latlngs.push("vertex" + value.getLatLng());
+                    $(data).each(function(index,vertex) {
+                        latlngs.push([vertex.getPosX(),vertex.getPosY()]);
                     });
                 }
             });
