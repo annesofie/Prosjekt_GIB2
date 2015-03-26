@@ -5,7 +5,7 @@
         hjem: List[Vare],
         jernvare: List[Vare],
         multimedia: List[Vare],
-        loginForm: Form[Application.Login]
+        loginForm: Form[Application.Login],
         createUserForm: Form[User])
 
 @main("Varer") {
@@ -44,15 +44,15 @@
 
                     @if(createUserForm.hasGlobalErrors) {
                         <p class="error">
-                        @loginForm.globalError.message
+                        @createUserForm.globalError.message
                         </p>
                     }
                     <label for="email">Epost:
-                        <input type="text" name="email" id="email" placeholder="Skriv inn din epost" value="@loginForm("email").value" required />
+                        <input type="text" name="email" id="email" placeholder="Skriv inn din epost" value="@createUserForm("email").value" required />
                     </label>
                     <label for="password">
                         Passord:
-                        <input type="password" name="password" id="password" placeholder="Skriv inn ditt passord" required />
+                        <input type="password" name="password" id="password" placeholder="Skriv inn ditt passord" value="@createUserForm"required />
                     </label>
                     <button type="submit">Opprett bruker</button>
                 }
@@ -62,20 +62,13 @@
 
     <div class="container">
 
-        <div class="row">
-            <div class="toppen">
-                <div class="navn">
-                    <div class="col-xs-3">
-                        <h1 class="text">ChopShop</h1>
-
-                    </div>
+        <div class="row toppen">
+                <div class="col-xs-4 navn">
+                    <h1 class="text">ChopShop</h1>
                 </div>
-                <div class="slagord">
-                    <div class="col-xs-5">
-                        <h3 class="text-field">Finn dine varer på kortest tid!</h3>
-                    </div>
+                <div class="col-xs-4 slagord">
+                    <h3 class="text-field">Finn dine varer på kortest tid!</h3>
                 </div>
-
                 <div class="col-xs-4">
                     <div class="login">
                         <ul>
@@ -88,7 +81,6 @@
                         </ul>
                     </div>
                 </div>
-            </div>
         </div>
 
 

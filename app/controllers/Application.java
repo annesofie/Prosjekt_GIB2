@@ -70,7 +70,7 @@ public class Application extends Controller {
             }
 
         }
-        return ok(index.render(request().username(),shoppingList ,alleVarer, elektro, fritid, hjem, jernvare, multimedia, play.data.Form.form(Login.class)));
+        return ok(index.render(request().username(),shoppingList ,alleVarer, elektro, fritid, hjem, jernvare, multimedia, play.data.Form.form(Login.class), Form.form(User.class)));
     }
 
 
@@ -199,7 +199,6 @@ public class Application extends Controller {
         return ok(Json.toJson(wGraph.vertices));
     }
 
-<<<<<<< Updated upstream
 
     public static List<Vare> sortShoppingList(List<Vertex> vertices) {
 
@@ -215,7 +214,7 @@ public class Application extends Controller {
 
         return sortedShoppingList;
     }
-=======
+
     public static Result createUser() {
 
         List<Vare> alleVarer = Vare.find.all();
@@ -226,7 +225,7 @@ public class Application extends Controller {
         List<Vare> hjem = new ArrayList<>();
         List<Vare> shoppingList = new ArrayList<>();
 
-        for(Vare vare:alleVarer) {
+        for (Vare vare : alleVarer) {
 
             if (vare.kategori.equals("elektro")) {
                 elektro.add(vare);
@@ -243,18 +242,17 @@ public class Application extends Controller {
             if (vare.kategori.equals("hjem")) {
                 hjem.add(vare);
             }
+        }
 
         Form<User> createUserForm = Form.form(User.class).bindFromRequest();
         if (createUserForm.hasErrors()) {
-            return badRequest(home.render(request().username(), shoppingList, alleVarer, elektro, fritid, hjem, jernvare, multimedia, Form.form(Login.class), createUserForm));
+                return badRequest(home.render(request().username(), shoppingList, alleVarer, elektro, fritid, hjem, jernvare, multimedia, Form.form(Login.class), createUserForm));
         } else {
             User.createUser(createUserForm.get().email, createUserForm.get().password);
             return redirect(
-                    routes.Application.index()
-            );
-        }
+                        routes.Application.home()
+                );
+            }
 
     }
-
->>>>>>> Stashed changes
 }

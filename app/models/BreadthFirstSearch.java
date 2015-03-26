@@ -10,7 +10,7 @@ public class BreadthFirstSearch {
 
     Graph graph = new Graph();
     ArrayList<Vertex> visited;
-    public ArrayList<Vertex>targets;
+    public ArrayList<Vertex>targets = new ArrayList<>();
 
     public ArrayList<Vertex> findTargets(String email){
         //Target er vertex'en nærmest varen man har lagret i handlelisten

@@ -5,7 +5,8 @@
         hjem: List[Vare],
         jernvare: List[Vare],
         multimedia: List[Vare],
-        loginForm: Form[Application.Login])
+        loginForm: Form[Application.Login],
+        createUserForm: Form[User])
 
 @main("Varer/index") {
 
@@ -33,8 +34,6 @@
             </div>
         </div>
     </div>
-
-    <!-- Maa fikse athenticate her, for er satt likt som logg inn naa og det er feil-->
     <div class="overlay-new-user" style="display: none;">
         <div class="new-user-wrapper">
             <div class="new-user-content">
@@ -42,11 +41,30 @@
                 <h3>Opprett ny bruker</h3>
                 @helper.form(routes.Application.createUser()) {
 
-                    @if(.hasGlobalErrors) {
+                    @if(createUserForm.hasGlobalErrors) {
                         <p class="error">
-                        @loginForm.globalError.message
+                        @createUserForm.globalError.message
                         </p>
                     }
+                    <label for="email">Epost:
+                        <input type="text" name="email" id="email" placeholder="Skriv inn din epost" value="@createUserForm("email").value" required />
+                    </label>
+                    <label for="password">
+                        Passord:
+                        <input type="password" name="password" id="password" placeholder="Skriv inn ditt passord" required />
+                    </label>
+                    <button type="submit">Opprett bruker</button>
+                }
+            </div>
+        </div>
+    </div>
+    <div class="overlay-new-user" style="display: none;">
+        <div class="new-user-wrapper">
+            <div class="new-user-content">
+                <a class="close-new-user">x</a>
+                <h3>Opprett ny bruker</h3>
+                @helper.form(routes.Application.createUser()) {
+
                     <label for="email">Epost:
                         <input type="text" name="email" id="email" placeholder="Skriv inn din epost" value="@loginForm("email").value" required />
                     </label>
@@ -60,49 +78,34 @@
         </div>
     </div>
 
+
     <div class="container">
-
-        <div class="row">
-            <div class="toppen">
-               <div class="navn">
-                    <div class="col-xs-3">
-                        <h1 class="text">ChopShop</h1>
-
-                    </div>
-               </div>
-                <div class="slagord">
-                    <div class="col-xs-5">
-                        <h3 class="text-field">- Finn dine varer på kortest tid!</h3>
-                    </div>
+        <div class="row toppen">
+                <div class="col-xs-4 navn">
+                    <h1 class="text">ChopShop</h1>
                 </div>
-
-
-                <div class="col-xs-4">
-                    <div class="login">
-                        <ul>
-                            @if(flash().contains("success")){
-                                @flash.get("success")
-                            }
-
-
-                            @if(useremail == null){
-                                <li><a class="overlayLink-login" data-action="login-form.html">Logg inn</a></li>
-                                <li> | </li>
-                                <li><a class="overlayLink-new-user" data-action="registration-form.html">Opprett ny bruker</a></li>
-                            }else{
-                                <li>@useremail</li>
-                                <li> | </li>
-                                <li><a href="@routes.Application.logout()">Logg ut</a></li>
-                            }
-
-
-                        </ul>
-                    </div>
+                <div class="col-xs-4 slagord">
+                    <h3 class="text-field">- Finn dine varer på kortest tid!</h3>
+                </div>
+            <div class="col-xs-4">
+                <div class="login">
+                    <ul>
+                        @if(flash().contains("success")){
+                            @flash.get("success")
+                        }
+                        @if(useremail == null){
+                            <li><a class="overlayLink-login" data-action="login-form.html">Logg inn</a></li>
+                            <li> | </li>
+                            <li><a class="overlayLink-new-user" data-action="registration-form.html">Opprett ny bruker</a></li>
+                        }else{
+                            <li>@useremail</li>
+                            <li> | </li>
+                            <li><a href="@routes.Application.logout()">Logg ut</a></li>
+                        }
+                    </ul>
                 </div>
             </div>
         </div>
-
-
 
         <div class="row">
             <div class="col-xs-12">
