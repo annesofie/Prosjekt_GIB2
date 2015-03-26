@@ -66,27 +66,6 @@ var init = function() {
     var imageUrl = 'http://i61.tinypic.com/30ucvfc.jpg';
     var imageBounds = [[500,0], [0,370]];
 
-    var vertex1 = L.marker([60, 317]).bindPopup("1");
-    var vertex2 = L.marker([60, 260]).bindPopup("2");
-    var vertex3 = L.marker([115, 260]).bindPopup("3");
-    var vertex4 = L.marker([170, 260]).bindPopup("4");
-    var vertex5 = L.marker([225, 260]).bindPopup("5");
-    var vertex6 = L.marker([288, 260]).bindPopup("6");
-    var vertex7 = L.marker([351, 260]).bindPopup("7");
-    var vertex8 = L.marker([415, 260]).bindPopup("8");
-    var vertex9 = L.marker([415, 204]).bindPopup("9");
-    var vertex10 = L.marker([415, 147]).bindPopup("10");
-    var vertex11 = L.marker([415, 90]).bindPopup("11");
-    var vertex12 = L.marker([351, 90]).bindPopup("12");
-    var vertex13 = L.marker([288, 90]).bindPopup("13");
-    var vertex14 = L.marker([225, 90]).bindPopup("14");
-    var vertex15 = L.marker([170, 90]).bindPopup("15");
-    var vertex16 = L.marker([115, 90]).bindPopup("16");
-    var vertex17 = L.marker([60, 147]).bindPopup("17");
-    var vertex18 = L.marker([60, 204]).bindPopup("18");
-    var vertex19 = L.marker([225, 147]).bindPopup("19");
-    var vertex20 = L.marker([225, 204]).bindPopup("20");
-
     L.imageOverlay(imageUrl, imageBounds).addTo(map);
 
     $("#addVareKnapp").click(function() {
@@ -95,14 +74,14 @@ var init = function() {
             appRoutes.controllers.Application.getTargetVertices().ajax({
                 success: function(data) {
                     $(data).each(function(index,vertex) {
-                        latlngs.push([vertex.getPosX(),vertex.getPosY()]);
+                        latlngs.push(L.latLng(vertex.xPos,vertex.yPos));
+                        window.alert(latlngs);
                     });
+                    var polyline = L.polyline(latlngs, {color: 'red'}).addTo(map);
                 }
             });
 
-            var polyline = L.polyline(latlngs, {color: 'red'}).addTo(map);
-
-            appRoutes.controllers.Application.sortShoppingList();
+            //appRoutes.controllers.Application.sortShoppingList();
         }
     )
 

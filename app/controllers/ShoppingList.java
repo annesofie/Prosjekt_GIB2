@@ -44,13 +44,4 @@ public class ShoppingList extends Controller {
         return redirect(routes.Application.index());
     }
 
-    @Security.Authenticated(Secured.class)
-    public static Result findVertices() {
-
-        User user = User.find.byId(request().username());
-
-        return redirect(routes.Application.index());
-    }
-
-
 }

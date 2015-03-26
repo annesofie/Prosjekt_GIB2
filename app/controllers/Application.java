@@ -197,6 +197,7 @@ public class Application extends Controller {
 
         weightedGraph wGraph=bfs.bfsAllToAll();
         return ok(Json.toJson(wGraph.vertices));
+
     }
 
 
