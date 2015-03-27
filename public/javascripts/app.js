@@ -84,12 +84,6 @@ var init = function() {
             //appRoutes.controllers.Application.sortShoppingList();
         }
     )
-
-   function newUserOk() {
-       alert("Bruker er opprettet, logg inn");
-   }
-
-
 };
 
 $(document).ready(init);
