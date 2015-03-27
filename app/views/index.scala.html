@@ -34,50 +34,6 @@
             </div>
         </div>
     </div>
-    <div class="overlay-new-user" style="display: none;">
-        <div class="new-user-wrapper">
-            <div class="new-user-content">
-                <a class="close-new-user">x</a>
-                <h3>Opprett ny bruker</h3>
-                @helper.form(routes.Application.createUser()) {
-
-                    @if(createUserForm.hasGlobalErrors) {
-                        <p class="error">
-                        @createUserForm.globalError.message
-                        </p>
-                    }
-                    <label for="email">Epost:
-                        <input type="text" name="email" id="email" placeholder="Skriv inn din epost" value="@createUserForm("email").value" required />
-                    </label>
-                    <label for="password">
-                        Passord:
-                        <input type="password" name="password" id="password" placeholder="Skriv inn ditt passord" required />
-                    </label>
-                    <button type="submit">Opprett bruker</button>
-                }
-            </div>
-        </div>
-    </div>
-    <div class="overlay-new-user" style="display: none;">
-        <div class="new-user-wrapper">
-            <div class="new-user-content">
-                <a class="close-new-user">x</a>
-                <h3>Opprett ny bruker</h3>
-                @helper.form(routes.Application.createUser()) {
-
-                    <label for="email">Epost:
-                        <input type="text" name="email" id="email" placeholder="Skriv inn din epost" value="@loginForm("email").value" required />
-                    </label>
-                    <label for="password">
-                        Passord:
-                        <input type="password" name="password" id="password" placeholder="Skriv inn ditt passord" required />
-                    </label>
-                    <button type="submit">Opprett bruker</button>
-                }
-            </div>
-        </div>
-    </div>
-
 
     <div class="container">
         <div class="row toppen">

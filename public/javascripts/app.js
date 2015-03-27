@@ -85,6 +85,10 @@ var init = function() {
         }
     )
 
+   function newUserOk() {
+       alert("Bruker er opprettet, logg inn");
+   }
+
 
 };
 
