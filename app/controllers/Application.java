@@ -195,6 +195,15 @@ public class Application extends Controller {
 
     public static Result getTargetVertices() {
 
+/*      Vertex v1 = Vertex.getById(1);
+        Vertex v2 = Vertex.getById(2);
+        Vertex v3 = Vertex.getById(3);
+        List<Vertex> vecs = new ArrayList<>();
+        vecs.add(v1);
+        vecs.add(v2);
+        vecs.add(v3);
+        return ok(Json.toJson(vecs));*/
+
         weightedGraph wGraph=bfs.bfsAllToAll();
         return ok(Json.toJson(wGraph.vertices));
 

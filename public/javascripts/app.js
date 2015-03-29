@@ -3,33 +3,6 @@
  */
 var init = function() {
 
-    /*/
-    function cloneRow() {
-
-        var row = document.getElementsByName("vareTabell");
-        var table = document.getElementsByName("liste");
-        var clone = row.cloneNode(true);
-        clone.name = "handleTabell";
-        table.appendChild(clone);
-    }
-    function createRow() {
-
-        var row = document.createElement('tr'); //create row node
-        var col = document.createElement('td'); //create column node
-        var col2 = document.createElement('td'); //create second column node
-        //var col3 = document.createElement('td'); //create second column node
-        row.appendChild(col);
-        row.appendChild(col2);
-        //row.appendChild(col3);
-        col.innerHTML = this.navn;
-        col2.innerHTML = this.pris
-        //col3.innerHTML = button??
-
-        var table = document.getElementsByName("liste");
-        table.append(row);
-    }
-    */
-
     /* metode for aa disable elementer i varelisten som allerede ligger i handlelisten*/
     disable = new Boolean();
 
@@ -68,22 +41,21 @@ var init = function() {
 
     L.imageOverlay(imageUrl, imageBounds).addTo(map);
 
-    $("#addVareKnapp").click(function() {
-            var latlngs = Array();
 
-            appRoutes.controllers.Application.getTargetVertices().ajax({
-                success: function(data) {
-                    $(data).each(function(index,vertex) {
-                        latlngs.push(L.latLng(vertex.xPos,vertex.yPos));
-                        window.alert(latlngs);
-                    });
-                    var polyline = L.polyline(latlngs, {color: 'red'}).addTo(map);
-                }
+    //Tegne sti på kart
+    var latlngs = Array();
+
+    appRoutes.controllers.Application.getTargetVertices().ajax({
+        success: function(data) {
+            $(data).each(function(index,vertex) {
+                latlngs.push(L.latLng(vertex.xPos,vertex.yPos));
+                window.alert(latlngs);
             });
-
-            //appRoutes.controllers.Application.sortShoppingList();
+            var polyline = L.polyline(latlngs, {color: 'red'}).addTo(map);
         }
-    )
+    });
+
+    //appRoutes.controllers.Application.sortShoppingList();
 };
 
 $(document).ready(init);
