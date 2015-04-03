@@ -37,10 +37,10 @@
 
     <div class="container">
         <div class="row toppen">
-                <div class="col-xs-4 navn">
+                <div class="col-xs-3 navn">
                     <h1 class="text">ChopShop</h1>
                 </div>
-                <div class="col-xs-4 slagord">
+                <div class="col-xs-5 slagord">
                     <h3 class="text-field">- Finn dine varer på kortest tid!</h3>
                 </div>
             <div class="col-xs-4">
@@ -239,6 +239,7 @@
                                     @if(sortedHandleliste.isEmpty) {
                                         <h3>Det finnes ingen varer i din handleliste</h3>
                                     }
+
                                     @for(vare <- sortedHandleliste) {
                                         <tr class="handlelisteVarer">
                                             <td><img src=@vare.pic alt"pic" height="30px" width="30px"></img></td>
