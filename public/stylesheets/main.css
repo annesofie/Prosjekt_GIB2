@@ -81,11 +81,12 @@
     text-decoration: none;
     color: #ffffff;
     border: solid 1px #0076a3;
+    border-color:#888888;
+
     background: -webkit-gradient(linear, left top, left bottom, from(#a9cdd8) , to(#73aafd));
     background: -moz-linear-gradient(top,  #00adee,  #0078a5);
     border-top-right-radius: 5px 5px;
     border-bottom-right-radius: 5px 5px;
-    border-color:#888888;
     margin-left:-6px;
 }
 
@@ -198,6 +199,21 @@ a[disabled]{
     background:#73aafd;
 }
 
+/* finn sti i index
+    */
+#finnSti, #tilbake{
+    margin-left: 220px;
+    margin-top: 10px;
+    background: -webkit-gradient(linear, left top, left bottom, from(#b5bdb2) , to(#888888));
+    padding: 4px 15px;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size:medium;
+    text-align: center;
+    text-decoration: none;
+    color: #ffffff;
+    border: solid 1px;
+    border-color:#888888;
+}
 
 
 
