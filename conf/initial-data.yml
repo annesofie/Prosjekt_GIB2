@@ -10,7 +10,7 @@
         navn: batterilader
         kategori: hjem
         pris: 249
-        vertexId: 3
+        vertexId: 2
         x: 2
         y: 2
         z: 2
@@ -20,7 +20,7 @@
         navn: kulekopp
         kategori: hjem
         pris: 29
-        vertexId: 6
+        vertexId: 4
         x: 2
         y: 2
         z: 4
@@ -38,7 +38,7 @@
         navn: balansesykkel
         kategori: elektro
         pris: 25
-        vertexId: 13
+        vertexId: 7
         x: 1
         y: 1
         z: 1
@@ -94,7 +94,7 @@
         pris: 288
         vertexId: 6
         x: 2
-        y: 2
+        y: 0
         z: 2
 
     - !!models.Vare
@@ -160,30 +160,37 @@
       yPos: 260
 
     - !!models.Vertex
+      id:   2
       xPos: 415
       yPos: 260
 
     - !!models.Vertex
+      id:   4
       xPos: 415
       yPos: 204
 
     - !!models.Vertex
+      id:   12
       xPos: 415
       yPos: 147
 
     - !!models.Vertex
+      id:   7
       xPos: 415
       yPos: 90
 
     - !!models.Vertex
+      id:   14
       xPos: 351
       yPos: 90
 
     - !!models.Vertex
+      id:   15
       xPos: 288
       yPos: 90
 
     - !!models.Vertex
+      id:   16
       xPos: 225
       yPos: 90
 
