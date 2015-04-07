@@ -251,4 +251,14 @@ public class Application extends Controller {
             }
 
     }
+    @Security.Authenticated(Secured.class)
+    public static Result shoppingPath() {
+
+        User user = User.find.byId(request().username());
+        SortedShoppingList sortSH = new SortedShoppingList();
+
+        return ok(shoppingPath.render(request().username(), sortSH.sortShoppingList()));
+    }
+
+
 }

@@ -1,4 +1,4 @@
-@(useremail: String,sortedHandleliste: List[Vare],
+@(useremail: String,handleliste: List[Vare],
         vareList: List[Vare],
         elektro: List[Vare],
         fritid:List[Vare],
@@ -10,30 +10,6 @@
 
 @main("Varer/index") {
 
-    <div class="overlay-login" style="display: none;">
-        <div class="login-wrapper">
-            <div class="login-content">
-                <a class="close-login">x</a>
-                <h3>Logg inn</h3>
-                @helper.form(routes.Application.authenticate()) {
-
-                    @if(loginForm.hasGlobalErrors) {
-                        <p class="error">
-                        @loginForm.globalError.message
-                        </p>
-                    }
-                    <label for="email">Epost:
-                        <input type="text" name="email" id="email" placeholder="Skriv inn din epost" value="@loginForm("email").value" required />
-                    </label>
-                    <label for="password">
-                        Passord:
-                        <input type="password" name="password" id="password" placeholder="Skriv inn ditt passord" required />
-                    </label>
-                    <button type="submit">Logg inn</button>
-                }
-            </div>
-        </div>
-    </div>
 
     <div class="container">
         <div class="row toppen">
@@ -236,11 +212,11 @@
                         @if(useremail != null){
                             <div class="handleliste">
                                 <table class="table table-condensed">
-                                    @if(sortedHandleliste.isEmpty) {
+                                    @if(handleliste.isEmpty) {
                                         <h3>Det finnes ingen varer i din handleliste</h3>
                                     }
 
-                                    @for(vare <- sortedHandleliste) {
+                                    @for(vare <- handleliste) {
                                         <tr class="handlelisteVarer">
                                             <td><img src=@vare.pic alt"pic" height="30px" width="30px"></img></td>
                                             <td><strong>@vare.navn</strong></td>
@@ -254,13 +230,14 @@
                                 </table>
                             </div>
                         }
-                            <div class="row">
-                                 <div class="col-xs-12">
-                                     <a href="@routes.ShoppingList" class="btn btn-xs addVareKnappHjem" id="addVareKnapp" onclick="disable = true;" value="disabled"><span class="glyphicon glyphicon-ok" aria-hidden="true"></span></a>
-                                 </div>
-                            </div>
-
                         </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-xs-8">
+                    </div>
+                    <div class="col-xs-4">
+                        <a href="@routes.Application.shoppingPath()" class="btn btn-xs addVareKnappHjem" id="addVareKnapp" onclick="disable = true;" value="disabled">Finn sti</a>
                     </div>
                 </div>
 

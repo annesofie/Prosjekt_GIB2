@@ -36,13 +36,14 @@ public class ShoppingList extends Controller {
     }
 
     @Security.Authenticated(Secured.class)
-         public static Result removeItem(Long itemid) {
+    public static Result removeItem(Long itemid) {
 
         User user = User.find.byId(request().username());
         user.removeFromHandleliste(itemid);
 
         return redirect(routes.Application.index());
     }
+
 
 
 
