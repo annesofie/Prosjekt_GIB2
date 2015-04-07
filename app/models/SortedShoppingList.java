@@ -9,7 +9,7 @@ import java.util.List;
 public class SortedShoppingList {
 
     public static List<Vare> sortShoppingList() {
-        Path path = new Path(1,100); //legg inn rotnodenummer og kassenodenummer i input
+        Path path = new Path(Vertex.find.byId(1),Vertex.find.byId(100)); //legg inn rotnodenummer og kassenodenummer i input
         List<Vertex>p=path.finalPath;
         List<Vare> sortedShoppingList = new ArrayList<Vare>();
 
@@ -23,5 +23,7 @@ public class SortedShoppingList {
 
         return sortedShoppingList;
     }
+
+
 
 }
