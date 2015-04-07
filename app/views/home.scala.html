@@ -109,8 +109,8 @@
                             <h3 class="text-center"> Finn ønsket vare </h3>
 
                             <div class="søkefelt">
-                                <input type="text" class="search square" placeholder="Søk etter varer her">
-                                <input type="submit" value= "søk"class="søk-knapp">
+                                <input type="text" class="searchSquare" placeholder="Søk etter varer her">
+                                <input type="submit" class="søk-knapp" value= "søk">
                             </div>
 
                             <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true" >
@@ -131,7 +131,7 @@
                                                     <td><img src=@vare.pic alt"pic" height="30px" width="30px"></img></td>
                                                     <td class="vareNavn">@vare.navn </td>
                                                     <td id="varePris">@vare.pris kr </td>
-                                                    <td><a href="@routes.ShoppingList.addItem(vare.vareid)" class="btn btn-xs addVareKnappHjem" id="addVareKnapp" onclick="disable=true" value="Disable"><span class="glyphicon glyphicon-ok" aria-hidden="true"></span></a></td>
+                                                    <td><a href="@routes.ShoppingList.addItem(vare.vareid)" class="btn btn-xs addVareKnappHjem" id="addVareKnapp" onclick="disable = true;" value="disabled"><span class="glyphicon glyphicon-ok" aria-hidden="true"></span></a></td>
 
                                                 </tr>
                                             }
@@ -153,10 +153,11 @@
                                         <div class="list-group">
                                             <table class="table table-condensed">
                                             @for(vare <- elektro) {
-                                                <tr class="elektro">
+                                                <tr class="elektroTabell">
+                                                    <td><img src=@vare.pic alt"pic" height="30px" width="30px"></img></td>
                                                     <td class="vareNavn">@vare.navn </td>
                                                     <td id="varePris">@vare.pris kr </td>
-                                                    <td><buttom class="btn btn-xs addVareKnappElektro" id="addVareKnapp"><span class="glyphicon glyphicon-ok" aria-hidden="true"></span></buttom></td>
+                                                    <td><a href="@routes.ShoppingList.addItem(vare.vareid)" class="btn btn-xs addVareKnappElektro" id="addVareKnapp"><span class="glyphicon glyphicon-ok" aria-hidden="true"></span></a></td>
 
                                                 </tr>
                                             }
@@ -178,10 +179,11 @@
                                         <div class="list-group">
                                             <table class="table table-condensed">
                                             @for(vare <- fritid) {
-                                                <tr class="fritid">
+                                                <tr class="fritidTabell">
+                                                    <td><img src=@vare.pic alt"pic" height="30px" width="30px"></img></td>
                                                     <td class="vareNavn">@vare.navn </td>
                                                     <td id="varePris">@vare.pris kr </td>
-                                                    <td><buttom class="btn btn-xs addVareKnappFritid" id="addVareKnapp"><span class="glyphicon glyphicon-ok" aria-hidden="true"></span></buttom></td>
+                                                    <td><a href="@routes.ShoppingList.addItem(vare.vareid)" class="btn btn-xs addVareKnappFritid" id="addVareKnapp"><span class="glyphicon glyphicon-ok" aria-hidden="true"></span></a></td>
                                                 </tr>
                                             }
                                             </table>
@@ -200,7 +202,8 @@
                                         <div class="list-group">
                                             <table class="table table-condensed">
                                             @for(vare <- jernvare) {
-                                                <tr class="jernvare">
+                                                <tr class="jernvareTabell">
+                                                    <td><img src=@vare.pic alt"pic" height="30px" width="30px"></img></td>
                                                     <td class="vareNavn">@vare.navn </td>
                                                     <td id="varePris">@vare.pris kr </td>
                                                     <td><a href="@routes.ShoppingList.addItem(vare.vareid)" class="btn btn-xs addVareKnappJernvare" id="addVareKnapp"><span class="glyphicon glyphicon-ok" aria-hidden="true"></span></a></td>
@@ -222,10 +225,11 @@
                                         <div class="list-group">
                                             <table class="table table-condensed">
                                             @for(vare <- multimedia) {
-                                                <tr class="multimedia">
+                                                <tr class="multimediaTabell">
+                                                    <td><img src=@vare.pic alt"pic" height="30px" width="30px"></img></td>
                                                     <td class="vareNavn">@vare.navn </td>
                                                     <td id="varePris">@vare.pris kr </td>
-                                                    <td><button class="btn btn-xs addVareKnappMultimedia" id="addVareKnapp"><span class="glyphicon glyphicon-ok" aria-hidden="true"></span></button></td>
+                                                    <td><a href="@routes.ShoppingList.addItem(vare.vareid)" class="btn btn-xs addVareKnappMultimedia" id="addVareKnapp"><span class="glyphicon glyphicon-ok" aria-hidden="true"></span></a></td>
                                                 </tr>
                                             }
                                             </table>
