@@ -63,10 +63,64 @@
 
     - !!models.Vare
         navn: balansesykkel
-        kategori: multimedias
+        kategori: multimedia
         pris: 25
         vertexId: 16
         x: 1
+        y: 1
+        z: 1
+
+    - !!models.Vare
+        navn: pute
+        kategori: hjem
+        pris: 250
+        vertexId: 1
+        x: 1
+        y: 1
+        z: 1
+
+    - !!models.Vare
+        navn: hodetelefon
+        kategori: multimedia
+        pris: 288
+        vertexId: 3
+        x: 2
+        y: 2
+        z: 2
+
+    - !!models.Vare
+        navn: sodastream
+        kategori: jernvare
+        pris: 288
+        vertexId: 6
+        x: 2
+        y: 2
+        z: 2
+
+    - !!models.Vare
+        navn: magnet
+        kategori: elektro
+        pris: 12
+        vertexId: 10
+        x: 3
+        y: 1
+        z: 2
+
+    - !!models.Vare
+        navn: sykkel
+        kategori: fritid
+        pris: 1233
+        vertexId: 13
+        x: 2
+        y: 3
+        z: 1
+
+    - !!models.Vare
+        navn: bamse
+        kategori: fritid
+        pris: 45
+        vertexId: 21
+        x: 2
         y: 1
         z: 1
 
@@ -76,26 +130,32 @@
       yPos: 317
 
     - !!models.Vertex
+      id:   1
       xPos: 60
       yPos: 260
 
     - !!models.Vertex
+      id:   3
       xPos: 115
       yPos: 260
 
     - !!models.Vertex
+      id:   6
       xPos: 170
       yPos: 260
 
     - !!models.Vertex
+      id:   10
       xPos: 225
       yPos: 260
 
     - !!models.Vertex
+      id:   13
       xPos: 288
       yPos: 260
 
     - !!models.Vertex
+      id:   21
       xPos: 351
       yPos: 260
 
