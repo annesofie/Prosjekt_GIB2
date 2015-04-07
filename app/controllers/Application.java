@@ -210,20 +210,6 @@ public class Application extends Controller {
     }
 
 
-    public static List<Vare> sortShoppingList(List<Vertex> vertices) {
-
-        List<Vare> sortedShoppingList = new ArrayList<Vare>();
-
-        for (Vertex vertex: vertices) {
-            for (Vare vare: User.handleliste) {
-                if (vare.vertex == vertex) {
-                    sortedShoppingList.add(vare);
-                }
-            }
-        }
-
-        return sortedShoppingList;
-    }
 
     public static Result createUser() {
 
