@@ -1,6 +1,7 @@
 # Routes
 # This file defines all application routes (Higher priority routes first)
-# ~~~~
+# ~~~ "/home" betyr at nettleseren skrive home øverst, helt vilkårlig hva du kaller det
+
 
 # Home page
 GET         /                        controllers.Application.index()
