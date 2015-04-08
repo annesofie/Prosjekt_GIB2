@@ -15,11 +15,12 @@ public class Path{
     public static ArrayList<Vertex>finalPath;
 
 
-
     public Path(Vertex root, Vertex end){
+        System.out.println("start og sluttnode er: " +root+" "+end);
+
         //finner en graf som innkluderer kun targetnodene
         weightedGraph wGraph=bfs.bfsAllToAll();
-        //kjører saa prims-algoritme paa den vektede grafenl for aa finne minimalt spenntre
+        //kjører saa prims-algoritme paa den vektede grafen for aa finne et minimalt spenntre
         Prims prim=new Prims(root,end, wGraph);
         finalPath=prim.path;
     }
