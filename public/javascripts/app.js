@@ -68,7 +68,7 @@ var init = function() {
     appRoutes.controllers.Application.getTargetVertices().ajax({
         success: function(data) {
             $(data).each(function(index,vertex) {
-                L.marker([vertex.xPos,vertex.yPos]).bindPopup("Test").addTo(map);
+                L.marker([vertex.xPos,vertex.yPos]).bindPopup(vertex.beskrivelse).addTo(map);
                 //latlngs.push(L.latLng(vertex.xPos,vertex.yPos));
                 //window.alert(latlngs);
             });
