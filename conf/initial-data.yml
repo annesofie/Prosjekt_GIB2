@@ -125,72 +125,58 @@
         z: 1
 
     - !!models.Vertex
-      id:   0
       xPos: 60
       yPos: 317
 
     - !!models.Vertex
-      id: 1
       xPos: 60
       yPos: 260
 
     - !!models.Vertex
-      id:   3
       xPos: 115
       yPos: 260
 
     - !!models.Vertex
-      id:   6
       xPos: 170
       yPos: 260
 
     - !!models.Vertex
-      id:   10
       xPos: 225
       yPos: 260
 
     - !!models.Vertex
-      id:   13
       xPos: 288
       yPos: 260
 
     - !!models.Vertex
-      id:   21
       xPos: 351
       yPos: 260
 
     - !!models.Vertex
-      id:   2
       xPos: 415
       yPos: 260
 
     - !!models.Vertex
-      id:   4
       xPos: 415
       yPos: 204
 
     - !!models.Vertex
-      id:   12
       xPos: 415
       yPos: 147
 
     - !!models.Vertex
-      id:   7
       xPos: 415
       yPos: 90
 
     - !!models.Vertex
-      id:   14
       xPos: 351
       yPos: 90
 
     - !!models.Vertex
-      id:   15
       xPos: 288
       yPos: 90
 
     - !!models.Vertex
-      id:   16
       xPos: 225
       yPos: 90
 
@@ -207,16 +193,13 @@
       yPos: 147
 
     - !!models.Vertex
-      id:   100
       xPos: 60
       yPos: 204
 
     - !!models.Vertex
-      id: 80
       xPos: 225
       yPos: 147
 
     - !!models.Vertex
-      id: 81
       xPos: 225
       yPos: 204

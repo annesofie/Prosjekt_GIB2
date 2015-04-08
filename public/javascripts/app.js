@@ -41,26 +41,26 @@ var init = function() {
 
     L.imageOverlay(imageUrl, imageBounds).addTo(map);
 
-    var vertex1 = L.marker([60, 317]).bindPopup("1");
-    var vertex2 = L.marker([60, 260]).bindPopup("2");
-    var vertex3 = L.marker([115, 260]).bindPopup("3");
-    var vertex4 = L.marker([170, 260]).bindPopup("4");
-    var vertex5 = L.marker([225, 260]).bindPopup("5");
-    var vertex6 = L.marker([288, 260]).bindPopup("6");
-    var vertex7 = L.marker([351, 260]).bindPopup("7");
-    var vertex8 = L.marker([415, 260]).bindPopup("8");
-    var vertex9 = L.marker([415, 204]).bindPopup("9");
-    var vertex10 = L.marker([415, 147]).bindPopup("10");
-    var vertex11 = L.marker([415, 90]).bindPopup("11");
-    var vertex12 = L.marker([351, 90]).bindPopup("12");
-    var vertex13 = L.marker([288, 90]).bindPopup("13");
-    var vertex14 = L.marker([225, 90]).bindPopup("14");
-    var vertex15 = L.marker([170, 90]).bindPopup("15");
-    var vertex16 = L.marker([115, 90]).bindPopup("16");
-    var vertex17 = L.marker([60, 147]).bindPopup("17");
-    var vertex18 = L.marker([60, 204]).bindPopup("18");
-    var vertex19 = L.marker([225, 147]).bindPopup("19");
-    var vertex20 = L.marker([225, 204]).bindPopup("20");
+    var vertex1 = L.marker([60, 317]).bindPopup("1").addTo(map);
+    var vertex2 = L.marker([60, 260]).bindPopup("2").addTo(map);
+    var vertex3 = L.marker([115, 260]).bindPopup("3").addTo(map);
+    var vertex4 = L.marker([170, 260]).bindPopup("4").addTo(map);
+    var vertex5 = L.marker([225, 260]).bindPopup("5").addTo(map);
+    var vertex6 = L.marker([288, 260]).bindPopup("6").addTo(map);
+    var vertex7 = L.marker([351, 260]).bindPopup("7").addTo(map);
+    var vertex8 = L.marker([415, 260]).bindPopup("8").addTo(map);
+    var vertex9 = L.marker([415, 204]).bindPopup("9").addTo(map);
+    var vertex10 = L.marker([415, 147]).bindPopup("10").addTo(map);
+    var vertex11 = L.marker([415, 90]).bindPopup("11").addTo(map);
+    var vertex12 = L.marker([351, 90]).bindPopup("12").addTo(map);
+    var vertex13 = L.marker([288, 90]).bindPopup("13").addTo(map);
+    var vertex14 = L.marker([225, 90]).bindPopup("14").addTo(map);
+    var vertex15 = L.marker([170, 90]).bindPopup("15").addTo(map);
+    var vertex16 = L.marker([115, 90]).bindPopup("16").addTo(map);
+    var vertex17 = L.marker([60, 147]).bindPopup("17").addTo(map);
+    var vertex18 = L.marker([60, 204]).bindPopup("18").addTo(map);
+    var vertex19 = L.marker([225, 147]).bindPopup("19").addTo(map);
+    var vertex20 = L.marker([225, 204]).bindPopup("20").addTo(map);
 
     //Tegne sti på kart
     var latlngs = Array();
