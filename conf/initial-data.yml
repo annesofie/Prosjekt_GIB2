@@ -130,7 +130,7 @@
       yPos: 317
 
     - !!models.Vertex
-      id:   1
+      id: 1
       xPos: 60
       yPos: 260
 
@@ -212,9 +212,11 @@
       yPos: 204
 
     - !!models.Vertex
+      id: 80
       xPos: 225
       yPos: 147
 
     - !!models.Vertex
+      id: 81
       xPos: 225
       yPos: 204
