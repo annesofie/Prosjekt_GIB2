@@ -15,11 +15,8 @@ public class Edge extends Model{
     public int id;
     public Vertex source;
     public Vertex destination;
-<<<<<<< HEAD
     public int sourceId;
     public int destinationId;
-=======
->>>>>>> origin/master
 
 
     public static Model.Finder<String, Edge> find = new Model.Finder(String.class, Edge.class);
