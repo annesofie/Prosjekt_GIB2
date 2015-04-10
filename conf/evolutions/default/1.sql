@@ -5,7 +5,6 @@
 
 create table edge (
   id                        integer not null,
-  vertex_id                 integer,
   constraint pk_edge primary key (id))
 ;
 
