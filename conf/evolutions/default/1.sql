@@ -5,8 +5,11 @@
 
 create table edge (
   id                        integer not null,
+<<<<<<< HEAD
   source_id                 integer,
   destination_id            integer,
+=======
+>>>>>>> origin/master
   constraint pk_edge primary key (id))
 ;
 
