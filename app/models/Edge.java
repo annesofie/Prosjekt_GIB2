@@ -28,18 +28,12 @@ public class Edge extends Model{
     }
 
 
-    public Integer getId() {
-        return id;
-    }
-
     public Vertex getDestination() {
-        return destination;
+        return Vertex.find.byId(destinationId);
     }
 
-
-
-    @Override
-    public String toString() {
-        return source + " " + destination;
+    public Vertex getSource(){
+     return Vertex.find.byId(sourceId);
     }
+
 }

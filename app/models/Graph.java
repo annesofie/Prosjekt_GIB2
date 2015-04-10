@@ -17,7 +17,7 @@ public class Graph extends Model{
 
     public Graph() {
         this.vertexes = getVertices();
-        this.edges = getEdges();
+        this.edges=getEdges();
         this.rootNode= rootNode;//hent ut startnoden i butikken
     }
 
@@ -32,14 +32,16 @@ public class Graph extends Model{
     }
 
 
+    //TESTET OG OK
     //Finner nabonodene til en gitt node
     public List<Vertex> getChildren(Vertex vertex){
-        List<Vertex> children = new ArrayList<Vertex>();
-        for (Edge edge : this.edges) {
-            if (edge.source.equals(vertex)){
+        List<Vertex> children = new ArrayList<>();
+        for (Edge edge : getEdges()) {
+            if (edge.getSource().equals(vertex)){
                 children.add(edge.getDestination());
             }
         }
+        System.out.println("Barna til node "+vertex.id +"er :" +children);
         return children;
     }
 }

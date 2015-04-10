@@ -52,7 +52,7 @@ public class BreadthFirstSearch {
 
     //Skal returnere en graf som viser vei fra alle target-noder til alle target-noder, et spenntre
     public weightedGraph bfsAllToAll() {
-        int hight = 0;
+
         // BFS uses Queue data structure
         visited=new ArrayList<>();
         Queue queue = new LinkedList();
@@ -61,6 +61,7 @@ public class BreadthFirstSearch {
         System.out.println("I bfsAllToAll - yey");
 
         for (Vertex rootNode:findTargets()){
+            int hight = 0;
             queue.add(rootNode);
             System.out.println("queue i bfs " + queue);
             visited.add(rootNode);
@@ -71,7 +72,6 @@ public class BreadthFirstSearch {
                 Vertex child = null;
                 hight += 1; //Teller nivåer i treet, altså totallengden til noden man sjekker
 
-//her det kom feilbeskjed
                 System.out.println("noden som blir sent til getChild er: "+vertex);
                 while ((child = getUnvisitedChildNodeInGraph(vertex)) != null) { //Går igjennom hvert barn
                     System.out.println("i while i bfs");
@@ -79,7 +79,7 @@ public class BreadthFirstSearch {
                         graphVertices.add(child);
                         System.out.println("child: "+child);
                         for (Edge edge : graph.edges) {
-                            if (edge.getDestination().equals(child) && edge.source.equals(vertex)) {
+                            if (edge.getDestination().equals(child) && edge.getSource().equals(vertex)) {
                                 graphEdges.add(new weightedEdge(vertex, child, hight));
                             }
                         }
