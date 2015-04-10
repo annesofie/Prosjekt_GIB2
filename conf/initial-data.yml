@@ -203,7 +203,3 @@
     - !!models.Vertex
       xPos: 225
       yPos: 204
-
-    - !!models.Edge
-      sourceId: 
-      destId:
