@@ -10,7 +10,7 @@
         navn: batterilader
         kategori: hjem
         pris: 249
-        vertexId: 2
+        vertexId: 3
         x: 2
         y: 2
         z: 2
@@ -38,7 +38,7 @@
         navn: balansesykkel
         kategori: elektro
         pris: 25
-        vertexId: 7
+        vertexId: 11
         x: 1
         y: 1
         z: 1
@@ -47,7 +47,7 @@
         navn: balansesykkel
         kategori: fritid
         pris: 25
-        vertexId: 14
+        vertexId: 16
         x: 1
         y: 1
         z: 1
@@ -56,7 +56,7 @@
         navn: balansesykkel
         kategori: jernvare
         pris: 25
-        vertexId: 15
+        vertexId: 10
         x: 1
         y: 1
         z: 1
@@ -65,7 +65,7 @@
         navn: balansesykkel
         kategori: multimedia
         pris: 25
-        vertexId: 16
+        vertexId: 7
         x: 1
         y: 1
         z: 1
@@ -74,7 +74,7 @@
         navn: pute
         kategori: hjem
         pris: 250
-        vertexId: 1
+        vertexId: 20
         x: 1
         y: 1
         z: 1
@@ -83,7 +83,7 @@
         navn: hodetelefon
         kategori: multimedia
         pris: 288
-        vertexId: 3
+        vertexId: 6
         x: 2
         y: 2
         z: 2
@@ -92,7 +92,7 @@
         navn: sodastream
         kategori: jernvare
         pris: 288
-        vertexId: 6
+        vertexId: 8
         x: 2
         y: 0
         z: 2
@@ -101,7 +101,7 @@
         navn: magnet
         kategori: elektro
         pris: 12
-        vertexId: 10
+        vertexId: 13
         x: 3
         y: 1
         z: 2
@@ -110,7 +110,7 @@
         navn: sykkel
         kategori: fritid
         pris: 1233
-        vertexId: 13
+        vertexId: 19
         x: 2
         y: 3
         z: 1
@@ -119,7 +119,7 @@
         navn: bamse
         kategori: fritid
         pris: 45
-        vertexId: 21
+        vertexId: 17
         x: 2
         y: 1
         z: 1
