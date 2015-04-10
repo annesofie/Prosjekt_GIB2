@@ -63,6 +63,7 @@ public class BreadthFirstSearch {
             visited.add(rootNode);
 
             while (!queue.isEmpty()) {
+                System.out.println("i While i bfs");
                 Vertex vertex = (Vertex)queue.remove();
                 Vertex child = null;
                 hight += 1; //Teller nivåer i treet, altså totallengden til noden man sjekker
