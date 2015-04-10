@@ -203,7 +203,9 @@ public class Application extends Controller {
         List<Vertex> vecs = new ArrayList<>();
 
         for (Vare v : varer) {
-            vecs.add(Vertex.getById(v.vertexId));
+            Vertex vec = Vertex.getById(v.vertexId);
+            vec.setBeskrivelse(v.navn);
+            vecs.add(vec);
         }
 
         return ok(Json.toJson(vecs));
