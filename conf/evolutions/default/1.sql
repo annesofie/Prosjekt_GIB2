@@ -5,7 +5,8 @@
 
 create table edge (
   id                        integer not null,
-  vertex_id                 integer,
+  source_id                 integer,
+  destination_id            integer,
   constraint pk_edge primary key (id))
 ;
 
@@ -40,6 +41,7 @@ create table vertex (
   y_pos                     integer,
   key                       integer,
   infinite                  integer,
+  beskrivelse               varchar(255),
   constraint pk_vertex primary key (id))
 ;
 
