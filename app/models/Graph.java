@@ -32,7 +32,7 @@ public class Graph extends Model{
     }
 
 
-    //TESTET OG OK
+    //TESTET OG OK!!!
     //Finner nabonodene til en gitt node
     public List<Vertex> getChildren(Vertex vertex){
         List<Vertex> children = new ArrayList<>();
@@ -41,7 +41,8 @@ public class Graph extends Model{
                 children.add(edge.getDestination());
             }
         }
-        System.out.println("Barna til node "+vertex.id +"er :" +children);
+        for(Vertex child:children) {
+        }
         return children;
     }
 }

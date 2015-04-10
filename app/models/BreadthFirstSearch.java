@@ -19,9 +19,9 @@ public class BreadthFirstSearch {
 
         List<Vare> handleVarer=User.handleliste;
         for (Vare vare:handleVarer){
-
             targets.add(vare.findVareVertex());
         }
+        System.out.println("Alle targets: "+targets);
         return targets;
     }
 
@@ -63,22 +63,19 @@ public class BreadthFirstSearch {
         for (Vertex rootNode:findTargets()){
             int hight = 0;
             queue.add(rootNode);
-            System.out.println("queue i bfs " + queue);
+            graphVertices.add(rootNode);
             visited.add(rootNode);
 
             while (!(queue.isEmpty())) {
-                System.out.println("i While i bfs");
                 Vertex vertex = (Vertex)queue.remove();
                 Vertex child = null;
                 hight += 1; //Teller nivåer i treet, altså totallengden til noden man sjekker
 
-                System.out.println("noden som blir sent til getChild er: "+vertex);
-                while ((child = getUnvisitedChildNodeInGraph(vertex)) != null) { //Går igjennom hvert barn
-                    System.out.println("i while i bfs");
+                while ((child = getUnvisitedChildNodeInGraph(vertex)) != null) { //Går igjennom hvert barn til vertex
                     if (targets.contains(child)) {
+                        System.out.println("child er: "+child.id);
                         graphVertices.add(child);
-                        System.out.println("child: "+child);
-                        for (Edge edge : graph.edges) {
+                        for (Edge edge : graph.getEdges()){
                             if (edge.getDestination().equals(child) && edge.getSource().equals(vertex)) {
                                 graphEdges.add(new weightedEdge(vertex, child, hight));
                             }
@@ -89,13 +86,18 @@ public class BreadthFirstSearch {
                 }
             }
         }
+        for(Vertex v:graphVertices){
+            System.out.println("node i vektet graf: "+v.id);
+        }
+        for(weightedEdge we:graphEdges){
+            System.out.println("kant i vektet graf, source er: "+we.getSource().id+", destination er: "+we.getDestination().id+", vekt er: "+we.weight);
+        }
 
         return new weightedGraph(graphVertices,graphEdges);
     }
 
-
+//TESTET-ISH, tror ok:)
     public Vertex getUnvisitedChildNodeInGraph(Vertex vertex) {
-        System.out.println("i getUnvisitetNodeInGraph");
         for (Vertex child:graph.getChildren(vertex)){
             if(!visited.contains(child)){
                 return child;
@@ -103,8 +105,5 @@ public class BreadthFirstSearch {
         }
         return null;
     }
-
-
-
 
 }
