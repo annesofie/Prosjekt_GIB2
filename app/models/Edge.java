@@ -20,9 +20,9 @@ public class Edge extends Model{
 
     public static Model.Finder<String, Edge> find = new Model.Finder(String.class, Edge.class);
 
-    public Edge(Integer id, Vertex source, int destinationId) {
+    public Edge(Integer id, int sourceId, int destinationId) {
         this.id = id;
-        this.source = source;
+        this.source = Vertex.find.byId(sourceId);
         this.destination = Vertex.find.byId(destinationId);
     }
 
