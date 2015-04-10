@@ -209,6 +209,22 @@ public class Application extends Controller {
 
     }
 
+    @Security.Authenticated(Secured.class)
+    public static Result getFinalPath() {
+
+        User user = User.find.byId(request().username());
+
+        List<Vare> varer = user.getShoppingList();
+        List<Vertex> vecs = new ArrayList<>();
+
+        for (Vare v : varer) {
+            vecs.add(Vertex.getById(v.vertexId));
+        }
+
+        return ok(Json.toJson(vecs));
+
+    }
+
 
 
     public static Result createUser() {
