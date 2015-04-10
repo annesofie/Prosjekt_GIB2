@@ -190,7 +190,8 @@ public class Application extends Controller {
     public static Result jsRoutes() {
         response().setContentType("text/javascript");
         return ok(Routes.javascriptRouter("appRoutes", //appRoutes will be the JS object available in our view
-                routes.javascript.Application.getTargetVertices()));
+                routes.javascript.Application.getTargetVertices(),
+                routes.javascript.Application.getFinalPath()));
     }
 
     @Security.Authenticated(Secured.class)
@@ -213,15 +214,9 @@ public class Application extends Controller {
     public static Result getFinalPath() {
 
         User user = User.find.byId(request().username());
+        Path path = new Path(Vertex.find.byId(1), Vertex.find.byId(18));
 
-        List<Vare> varer = user.getShoppingList();
-        List<Vertex> vecs = new ArrayList<>();
-
-        for (Vare v : varer) {
-            vecs.add(Vertex.getById(v.vertexId));
-        }
-
-        return ok(Json.toJson(vecs));
+        return ok(Json.toJson(path.finalPath));
 
     }
 
