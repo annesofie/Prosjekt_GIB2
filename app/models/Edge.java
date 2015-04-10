@@ -24,8 +24,8 @@ public class Edge extends Model{
         this.id = id;
         this.source = source;
         this.destination = Vertex.find.byId(destinationId);
-
     }
+
 
     public Integer getId() {
         return id;
