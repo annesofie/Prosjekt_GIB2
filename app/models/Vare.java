@@ -23,7 +23,7 @@ public class Vare extends Model {
 
 
 
-    public static Model.Finder<Long, Vare> find = new Model.Finder(Long.class, Vare.class);
+    public static Model.Finder<Long,Vare> find = new Model.Finder(Long.class, Vare.class);
 
     public Vare(String navn, String kategori, double pris, Integer vertexId, Integer x, Integer y, Integer z, String pic){
         this.navn = navn;
@@ -33,14 +33,12 @@ public class Vare extends Model {
         this.y = y;
         this.z = z;
         this.vertexId=vertexId;
-        this.vertex=findvertex(vertexId);
+
         this.pic = pic;
     }
 
-
-    public static Vertex findvertex(Integer vertexId){
-
-        return Vertex.find.byId(vertexId);
+    public Vertex findVareVertex(){
+        return Vertex.find.byId(this.vertexId);
     }
 
     public static List<Vare> vareFraKategori(String kategori){

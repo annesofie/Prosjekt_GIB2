@@ -10,14 +10,17 @@ public class BreadthFirstSearch {
 
     Graph graph = new Graph();
     ArrayList<Vertex> visited;
-    public ArrayList<Vertex>targets = new ArrayList<>();
+    public ArrayList<Vertex>targets;
 
-    public ArrayList<Vertex> findTargets(String email){
-        //Target er vertex'en nærmest varen man har lagret i handlelisten
+    //TESTET OG OK!!!
+    public ArrayList<Vertex> findTargets(){
+        //Target er vertex'en på stien som er nærmest varen man har lagret i handlelisten
         targets=new ArrayList<Vertex>();
-        List<Vare> handle=User.handleliste;
-        for (Vare vare:handle){
-            targets.add(vare.vertex);
+
+        List<Vare> handleVarer=User.handleliste;
+        for (Vare vare:handleVarer){
+
+            targets.add(vare.findVareVertex());
         }
         return targets;
     }
@@ -49,32 +52,34 @@ public class BreadthFirstSearch {
 
     //Skal returnere en graf som viser vei fra alle target-noder til alle target-noder, et spenntre
     public weightedGraph bfsAllToAll() {
-
         int hight = 0;
         // BFS uses Queue data structure
         visited=new ArrayList<>();
         Queue queue = new LinkedList();
         ArrayList<Vertex> graphVertices=new ArrayList<>();
         ArrayList<weightedEdge> graphEdges=new ArrayList<>();
-        System.out.println("Nå er jeg i bfsAllToAll - yey");
-        for (Vertex rootNode:targets) {
+        System.out.println("I bfsAllToAll - yey");
+
+        for (Vertex rootNode:findTargets()){
             queue.add(rootNode);
-            System.out.println(queue);
+            System.out.println("queue i bfs " + queue);
             visited.add(rootNode);
 
-            while (!queue.isEmpty()) {
+            while (!(queue.isEmpty())) {
                 System.out.println("i While i bfs");
                 Vertex vertex = (Vertex)queue.remove();
                 Vertex child = null;
                 hight += 1; //Teller nivåer i treet, altså totallengden til noden man sjekker
 
+//her det kom feilbeskjed
+                System.out.println("noden som blir sent til getChild er: "+vertex);
                 while ((child = getUnvisitedChildNodeInGraph(vertex)) != null) { //Går igjennom hvert barn
                     System.out.println("i while i bfs");
                     if (targets.contains(child)) {
                         graphVertices.add(child);
                         System.out.println("child: "+child);
                         for (Edge edge : graph.edges) {
-                            if (edge.getDestination().equals(child) && edge.getSource().equals(vertex)) {
+                            if (edge.getDestination().equals(child) && edge.source.equals(vertex)) {
                                 graphEdges.add(new weightedEdge(vertex, child, hight));
                             }
                         }

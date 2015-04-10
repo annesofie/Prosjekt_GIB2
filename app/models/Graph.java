@@ -33,10 +33,10 @@ public class Graph extends Model{
 
 
     //Finner nabonodene til en gitt node
-    public List<Vertex> getChildren(Vertex node) {
+    public List<Vertex> getChildren(Vertex vertex){
         List<Vertex> children = new ArrayList<Vertex>();
         for (Edge edge : this.edges) {
-            if (edge.getSource().equals(node)) {
+            if (edge.source.equals(vertex)){
                 children.add(edge.getDestination());
             }
         }

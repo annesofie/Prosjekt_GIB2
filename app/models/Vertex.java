@@ -24,9 +24,7 @@ public class Vertex extends Model{
 //lagt til key-verdi for å kunne kjoore prims
 
 
-    public static Finder<Integer, Vertex> find = new Finder(Integer.class, Vertex.class);
-
-
+    public static Finder<Integer, Vertex> find = new Model.Finder(Integer.class, Vertex.class);
 
 
     public Vertex(Integer id, Integer x, Integer y) {

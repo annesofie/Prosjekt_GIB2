@@ -93,7 +93,7 @@ public class DijkstraAlgorithm{
     public List<Vertex> getNeighbors(Vertex node) {
         List<Vertex> neighbors = new ArrayList<Vertex>();
         for (Edge edge : edges) {
-            if (edge.getSource().equals(node)
+            if (edge.source.equals(node)
                    ) {
                 neighbors.add(edge.getDestination());
             }

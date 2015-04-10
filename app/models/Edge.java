@@ -36,9 +36,6 @@ public class Edge extends Model{
         return destination;
     }
 
-    public Vertex getSource() {
-        return source;
-    }
 
 
     @Override
