@@ -16,8 +16,6 @@ public class Path{
 
 
     public Path(Vertex root, Vertex end){
-        System.out.println("start og sluttnode er: " +root+" "+end);
-
         //finner en graf som innkluderer kun targetnodene
         weightedGraph wGraph=bfs.bfsAllToAll();
         //kjører saa prims-algoritme paa den vektede grafen for aa finne et minimalt spenntre

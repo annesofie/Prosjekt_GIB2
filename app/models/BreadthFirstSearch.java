@@ -56,19 +56,22 @@ public class BreadthFirstSearch {
         Queue queue = new LinkedList();
         ArrayList<Vertex> graphVertices=new ArrayList<>();
         ArrayList<weightedEdge> graphEdges=new ArrayList<>();
-
+        System.out.println("Nå er jeg i bfsAllToAll - yey");
         for (Vertex rootNode:targets) {
             queue.add(rootNode);
+            System.out.println(queue);
             visited.add(rootNode);
 
             while (!queue.isEmpty()) {
-                Vertex vertex = (Vertex) queue.remove();
+                Vertex vertex = (Vertex)queue.remove();
                 Vertex child = null;
                 hight += 1; //Teller nivåer i treet, altså totallengden til noden man sjekker
 
                 while ((child = getUnvisitedChildNodeInGraph(vertex)) != null) { //Går igjennom hvert barn
+                    System.out.println("i while i bfs");
                     if (targets.contains(child)) {
                         graphVertices.add(child);
+                        System.out.println("child: "+child);
                         for (Edge edge : graph.edges) {
                             if (edge.getDestination().equals(child) && edge.getSource().equals(vertex)) {
                                 graphEdges.add(new weightedEdge(vertex, child, hight));
@@ -86,6 +89,7 @@ public class BreadthFirstSearch {
 
 
     public Vertex getUnvisitedChildNodeInGraph(Vertex vertex) {
+        System.out.println("i getUnvisitetNodeInGraph");
         for (Vertex child:graph.getChildren(vertex)){
             if(!visited.contains(child)){
                 return child;
