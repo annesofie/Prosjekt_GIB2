@@ -12,17 +12,18 @@ public class Edge extends Model{
 
     //Vi må huske å lagre to kanter mellom nodene, fordi dijsktra kjører på directed graphs, og vi oonsker at man skal kunne gå begge retninger
     @Id
-    public final int id;
-    public final Vertex source;
-    public final Vertex destination;
+    public int id;
+    public Vertex source;
+    public Vertex destination;
+    public int vertexId;
 
 
     public static Model.Finder<String, Edge> find = new Model.Finder(String.class, Edge.class);
 
-    public Edge(Integer id, Vertex source, Vertex destination) {
+    public Edge(Integer id, Vertex source, int destinationId) {
         this.id = id;
         this.source = source;
-        this.destination = destination;
+        this.destination = Vertex.find.byId(destinationId);
 
     }
 
