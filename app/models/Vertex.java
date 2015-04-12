@@ -19,7 +19,7 @@ public class Vertex extends Model{
     public Vertex parent;
     public int INFINITE = 999;
     public String beskrivelse;
-    
+    public Vertex prev;
 
 //lagt til key-verdi for å kunne kjoore prims
 
@@ -34,6 +34,7 @@ public class Vertex extends Model{
         this.yPos = y;
         this.key=INFINITE;
         this.parent=null;
+        prev=null;
 
     }
 
@@ -45,4 +46,10 @@ public class Vertex extends Model{
         return find.byId(id);
     }
 
+    public void setPrevVertex(Vertex v){
+        prev=v;
+    }
+
+
 }
+

@@ -61,34 +61,48 @@ public class BreadthFirstSearch {
         System.out.println("I bfsAllToAll - yey");
 
         for (Vertex rootNode:findTargets()){
-            int hight = 0;
+            int height = 0;
+            System.out.println("ny runde i for, height: "+height+" rotnode er "+rootNode.id);
             queue.add(rootNode);
-            graphVertices.add(rootNode);
+            System.out.println(queue);
             visited.add(rootNode);
-
+            if(!graphVertices.contains(rootNode)) {
+                graphVertices.add(rootNode);
+            }
             while (!(queue.isEmpty())) {
                 Vertex vertex = (Vertex)queue.remove();
                 Vertex child = null;
-                hight += 1; //Teller nivåer i treet, altså totallengden til noden man sjekker
-
                 while ((child = getUnvisitedChildNodeInGraph(vertex)) != null) { //Går igjennom hvert barn til vertex
+                    child.setPrevVertex(vertex);
+                    System.out.println("child: "+child.id);
                     if (targets.contains(child)) {
                         System.out.println("child er: "+child.id);
                         graphVertices.add(child);
                         for (Edge edge : graph.getEdges()){
                             if (edge.getDestination().equals(child) && edge.getSource().equals(vertex)) {
-                                graphEdges.add(new weightedEdge(vertex, child, hight));
+
+                                boolean root=false;
+                                Vertex v=child;
+                                while(!root && v.prev!=null){
+                                    v=v.prev;
+                                    height+=1;
+                                    if(v.equals(rootNode)){
+                                        root=true;
+                                    }
+                                }
+                                graphEdges.add(new weightedEdge(vertex, child, height));
                             }
                         }
                     }
                     visited.add(child);
+                    System.out.println("prev vertex til "+child.id+"er "+vertex.id);
                     queue.add(child);
                 }
             }
         }
-        for(Vertex v:graphVertices){
+       /* for(Vertex v:graphVertices){
             System.out.println("node i vektet graf: "+v.id);
-        }
+        }*/
         for(weightedEdge we:graphEdges){
             System.out.println("kant i vektet graf, source er: "+we.getSource().id+", destination er: "+we.getDestination().id+", vekt er: "+we.weight);
         }
