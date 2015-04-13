@@ -64,7 +64,8 @@ public class User extends Model  {
     public void removeFromHandleliste(Long vareid){
 
         Vare vare = Vare.find.byId(vareid);
-
+        vare.in_shoppinglist=false;
+        vare.save();
         this.handleliste.remove(vare);
         this.save();
     }
