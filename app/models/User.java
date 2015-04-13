@@ -50,7 +50,8 @@ public class User extends Model  {
     public void addToHandleliste(Long vareid){
 
         Vare vare = Vare.find.byId(vareid);
-
+        vare.in_shoppinglist=true;
+        vare.save();
         this.handleliste.add(vare);
         this.save();
 

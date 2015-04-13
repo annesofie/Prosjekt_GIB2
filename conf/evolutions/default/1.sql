@@ -32,6 +32,7 @@ create table vare (
   pris                      double,
   pic                       varchar(255),
   vertex_id                 integer,
+  in_shoppinglist           boolean,
   constraint pk_vare primary key (vareid))
 ;
 

@@ -88,11 +88,7 @@ var init = function() {
             }
         });
     })
-    /*/
-    appRoutes.controllers.ShoppingList.addItem().ajax({
-        $('#addVareKnapp').prop('disabled', true);
-    });
-    */
+
 
 };
 

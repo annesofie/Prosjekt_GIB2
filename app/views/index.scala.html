@@ -160,8 +160,11 @@
                                                     <td><img src=@vare.pic alt"pic" height="30px" width="30px"></img></td>
                                                     <td class="vareNavn">@vare.navn </td>
                                                     <td id="varePris">@vare.pris kr </td>
-                                                    @if(vare.in_shoppingist)
-                                                    <td><a href="@routes.ShoppingList.addItem(vare.vareid)" class="btn btn-xs addVareKnappJernvare" id="addVareKnapp" onclick="this.disabled='disabled'; this.form.submit();"><span class="glyphicon glyphicon-ok" aria-hidden="true"></span></a></td>
+                                                    @if(vare.in_shoppinglist) {
+                                                        <td><a href="#" class="btn btn-default btn-lg disabled" role="button">x</a></td>
+                                                    } else {
+                                                        <td><a href="@routes.ShoppingList.addItem(vare.vareid)" class="btn btn-xs addVareKnappJernvare" id="addVareKnapp" onclick="this.disabled='disabled'; this.form.submit();"><span class="glyphicon glyphicon-ok" aria-hidden="true"></span></a></td>
+                                                    }
                                                 </tr>
                                             }
                                             </table>
