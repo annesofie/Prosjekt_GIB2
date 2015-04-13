@@ -15,11 +15,6 @@ import java.util.List;
 
 public class Application extends Controller {
 
-    public static BreadthFirstSearch bfs=new BreadthFirstSearch();
-    public static ArrayList<Vertex>finalPath;
-
-
-
     public static class Login {
 
         public String email;
@@ -33,8 +28,6 @@ public class Application extends Controller {
         }
 
     }
-
-
 
     @Security.Authenticated(Secured.class)
     public static Result index(){
@@ -221,8 +214,6 @@ public class Application extends Controller {
         return ok(Json.toJson(path.finalPath));
 
     }
-
-
 
     public static Result createUser() {
 

@@ -19,6 +19,7 @@ public class Vare extends Model {
     public Vertex vertex;
     public String pic;
     public Integer vertexId;
+    public boolean in_shoppinglist;
 
 
 
@@ -35,6 +36,7 @@ public class Vare extends Model {
         this.vertexId=vertexId;
 
         this.pic = pic;
+        this.in_shoppinglist = false;
     }
 
     public Vertex findVareVertex(){
