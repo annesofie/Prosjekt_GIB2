@@ -190,27 +190,27 @@ public class Application extends Controller {
     @Security.Authenticated(Secured.class)
     public static Result getTargetVertices() {
 
-        User user = User.find.byId(request().username());
-        List<Vare> varer = user.getShoppingList();
+            User user = User.find.byId(request().username());
+            List<Vare> varer = user.getShoppingList();
 
-        ArrayList<Vertex>allVerticesInPath=new ArrayList<Vertex>();
-        for(int i=0;i<Path.finalPath.size()-1;i++){ //Gaar igjennom alle targetnodene i den rekkefoolgen de skal besookes
-            for(weightedEdge e: Path.wGraph.edges){
-                if(e.getDestination().equals(Path.finalPath.get(i+1))&&(e.getSource().equals(Path.finalPath.get(i)))){
+            ArrayList<Vertex> allVerticesInPath = new ArrayList<Vertex>();
+            for (int i = 0; i < Path.finalPath.size()-1; i++) { //Gaar igjennom alle targetnodene i den rekkefoolgen de skal besookes
+                for (weightedEdge e : Path.wGraph.edges) {
+                    if (e.getDestination().equals(Path.finalPath.get(i + 1)) && (e.getSource().equals(Path.finalPath.get(i)))) {
 
-/*                    for (Vare va : varer) {
-                        for (int i = 0; i < e.visitedVertices.size(); i++) {
-                            if(va.vertexId == e.visitedVertices.get(i).id)
-                                allVerticesInPath.setBeskrivelse(va.navn);
+                        for (Vare va : varer) {
+                            for (int j = 0; j < e.visitedVertices.size(); j++) {
+                                System.out.println(e.visitedVertices.get(j).xPos);
+                                if (va.vertexId == e.visitedVertices.get(j).id)
+                                    System.out.println("Hei");
+                                    allVerticesInPath.get(j).setBeskrivelse(va.navn);
+                            }
                         }
-                    }*/
 
-                    allVerticesInPath.addAll(e.visitedVertices);
+                        allVerticesInPath.addAll(e.visitedVertices);
+                    }
                 }
             }
-        }
-
-
 
         return ok(Json.toJson(allVerticesInPath));
 
