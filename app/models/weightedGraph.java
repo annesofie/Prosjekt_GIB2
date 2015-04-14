@@ -8,7 +8,7 @@ import java.util.*;
 public class weightedGraph {
 
     public List<Vertex> vertices;
-    public final List<weightedEdge> edges;
+    public static List<weightedEdge> edges;
     public Vertex rootNode;
     public Integer numberOfVertices;
     public Integer numberOfEdges;
@@ -43,7 +43,6 @@ public class weightedGraph {
                 neighbor.add(edge.getSource());
             }
         }
-        System.out.println();
         return neighbor;
     }
 

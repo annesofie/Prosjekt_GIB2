@@ -9,8 +9,8 @@ public class Prims {
 
 
     public static final int INFINITE = 999;
-    public Vertex root;
-    public Vertex end;
+    public Vertex root=Vertex.find.byId(1);
+    public Vertex end=Vertex.find.byId(18);
     weightedGraph wGraph;
     ArrayList<Vertex>path;
     //kjører prims-algoritme for å finne minimalt spenntre
@@ -35,7 +35,7 @@ public class Prims {
     }
 
 
-    public ArrayList<Vertex> primsExecute(){
+    /*public ArrayList<Vertex> primsExecute(){
         vertexComparator comp=new vertexComparator();
         PriorityQueue<Vertex> q = new PriorityQueue<>(wGraph.edges.size(),comp);
         q.addAll(wGraph.vertices);
@@ -67,26 +67,36 @@ public class Prims {
         }
 
         return path;
-    }
+    }*/
 
     public ArrayList<Vertex> primsExecuteTwerked() {
         ArrayList<Vertex> path = new ArrayList<>();
 
         if (wGraph.vertices.size() < 4) {
+
             path.add(root);
-            for (Vertex v : wGraph.vertices) {
+            for (Vertex v : wGraph.vertices){
                 if (!v.equals(root) && (!v.equals(end))) {
                     path.add(v);
                 }
             }
             path.add(end);
+            System.out.println("kun en vare, og path blir: ");
+            for(Vertex v:path){
+                System.out.println(v.id);
+            }
         }
-        else {
+
+        else { //Hvis man skal innom mer enn en vare
             vertexComparator comp = new vertexComparator();
             PriorityQueue<Vertex> q = new PriorityQueue<>(wGraph.edges.size(), comp);
             q.addAll(wGraph.vertices);
             q.remove(end);
-            q.remove(findClosestToEndVertex());
+            q.remove(getClosestToEndVertex());
+            
+            for(Vertex v:q){
+                System.out.println("I queue ligger: "+v.id);
+            }
 
             path.add(root);
             Vertex u;
@@ -113,23 +123,30 @@ public class Prims {
                 v.key = INFINITE;
                 v.parent = null;
             }
-            path.add(findClosestToEndVertex());
+            path.add(getClosestToEndVertex());
             path.add(end);
         }
         return path;
     }
 
-    public Vertex findClosestToEndVertex(){
-        List<Vertex> adjacent=wGraph.getNeighbors(Vertex.find.byId(18));
-        Vertex closest=null;
+
+    public Vertex getClosestToEndVertex() {
+        List<Vertex> neighbor = new ArrayList<>();
         int w=INFINITE;
-        for(Vertex v:adjacent){ //For alle nabonodene til v
-            for(weightedEdge e:wGraph.edges){
-                if(e.getSource().equals(v)&&(e.weight<w)){
-                    closest=v;
-                }
+        Vertex closest=null;
+        Vertex node=Vertex.find.byId(18); //Setter kassenoden som endenoden i butikken
+
+        for (weightedEdge edge : wGraph.edges){
+            if (edge.getSource().equals(node)&& edge.weight<w) {
+                closest=edge.getDestination();
+                w=edge.weight;
+            }
+            if(edge.getDestination().equals(node) && edge.weight<w){
+                closest= edge.getSource();
+                w=edge.weight;
             }
         }
+
         return closest;
     }
 
