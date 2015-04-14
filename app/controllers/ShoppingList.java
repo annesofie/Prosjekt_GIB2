@@ -27,7 +27,7 @@ public class ShoppingList extends Controller {
             System.out.println("Varen kan ikke legges til");
         }else{
             user.addToHandleliste(itemid);
-            System.out.println("Varen kan legges til");
+            //System.out.println("Varen kan legges til");
 
         }
 
