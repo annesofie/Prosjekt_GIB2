@@ -10,6 +10,8 @@ import java.util.List;
 
 public class SortedShoppingList {
 
+
+
     public static List<Vare> sortShoppingList() {
         Path path = new Path(Vertex.find.byId(1),Vertex.find.byId(18)); //legg inn rotnodenummer og kassenodenummer i input
         //  System.out.println(Vertex.find.byId().xPos);
@@ -18,7 +20,8 @@ public class SortedShoppingList {
         List<Vare> sortedShoppingList = new ArrayList<Vare>();
         for (Vertex vertex: p) {
             for (Vare vare: User.handleliste) {
-                if (vare.vertex == vertex) {
+
+                if (vare.findVareVertex().equals(vertex)) {
                     sortedShoppingList.add(vare);
                 }
             }

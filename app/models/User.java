@@ -26,7 +26,7 @@ public class User extends Model  {
         this.email = email;
         this.password = password;
         this.handleliste = new ArrayList<>();
-        this.sortedHandleliste=sortShoppingList(Path.finalPath);
+        //this.sortedHandleliste=sortShoppingList(Path.finalPath);
     }
 
     public static Finder<String,User> find = new Model.Finder(String.class, User.class);

@@ -266,9 +266,8 @@ public class Application extends Controller {
     public static Result shoppingPath() {
 
         User user = User.find.byId(request().username());
-        SortedShoppingList sortSH = new SortedShoppingList();
 
-        return ok(shoppingPath.render(request().username(), sortSH.sortShoppingList()));
+        return ok(shoppingPath.render(request().username(), SortedShoppingList.sortShoppingList()));
     }
 
 
