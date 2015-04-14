@@ -190,14 +190,10 @@ public class Application extends Controller {
     @Security.Authenticated(Secured.class)
     public static Result getTargetVertices() {
 
-            /*User user = User.find.byId(request().username());
-            List<Vare> varer = user.getShoppingList();*/
-
-            System.out.println(Path.finalPath.size() + " Størrelse");
             ArrayList<Vertex> allVerticesInPath = new ArrayList<Vertex>();
-            for (int i = 0; i < Path.finalPath.size()-1; i++) { //Gaar igjennom alle targetnodene i den rekkefoolgen de skal besookes
+        try {
+            for (int i = 0; i < Path.finalPath.size() - 1; i++) { //Gaar igjennom alle targetnodene i den rekkefoolgen de skal besookes
                 for (weightedEdge e : Path.wGraph.edges) {
-                    if (e.getDestination().equals(Path.finalPath.get(i + 1)) && (e.getSource().equals(Path.finalPath.get(i)))) {
 
 /*                        for (Vare va : varer) {
                             for (int j = 0; j < e.visitedVertices.size(); j++) {
@@ -213,7 +209,10 @@ public class Application extends Controller {
                 }
             }
 
-        return ok(Json.toJson(allVerticesInPath));
+            return ok(Json.toJson(allVerticesInPath));
+        } catch(Exception e){
+            return ok(Json.toJson(allVerticesInPath));
+        }
 
     }
 
