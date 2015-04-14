@@ -34,13 +34,17 @@ public class weightedGraph {
 
     //Finner nabonodene til en gitt node
     public List<Vertex> getNeighbors(Vertex node) {
-        List<Vertex> children = new ArrayList<>();
+        List<Vertex> neighbor = new ArrayList<>();
         for (weightedEdge edge : this.edges) {
             if (edge.getSource().equals(node)) {
-                children.add(edge.getDestination());
+                neighbor.add(edge.getDestination());
+            }
+            if(edge.getDestination().equals(node)){
+                neighbor.add(edge.getSource());
             }
         }
-        return children;
+        System.out.println();
+        return neighbor;
     }
 
 }
