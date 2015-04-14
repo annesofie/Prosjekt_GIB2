@@ -60,45 +60,44 @@ public class BreadthFirstSearch {
         ArrayList<weightedEdge> graphEdges=new ArrayList<>();
         System.out.println("I bfsAllToAll - yey");
 
-        for (Vertex rootNode:findTargets()){
+        for (Vertex rootVertex:findTargets()){
             int height = 0;
-            System.out.println("ny runde i for, height: "+height+" rotnode er "+rootNode.id);
-            queue.add(rootNode);
-            System.out.println(queue);
-            visited.add(rootNode);
-            if(!graphVertices.contains(rootNode)) {
-                graphVertices.add(rootNode);
+            System.out.println("ny runde i for, height: "+height+" rotnode er "+rootVertex.id);
+            queue.add(rootVertex);
+            System.out.println("queue: " + queue);
+            visited.add(rootVertex);
+            if(!graphVertices.contains(rootVertex)) {
+                graphVertices.add(rootVertex);
             }
-            while (!(queue.isEmpty())) {
+            while (!(queue.isEmpty())&&graphVertices.size()<targets.size()) {
                 Vertex vertex = (Vertex)queue.remove();
                 Vertex child = null;
                 while ((child = getUnvisitedChildNodeInGraph(vertex)) != null) { //Går igjennom hvert barn til vertex
                     child.setPrevVertex(vertex);
                     System.out.println("child: "+child.id);
                     if (targets.contains(child)) {
-                        System.out.println("child er: "+child.id);
-                        graphVertices.add(child);
-                        for (Edge edge : graph.getEdges()){
-                            if (edge.getDestination().equals(child) && edge.getSource().equals(vertex)) {
+                        System.out.println("Fant target, target-child er: "+child.id);
+                        graphVertices.add(child); //Legger til noden som var target i vekted graf
 
-                                boolean root=false;
-                                Vertex v=child;
-                                while(!root && v.prev!=null){
-                                    v=v.prev;
-                                    height+=1;
-                                    if(v.equals(rootNode)){
-                                        root=true;
-                                    }
-                                }
-                                graphEdges.add(new weightedEdge(vertex, child, height));
+                        //Finner lengden paa stien fra root til target
+                        boolean root=false;
+                        Vertex v=child;
+                        while(!root && v.prev!=null){
+                            v=v.prev;
+                            height+=1;
+                            if(v.equals(rootVertex)){
+                                root=true;
                             }
                         }
+                        graphEdges.add(new weightedEdge(rootVertex, child, height));
+
                     }
                     visited.add(child);
                     System.out.println("prev vertex til "+child.id+"er "+vertex.id);
                     queue.add(child);
                 }
             }
+            visited.clear();
         }
        /* for(Vertex v:graphVertices){
             System.out.println("node i vektet graf: "+v.id);
