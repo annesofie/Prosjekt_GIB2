@@ -34,41 +34,6 @@ public class Prims {
         }
     }
 
-
-    /*public ArrayList<Vertex> primsExecute(){
-        vertexComparator comp=new vertexComparator();
-        PriorityQueue<Vertex> q = new PriorityQueue<>(wGraph.edges.size(),comp);
-        q.addAll(wGraph.vertices);
-        ArrayList<Vertex> path=new ArrayList<>();
-        path.add(root);
-        Vertex u;
-        //har allerede satt alle noder's key til infinite, og forelder til null i Vertex klassen
-        root.key=0;
-        int min=INFINITE;
-        while(!q.isEmpty()){
-            u=q.poll();
-            for (Vertex neighbor: wGraph.getNeighbors(u)){
-                if(q.contains(neighbor)){
-                    for(weightedEdge edge:wGraph.edges){
-                        if((edge.getDestination().equals(neighbor)&&(edge.getSource().equals(u)))||(edge.getDestination().equals(u)&&(edge.getSource().equals(neighbor)))){
-                            neighbor.key=edge.weight;
-                            neighbor.parent=u;
-                            path.add(neighbor);
-                        }
-                    }
-                }
-            }
-        }
-
-
-        for(Vertex v:wGraph.vertices){  //Resetter alle nodenes verdier
-            v.key=INFINITE;
-            v.parent=null;
-        }
-
-        return path;
-    }*/
-
     public ArrayList<Vertex> primsExecuteTwerked() {
         ArrayList<Vertex> path = new ArrayList<>();
 
