@@ -84,7 +84,6 @@ var init = function() {
                     latlngs.push(L.latLng(vertex.xPos,vertex.yPos));
                 });
                 var polyline = L.polyline(latlngs, {color: 'red'}).addTo(map);
-                window.alert(latlngs);
             }
         });
     })
