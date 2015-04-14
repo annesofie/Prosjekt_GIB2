@@ -34,7 +34,7 @@ public class Prims {
         }
     }
 
-//Maa fikse at sluttnoden er bestem til kassenoden. Har ikke funnet ut hvordan det skal gjoores enda.
+
     public ArrayList<Vertex> primsExecute(){
         vertexComparator comp=new vertexComparator();
         PriorityQueue<Vertex> q = new PriorityQueue<>(wGraph.edges.size(),comp);
@@ -120,10 +120,10 @@ public class Prims {
     }
 
     public Vertex findClosestToEndVertex(){
-        List<Vertex> adjacent=wGraph.getNeighbors(end);
-        Vertex closest=root;//satte bare til root for aa initialisere til noe, blir uansett endret
+        List<Vertex> adjacent=wGraph.getNeighbors(Vertex.find.byId(18));
+        Vertex closest=null;
         int w=INFINITE;
-        for(Vertex v:adjacent){
+        for(Vertex v:adjacent){ //For alle nabonodene til v
             for(weightedEdge e:wGraph.edges){
                 if(e.getSource().equals(v)&&(e.weight<w)){
                     closest=v;
