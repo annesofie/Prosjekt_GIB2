@@ -95,7 +95,6 @@ public class BreadthFirstSearch {
                             if(v.equals(rootVertex)){
                                 root=true;
                                 visitedVertices.remove(v);
-
                             }
 
                         }
@@ -107,13 +106,17 @@ public class BreadthFirstSearch {
                         boolean equal=false;
                         //sjekker om det finnes en kant mellom samme sett med noder, men motsatt vei
                         for(weightedEdge we:graphEdges){
-                            if(we.getDestination().equals(rootVertex)&&(we.getSource().equals(child))){
+                            if(we.getDestination().equals(child)&&(we.getSource().equals(rootVertex))){
                                 equal=true;
                             }
                         }
-                        weightedEdge e=new weightedEdge(rootVertex, child, visitedVertices.size()+1, visitedVertices);
+                        weightedEdge e=new weightedEdge(child, rootVertex, visitedVertices.size()+1, visitedVertices);
                         if(!equal){
                             graphEdges.add(e);
+                            System.out.println("kant lagt til har source "+ child.id+", og destination "+rootVertex.id+" og går gjennom noder: ");
+                            for(Vertex ve:visitedVertices){
+                                System.out.println(ve.id);
+                            }
                         }
 
 

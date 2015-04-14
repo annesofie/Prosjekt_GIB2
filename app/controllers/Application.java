@@ -198,8 +198,8 @@ public class Application extends Controller {
             for (int i = 0; i < Path.finalPath.size() - 1; i++) { //Gaar igjennom alle targetnodene i den rekkefoolgen de skal besookes
                 allVerticesInPath.add(Path.finalPath.get(i));
                 for (weightedEdge e : Path.wGraph.edges) {
-                    if (e.getDestination().equals(Path.finalPath.get(i + 1)) && (e.getSource().equals(Path.finalPath.get(i)))){
-                        System.out.println("source er "+e.getSource().id+" og destination er "+e.getDestination().id);
+                    if(e.getDestination().equals(Path.finalPath.get(i+1))&&(e.getSource().equals(Path.finalPath.get(i)))){
+                        System.out.println("trenger ikke reversere, source er "+e.getSource().id+" og destination er "+e.getDestination().id);
 
                         //Setter markoorer
                         for (Vare va : varer) {
@@ -212,7 +212,7 @@ public class Application extends Controller {
 
                         allVerticesInPath.addAll(e.visitedVertices);
                     }
-                    if(e.getSource().equals(Path.finalPath.get(i + 1)) && (e.getDestination().equals(Path.finalPath.get(i)))){
+                    if(e.getDestination().equals(Path.finalPath.get(i)) && (e.getSource().equals(Path.finalPath.get(i+1)))){
                         System.out.println("Må reversere - source er "+e.getSource().id+" og destination er "+e.getDestination().id);
 
                         //Setter markoorer
@@ -223,8 +223,9 @@ public class Application extends Controller {
                                 e.visitedVertices.get(j).setBeskrivelse(va.navn);
                             }
                         }
+
                         ArrayList<Vertex>reversed=e.visitedVertices;
-                        Collections.reverse(Arrays.asList(reversed));
+                        Collections.reverse(reversed);
                         System.out.println("Reversed liste er: ");
                         for(Vertex v:reversed){
                             System.out.println(v.id);
