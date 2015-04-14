@@ -193,9 +193,16 @@ public class Application extends Controller {
         User user = User.find.byId(request().username());
         List<Vare> varer = user.getShoppingList();
 
+
             ArrayList<Vertex> allVerticesInPath = new ArrayList<Vertex>();
         try {
+
+
             for (int i = 0; i < Path.finalPath.size() - 1; i++) { //Gaar igjennom alle targetnodene i den rekkefoolgen de skal besookes
+            System.out.println(Path.finalPath.size() + " Størrelse");
+            ArrayList<Vertex> allVerticesInPath = new ArrayList<>();
+            for (int i = 0; i < Path.finalPath.size()-1; i++) { //Gaar igjennom alle targetnodene i den rekkefoolgen de skal besookes
+
                 for (weightedEdge e : Path.wGraph.edges) {
                     if (e.getDestination().equals(Path.finalPath.get(i+1)) && (e.getSource().equals(Path.finalPath.get(i)))) {
 
