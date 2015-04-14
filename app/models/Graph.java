@@ -22,7 +22,7 @@ public class Graph extends Model{
     }
 
 
-    public List<Vertex> getVertices() {
+    public static List<Vertex> getVertices() {
         return Vertex.find.all();
 
     }

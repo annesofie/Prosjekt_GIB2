@@ -13,11 +13,12 @@ public class Path{
 
     public BreadthFirstSearch bfs=new BreadthFirstSearch();
     public static ArrayList<Vertex>finalPath;
+    public static weightedGraph wGraph;
 
 
     public Path(Vertex root, Vertex end){
         //finner en graf som innkluderer kun targetnodene
-        weightedGraph wGraph=bfs.bfsAllToAll();
+        wGraph=bfs.bfsAllToAll();
         System.out.println("skal ha vært i bfs");
         //kjører saa prims-algoritme paa den vektede grafen for aa finne et minimalt spenntre
         Prims prim=new Prims(root,end, wGraph);

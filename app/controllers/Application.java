@@ -207,11 +207,16 @@ public class Application extends Controller {
 
     @Security.Authenticated(Secured.class)
     public static Result getFinalPath() {
+        ArrayList<Vertex>allVerticesInPath=new ArrayList<Vertex>();
+        for(int i=0;i<Path.finalPath.size()-1;i++){ //Gaar igjennom alle targetnodene i den rekkefoolgen de skal besookes
+            for(weightedEdge e: Path.wGraph.edges){
+                if(e.getDestination().equals(Path.finalPath.get(i+1))&&(e.getSource().equals(Path.finalPath.get(i)))){
+                    allVerticesInPath.addAll(e.visitedVertices);
+                }
+            }
+        }
 
-        User user = User.find.byId(request().username());
-        Path path = new Path(Vertex.find.byId(1), Vertex.find.byId(18));
-
-        return ok(Json.toJson(path.finalPath));
+        return ok(Json.toJson(allVerticesInPath));
 
     }
 
