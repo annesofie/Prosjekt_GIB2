@@ -62,30 +62,18 @@ var init = function() {
     var vertex19 = L.marker([225, 147]).bindPopup("19").addTo(map);
     var vertex20 = L.marker([225, 204]).bindPopup("20").addTo(map);
 
-
+    var latlngs = Array();
     appRoutes.controllers.Application.getTargetVertices().ajax({
         success: function(data) {
             $(data).each(function(index,vertex) {
-                L.marker([vertex.xPos,vertex.yPos]).bindPopup(vertex.beskrivelse).addTo(map);
+                latlngs.push(L.latLng(vertex.xPos,vertex.yPos));
+                if(vertex.beskrivelse!=null ) {
+                    L.marker([vertex.xPos, vertex.yPos]).bindPopup(vertex.beskrivelse).addTo(map);
+                }
             });
             var polyline = L.polyline(latlngs, {color: 'red'}).addTo(map);
         }
     });
-
-    //$('.finnSti').click(function() {
-        //Tegne sti på kart
-        var latlngs = Array();
-
-        appRoutes.controllers.Application.getFinalPath().ajax({
-            success: function(data) {
-                $(data).each(function(index,vertex) {
-                    latlngs.push(L.latLng(vertex.xPos,vertex.yPos));
-                });
-                var polyline = L.polyline(latlngs, {color: 'red'}).addTo(map);
-            }
-        });
-    //})
-
 
 };
 

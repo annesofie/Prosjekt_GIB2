@@ -191,33 +191,35 @@ public class Application extends Controller {
     public static Result getTargetVertices() {
 
         User user = User.find.byId(request().username());
-
         List<Vare> varer = user.getShoppingList();
-        List<Vertex> vecs = new ArrayList<>();
 
-        for (Vare v : varer) {
-            Vertex vec = Vertex.getById(v.vertexId);
-            vec.setBeskrivelse(v.navn);
-            vecs.add(vec);
+        ArrayList<Vertex>allVerticesInPath=new ArrayList<Vertex>();
+        for(int i=0;i<Path.finalPath.size()-1;i++){ //Gaar igjennom alle targetnodene i den rekkefoolgen de skal besookes
+            for(weightedEdge e: Path.wGraph.edges){
+                if(e.getDestination().equals(Path.finalPath.get(i+1))&&(e.getSource().equals(Path.finalPath.get(i)))){
+
+/*                    for (Vare va : varer) {
+                        for (int i = 0; i < e.visitedVertices.size(); i++) {
+                            if(va.vertexId == e.visitedVertices.get(i).id)
+                                allVerticesInPath.setBeskrivelse(va.navn);
+                        }
+                    }*/
+
+                    allVerticesInPath.addAll(e.visitedVertices);
+                }
+            }
         }
 
-        return ok(Json.toJson(vecs));
+
+
+        return ok(Json.toJson(allVerticesInPath));
 
     }
 
     @Security.Authenticated(Secured.class)
     public static Result getFinalPath() {
         ArrayList<Vertex>allVerticesInPath=new ArrayList<Vertex>();
-        for(int i=0;i<Path.finalPath.size()-1;i++){ //Gaar igjennom alle targetnodene i den rekkefoolgen de skal besookes
-            for(weightedEdge e: Path.wGraph.edges){
-                if(e.getDestination().equals(Path.finalPath.get(i+1))&&(e.getSource().equals(Path.finalPath.get(i)))){
-                    allVerticesInPath.addAll(e.visitedVertices);
-                }
-            }
-        }
-
         return ok(Json.toJson(allVerticesInPath));
-
     }
 
     public static Result createUser() {
