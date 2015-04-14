@@ -199,7 +199,7 @@ public class Application extends Controller {
                 allVerticesInPath.add(Path.finalPath.get(i));
                 for (weightedEdge e : Path.wGraph.edges) {
                     if (e.getDestination().equals(Path.finalPath.get(i + 1)) && (e.getSource().equals(Path.finalPath.get(i)))){
-                        System.out.println("Er inne i if hver gang en kant mellom to noder er funnet");
+                        System.out.println("source er "+e.getSource().id+" og destination er "+e.getDestination().id);
 
                         //Setter markoorer
                         for (Vare va : varer) {
@@ -213,6 +213,8 @@ public class Application extends Controller {
                         allVerticesInPath.addAll(e.visitedVertices);
                     }
                     if(e.getSource().equals(Path.finalPath.get(i + 1)) && (e.getDestination().equals(Path.finalPath.get(i)))){
+                        System.out.println("Må reversere - source er "+e.getSource().id+" og destination er "+e.getDestination().id);
+
                         //Setter markoorer
                         for (Vare va : varer) {
                             for (int j = 0; j < e.visitedVertices.size(); j++) {
@@ -223,10 +225,15 @@ public class Application extends Controller {
                         }
                         ArrayList<Vertex>reversed=e.visitedVertices;
                         Collections.reverse(Arrays.asList(reversed));
+                        System.out.println("Reversed liste er: ");
+                        for(Vertex v:reversed){
+                            System.out.println(v.id);
+                        }
                         allVerticesInPath.addAll(reversed);
                     }
                 }
             }
+
             allVerticesInPath.add(Vertex.find.byId(18));
             System.out.println("alle noder i stien er: ");
             for(Vertex v:allVerticesInPath){
