@@ -41,7 +41,6 @@ var init = function() {
 
     L.imageOverlay(imageUrl, imageBounds).addTo(map);
 
-/*
     var vertex1 = L.marker([60, 317]).bindPopup("1").addTo(map);
     var vertex2 = L.marker([60, 260]).bindPopup("2").addTo(map);
     var vertex3 = L.marker([115, 260]).bindPopup("3").addTo(map);
@@ -62,7 +61,6 @@ var init = function() {
     var vertex18 = L.marker([60, 204]).bindPopup("18").addTo(map);
     var vertex19 = L.marker([225, 147]).bindPopup("19").addTo(map);
     var vertex20 = L.marker([225, 204]).bindPopup("20").addTo(map);
-*/
 
 
     appRoutes.controllers.Application.getTargetVertices().ajax({
@@ -74,7 +72,7 @@ var init = function() {
         }
     });
 
-    $('.finnSti').click(function() {
+    //$('.finnSti').click(function() {
         //Tegne sti på kart
         var latlngs = Array();
 
@@ -86,7 +84,7 @@ var init = function() {
                 var polyline = L.polyline(latlngs, {color: 'red'}).addTo(map);
             }
         });
-    })
+    //})
 
 
 };
