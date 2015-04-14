@@ -9,8 +9,7 @@ import play.libs.Json;
 import play.mvc.*;
 
 import views.html.*;
-import java.util.ArrayList;
-import java.util.List;
+import java.util.*;
 
 
 public class Application extends Controller {
@@ -194,37 +193,53 @@ public class Application extends Controller {
         List<Vare> varer = user.getShoppingList();
 
 
-            ArrayList<Vertex> allVerticesInPath = new ArrayList<Vertex>();
+        ArrayList<Vertex> allVerticesInPath = new ArrayList<Vertex>();
         try {
-
-
             for (int i = 0; i < Path.finalPath.size() - 1; i++) { //Gaar igjennom alle targetnodene i den rekkefoolgen de skal besookes
-            System.out.println(Path.finalPath.size() + " Størrelse");
-            ArrayList<Vertex> allVerticesInPath = new ArrayList<>();
-            for (int i = 0; i < Path.finalPath.size()-1; i++) { //Gaar igjennom alle targetnodene i den rekkefoolgen de skal besookes
-
+                allVerticesInPath.add(Path.finalPath.get(i));
                 for (weightedEdge e : Path.wGraph.edges) {
-                    if (e.getDestination().equals(Path.finalPath.get(i+1)) && (e.getSource().equals(Path.finalPath.get(i)))) {
+                    if (e.getDestination().equals(Path.finalPath.get(i + 1)) && (e.getSource().equals(Path.finalPath.get(i)))){
+                        System.out.println("Er inne i if hver gang en kant mellom to noder er funnet");
 
+                        //Setter markoorer
                         for (Vare va : varer) {
                             for (int j = 0; j < e.visitedVertices.size(); j++) {
                                 if (va.vertexId == e.visitedVertices.get(j).id)
                                     System.out.println("Hei");
-                                    e.visitedVertices.get(j).setBeskrivelse(va.navn);
+                                e.visitedVertices.get(j).setBeskrivelse(va.navn);
                             }
                         }
 
                         allVerticesInPath.addAll(e.visitedVertices);
                     }
+                    if(e.getSource().equals(Path.finalPath.get(i + 1)) && (e.getDestination().equals(Path.finalPath.get(i)))){
+                        //Setter markoorer
+                        for (Vare va : varer) {
+                            for (int j = 0; j < e.visitedVertices.size(); j++) {
+                                if (va.vertexId == e.visitedVertices.get(j).id)
+                                    System.out.println("Hei");
+                                e.visitedVertices.get(j).setBeskrivelse(va.navn);
+                            }
+                        }
+                        ArrayList<Vertex>reversed=e.visitedVertices;
+                        Collections.reverse(Arrays.asList(reversed));
+                        allVerticesInPath.addAll(reversed);
+                    }
                 }
+            }
+            allVerticesInPath.add(Vertex.find.byId(18));
+            System.out.println("alle noder i stien er: ");
+            for(Vertex v:allVerticesInPath){
+                System.out.println(v.id);
             }
 
             return ok(Json.toJson(allVerticesInPath));
-        } catch(Exception e){
+        }catch(Exception e){
             return ok(Json.toJson(allVerticesInPath));
         }
 
     }
+
 
     @Security.Authenticated(Secured.class)
     public static Result getFinalPath() {
