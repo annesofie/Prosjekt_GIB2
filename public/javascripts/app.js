@@ -64,6 +64,14 @@ var init = function() {
         var vertex20 = L.marker([225, 204]).bindPopup("20").addTo(map);
     });
 
+    /*// Creates a red marker with the coffee icon
+    var redMarker = L.AwesomeMarkers.icon({
+        icon: 'coffee',
+        markerColor: 'red'
+    });
+
+    L.marker([100,100], {icon: redMarker}).addTo(map);*/
+
     var inngangIcon = L.icon({
         iconUrl: 'http://goo.gl/TKKxdJ',
 
@@ -83,17 +91,31 @@ var init = function() {
 
     if (window.location.pathname == '/shoppingPath') {
         var latlngs = Array();
+        var markers = Array();
         appRoutes.controllers.Application.getTargetVertices().ajax({
             success: function (data) {
                 $(data).each(function (index, vertex) {
                     latlngs.push(L.latLng(vertex.xPos, vertex.yPos));
                     if (vertex.beskrivelse != null) {
-                        L.marker([vertex.xPos, vertex.yPos]).bindPopup(vertex.beskrivelse).addTo(map);
+                        L.marker([vertex.xPos, vertex.yPos]).bindPopup(vertex.beskrivelse).on('mouseover', function(e){
+                            this.openPopup();
+                        }).on('mouseout', function(e) {
+                            this.closePopup();
+                        }).addTo(map);
                     }
                 });
                 var polyline = L.polyline(latlngs, {color: 'red'}).addTo(map);
             }
         });
+
+       /* for (var i = 0; i < markers.length; i++) {
+            var currentMarker = markers[i];
+            window.alert(currentMarker);
+            currentMarker.on('mouseover', function(e){
+                marker.openPopup();
+            });
+        }*/
+
     }
 
     var inngang = L.marker([60, 317],{icon: inngangIcon}).bindPopup("Inngang").addTo(map);
