@@ -226,7 +226,6 @@ public class Application extends Controller {
             //Setter markoorer
             for (Vare va : varer) {
                 for (int j = 0; j < allVerticesInPath.size(); j++) {
-                    System.out.println(va.vertexId + " + " + allVerticesInPath.get(j).id);
                     if (va.vertexId == allVerticesInPath.get(j).id) {
                         allVerticesInPath.get(j).setBeskrivelse(va.navn);
                     }

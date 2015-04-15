@@ -91,7 +91,6 @@ var init = function() {
 
     if (window.location.pathname == '/shoppingPath') {
         var latlngs = Array();
-        var markers = Array();
         appRoutes.controllers.Application.getTargetVertices().ajax({
             success: function (data) {
                 $(data).each(function (index, vertex) {
@@ -107,15 +106,6 @@ var init = function() {
                 var polyline = L.polyline(latlngs, {color: 'red'}).addTo(map);
             }
         });
-
-       /* for (var i = 0; i < markers.length; i++) {
-            var currentMarker = markers[i];
-            window.alert(currentMarker);
-            currentMarker.on('mouseover', function(e){
-                marker.openPopup();
-            });
-        }*/
-
     }
 
     var inngang = L.marker([60, 317],{icon: inngangIcon}).bindPopup("Inngang").addTo(map);
