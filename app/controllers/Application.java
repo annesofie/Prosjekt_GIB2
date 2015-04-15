@@ -201,28 +201,10 @@ public class Application extends Controller {
                     if(e.getDestination().equals(Path.finalPath.get(i+1))&&(e.getSource().equals(Path.finalPath.get(i)))){
                         System.out.println("trenger ikke reversere, source er "+e.getSource().id+" og destination er "+e.getDestination().id);
 
-                        //Setter markoorer
-                        for (Vare va : varer) {
-                            for (int j = 0; j < e.visitedVertices.size(); j++) {
-                                if (va.vertexId == e.visitedVertices.get(j).id)
-                                    System.out.println("Hei");
-                                e.visitedVertices.get(j).setBeskrivelse(va.navn);
-                            }
-                        }
-
                         allVerticesInPath.addAll(e.visitedVertices);
                     }
                     if(e.getDestination().equals(Path.finalPath.get(i)) && (e.getSource().equals(Path.finalPath.get(i+1)))){
                         System.out.println("Må reversere - source er "+e.getSource().id+" og destination er "+e.getDestination().id);
-
-                        //Setter markoorer
-                        for (Vare va : varer) {
-                            for (int j = 0; j < e.visitedVertices.size(); j++) {
-                                if (va.vertexId == e.visitedVertices.get(j).id)
-                                    System.out.println("Hei");
-                                e.visitedVertices.get(j).setBeskrivelse(va.navn);
-                            }
-                        }
 
                         ArrayList<Vertex>reversed=e.visitedVertices;
                         Collections.reverse(reversed);
@@ -239,6 +221,16 @@ public class Application extends Controller {
             System.out.println("alle noder i stien er: ");
             for(Vertex v:allVerticesInPath){
                 System.out.println(v.id);
+            }
+
+            //Setter markoorer
+            for (Vare va : varer) {
+                for (int j = 0; j < allVerticesInPath.size(); j++) {
+                    System.out.println(va.vertexId + " + " + allVerticesInPath.get(j).id);
+                    if (va.vertexId == allVerticesInPath.get(j).id) {
+                        allVerticesInPath.get(j).setBeskrivelse(va.navn);
+                    }
+                }
             }
 
             return ok(Json.toJson(allVerticesInPath));
