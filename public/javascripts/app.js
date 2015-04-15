@@ -91,16 +91,18 @@ var init = function() {
 
     if (window.location.pathname == '/shoppingPath') {
         var latlngs = Array();
+        var varenr = 1;
         appRoutes.controllers.Application.getTargetVertices().ajax({
             success: function (data) {
                 $(data).each(function (index, vertex) {
                     latlngs.push(L.latLng(vertex.xPos, vertex.yPos));
                     if (vertex.beskrivelse != null) {
-                        L.marker([vertex.xPos, vertex.yPos]).bindPopup(vertex.beskrivelse).on('mouseover', function(e){
+                        L.marker([vertex.xPos, vertex.yPos]).bindPopup(varenr + ": " + vertex.beskrivelse).on('mouseover', function(e){
                             this.openPopup();
                         }).on('mouseout', function(e) {
                             this.closePopup();
                         }).addTo(map);
+                        varenr++;
                     }
                 });
                 var polyline = L.polyline(latlngs, {color: 'red'}).addTo(map);
