@@ -478,7 +478,11 @@ form button:hover {
     cursor: pointer;
 }
 
+.shoppingRuteBoks{
 
+    margin-top: 55px;
+    /* Den som er på closeUpVare siden */
+}
 
 
 /*brukes ikke
