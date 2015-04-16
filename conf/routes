@@ -7,6 +7,7 @@
 
 GET         /                        controllers.Application.home()
 GET         /index                   controllers.Application.index()
+GET         /closeUpVare             controllers.Application.closeUpVare()
 POST        /login                   controllers.Application.authenticate()
 POST        /createUser              controllers.Application.createUser()
 GET         /logout                  controllers.Application.logout()

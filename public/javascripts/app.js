@@ -102,9 +102,7 @@ var init = function() {
                         }).on('mouseout', function(e) {
                             this.closePopup();
                         }).on('click', function(e) {
-                            var imageUrl = 'http://i57.tinypic.com/2yjqw5c.jpg';
-                            var imageBounds = [[500,0], [0,370]];
-                            L.imageOverlay(imageUrl, imageBounds).addTo(map);
+                            window.location.replace("/closeUpVare");
                         }).addTo(map);
                             varenr++;
                     }
@@ -112,6 +110,11 @@ var init = function() {
                 var polyline = L.polyline(latlngs, {color: 'red'}).addTo(map);
             }
         });
+    } else if (window.location.pathname == '/closeUpVare') {
+        map.setMaxBounds(new L.LatLngBounds([1000,0], [0,400]));
+        var imageUrl = 'http://i57.tinypic.com/2yjqw5c.jpg';
+        var imageBounds = [[300, 0], [0, 100]];
+        L.imageOverlay(imageUrl, imageBounds).addTo(map);
     }
 
     var inngang = L.marker([60, 317],{icon: inngangIcon}).bindPopup("Inngang").addTo(map);

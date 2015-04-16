@@ -294,5 +294,13 @@ public class Application extends Controller {
         return ok(shoppingPath.render(request().username(), SortedShoppingList.sortShoppingList()));
     }
 
+    @Security.Authenticated(Secured.class)
+    public static Result closeUpVare() {
+
+        User user = User.find.byId(request().username());
+
+        return ok(closeUpVare.render(request().username(), SortedShoppingList.sortShoppingList()));
+    }
+
 
 }
