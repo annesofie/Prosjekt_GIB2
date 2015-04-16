@@ -7,14 +7,14 @@
        password: 123
 
     - !!models.Vare
-        navn: batterilader
+        navn: Vannkoker
         kategori: hjem
         pris: 249
         vertexId: 3
         x: 2
         y: 2
         z: 2
-        pic: http://goo.gl/0Jm9Rn
+        pic: http://goo.gl/DRi9Fg
 
     - !!models.Vare
         navn: kulekopp

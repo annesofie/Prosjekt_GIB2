@@ -18,6 +18,7 @@ public class Vare extends Model {
     public double pris;
     public Vertex vertex;
     public String pic;
+    public String hyllePic;
     public Integer vertexId;
     public boolean in_shoppinglist;
 
@@ -34,7 +35,6 @@ public class Vare extends Model {
         this.y = y;
         this.z = z;
         this.vertexId=vertexId;
-
         this.pic = pic;
         this.in_shoppinglist = false;
     }

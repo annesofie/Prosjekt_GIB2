@@ -97,12 +97,16 @@ var init = function() {
                 $(data).each(function (index, vertex) {
                     latlngs.push(L.latLng(vertex.xPos, vertex.yPos));
                     if (vertex.beskrivelse != null) {
-                        L.marker([vertex.xPos, vertex.yPos]).bindPopup(varenr + ": " + vertex.beskrivelse).on('mouseover', function(e){
+                        L.marker([vertex.xPos, vertex.yPos]).bindPopup('<p align="center">' + varenr + ": " + vertex.beskrivelse + "</p>" + "Klikk for å se plassering").on('mouseover', function(e){
                             this.openPopup();
                         }).on('mouseout', function(e) {
                             this.closePopup();
+                        }).on('click', function(e) {
+                            var imageUrl = 'http://i57.tinypic.com/2yjqw5c.jpg';
+                            var imageBounds = [[500,0], [0,370]];
+                            L.imageOverlay(imageUrl, imageBounds).addTo(map);
                         }).addTo(map);
-                        varenr++;
+                            varenr++;
                     }
                 });
                 var polyline = L.polyline(latlngs, {color: 'red'}).addTo(map);
