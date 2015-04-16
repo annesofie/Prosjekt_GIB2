@@ -2,7 +2,7 @@ package models;
 
 import java.util.ArrayList;
 import java.util.List;
-
+import java.util.*;
 
 /**
  * Created by mathilde on 07/04/15.
@@ -13,7 +13,7 @@ public class SortedShoppingList {
 
 
     public static List<Vare> sortShoppingList() {
-        Path path = new Path(Vertex.find.byId(1),Vertex.find.byId(18)); //legg inn rotnodenummer og kassenodenummer i input
+        Path path = new Path(Vertex.find.byId(1), Vertex.find.byId(18)); //legg inn rotnodenummer og kassenodenummer i input
         List<Vare> sortedShoppingList = new ArrayList<>();
 
         System.out.println("Final path er: ");
@@ -36,6 +36,5 @@ public class SortedShoppingList {
 
         return sortedShoppingList;
     }
-
 
 }
