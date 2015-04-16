@@ -14,7 +14,6 @@ var init = function() {
         a.className='normal'
     }
 
-
     $("td > a").on("click", function(event){
         if ($(this).is("[disabled]")) {
             event.preventDefault();
@@ -100,15 +99,6 @@ var init = function() {
         var vertex20 = L.marker([225, 204]).bindPopup("20").addTo(map);
     });
 
-    /*// Creates a red marker with the coffee icon
-    var redMarker = L.AwesomeMarkers.icon({
-        icon: 'coffee',
-        markerColor: 'red'
-    });
-
-    L.marker([100,100], {icon: redMarker}).addTo(map);*/
-
-
     if (window.location.pathname == '/shoppingPath') {
         var latlngs = Array();
         var varenr = 1;
@@ -124,14 +114,13 @@ var init = function() {
                         }).on('click', function(e) {
                             window.location.replace("/closeUpVare");
                         }).addTo(map);
-                            varenr++;
+                        varenr++;
                     }
                 });
                 var polyline = L.polyline(latlngs, {color: 'red'}).addTo(map);
             }
         });
     }
-
 
 };
 
