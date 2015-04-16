@@ -478,10 +478,14 @@ form button:hover {
     cursor: pointer;
 }
 
-.shoppingRuteBoks{
+.hylleplassering{
 
     margin-top: 55px;
     /* Den som er på closeUpVare siden */
+}
+
+h6 {
+    text-align: center;
 }
 
 
