@@ -1,6 +1,7 @@
 /**
  * Created by annesofiestranderichsen on 06.03.15.
  */
+    
 var init = function() {
 
     /* metode for aa disable elementer i varelisten som allerede ligger i handlelisten*/
@@ -55,6 +56,7 @@ var init = function() {
         var imageUrl = 'http://i57.tinypic.com/2yjqw5c.jpg';
         var imageBounds = [[300, 0], [0, 480]];
         L.imageOverlay(imageUrl, imageBounds).addTo(map);
+        L.marker([closeUpX,closeUpY]).addTo(map);
     } else {
         map = L.map('leaflet-kart', {
             maxZoom: 0.45,
@@ -112,6 +114,8 @@ var init = function() {
                         }).on('mouseout', function(e) {
                             this.closePopup();
                         }).on('click', function(e) {
+                            closeUpX = vertex.x;
+                            closeUpY = vertex.y;
                             window.location.replace("/closeUpVare");
                         }).addTo(map);
                         varenr++;

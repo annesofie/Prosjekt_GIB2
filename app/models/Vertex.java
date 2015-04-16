@@ -18,6 +18,7 @@ public class Vertex extends Model{
     public int key;
     public Vertex parent;
     public String beskrivelse;
+    public int x,y;
     public Vertex prev;
 
 //lagt til key-verdi for å kunne kjoore prims
@@ -34,6 +35,14 @@ public class Vertex extends Model{
         this.parent=null;
         prev=null;
 
+    }
+
+    public void setX(int x) {
+        this.x = x;
+    }
+
+    public void setY(int y) {
+        this.y = y;
     }
 
     public void setBeskrivelse(String beskrivelse) {

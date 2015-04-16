@@ -43,6 +43,8 @@ create table vertex (
   y_pos                     integer,
   key                       integer,
   beskrivelse               varchar(255),
+  x                         integer,
+  y                         integer,
   constraint pk_vertex primary key (id))
 ;
 
