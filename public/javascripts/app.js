@@ -6,7 +6,7 @@ var closeUpX;
 var closeUpY;
 
 var init = function() {
-    window.alert(closeUpX);
+    /*window.alert(closeUpX);*/
     /* metode for aa disable elementer i varelisten som allerede ligger i handlelisten*/
     disable = new Boolean();
 
@@ -94,7 +94,7 @@ var init = function() {
                         }).on('mouseout', function(e) {
                             this.closePopup();
                         }).on('click', function(e) {
-                            window.alert(closeUpX);
+                            /*window.alert(closeUpX);*/
                             window.location.replace("/closeUpVare");
                         }).addTo(map);
                         varenr++;
