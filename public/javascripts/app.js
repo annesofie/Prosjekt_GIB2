@@ -25,21 +25,57 @@ var init = function() {
 
     $("td > a").removeAttr("disabled");
 
+    var inngangIcon = L.icon({
+        iconUrl: 'http://goo.gl/TKKxdJ',
 
-    var map = L.map('leaflet-kart', {
-        maxZoom: 0.45,
-        minZoom: 0.45,
-        zoomControl: false,
-        dragging: false,
-        crs: L.CRS.Simple
-    }).setView([0, 0], 1);
+        iconSize:     [50, 50], // size of the icon
+        iconAnchor:   [25, 50], // point of the icon which will correspond to marker's location
+        popupAnchor:  [0, -50] // point from which the popup should open relative to the iconAnchor
+    });
 
-    map.setMaxBounds(new L.LatLngBounds([0,500], [500,0]));
+    var kasseIcon = L.icon({
+        iconUrl: 'http://goo.gl/eRJ0jt',
 
-    var imageUrl = 'http://i61.tinypic.com/30ucvfc.jpg';
-    var imageBounds = [[500,0], [0,370]];
+        iconSize:     [50, 50], // size of the icon
+        iconAnchor:   [25, 50], // point of the icon which will correspond to marker's location
+        popupAnchor:  [0, -50] // point from which the popup should open relative to the iconAnchor
+    });
 
-    L.imageOverlay(imageUrl, imageBounds).addTo(map);
+    var map;
+
+    if (window.location.pathname == '/closeUpVare') {
+        map = L.map('leaflet-kart_close', {
+            maxZoom: 0.45,
+            minZoom: 0.45,
+            zoomControl: false,
+            dragging: false,
+            crs: L.CRS.Simple
+        }).setView([0, 0], 1);
+
+        map.setMaxBounds(new L.LatLngBounds([400,0],[0,650]));
+        var imageUrl = 'http://i57.tinypic.com/2yjqw5c.jpg';
+        var imageBounds = [[300, 0], [0, 480]];
+        L.imageOverlay(imageUrl, imageBounds).addTo(map);
+    } else {
+        map = L.map('leaflet-kart', {
+            maxZoom: 0.45,
+            minZoom: 0.45,
+            zoomControl: false,
+            dragging: false,
+            crs: L.CRS.Simple
+        }).setView([0, 0], 1);
+
+        map.setMaxBounds(new L.LatLngBounds([0,500], [500,0]));
+        var imageUrl = 'http://i61.tinypic.com/30ucvfc.jpg';
+        var imageBounds = [[500,0], [0,370]];
+        L.imageOverlay(imageUrl, imageBounds).addTo(map);
+
+        var inngang = L.marker([60, 317],{icon: inngangIcon}).bindPopup("Inngang").addTo(map);
+        var kasse = L.marker([60, 204],{icon: kasseIcon}).bindPopup("Kasse").addTo(map);
+
+    }
+
+
 
     $('.søk-knapp').click(function() {
         var inngang = L.marker([60, 317]).bindPopup("Inngang").addTo(map);
@@ -72,22 +108,6 @@ var init = function() {
 
     L.marker([100,100], {icon: redMarker}).addTo(map);*/
 
-    var inngangIcon = L.icon({
-        iconUrl: 'http://goo.gl/TKKxdJ',
-
-        iconSize:     [50, 50], // size of the icon
-        iconAnchor:   [25, 50], // point of the icon which will correspond to marker's location
-        popupAnchor:  [0, -50] // point from which the popup should open relative to the iconAnchor
-    });
-
-    var kasseIcon = L.icon({
-        iconUrl: 'http://goo.gl/eRJ0jt',
-
-        iconSize:     [50, 50], // size of the icon
-        iconAnchor:   [25, 50], // point of the icon which will correspond to marker's location
-        popupAnchor:  [0, -50] // point from which the popup should open relative to the iconAnchor
-    });
-
 
     if (window.location.pathname == '/shoppingPath') {
         var latlngs = Array();
@@ -110,15 +130,7 @@ var init = function() {
                 var polyline = L.polyline(latlngs, {color: 'red'}).addTo(map);
             }
         });
-    } else if (window.location.pathname == '/closeUpVare') {
-        map.setMaxBounds(new L.LatLngBounds([1000,0], [0,400]));
-        var imageUrl = 'http://i57.tinypic.com/2yjqw5c.jpg';
-        var imageBounds = [[300, 0], [0, 100]];
-        L.imageOverlay(imageUrl, imageBounds).addTo(map);
     }
-
-    var inngang = L.marker([60, 317],{icon: inngangIcon}).bindPopup("Inngang").addTo(map);
-    var kasse = L.marker([60, 204],{icon: kasseIcon}).bindPopup("Kasse").addTo(map);
 
 
 };
