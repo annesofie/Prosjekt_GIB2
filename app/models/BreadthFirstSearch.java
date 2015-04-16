@@ -21,10 +21,6 @@ public class BreadthFirstSearch {
         for (Vare vare:handleVarer){
             targets.add(vare.findVareVertex());
         }
-        System.out.println("Alle targets er: ");
-        for(Vertex v: targets){
-            System.out.println(v.id);
-        }
         return targets;
     }
 
@@ -70,12 +66,9 @@ public class BreadthFirstSearch {
         graphVertices.add(Vertex.find.byId(1));
         graphVertices.add(Vertex.find.byId(18));
 
-        //System.out.println("I bfsAllToAll - yey");
 
         for (Vertex rootVertex:graphVertices){
-            //System.out.println("ny runde i for, rotnode er "+rootVertex.id);
             queue.add(rootVertex);
-            //System.out.println("queue: " + queue);
             visited.add(rootVertex);
 
             while (!(queue.isEmpty())) {
@@ -83,9 +76,8 @@ public class BreadthFirstSearch {
                 Vertex child = null;
                 while ((child = getUnvisitedChildNodeInGraph(vertex)) != null) { //Går igjennom hvert barn til vertex
                     child.setPrevVertex(vertex);
-                    //System.out.println("child: "+child.id);
+
                     if (graphVertices.contains(child)) {
-                        //System.out.println("Fant target, target-child er: "+child.id);
 
                         //Finner lengden paa stien fra root til target
                         ArrayList<Vertex> visitedVertices= new ArrayList<>();
@@ -101,10 +93,6 @@ public class BreadthFirstSearch {
                             }
 
                         }
-                        for(Vertex e: visitedVertices) {
-                            //System.out.println("besøkte noder mellom: " + rootVertex.id + " og " + child.id + " er: " + e.id);
-                        }
-                        //Sjekker om kanten er funnet fra før
 
                         boolean equal=false;
                         //sjekker om det finnes en kant mellom samme sett med noder, men motsatt vei
@@ -116,35 +104,15 @@ public class BreadthFirstSearch {
                         weightedEdge e=new weightedEdge(child, rootVertex, visitedVertices.size()+1, visitedVertices);
                         if(!equal){
                             graphEdges.add(e);
-                            //System.out.println("kant lagt til har source "+ child.id+", og destination "+rootVertex.id+" og går gjennom noder: ");
-                            for(Vertex ve:visitedVertices){
-                               // System.out.println(ve.id);
-                            }
                         }
-
-
 
                     }
                     visited.add(child);
-                    //System.out.println("prev. vertex til "+child.id+" er "+vertex.id);
                     queue.add(child);
                 }
             }
             visited.clear();
             queue.clear();
-        }
-       /* for(Vertex v:graphVertices){
-            System.out.println("node i vektet graf: "+v.id);
-        }*/
-        for(weightedEdge we:graphEdges){
-            //System.out.println("sti fra: "+we.getSource().id+", til: "+we.getDestination().id+", har vekt: "+we.weight+ " og går igjennom: ");
-            for(Vertex v: we.visitedVertices){
-               // System.out.println(v.id+", ");
-            }
-        }
-        System.out.println("Nodene i grafen er: ");
-        for(Vertex v:graphVertices){
-            System.out.println(v.id+", ");
         }
 
         return new weightedGraph(graphVertices,graphEdges);

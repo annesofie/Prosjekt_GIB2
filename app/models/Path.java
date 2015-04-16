@@ -20,22 +20,16 @@ public class Path{
         //finner en graf som innkluderer kun targetnodene
         wGraph=bfs.bfsAllToAll();
 
-        //Lager liste over alle noder man skal besøke, for trenger ikke start og sluttnoden med når man skla finne permutasjoner
+        //Lager liste over alle noder man skal besøkes, for trenger ikke start og sluttnoden med når man skal finne permutasjoner
         List<Vertex> targets=wGraph.vertices;
         targets.remove(Vertex.find.byId(1));
         targets.remove(Vertex.find.byId(18));
 
+        //Finner alle mulige måter å travesere grafen på
         AllPermutations allPerm=new AllPermutations(targets, Vertex.find.byId(1), Vertex.find.byId(18), wGraph);
+        //Finner beste sti ved å si hvilken som totalt sett er kortest
         finalPath=allPerm.getBestPath();
 
-
-
-
-
-       // System.out.println("skal ha vært i bfs");
-        //kjører saa prims-algoritme paa den vektede grafen for aa finne et minimalt spenntre
-       //Prims prim=new Prims(root,end, wGraph);
-       //finalPath=prim.path;
     }
 
 }

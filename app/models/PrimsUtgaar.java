@@ -5,7 +5,7 @@ import java.util.*;
 /**
  * Created by mathilde on 16/03/15.
  */
-public class Prims {
+public class PrimsUtgaar {
 
 
     public static final int INFINITE = 999;
@@ -15,7 +15,7 @@ public class Prims {
     ArrayList<Vertex>path;
     //kjører prims-algoritme for å finne minimalt spenntre
 
-    public Prims(Vertex root, Vertex end, weightedGraph wGraph) {
+    public PrimsUtgaar(Vertex root, Vertex end, weightedGraph wGraph) {
         this.root=root;
         this.wGraph=wGraph;
         this.end=end;

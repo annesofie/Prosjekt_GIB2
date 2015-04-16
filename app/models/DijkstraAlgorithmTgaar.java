@@ -10,7 +10,7 @@ import java.util.Map;
 import java.util.Set;
 
 
-public class DijkstraAlgorithm{
+public class DijkstraAlgorithmTgaar {
 
     private final List<Vertex> nodes;
     private final List<Edge> edges;
@@ -21,7 +21,7 @@ public class DijkstraAlgorithm{
 
     Graph graph = new Graph();
 
-    public DijkstraAlgorithm(Graph graph) {
+    public DijkstraAlgorithmTgaar(Graph graph) {
         // create a copy of the array so that we can operate on this array
         this.nodes = new ArrayList<Vertex>(graph.vertexes);
         this.edges = new ArrayList<Edge>(graph.edges);
