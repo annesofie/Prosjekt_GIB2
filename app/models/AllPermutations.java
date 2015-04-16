@@ -76,10 +76,11 @@ public class AllPermutations {
         for(int i=0; i<list.size()-1;i++){
             for (weightedEdge e : wGraph.edges) {
                 if (((e.getDestination().equals(list.get(i))) && (e.getSource().equals(list.get(i+1))))||(e.getDestination().equals(list.get(i+1)) && (e.getSource().equals(list.get(i))))){
-                    totW=e.weight;
+                    totW=totW+e.weight;
                 }
             }
         }
+        System.out.println("totalvekt er "+totW);
         return totW;
     }
 
