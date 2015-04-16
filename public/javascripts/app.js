@@ -1,9 +1,12 @@
 /**
  * Created by annesofiestranderichsen on 06.03.15.
  */
-    
-var init = function() {
 
+var closeUpX;
+var closeUpY;
+
+var init = function() {
+    window.alert(closeUpX);
     /* metode for aa disable elementer i varelisten som allerede ligger i handlelisten*/
     disable = new Boolean();
 
@@ -76,7 +79,31 @@ var init = function() {
 
     }
 
-
+    if (window.location.pathname == '/shoppingPath') {
+        var latlngs = Array();
+        var varenr = 1;
+        appRoutes.controllers.Application.getTargetVertices().ajax({
+            success: function (data) {
+                $(data).each(function (index, vertex) {
+                    latlngs.push(L.latLng(vertex.xPos, vertex.yPos));
+                    if (vertex.beskrivelse != null) {
+                        L.marker([vertex.xPos, vertex.yPos]).bindPopup('<p align="center">' + varenr + ": " + vertex.beskrivelse + "</p>" + "Klikk for å se plassering").on('mouseover', function(e){
+                            this.openPopup();
+                            closeUpX = vertex.x;
+                            closeUpY = vertex.y;
+                        }).on('mouseout', function(e) {
+                            this.closePopup();
+                        }).on('click', function(e) {
+                            window.alert(closeUpX);
+                            window.location.replace("/closeUpVare");
+                        }).addTo(map);
+                        varenr++;
+                    }
+                });
+                var polyline = L.polyline(latlngs, {color: 'red'}).addTo(map);
+            }
+        });
+    }
 
     $('.søk-knapp').click(function() {
         var inngang = L.marker([60, 317]).bindPopup("Inngang").addTo(map);
@@ -100,32 +127,6 @@ var init = function() {
         var vertex19 = L.marker([225, 147]).bindPopup("19").addTo(map);
         var vertex20 = L.marker([225, 204]).bindPopup("20").addTo(map);
     });
-
-    if (window.location.pathname == '/shoppingPath') {
-        var latlngs = Array();
-        var varenr = 1;
-        appRoutes.controllers.Application.getTargetVertices().ajax({
-            success: function (data) {
-                $(data).each(function (index, vertex) {
-                    latlngs.push(L.latLng(vertex.xPos, vertex.yPos));
-                    if (vertex.beskrivelse != null) {
-                        L.marker([vertex.xPos, vertex.yPos]).bindPopup('<p align="center">' + varenr + ": " + vertex.beskrivelse + "</p>" + "Klikk for å se plassering").on('mouseover', function(e){
-                            this.openPopup();
-                        }).on('mouseout', function(e) {
-                            this.closePopup();
-                        }).on('click', function(e) {
-                            closeUpX = vertex.x;
-                            closeUpY = vertex.y;
-                            window.location.replace("/closeUpVare");
-                        }).addTo(map);
-                        varenr++;
-                    }
-                });
-                var polyline = L.polyline(latlngs, {color: 'red'}).addTo(map);
-            }
-        });
-    }
-
 };
 
 $(document).ready(init);
