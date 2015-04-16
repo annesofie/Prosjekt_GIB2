@@ -32,7 +32,7 @@ public class Prims {
                 return 0;
             }
             else
-                System.out.println("v1 sin key er: "+v1.key+ "og v2 sin key er: "+v2.key);
+                System.out.println(v1.id+" sin key er: "+v1.key+ " og " +v2.id+" sin key er: "+v2.key);
                 return (v1.key-v2.key);
         }
     }
@@ -72,13 +72,16 @@ public class Prims {
                 System.out.println("I queue ligger: "+v.id+" og har key: "+v.key);
             }
             Vertex u;
-            path.add(root);
+            //path.add(root);
             visited.add(root);
             //har allerede satt alle noder's key til infinite, og forelder til null i Vertex klassen
 
             int min = INFINITE;
             while (!q.isEmpty()) {
                 u = q.poll();
+                if(u.parent!=null){
+                    path.add(u.parent);
+                }
                 System.out.println("u er: " + u.id);
                 for (Vertex neighbor : wGraph.getNeighbors(u)) {
                     if (q.contains(neighbor)&& (!(visited.contains(neighbor)))){
@@ -87,13 +90,12 @@ public class Prims {
                             if (((edge.getDestination().equals(neighbor) && (edge.getSource().equals(u))) || ((edge.getDestination().equals(u)) && (edge.getSource().equals(neighbor))))) {
                                 if(edge.weight<neighbor.key){
                                     System.out.println("i forløkke, og nabo er "+neighbor.id+" og u er: "+u.id+" og key blir oppdatert til: "+edge.weight);
-                                    for(Vertex v:q) {
-                                        if (v.equals(neighbor)) {
-                                            v.key = edge.weight;
+                                    for(Vertex n:q) {
+                                        if (n.equals(neighbor)) {
+                                            n.key = edge.weight;
+                                            n.parent = u;
                                         }
                                     }
-
-                                    neighbor.parent = u;
                                     path.add(neighbor);
                                     visited.add(neighbor);
                                 }
