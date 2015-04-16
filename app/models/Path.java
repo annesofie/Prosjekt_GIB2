@@ -19,7 +19,7 @@ public class Path{
     public Path(Vertex root, Vertex end){
         //finner en graf som innkluderer kun targetnodene
         wGraph=bfs.bfsAllToAll();
-        System.out.println("skal ha vært i bfs");
+       // System.out.println("skal ha vært i bfs");
         //kjører saa prims-algoritme paa den vektede grafen for aa finne et minimalt spenntre
         Prims prim=new Prims(root,end, wGraph);
         finalPath=prim.path;

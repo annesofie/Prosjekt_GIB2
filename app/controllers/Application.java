@@ -199,18 +199,18 @@ public class Application extends Controller {
                 allVerticesInPath.add(Path.finalPath.get(i));
                 for (weightedEdge e : Path.wGraph.edges) {
                     if(e.getDestination().equals(Path.finalPath.get(i+1))&&(e.getSource().equals(Path.finalPath.get(i)))){
-                        System.out.println("trenger ikke reversere, source er "+e.getSource().id+" og destination er "+e.getDestination().id);
+                       // System.out.println("trenger ikke reversere, source er "+e.getSource().id+" og destination er "+e.getDestination().id);
 
                         allVerticesInPath.addAll(e.visitedVertices);
                     }
                     if(e.getDestination().equals(Path.finalPath.get(i)) && (e.getSource().equals(Path.finalPath.get(i+1)))){
-                        System.out.println("Må reversere - source er "+e.getSource().id+" og destination er "+e.getDestination().id);
+                        //System.out.println("Må reversere - source er "+e.getSource().id+" og destination er "+e.getDestination().id);
 
                         ArrayList<Vertex>reversed=e.visitedVertices;
                         Collections.reverse(reversed);
-                        System.out.println("Reversed liste er: ");
+                        //System.out.println("Reversed liste er: ");
                         for(Vertex v:reversed){
-                            System.out.println(v.id);
+                            //System.out.println(v.id);
                         }
                         allVerticesInPath.addAll(reversed);
                     }
@@ -218,9 +218,9 @@ public class Application extends Controller {
             }
 
             allVerticesInPath.add(Vertex.find.byId(18));
-            System.out.println("alle noder i stien er: ");
+            //System.out.println("alle noder i stien er: ");
             for(Vertex v:allVerticesInPath){
-                System.out.println(v.id);
+                //System.out.println(v.id);
             }
 
             //Setter markoorer

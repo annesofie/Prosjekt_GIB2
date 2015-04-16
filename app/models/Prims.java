@@ -46,9 +46,9 @@ public class Prims {
                 }
             }
             path.add(end);
-            System.out.println("kun en vare, og path blir: ");
+            //System.out.println("kun en vare, og path blir: ");
             for(Vertex v:path){
-                System.out.println(v.id);
+               //System.out.println(v.id);
             }
         }
 
@@ -61,12 +61,12 @@ public class Prims {
             q.remove(getClosestToEndVertex());
             
             for(Vertex v:q){
-                System.out.println("I queue ligger: "+v.id);
+                //System.out.println("I queue ligger: "+v.id);
             }
 
 
             Vertex u;
-            System.out.println("Legger til root i path");
+            //System.out.println("Legger til root i path");
             path.add(root);
             visited.add(root);
             //har allerede satt alle noder's key til infinite, og forelder til null i Vertex klassen
@@ -74,13 +74,13 @@ public class Prims {
             int min = INFINITE;
             while (!q.isEmpty()) {
                 u = q.poll();
-                System.out.println("u er: " + u.id);
+                //System.out.println("u er: " + u.id);
                 for (Vertex neighbor : wGraph.getNeighbors(u)) {
                     if (q.contains(neighbor)&& (!visited.contains(neighbor))) {
-                        System.out.println("q inneholder "+neighbor.id);
+                        //System.out.println("q inneholder "+neighbor.id);
                         for (weightedEdge edge : wGraph.edges) {
                             if (((edge.getDestination().equals(neighbor) && (edge.getSource().equals(u))) || ((edge.getDestination().equals(u)) && (edge.getSource().equals(neighbor))))) {
-                                System.out.println("i forløkke, og nabo er "+neighbor.id+" og u er: "+u.id);
+                                //System.out.println("i forløkke, og nabo er "+neighbor.id+" og u er: "+u.id);
                                 neighbor.key = edge.weight;
                                 neighbor.parent = u;
                                 path.add(neighbor);
@@ -99,9 +99,9 @@ public class Prims {
             path.add(getClosestToEndVertex());
             path.add(end);
         }
-        System.out.println("Path er: ");
+        //System.out.println("Path er: ");
         for(Vertex v:path){
-            System.out.println(v.id);
+            //System.out.println(v.id);
         }
 
         return path;

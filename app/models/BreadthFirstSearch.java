@@ -21,7 +21,7 @@ public class BreadthFirstSearch {
         for (Vare vare:handleVarer){
             targets.add(vare.findVareVertex());
         }
-        System.out.println("Alle targets: "+targets);
+        //System.out.println("Alle targets: "+targets);
         return targets;
     }
 
@@ -70,7 +70,7 @@ public class BreadthFirstSearch {
         //System.out.println("I bfsAllToAll - yey");
 
         for (Vertex rootVertex:graphVertices){
-            System.out.println("ny runde i for, rotnode er "+rootVertex.id);
+            //System.out.println("ny runde i for, rotnode er "+rootVertex.id);
             queue.add(rootVertex);
             //System.out.println("queue: " + queue);
             visited.add(rootVertex);
@@ -113,9 +113,9 @@ public class BreadthFirstSearch {
                         weightedEdge e=new weightedEdge(child, rootVertex, visitedVertices.size()+1, visitedVertices);
                         if(!equal){
                             graphEdges.add(e);
-                            System.out.println("kant lagt til har source "+ child.id+", og destination "+rootVertex.id+" og går gjennom noder: ");
+                            //System.out.println("kant lagt til har source "+ child.id+", og destination "+rootVertex.id+" og går gjennom noder: ");
                             for(Vertex ve:visitedVertices){
-                                System.out.println(ve.id);
+                               // System.out.println(ve.id);
                             }
                         }
 
@@ -134,20 +134,20 @@ public class BreadthFirstSearch {
             System.out.println("node i vektet graf: "+v.id);
         }*/
         for(weightedEdge we:graphEdges){
-            System.out.println("sti fra: "+we.getSource().id+", til: "+we.getDestination().id+", har vekt: "+we.weight+ " og går igjennom: ");
+            //System.out.println("sti fra: "+we.getSource().id+", til: "+we.getDestination().id+", har vekt: "+we.weight+ " og går igjennom: ");
             for(Vertex v: we.visitedVertices){
-                System.out.println(v.id+", ");
+               // System.out.println(v.id+", ");
             }
         }
-        System.out.println("Nodene i grafen er: ");
+        //System.out.println("Nodene i grafen er: ");
         for(Vertex v:graphVertices){
-            System.out.println(v.id+", ");
+            //System.out.println(v.id+", ");
         }
 
         return new weightedGraph(graphVertices,graphEdges);
     }
 
-//TESTET-ISH, tror ok:)
+//TESTET ok:)
     public Vertex getUnvisitedChildNodeInGraph(Vertex vertex) {
         for (Vertex child:graph.getChildren(vertex)){
             if(!visited.contains(child)){

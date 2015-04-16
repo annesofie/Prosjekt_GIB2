@@ -24,7 +24,7 @@ public class ShoppingList extends Controller {
 
         if(user.handleliste.contains(Vare.find.byId(itemid))){
             //ingenting skjer, varen er allerede i listen
-            System.out.println("Varen kan ikke legges til");
+           System.out.println("Varen kan ikke legges til");
         }else{
             user.addToHandleliste(itemid);
             //System.out.println("Varen kan legges til");
