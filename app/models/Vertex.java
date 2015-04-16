@@ -17,7 +17,6 @@ public class Vertex extends Model{
     public int xPos,yPos;
     public int key;
     public Vertex parent;
-    public int INFINITE = 999;
     public String beskrivelse;
     public Vertex prev;
 
@@ -32,7 +31,6 @@ public class Vertex extends Model{
         this.id = id;
         this.xPos = x;
         this.yPos = y;
-        this.key=INFINITE;
         this.parent=null;
         prev=null;
 
@@ -50,6 +48,9 @@ public class Vertex extends Model{
         prev=v;
     }
 
+    public void setKey(Integer key){
+        this.key=key;
+    }
 
 }
 

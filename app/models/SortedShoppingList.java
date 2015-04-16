@@ -14,13 +14,14 @@ public class SortedShoppingList {
 
     public static List<Vare> sortShoppingList() {
         Path path = new Path(Vertex.find.byId(1),Vertex.find.byId(18)); //legg inn rotnodenummer og kassenodenummer i input
-        //  System.out.println(Vertex.find.byId().xPos);
-        List<Vertex>p=path.finalPath;
-        for(Vertex v:p) {
-            System.out.println("final path er: " + v.id);
+        List<Vare> sortedShoppingList = new ArrayList<>();
+
+        System.out.println("Final path er: ");
+        for(Vertex v:path.finalPath) {
+            System.out.println(v.id);
         }
-        List<Vare> sortedShoppingList = new ArrayList<Vare>();
-        for (Vertex vertex: p) {
+
+        for (Vertex vertex: path.finalPath) {
             for (Vare vare: User.handleliste) {
 
                 if (vare.findVareVertex().equals(vertex)) {
@@ -28,8 +29,9 @@ public class SortedShoppingList {
                 }
             }
         }
+        System.out.println("Varer i handlelisten er: ");
         for(Vare v:sortedShoppingList) {
-            System.out.println("I handlelisten: "+v.navn);
+            System.out.println(v.navn);
         }
 
         return sortedShoppingList;

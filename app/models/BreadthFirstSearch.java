@@ -21,7 +21,10 @@ public class BreadthFirstSearch {
         for (Vare vare:handleVarer){
             targets.add(vare.findVareVertex());
         }
-        //System.out.println("Alle targets: "+targets);
+        System.out.println("Alle targets er: ");
+        for(Vertex v: targets){
+            System.out.println(v.id);
+        }
         return targets;
     }
 
@@ -139,9 +142,9 @@ public class BreadthFirstSearch {
                // System.out.println(v.id+", ");
             }
         }
-        //System.out.println("Nodene i grafen er: ");
+        System.out.println("Nodene i grafen er: ");
         for(Vertex v:graphVertices){
-            //System.out.println(v.id+", ");
+            System.out.println(v.id+", ");
         }
 
         return new weightedGraph(graphVertices,graphEdges);
