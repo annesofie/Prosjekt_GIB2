@@ -54,12 +54,12 @@ public class AllPermutations {
     }
 
 
-    public List<Vertex> getBestPath(boolean big){
+    public List<Vertex> getBestPath(Integer big){
         List<Vertex> bestPath=new ArrayList<>();
         int weight=10000;
         for(List<Vertex> l:allPermutations){
             List<Vertex> list=new ArrayList<>();
-            if(big){
+            if(big==1){
                 list.add(root);
                 list.addAll(Path.closeToStart);
                 list.addAll(l);
@@ -67,7 +67,8 @@ public class AllPermutations {
                 list.add(Path.closeToEnd.get(1));
                 list.add(end);
             }
-            else {
+
+            else if(big==0){
                 list.add(root);
                 list.addAll(l);
                 list.add(end);

@@ -31,9 +31,9 @@ public class Path{
         targets.remove(Vertex.find.byId(1));
         targets.remove(Vertex.find.byId(18));
 
-        boolean big;
+        int big=0;
         if(targets.size()>7) {
-            big = true;
+            big = 1;
             ArrayList<Vertex> visited=new ArrayList<>();
             closeToStart=new ArrayList<>();
             closeToEnd=new ArrayList<>();
@@ -58,25 +58,25 @@ public class Path{
             //Fjerner de fra targets for å minske antall permutasjoner
             targets.removeAll(closeToEnd);
             targets.removeAll(closeToStart);
+
+            AllPermutations allPerm = new AllPermutations(targets, Vertex.find.byId(1), Vertex.find.byId(18), wGraph);
+            finalPath = allPerm.getBestPath(big);
+        }
+
+        else if(targets.size()>10){
+            big=2;
+            shortestFromEachSide path=new shortestFromEachSide(targets,wGraph);
+            finalPath=shortestFromEachSide.path;
+
         }
         
 
         else{
-            big=false;
-
-        }
-        //Finner alle mulige måter å travesere grafen på
-        AllPermutations allPerm = new AllPermutations(targets, Vertex.find.byId(1), Vertex.find.byId(18), wGraph);
-
-        for (List<Vertex> list : allPerm.allPermutations) {
-            System.out.println("perm: ");
-            for (Vertex v : list) {
-                System.out.println(v.id);
-            }
+            big=0;
+            AllPermutations allPerm = new AllPermutations(targets, Vertex.find.byId(1), Vertex.find.byId(18), wGraph);
+            finalPath = allPerm.getBestPath(big);
         }
 
-        //Finner beste sti ved å si hvilken som totalt sett er kortest
-        finalPath = allPerm.getBestPath(big);
 
     }
 
