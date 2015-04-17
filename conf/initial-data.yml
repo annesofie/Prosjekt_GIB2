@@ -197,12 +197,12 @@
       yPos: 90
 
     - !!models.Vertex
-      xPos: 115
+      xPos: 90
       yPos: 90
 
     - !!models.Vertex
       xPos: 60
-      yPos: 147
+      yPos: 144
 
     - !!models.Vertex
       xPos: 60
