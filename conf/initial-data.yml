@@ -11,19 +11,20 @@
         kategori: hjem
         pris: 249
         vertexId: 3
-        x: 2
-        y: 2
-        z: 2
+        x: 100
+        y: 100
+        z: 100
         pic: http://goo.gl/DRi9Fg
 
     - !!models.Vare
-        navn: kulekopp
+        navn: Hullmaskin
         kategori: hjem
-        pris: 29
+        pris: 49
         vertexId: 4
-        x: 2
-        y: 2
-        z: 4
+        x: 100
+        y: 150
+        z: 100
+        pic: http://goo.gl/9KOwD5
 
     - !!models.Vare
         navn: yogamatte
@@ -71,13 +72,14 @@
         z: 1
 
     - !!models.Vare
-        navn: pute
+        navn: Safe
         kategori: hjem
         pris: 250
         vertexId: 20
-        x: 1
-        y: 1
-        z: 1
+        x: 100
+        y: 200
+        z: 100
+        pic: http://goo.gl/MFrJtb
 
     - !!models.Vare
         navn: hodetelefon
