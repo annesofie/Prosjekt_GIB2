@@ -27,10 +27,10 @@ var init = function() {
     $("td > a").removeAttr("disabled");
 
     var inngangIcon = L.icon({
-        iconUrl: 'http://goo.gl/TKKxdJ',
+        iconUrl: 'http://goo.gl/56r6wb',
 
-        iconSize:     [50, 50], // size of the icon
-        iconAnchor:   [25, 50], // point of the icon which will correspond to marker's location
+        iconSize:     [100, 100], // size of the icon
+        iconAnchor:   [50, 90], // point of the icon which will correspond to marker's location
         popupAnchor:  [0, -50] // point from which the popup should open relative to the iconAnchor
     });
 
@@ -86,13 +86,26 @@ var init = function() {
                     if (vertex.beskrivelse != null) {
                         closeUpX = vertex.x;
                         closeUpY = vertex.y;
-                        var marker = L.marker([closeUpX,closeUpY]).bindPopup(vertex.beskrivelse)
+                        var marker = L.marker([closeUpX,closeUpY]);
                         L.marker([vertex.xPos, vertex.yPos]).bindPopup('<p align="center">' + varenr + ": " + vertex.beskrivelse + "</p>" + "Klikk for å se plassering"
                         ).on('mouseover', function(e){
                             this.openPopup();
                         }).on('mouseout', function(e) {
                             this.closePopup();
                         }).on('click', function(e) {
+                                var latlngs = Array();
+                                var lats1 = this.getLatLng();
+                                var biggerLat = lats1.lat + 50;
+                                var smallerLat = lats1.lat - 50;
+                                var biggerLng = lats1.lng + 30;
+                                var smallerLng = lats1.lng - 30;
+                                var lats2 = [biggerLat,biggerLng];
+                                var lats3 = [smallerLat,biggerLng];
+                                latlngs.push(lats1);
+                                latlngs.push(lats2);
+                                latlngs.push(lats3);
+                                map.addLayer(L.polygon(latlngs));
+
                                 $("#leaflet-kart_close").fadeIn();
                                 map2.panTo(new L.LatLng(280, 0));
                                 marker.addTo(map2);
