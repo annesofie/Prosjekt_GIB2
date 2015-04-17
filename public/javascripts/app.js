@@ -2,8 +2,6 @@
  * Created by annesofiestranderichsen on 06.03.15.
  */
 
-var closeUpX;
-var closeUpY;
 
 var init = function() {
     /*window.alert(closeUpX);*/
@@ -45,43 +43,42 @@ var init = function() {
     });
 
     var map;
+    var map2;
 
-    if (window.location.pathname == '/closeUpVare') {
-        map = L.map('leaflet-kart_close', {
-            maxZoom: 0.45,
-            minZoom: 0.45,
-            zoomControl: false,
-            dragging: false,
-            crs: L.CRS.Simple
-        }).setView([0, 0], 1);
+    map = L.map('leaflet-kart', {
+        maxZoom: 0.45,
+        minZoom: 0.45,
+        zoomControl: false,
+        dragging: false,
+        crs: L.CRS.Simple
+    }).setView([0, 0], 1);
 
-        map.setMaxBounds(new L.LatLngBounds([400,0],[0,650]));
-        var imageUrl = 'http://i57.tinypic.com/2yjqw5c.jpg';
-        var imageBounds = [[300, 0], [0, 480]];
-        L.imageOverlay(imageUrl, imageBounds).addTo(map);
-        L.marker([closeUpX,closeUpY]).addTo(map);
-    } else {
-        map = L.map('leaflet-kart', {
-            maxZoom: 0.45,
-            minZoom: 0.45,
-            zoomControl: false,
-            dragging: false,
-            crs: L.CRS.Simple
-        }).setView([0, 0], 1);
+    map.setMaxBounds(new L.LatLngBounds([0,500], [500,0]));
+    var imageUrl = 'http://i61.tinypic.com/30ucvfc.jpg';
+    var imageBounds = [[500,0], [0,370]];
+    L.imageOverlay(imageUrl, imageBounds).addTo(map);
 
-        map.setMaxBounds(new L.LatLngBounds([0,500], [500,0]));
-        var imageUrl = 'http://i61.tinypic.com/30ucvfc.jpg';
-        var imageBounds = [[500,0], [0,370]];
-        L.imageOverlay(imageUrl, imageBounds).addTo(map);
-
-        var inngang = L.marker([60, 317],{icon: inngangIcon}).bindPopup("Inngang").addTo(map);
-        var kasse = L.marker([60, 204],{icon: kasseIcon}).bindPopup("Kasse").addTo(map);
-
-    }
+    var inngang = L.marker([60, 317],{icon: inngangIcon}).bindPopup("Inngang").addTo(map);
+    var kasse = L.marker([60, 204],{icon: kasseIcon}).bindPopup("Kasse").addTo(map);
 
     if (window.location.pathname == '/shoppingPath') {
+        map2 = L.map('leaflet-kart_close', {
+            maxZoom: 0.45,
+            minZoom: 0.45,
+            zoomControl: false,
+            dragging: false,
+            crs: L.CRS.Simple
+        }).setView([0, 0], 1);
+
+        map2.setMaxBounds(new L.LatLngBounds([400,0],[0,650]));
+        var imageUrl = 'http://i57.tinypic.com/2yjqw5c.jpg';
+        var imageBounds = [[300, 0], [0, 480]];
+        L.imageOverlay(imageUrl, imageBounds).addTo(map2);
+
         var latlngs = Array();
         var varenr = 1;
+        var closeUpX;
+        var closeUpY;
         appRoutes.controllers.Application.getTargetVertices().ajax({
             success: function (data) {
                 $(data).each(function (index, vertex) {
@@ -94,8 +91,7 @@ var init = function() {
                         }).on('mouseout', function(e) {
                             this.closePopup();
                         }).on('click', function(e) {
-                            /*window.alert(closeUpX);*/
-                            window.location.replace("/closeUpVare");
+                            L.marker([closeUpX,closeUpY]).bindPopup(vertex.beskrivelse).addTo(map2);
                         }).addTo(map);
                         varenr++;
                     }

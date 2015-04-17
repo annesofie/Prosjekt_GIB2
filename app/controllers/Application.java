@@ -228,8 +228,8 @@ public class Application extends Controller {
                 for (int j = 0; j < allVerticesInPath.size(); j++) {
                     if (va.vertexId == allVerticesInPath.get(j).id) {
                         allVerticesInPath.get(j).setBeskrivelse(va.navn);
-                        allVerticesInPath.get(j).setX(100);
-                        allVerticesInPath.get(j).setY(100);
+                        allVerticesInPath.get(j).setX(va.x);
+                        allVerticesInPath.get(j).setY(va.y);
                     }
                 }
             }
