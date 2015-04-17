@@ -54,14 +54,24 @@ public class AllPermutations {
     }
 
 
-    public List<Vertex> getBestPath(){
+    public List<Vertex> getBestPath(boolean big){
         List<Vertex> bestPath=new ArrayList<>();
         int weight=10000;
         for(List<Vertex> l:allPermutations){
             List<Vertex> list=new ArrayList<>();
-            list.add(root);
-            list.addAll(l);
-            list.add(end);
+            if(big){
+                list.add(root);
+                list.addAll(Path.closeToStart);
+                list.addAll(l);
+                list.add(Path.closeToEnd.get(0));
+                list.add(Path.closeToEnd.get(1));
+                list.add(end);
+            }
+            else {
+                list.add(root);
+                list.addAll(l);
+                list.add(end);
+            }
             int totw=getTotalWeightOfPath(list);
             if(totw<weight){
                 weight=totw;
@@ -82,6 +92,26 @@ public class AllPermutations {
         }
         System.out.println("totalvekt er "+totW);
         return totW;
+    }
+
+    public Vertex closestTo(Vertex vertex){
+
+        int w=INFINITE;
+        Vertex closest=null;
+
+        for (weightedEdge edge : wGraph.edges){
+            if (edge.getSource().equals(vertex)&& edge.weight<w){
+                closest=edge.getDestination();
+                w=edge.weight;
+            }
+            if(edge.getDestination().equals(vertex) && edge.weight<w){
+                closest= edge.getSource();
+                w=edge.weight;
+            }
+        }
+
+        return (closest);
+
     }
 
 }
