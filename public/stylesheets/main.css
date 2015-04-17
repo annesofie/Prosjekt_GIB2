@@ -176,6 +176,19 @@ a[disabled]{
     text-decoration-color: #373d47;
 }
 
+div.scroll {
+    height: 150px;
+    overflow: scroll;
+}
+.scroll{
+    border: 2px solid;
+    margin-left:20px;
+    margin-right:35px;
+    border-color:#bdbab7;
+    box-shadow:#888888;
+    background:white;
+    border-radius:3px;
+}
 
 .handleliste-innhold{
     border: 2px solid;
@@ -489,10 +502,7 @@ h6 {
     text-align: center;
 }
 
-div.scroll {
-    height: 250px;
-    overflow: scroll;
-}
+
 
 
 /*brukes ikke
