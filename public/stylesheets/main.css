@@ -489,19 +489,12 @@ h6 {
     text-align: center;
 }
 
+#leaflet-kart_close{
+    border: 3px solid #888888;
 
-/*brukes ikke
 
-[draggable] {
-    -moz-user-select: none;
-    -khtml-user-select: none;
-    -webkit-user-select: none;
-    user-select: none;
-    Required to make elements draggable in old WebKit
-    -khtml-user-drag: element;
-    -webkit-user-drag: element;
 }
-*/
+
 
 
 
