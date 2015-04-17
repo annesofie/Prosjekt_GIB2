@@ -28,44 +28,6 @@ public class Application extends Controller {
 
     }
 
-    @Security.Authenticated(Secured.class)
-    public static Result index(){
-
-        User user = User.find.byId(request().username());
-        List<Vare> alleVarer = Vare.find.all();
-        List<Vare> elektro = new ArrayList<>();
-        List<Vare> fritid = new ArrayList<>();
-        List<Vare> jernvare = new ArrayList<>();
-        List<Vare> multimedia = new ArrayList<>();
-        List<Vare> hjem = new ArrayList<>();
-        List<Vare> shoppingList = user.getShoppingList();
-
-
-
-
-        for(Vare vare:alleVarer){
-
-            if(vare.kategori.equals("elektro")){
-                elektro.add(vare);
-            }
-            if(vare.kategori.equals("fritid")){
-                fritid.add(vare);
-            }
-            if(vare.kategori.equals("jernvare")){
-                jernvare.add(vare);
-            }
-            if(vare.kategori.equals("multimedia")){
-                multimedia.add(vare);
-            }
-            if(vare.kategori.equals("hjem")){
-                hjem.add(vare);
-            }
-
-        }
-        return ok(index.render(request().username(),shoppingList ,alleVarer, elektro, fritid, hjem, jernvare, multimedia, play.data.Form.form(Login.class), Form.form(User.class)));
-    }
-
-
     public static Result home() {
 
         List<Vare> alleVarer = Vare.find.all();
@@ -98,6 +60,44 @@ public class Application extends Controller {
 
         }
         return ok(home.render(request().username(),shoppingList ,alleVarer, elektro, fritid, hjem, jernvare, multimedia, play.data.Form.form(Login.class), play.data.Form.form(User.class)));
+    }
+
+    @Security.Authenticated(Secured.class)
+    public static Result index(){
+
+        User user = User.find.byId(request().username());
+        List<Vare> alleVarer = Vare.find.all();
+        List<Vare> elektro = new ArrayList<>();
+        List<Vare> fritid = new ArrayList<>();
+        List<Vare> jernvare = new ArrayList<>();
+        List<Vare> multimedia = new ArrayList<>();
+        List<Vare> hjem = new ArrayList<>();
+        List<Vare> shoppingList = user.getShoppingList();
+
+
+
+        for(Vare vare:alleVarer){
+
+            if(vare.kategori.equals("elektro")){
+                elektro.add(vare);
+            }
+            if(vare.kategori.equals("fritid")){
+                fritid.add(vare);
+            }
+            if(vare.kategori.equals("jernvare")){
+                jernvare.add(vare);
+            }
+            if(vare.kategori.equals("multimedia")){
+                multimedia.add(vare);
+            }
+            if(vare.kategori.equals("hjem")){
+                hjem.add(vare);
+            }
+
+        }
+
+
+        return ok(index.render(request().username(),shoppingList ,alleVarer, elektro, fritid, hjem, jernvare, multimedia, play.data.Form.form(Login.class), Form.form(User.class)));
     }
 
 

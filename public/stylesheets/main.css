@@ -489,6 +489,11 @@ h6 {
     text-align: center;
 }
 
+div.scroll {
+    height: 250px;
+    overflow: scroll;
+}
+
 
 /*brukes ikke
 

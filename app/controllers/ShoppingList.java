@@ -31,8 +31,6 @@ public class ShoppingList extends Controller {
 
         }
 
-        //routes.Application.getTargetVerticec(); Route til flere ting samtidig???
-
         return redirect(routes.Application.index());
 
     }

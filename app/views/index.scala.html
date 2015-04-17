@@ -222,14 +222,14 @@
                     </div>
                 </div>
 
-                <div class="handleliste-innhold">
+                <div class="scroll">
                     <div class="row">
                         <div class="col-xs-12">
                         @if(useremail != null){
                             <div class="handleliste">
                                 <table class="table table-condensed">
                                     @if(handleliste.isEmpty) {
-                                        <h3>Det finnes ingen varer i din handleliste</h3>
+                                        <h6>Det finnes ingen varer i din handleliste</h6>
                                     }
 
                                     @for(vare <- handleliste) {
