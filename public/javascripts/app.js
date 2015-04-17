@@ -84,10 +84,11 @@ var init = function() {
                 $(data).each(function (index, vertex) {
                     latlngs.push(L.latLng(vertex.xPos, vertex.yPos));
                     if (vertex.beskrivelse != null) {
-                        L.marker([vertex.xPos, vertex.yPos]).bindPopup('<p align="center">' + varenr + ": " + vertex.beskrivelse + "</p>" + "Klikk for å se plassering").on('mouseover', function(e){
+                        closeUpX = vertex.x;
+                        closeUpY = vertex.y;
+                        L.marker([vertex.xPos, vertex.yPos]).bindPopup('<p align="center">' + varenr + ": " + vertex.beskrivelse + "</p>" + "Klikk for å se plassering"
+                        ).on('mouseover', function(e){
                             this.openPopup();
-                            closeUpX = vertex.x;
-                            closeUpY = vertex.y;
                         }).on('mouseout', function(e) {
                             this.closePopup();
                         }).on('click', function(e) {
