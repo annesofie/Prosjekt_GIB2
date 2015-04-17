@@ -11,8 +11,8 @@
         kategori: hjem
         pris: 249
         vertexId: 3
-        x: 100
-        y: 100
+        x: 57
+        y: 415
         z: 100
         pic: http://goo.gl/DRi9Fg
 
@@ -21,60 +21,65 @@
         kategori: hjem
         pris: 49
         vertexId: 4
-        x: 100
-        y: 150
+        x: 150
+        y: 100
         z: 100
         pic: http://goo.gl/9KOwD5
 
     - !!models.Vare
-        navn: yogamatte
+        navn: Klokke
         kategori: elektro
-        pris: 249
+        pris: 99
         vertexId: 12
         x: 3
         y: 4
         z: 3
+        pic: http://goo.gl/eqU8R5
 
     - !!models.Vare
-        navn: balansesykkel
+        navn: Termometer
         kategori: elektro
-        pris: 25
+        pris: 129
         vertexId: 11
         x: 1
         y: 1
         z: 1
+        pic: http://goo.gl/xZ3Lvb
 
     - !!models.Vare
-        navn: balansesykkel
+        navn: Treningsarmbånd
         kategori: fritid
-        pris: 25
+        pris: 599
         vertexId: 16
         x: 1
         y: 1
         z: 1
+        pic: http://goo.gl/pXxpCl
 
     - !!models.Vare
-        navn: balansesykkel
+        navn: Hammer
         kategori: jernvare
-        pris: 25
+        pris: 49
         vertexId: 10
         x: 1
         y: 1
         z: 1
+        pic: http://goo.gl/tVzEEv
 
     - !!models.Vare
-        navn: balansesykkel
+        navn: Actionkamera
         kategori: multimedia
-        pris: 25
+        pris: 999
         vertexId: 7
         x: 1
         y: 1
         z: 1
+        pic: http://goo.gl/9rifkG
 
     - !!models.Vare
         navn: Safe
         kategori: hjem
-        pris: 250
+        pris: 349
         vertexId: 20
         x: 100
         y: 200
@@ -82,49 +87,54 @@
         pic: http://goo.gl/MFrJtb
 
     - !!models.Vare
-        navn: hodetelefon
+        navn: GPS
         kategori: multimedia
-        pris: 288
+        pris: 499
         vertexId: 6
         x: 2
         y: 2
         z: 2
+        pic: http://goo.gl/rT1gYH
 
     - !!models.Vare
-        navn: sodastream
+        navn: Hørselsvern
         kategori: jernvare
-        pris: 288
+        pris: 199
         vertexId: 8
         x: 2
         y: 0
         z: 2
+        pic: http://goo.gl/a7c8fm
 
     - !!models.Vare
-        navn: magnet
+        navn: Lyspære
         kategori: elektro
-        pris: 12
+        pris: 59
         vertexId: 13
         x: 3
         y: 1
         z: 2
+        pic: http://goo.gl/ttLhj7
 
     - !!models.Vare
-        navn: sykkel
+        navn: Motorsag
         kategori: fritid
-        pris: 1233
+        pris: 2999
         vertexId: 19
         x: 2
         y: 3
         z: 1
+        pic: http://goo.gl/7wjJ30
 
     - !!models.Vare
-        navn: bamse
+        navn: Sykkelpumpe
         kategori: fritid
-        pris: 45
+        pris: 49
         vertexId: 17
         x: 2
         y: 1
         z: 1
+        pic: http://goo.gl/OMPKuW
 
     - !!models.Vertex
       xPos: 60

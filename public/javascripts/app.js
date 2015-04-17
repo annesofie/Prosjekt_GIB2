@@ -86,13 +86,16 @@ var init = function() {
                     if (vertex.beskrivelse != null) {
                         closeUpX = vertex.x;
                         closeUpY = vertex.y;
+                        var marker = L.marker([closeUpX,closeUpY]).bindPopup(vertex.beskrivelse)
                         L.marker([vertex.xPos, vertex.yPos]).bindPopup('<p align="center">' + varenr + ": " + vertex.beskrivelse + "</p>" + "Klikk for å se plassering"
                         ).on('mouseover', function(e){
                             this.openPopup();
                         }).on('mouseout', function(e) {
                             this.closePopup();
                         }).on('click', function(e) {
-                            L.marker([closeUpX,closeUpY]).bindPopup(vertex.beskrivelse).addTo(map2);
+                                $("#leaflet-kart_close").fadeIn();
+                                map2.panTo(new L.LatLng(280, 0));
+                                marker.addTo(map2);
                         }).addTo(map);
                         varenr++;
                     }
@@ -101,6 +104,10 @@ var init = function() {
             }
         });
     }
+
+    map2.on('click', function(e) {
+        alert("Lat, Lon : " + e.latlng.lat + ", " + e.latlng.lng)
+    });
 
     $('.søk-knapp').click(function() {
         var inngang = L.marker([60, 317]).bindPopup("Inngang").addTo(map);
