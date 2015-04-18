@@ -32,7 +32,18 @@ public class Path{
         targets.remove(Vertex.find.byId(18));
 
         int big=0;
-        if(targets.size()>7) {
+
+        if(targets.size()>2){
+            System.out.println("riktig if");
+            big=2;
+            shortestFromEachSide path=new shortestFromEachSide(targets,wGraph);
+            finalPath=shortestFromEachSide.path;
+
+
+
+        }
+        else if(targets.size()>7) {
+
             big = 1;
             ArrayList<Vertex> visited=new ArrayList<>();
             closeToStart=new ArrayList<>();
@@ -63,12 +74,7 @@ public class Path{
             finalPath = allPerm.getBestPath(big);
         }
 
-        else if(targets.size()>10){
-            big=2;
-            shortestFromEachSide path=new shortestFromEachSide(targets,wGraph);
-            finalPath=shortestFromEachSide.path;
 
-        }
         
 
         else{
