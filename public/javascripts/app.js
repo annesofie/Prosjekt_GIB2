@@ -87,6 +87,7 @@ var init = function() {
         var varenr = 1;
         var closeUpX;
         var closeUpY;
+        var inngang = L.marker([-20,-20],{icon: pilIcon}).addTo(map);
         appRoutes.controllers.Application.getTargetVertices().ajax({
             success: function (data) {
                 $(data).each(function (index, vertex) {
@@ -104,6 +105,7 @@ var init = function() {
                             this.closePopup();
                         }).on('click', function(e) {
                                 if(vertex.id == 3 || vertex.id == 4) {
+                                    inngang.setLatLng(this.getLatLng());
                                     $("#leaflet-kart_close").fadeIn();
                                     map2.panTo(new L.LatLng(280, 0));
                                     marker.addTo(map2);
