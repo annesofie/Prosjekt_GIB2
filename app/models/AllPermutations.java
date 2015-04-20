@@ -48,6 +48,7 @@ public class AllPermutations {
                 List<Vertex> temp = new ArrayList<>(smallerPermutated);
                 temp.add(index, firstElement);
                 returnValue.add(temp);
+
             }
         }
         return returnValue;

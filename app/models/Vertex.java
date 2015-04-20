@@ -32,6 +32,8 @@ public class Vertex extends Model{
         this.id = id;
         this.xPos = x;
         this.yPos = y;
+
+        //felter for bruk av prims-algoritme
         this.parent=null;
         prev=null;
 

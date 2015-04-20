@@ -12,45 +12,8 @@ public class BreadthFirstSearch {
     ArrayList<Vertex> visited;
     public ArrayList<Vertex>targets;
 
-    //TESTET OG OK!!!
-    public ArrayList<Vertex> findTargets(){
-        //Target er vertex'en på stien som er nærmest varen man har lagret i handlelisten
-        targets=new ArrayList<Vertex>();
-
-        List<Vare> handleVarer=User.handleliste;
-        for (Vare vare:handleVarer){
-            targets.add(vare.findVareVertex());
-        }
-        return targets;
-    }
-
-
-    //Tar inn visited, for å kunne kalle på denne metoden og unngå at noder som er del av stien blir valgt flere ganger
-    public String bfs(Vertex rootNode, ArrayList<Vertex> visited) {
-
-        int hight=0;
-        // BFS uses Queue data structure
-        Queue queue = new LinkedList();
-        queue.add(rootNode);
-        visited.add(rootNode);
-        while (!queue.isEmpty()) {
-            Vertex vertex = (Vertex) queue.remove();
-            Vertex child = null;
-            hight+=1; //Teller nivåer i treet, altså totallengden til noden man sjekker
-            while((child=getUnvisitedChildNodeInGraph(vertex))!=null){ //Går igjennom hvert barn
-                if(targets.contains(child)){
-                    return child+","+hight;
-                }
-                visited.add(child);
-                queue.add(child);
-            }
-        }
-        return null;
-
-    }
-
     //Skal returnere en graf som viser vei fra alle target-noder til alle target-noder, et spenntre
-    public weightedGraph bfsAllToAll() {
+    public weightedGraph bfsAllToAll(Vertex root, Vertex end) {
 
         // BFS uses Queue data structure
         visited=new ArrayList<>();
@@ -63,44 +26,46 @@ public class BreadthFirstSearch {
             graphVertices.add(t);
         }
         //Legger ogsaa til start og sluttnoden, fordi de ogsaa alltid er en del av den nye grafen
-        graphVertices.add(Vertex.find.byId(1));
-        graphVertices.add(Vertex.find.byId(18));
+        graphVertices.add(root);
+        graphVertices.add(end);
 
 
         for (Vertex rootVertex:graphVertices){
             queue.add(rootVertex);
             visited.add(rootVertex);
 
-            while (!(queue.isEmpty())) {
+            while (!(queue.isEmpty())) { //Så lenge det finnes ubesøkte noder
                 Vertex vertex = (Vertex)queue.remove();
                 Vertex child = null;
-                while ((child = getUnvisitedChildNodeInGraph(vertex)) != null) { //Går igjennom hvert barn til vertex
+                while ((child = getUnvisitedChildNodeInGraph(vertex)) != null) { //Så lenge "vertex" har ubesøkte barn
                     child.setPrevVertex(vertex);
 
-                    if (graphVertices.contains(child)) {
-
-                        //Finner lengden paa stien fra root til target
+                    if (graphVertices.contains(child)) { //Hvis noden er en target-node
                         ArrayList<Vertex> visitedVertices= new ArrayList<>();
-                        boolean root=false;
+                        boolean rootV=false;
                         Vertex v=child;
-                        while(!root && v.prev!=null){
 
+                        //Finner alle nodene som ligger i stien til den aktuelle target-noden
+                        while(!rootV && v.prev!=null){
                             v=v.prev;
                             visitedVertices.add(v); //Legger til nodene som er besokt imellom
                             if(v.equals(rootVertex)){
-                                root=true;
+                                rootV=true;
                                 visitedVertices.remove(v);
                             }
 
                         }
 
                         boolean equal=false;
-                        //sjekker om det finnes en kant mellom samme sett med noder, men motsatt vei
+
+                        //sjekker om det finnes en kant mellom samme sett med noder, men motsatt vei.
+                        // Hvis det er tilfelle trenger vi ikke lagre kanten på nytt, fordi den aktuelle informasjonene allerede eksisterer
                         for(weightedEdge we:graphEdges){
                             if(we.getDestination().equals(child)&&(we.getSource().equals(rootVertex))){
                                 equal=true;
                             }
                         }
+                        //Opretter en vektet kant mellom rotnode og targetnoden
                         weightedEdge e=new weightedEdge(child, rootVertex, visitedVertices.size()+1, visitedVertices);
                         if(!equal){
                             graphEdges.add(e);
@@ -115,10 +80,25 @@ public class BreadthFirstSearch {
             queue.clear();
         }
 
+        //opretter en vektet graf som kunne innoholder relevant informasjon
         return new weightedGraph(graphVertices,graphEdges);
     }
 
-//TESTET ok:)
+
+    //TESTET OG OK!!!
+    public ArrayList<Vertex> findTargets(){
+        //Target er vertex'en på stien som er nærmest varen man har lagret i handlelisten
+        targets=new ArrayList<Vertex>();
+
+        List<Vare> handleVarer=User.handleliste;
+        for (Vare vare:handleVarer){
+            targets.add(vare.findVareVertex());
+        }
+        return targets;
+    }
+
+
+    //TESTET ok:)
     public Vertex getUnvisitedChildNodeInGraph(Vertex vertex) {
         for (Vertex child:graph.getChildren(vertex)){
             if(!visited.contains(child)){

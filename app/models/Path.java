@@ -14,13 +14,20 @@ public class Path{
     public BreadthFirstSearch bfs=new BreadthFirstSearch();
     public static List<Vertex>finalPath;
     public static weightedGraph wGraph;
+    public static Vertex root;
+    public Vertex end;
 
     public static List<Vertex> closeToEnd;
     public static List<Vertex> closeToStart;
 
     public Path(Vertex root, Vertex end){
+        end=Vertex.find.byId(18);
+        root=Vertex.find.byId(1);
+
+        //long startTime=System.nanoTime();
+
         //finner en graf som innkluderer kun targetnodene
-        wGraph=bfs.bfsAllToAll();
+        wGraph=bfs.bfsAllToAll(root,end);
 
         for(weightedEdge e:wGraph.edges) {
             System.out.println("kant destination: "+e.getDestination().id+" soruce: "+e.getSource().id+ " og vekt: "+e.weight);
@@ -28,8 +35,8 @@ public class Path{
 
         //Lager liste over alle noder man skal besøkes, for trenger ikke start og sluttnoden med når man skal finne permutasjoner
         List<Vertex> targets=wGraph.vertices;
-        targets.remove(Vertex.find.byId(1));
-        targets.remove(Vertex.find.byId(18));
+        targets.remove(root);
+        targets.remove(end);
 
         int big=0;
 
@@ -71,7 +78,7 @@ public class Path{
             targets.removeAll(closeToEnd);
             targets.removeAll(closeToStart);
 
-            AllPermutations allPerm = new AllPermutations(targets, Vertex.find.byId(1), Vertex.find.byId(18), wGraph);
+            AllPermutations allPerm = new AllPermutations(targets, root, end, wGraph);
             finalPath = allPerm.getBestPath(big);
         }
 
@@ -80,9 +87,11 @@ public class Path{
 
         else{
             big=0;
-            AllPermutations allPerm = new AllPermutations(targets, Vertex.find.byId(1), Vertex.find.byId(18), wGraph);
+            AllPermutations allPerm = new AllPermutations(targets, root, end, wGraph);
             finalPath = allPerm.getBestPath(big);
         }
+        //long endTime=System.nanoTime();
+        //System.out.println("Tiden det tar: "+(endTime-startTime));
 
 
     }
@@ -90,7 +99,7 @@ public class Path{
     public static Vertex closestTo(Vertex vertex, ArrayList<Vertex> visited){
 
         int w=99999;
-        Vertex closest=Vertex.find.byId(1);
+        Vertex closest=root;
 
         for (weightedEdge edge : wGraph.edges){
             if (edge.getSource().equals(vertex)&& (edge.weight<w) && (!visited.contains(edge.getDestination())) ){
