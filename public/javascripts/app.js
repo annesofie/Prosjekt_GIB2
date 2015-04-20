@@ -27,10 +27,10 @@ var init = function() {
     $("td > a").removeAttr("disabled");
 
     var inngangIcon = L.icon({
-        iconUrl: 'http://goo.gl/EgsGIL',
+        iconUrl: 'http://goo.gl/eib74S',
 
-        iconSize:     [70, 70], // size of the icon
-        iconAnchor:   [0, 50], // point of the icon which will correspond to marker's location
+        iconSize:     [73, 73], // size of the icon
+        iconAnchor:   [20, 52], // point of the icon which will correspond to marker's location
         popupAnchor:  [0, -50] // point from which the popup should open relative to the iconAnchor
     });
 
