@@ -42,6 +42,14 @@ var init = function() {
         popupAnchor:  [0, -50] // point from which the popup should open relative to the iconAnchor
     });
 
+    var pilIcon = L.icon({
+        iconUrl: 'http://i61.tinypic.com/2w7gtxt.png',
+
+        iconSize:     [50, 30], // size of the icon
+        iconAnchor:   [0, 25], // point of the icon which will correspond to marker's location
+        popupAnchor:  [0, -50] // point from which the popup should open relative to the iconAnchor
+    });
+
     var map;
     var map2;
 
@@ -96,7 +104,6 @@ var init = function() {
                             this.closePopup();
                         }).on('click', function(e) {
                                 if(vertex.id == 3 || vertex.id == 4) {
-                                    L.imageOverlay(imageUrl, imageBounds).addTo(map2);
                                     $("#leaflet-kart_close").fadeIn();
                                     map2.panTo(new L.LatLng(280, 0));
                                     marker.addTo(map2);
