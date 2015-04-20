@@ -85,17 +85,14 @@ var init = function() {
 
         var latlngs = Array();
         var varenr = 1;
-        var closeUpX;
-        var closeUpY;
         var inngang = L.marker([-20,-20],{icon: pilIcon}).addTo(map);
+        var markerLayer = L.layerGroup();
         appRoutes.controllers.Application.getTargetVertices().ajax({
             success: function (data) {
                 $(data).each(function (index, vertex) {
                     latlngs.push(L.latLng(vertex.xPos, vertex.yPos));
                     if (vertex.beskrivelse != null) {
-                        closeUpX = vertex.x;
-                        closeUpY = vertex.y;
-                        var marker = L.marker([closeUpX,closeUpY]).bindPopup(vertex.beskrivelse).on('click', function(e) {
+                        var marker = L.marker([vertex.x,vertex.y]).bindPopup(vertex.beskrivelse).on('click', function(e) {
                           map2.panTo(new L.LatLng(280, 0));
                         });
                         L.marker([vertex.xPos, vertex.yPos]).bindPopup('<p align="center">' + varenr + ": " + vertex.beskrivelse + "</p>" + "Klikk for å se plassering"
@@ -105,10 +102,12 @@ var init = function() {
                             this.closePopup();
                         }).on('click', function(e) {
                                 if(vertex.id == 3 || vertex.id == 4) {
-                                    inngang.setLatLng(this.getLatLng());
                                     $("#leaflet-kart_close").fadeIn();
+                                    markerLayer.clearLayers();
+                                    inngang.setLatLng(this.getLatLng());
+                                    markerLayer.addLayer(marker).addTo(map2);
+                                    marker.openPopup();
                                     map2.panTo(new L.LatLng(280, 0));
-                                    marker.addTo(map2);
                                 } else {
                                     window.alert("Hyllekart finnes dessverre ikke for denne delen av butikken.")
                                 }
