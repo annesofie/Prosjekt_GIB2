@@ -54,6 +54,39 @@
         });
         });
 
+
+
+        $(document).ready(function() {
+        $("#infoLink").click(function( event ){
+        event.preventDefault();
+        $(".overlay-info").fadeToggle("fast");
+        });
+
+        $(".overlayLink-info").click(function(event){
+        event.preventDefault();
+        var action = $(this).attr('data-action');
+
+        $.get( "ajax/" + action, function( data ) {
+        $( ".info-content" ).html( data );
+        });
+
+        $(".overlay-info").fadeToggle("fast");
+        });
+
+        $(".close-info").click(function(){
+        $(".overlay-info").fadeToggle("fast");
+        });
+
+        $(document).keyup(function(e) {
+        if(e.keyCode == 27 && $(".overlay-info").css("display") != "none" ) {
+        event.preventDefault();
+        $(".overlay-info").fadeToggle("fast");
+        }
+        });
+        });
+
+
+
         $(document).ready(function() {
         $("#loginLink").click(function( event ){
         event.preventDefault();

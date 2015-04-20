@@ -33,7 +33,7 @@ public class Path{
 
         int big=0;
 
-        if(targets.size()>2){
+        if(targets.size()>8){
             System.out.println("riktig if");
             big=2;
             shortestFromEachSide path=new shortestFromEachSide(targets,wGraph);
@@ -42,7 +42,8 @@ public class Path{
 
 
         }
-        else if(targets.size()>7) {
+        //Trenger trolig ikke denne likevel
+        else if(targets.size()>18) {
 
             big = 1;
             ArrayList<Vertex> visited=new ArrayList<>();

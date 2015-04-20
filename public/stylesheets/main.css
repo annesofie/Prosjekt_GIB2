@@ -34,6 +34,13 @@
     background-color: #505965;
     box-shadow: 3px 3px 3px #888888;
 }
+.boxed a{
+    float: right;
+    margin-right: 10px;
+    font-size: large;
+    margin-top: 10px;
+    color: #b5bdb2;
+}
 
 
 
@@ -177,7 +184,7 @@ a[disabled]{
 }
 
 div.scroll {
-    height: 150px;
+    height: 230px;
     overflow: scroll;
 }
 .scroll{
@@ -245,6 +252,88 @@ div.scroll {
 
 /* Innloggingsvinduet, overlay klassen */
 
+.overlay-info {
+    background-color: rgba(0, 0, 0, .25);
+    display: block;
+    justify-content: center;
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    z-index: 1001;
+    display: -webkit-box;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: -webkit-flex;
+}
+
+.overlay-info form label {
+    color: rgb(0,0,0);
+    display: block;
+    font-family: 'Varela Round', sans-serif;
+    font-size: x-small;
+    margin: .75em 0;
+}
+
+div.overlay-info > div.info-wrapper > div.info-content {
+    background-color: rgb(255,255,255);
+    border-radius: 2px;
+    padding: 24px;
+    position: relative;
+}
+
+.overlay-info
+form textarea .overlay {
+    background-color: rgb(255,255,255);
+    border: 1px solid rgb( 186, 186, 186 );
+    border-radius: 1px;
+    box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.08);
+    display: block;
+    font-size:small;
+    padding: .8em .55em;
+    text-shadow: 0 1px 1px rgba(255, 255, 255, 1);
+    transition: all 400ms ease;
+    width: 90%;
+}
+a.close-info {
+    background-color: red;//rgb(204,204,);
+    border-radius: 50%;
+    color: rgb(255,255,255);
+    display: block;
+    font-family: 'Varela Round', sans-serif;
+    font-size: .8em;
+    padding: .2em .5em;
+    position:absolute;
+    top: 1.25rem;
+    transition: all 400ms ease;
+    right: 1.25rem;
+}
+
+a.close-info:hover {
+    background-color: #73aafd;
+    cursor: pointer;
+}
+div.overlay-info > div.info-wrapper {
+    align-self: center;
+    position: absolute;
+    top:20%;
+    left:35%;
+    z-index: 1002;
+    background-color: rgba(0,0,0,.10);
+    border-radius: 2px;
+    padding: 6px;
+    width: 650px;
+}
+
+div.overlay-form > div.form-wrapper > div.form-content > h3 {
+    color: rgb(0,0,0);
+    font-family: 'Varela Round', sans-serif;
+    font-size: 1.8em;
+    margin: 0 0 1.25em;
+    padding: 0;
+}
+
+/*---------------------------------------------------*/
+
 
 .overlay-login{
     background-color: rgba(0,0,0,.25);
@@ -282,7 +371,7 @@ div.scroll {
 
 
 a.close-login {
-    background-color: red;//rgb(204,204,204);
+    background-color: red;//rgb(204,204,);
     border-radius: 50%;
     color: rgb(255,255,255);
     display: block;
@@ -456,7 +545,7 @@ form input[type="password"]:invalid:focus,
 form textarea:invalid:focus,
 form select:invalid:focus {
     border-color:transparent #28c313;
-    box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.1), 0 0 8px rgb(248,66,66);
+    box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.1), 0 0 8px;
 }
 
 
@@ -502,7 +591,10 @@ h6 {
     text-align: center;
 }
 
-
+.info-content h3{
+    font-size: medium;
+    padding:3px;
+}
 
 
 /*brukes ikke
