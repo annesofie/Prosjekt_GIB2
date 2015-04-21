@@ -40,7 +40,7 @@ public class Path{
 
         int big=0;
 
-        if(targets.size()>8){
+        if(targets.size()>7){
 
             big=2;
             shortestFromEachSide path=new shortestFromEachSide(targets,wGraph);

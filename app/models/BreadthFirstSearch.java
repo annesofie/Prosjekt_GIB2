@@ -7,7 +7,6 @@ import java.util.*;
  * Created by mathilde on 13/03/15.
  */
 public class BreadthFirstSearch {
-    long startTime=System.nanoTime();
 
     Graph graph = new Graph();
     ArrayList<Vertex> visited;
@@ -34,27 +33,27 @@ public class BreadthFirstSearch {
             graphVertices.add(t);
         }
 
-        System.out.println("1");
+
         //Legger ogsaa til start og sluttnoden, fordi de ogsaa alltid er en del av den nye grafen
         graphVertices.add(root);
         graphVertices.add(end);
-        System.out.println("2");
+
 
         for (Vertex rootVertex:graphVertices){
             queue.add(rootVertex);
             visited.add(rootVertex);
-            System.out.println("3");
+
             while (!(queue.isEmpty())) { //Så lenge det finnes ubesøkte noder
                 Vertex vertex = (Vertex)queue.remove();
                 Vertex child = null;
                 while ((child = getUnvisitedChildNodeInGraph(vertex)) != null) { //Så lenge "vertex" har ubesøkte barn
                     child.setPrevVertex(vertex);
-                    System.out.println("4");
+
                     if (graphVertices.contains(child)) { //Hvis noden er en target-node
                         ArrayList<Vertex> visitedVertices= new ArrayList<>();
                         boolean rootV=false;
                         Vertex v=child;
-                        System.out.println("5");
+
                         //Finner alle nodene som ligger i stien til den aktuelle target-noden
                         while(!rootV && v.prev!=null){
                             v=v.prev;
@@ -63,9 +62,9 @@ public class BreadthFirstSearch {
                                 rootV=true;
                                 visitedVertices.remove(v);
                             }
-                            System.out.println("6");
+
                         }
-                        System.out.println("7");
+
                         boolean equal=false;
 
                         //sjekker om det finnes en kant mellom samme sett med noder, men motsatt vei.
@@ -75,29 +74,25 @@ public class BreadthFirstSearch {
                                 equal=true;
                             }
                         }
-                        System.out.println("8");
+
                         //Opretter en vektet kant mellom rotnode og targetnoden
-                        System.out.println("skal til å begynne å opprette new vektet kant");
+
                         weightedEdge e=new weightedEdge(child, rootVertex, visitedVertices.size()+1, visitedVertices);
-                        System.out.println("opprettet ny vektet kant new vektet kant");
+
                         if(!equal){
                             graphEdges.add(e);
                         }
-                        System.out.println("9");
+
                     }
                     visited.add(child);
                     queue.add(child);
                 }
-                System.out.println("10");
+
             }
-            System.out.println("11");
             visited.clear();
             queue.clear();
-            System.out.println("12");
-        }
 
-        long endTime=System.nanoTime();
-        System.out.println("BFS tar i millisek: "+((endTime-startTime)/1000000));
+        }
 
         //opretter en vektet graf som kunne innoholder relevant informasjon
         return new weightedGraph(graphVertices,graphEdges);
@@ -122,26 +117,16 @@ public class BreadthFirstSearch {
 
     //TESTET ok:)
     public Vertex getUnvisitedChildNodeInGraph(Vertex vertex) {
-
-        long starT=System.nanoTime();
-        System.out.println("startTid i getUnvisited... er: "+starT);
-        System.out.println("i getUnvisitedChildNodeInGraph");
         for (Vertex child:getChildren(vertex)){
-            System.out.println("for hvert barn");
             if(!visited.contains(child)){
-                System.out.println("ubesøkt");
                 return child;
             }
         }
-        System.out.println("ferdig i getUnvisitedChildNodeInGraph");
-        long endT=System.nanoTime();
-        System.out.println("getUnvisitedChild... bruker : "+((endT-starT)/1000000));
         return null;
     }
 
     //Finner nabonodene til en gitt node
     public List<Vertex> getChildren(Vertex vertex){
-        System.out.println("get children");
 
         List<Vertex> children = new ArrayList<>();
         for (Edge edge : edges) {
@@ -151,7 +136,6 @@ public class BreadthFirstSearch {
         }
         for(Vertex child:children) {
         }
-        System.out.println("fant children");
         return children;
     }
 
@@ -162,8 +146,7 @@ public class BreadthFirstSearch {
     public HashMap<Edge,Vertex> makeHashMapForEdgeSources(){
         HashMap<Edge, Vertex> s=new HashMap<>();
         for (Edge edge : Graph.getEdges()) {
-            System.out.println(edge.getSource());
-            s.put(edge,edge.getSource());
+               s.put(edge,edge.getSource());
         }
         return s;
     }
