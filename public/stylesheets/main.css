@@ -75,6 +75,8 @@
 }
 
 #leaflet-kart_close {
+    height: 300px;
+    width: 550px;
     margin: auto;
     display: none;
 }
