@@ -54,6 +54,9 @@ public class shortestFromEachSide {
         path.addAll(fromDestination);
         path.add(destination);
 
+        int w=AllPermutations.getTotalWeightOfPath(path);
+        System.out.println("Totalvekt er: "+w);
+
         return path;
     }
 

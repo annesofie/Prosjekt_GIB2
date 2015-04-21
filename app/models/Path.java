@@ -89,6 +89,7 @@ public class Path{
             big=0;
             AllPermutations allPerm = new AllPermutations(targets, root, end, wGraph);
             finalPath = allPerm.getBestPath(big);
+
         }
         long endTime=System.nanoTime();
         System.out.println("Tiden det tar i millisek er: "+((endTime-startTime)/1000000));

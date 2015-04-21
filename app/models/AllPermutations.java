@@ -14,7 +14,7 @@ public class AllPermutations {
     public int INFINITE=999999;
     public Vertex root;
     public Vertex end;
-    public weightedGraph wGraph;
+    public static weightedGraph wGraph;
 
 
     int i;
@@ -80,10 +80,11 @@ public class AllPermutations {
                 bestPath=list;
             }
         }
+        System.out.println("vekt er: "+weight);
         return bestPath;
     }
 
-    public int getTotalWeightOfPath(List<Vertex> list){
+    public static int getTotalWeightOfPath(List<Vertex> list){
         int totW=0;
         for(int i=0; i<list.size()-1;i++){
             for (weightedEdge e : wGraph.edges) {
