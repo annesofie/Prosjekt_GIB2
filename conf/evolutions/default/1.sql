@@ -4,7 +4,7 @@
 # --- !Ups
 
 create table edge (
-  id                        integer auto_increment not null,
+  id                        integer not null,
   source_id                 integer,
   destination_id            integer,
   constraint pk_edge primary key (id))
@@ -23,7 +23,7 @@ create table user (
 ;
 
 create table vare (
-  vareid                    bigint auto_increment not null,
+  vareid                    bigint not null,
   navn                      varchar(255),
   kategori                  varchar(255),
   x                         integer,
@@ -33,37 +33,57 @@ create table vare (
   pic                       varchar(255),
   hylle_pic                 varchar(255),
   vertex_id                 integer,
-  in_shoppinglist           tinyint(1) default 0,
+  in_shoppinglist           boolean,
   constraint pk_vare primary key (vareid))
 ;
 
 create table vertex (
-  id                        integer auto_increment not null,
+  id                        integer not null,
   x_pos                     integer,
   y_pos                     integer,
-  key_value                 integer,
+  key                       integer,
   beskrivelse               varchar(255),
   x                         integer,
   y                         integer,
   constraint pk_vertex primary key (id))
 ;
 
+create sequence edge_seq;
+
+create sequence kategori_seq;
+
+create sequence user_seq;
+
+create sequence vare_seq;
+
+create sequence vertex_seq;
+
 
 
 
 # --- !Downs
 
-SET FOREIGN_KEY_CHECKS=0;
+SET REFERENTIAL_INTEGRITY FALSE;
 
-drop table edge;
+drop table if exists edge;
 
-drop table kategori;
+drop table if exists kategori;
 
-drop table user;
+drop table if exists user;
 
-drop table vare;
+drop table if exists vare;
 
-drop table vertex;
+drop table if exists vertex;
 
-SET FOREIGN_KEY_CHECKS=1;
+SET REFERENTIAL_INTEGRITY TRUE;
+
+drop sequence if exists edge_seq;
+
+drop sequence if exists kategori_seq;
+
+drop sequence if exists user_seq;
+
+drop sequence if exists vare_seq;
+
+drop sequence if exists vertex_seq;
 
