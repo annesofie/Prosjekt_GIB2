@@ -20,9 +20,9 @@ public class Path{
     public static List<Vertex> closeToEnd;
     public static List<Vertex> closeToStart;
 
-    public Path(Vertex root, Vertex end){
-        end=Vertex.find.byId(18);
-        root=Vertex.find.byId(1);
+    public Path(){
+        this.end=Vertex.find.byId(18);
+        this.root=Vertex.find.byId(1);
 
         long startTime=System.nanoTime();
 

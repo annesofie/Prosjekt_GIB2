@@ -31,18 +31,4 @@ public class Graph extends Model{
         return Edge.find.all();
     }
 
-
-    //TESTET OG OK!!!
-    //Finner nabonodene til en gitt node
-    public List<Vertex> getChildren(Vertex vertex){
-        List<Vertex> children = new ArrayList<>();
-        for (Edge edge : getEdges()) {
-            if (edge.getSource().equals(vertex)){
-                children.add(edge.getDestination());
-            }
-        }
-        for(Vertex child:children) {
-        }
-        return children;
-    }
 }

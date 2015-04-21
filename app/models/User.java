@@ -14,9 +14,6 @@ public class User extends Model  {
     @Id
     public String email;
     public String password;
-    public List<Vare> sortedHandleliste;
-    public Path path=new Path(Vertex.find.byId(0), Vertex.find.byId(16));
-    public List<Vertex> targetVertices;
 
     @ManyToMany
     public static List<Vare> handleliste = new ArrayList<>();

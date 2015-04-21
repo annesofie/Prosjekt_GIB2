@@ -93,7 +93,7 @@ public class DijkstraAlgorithmTgaar {
     public List<Vertex> getNeighbors(Vertex node) {
         List<Vertex> neighbors = new ArrayList<Vertex>();
         for (Edge edge : edges) {
-            if (edge.source.equals(node)
+            if (edge.getSource().equals(node)
                    ) {
                 neighbors.add(edge.getDestination());
             }

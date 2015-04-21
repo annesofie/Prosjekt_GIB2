@@ -13,7 +13,7 @@ public class SortedShoppingList {
 
 
     public static List<Vare> sortShoppingList() {
-        Path path = new Path(Vertex.find.byId(1), Vertex.find.byId(18)); //legg inn rotnodenummer og kassenodenummer i input
+        Path path = new Path();
         List<Vare> sortedShoppingList = new ArrayList<>();
 
         System.out.println("Final path er: ");
