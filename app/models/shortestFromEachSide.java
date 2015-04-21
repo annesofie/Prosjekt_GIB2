@@ -32,7 +32,7 @@ public class shortestFromEachSide {
         visited.add(destination);
 
         while((visited.size()-2) <targets.size()){
-            System.out.println("visited er " +visited+" lastInRootPath er "+lastInRootPath);
+
             Vertex nextR=closestTo(lastInRootPath,visited);
             fromRoot.add(nextR);
             visited.add(nextR);
@@ -46,9 +46,7 @@ public class shortestFromEachSide {
             visited.add(nextD);
             lastInDestinationPath=nextD;
 
-            System.out.println("visited.size er"+visited.size());
-
-        }
+               }
 
         path.add(root);
         path.addAll(fromRoot);
@@ -56,9 +54,6 @@ public class shortestFromEachSide {
         path.addAll(fromDestination);
         path.add(destination);
 
-        for(Vertex v:path){
-            System.out.println("path fra begge sider: "+v);
-        }
         return path;
     }
 
@@ -77,9 +72,7 @@ public class shortestFromEachSide {
                 closest= edge.getSource();
                 w=edge.weight;
             }
-            else{
-                System.out.println("obs, hit skulle jeg aldri havne- fuck");
-            }
+
         }
         System.out.println(closest.id);
 

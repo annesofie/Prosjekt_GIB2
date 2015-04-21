@@ -24,7 +24,7 @@ public class Path{
         end=Vertex.find.byId(18);
         root=Vertex.find.byId(1);
 
-        //long startTime=System.nanoTime();
+        long startTime=System.nanoTime();
 
         //finner en graf som innkluderer kun targetnodene
         wGraph=bfs.bfsAllToAll(root,end);
@@ -41,7 +41,7 @@ public class Path{
         int big=0;
 
         if(targets.size()>8){
-            System.out.println("riktig if");
+
             big=2;
             shortestFromEachSide path=new shortestFromEachSide(targets,wGraph);
             finalPath=shortestFromEachSide.path;
@@ -90,8 +90,8 @@ public class Path{
             AllPermutations allPerm = new AllPermutations(targets, root, end, wGraph);
             finalPath = allPerm.getBestPath(big);
         }
-        //long endTime=System.nanoTime();
-        //System.out.println("Tiden det tar: "+(endTime-startTime));
+        long endTime=System.nanoTime();
+        System.out.println("Tiden det tar i millisek er: "+((endTime-startTime)/1000000));
 
 
     }
