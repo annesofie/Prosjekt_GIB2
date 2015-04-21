@@ -63,7 +63,7 @@ var init = function() {
 
     map.setMaxBounds(new L.LatLngBounds([0,500], [500,0]));
     var imageUrl = 'http://i60.tinypic.com/ad17hd.jpg';
-    var imageBounds = [[500,0], [0,370]];
+    var imageBounds = [[500,0], [0,366]];
     L.imageOverlay(imageUrl, imageBounds).addTo(map);
 
     if (window.location.pathname == '/shoppingPath') {
