@@ -62,7 +62,7 @@ var init = function() {
     }).setView([0, 0], 1);
 
     map.setMaxBounds(new L.LatLngBounds([0,500], [500,0]));
-    var imageUrl = 'http://i58.tinypic.com/33k7qq8.jpg';
+    var imageUrl = 'http://i60.tinypic.com/ad17hd.jpg';
     var imageBounds = [[500,0], [0,370]];
     L.imageOverlay(imageUrl, imageBounds).addTo(map);
 
