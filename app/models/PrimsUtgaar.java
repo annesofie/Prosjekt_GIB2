@@ -27,13 +27,13 @@ public class PrimsUtgaar {
 
         public int compare(Vertex v1, Vertex v2){
             System.out.println("Compare");
-            if(v1.key==v2.key){
-                System.out.println("keys er like, "+v1.id+", "+v1.key+", "+v2.id+", "+v2.key);
+            if(v1.keyValue==v2.keyValue){
+                System.out.println("keys er like, "+v1.id+", "+v1.keyValue+", "+v2.id+", "+v2.keyValue);
                 return 0;
             }
             else
-                System.out.println(v1.id+" sin key er: "+v1.key+ " og " +v2.id+" sin key er: "+v2.key);
-                return (v1.key-v2.key);
+                System.out.println(v1.id+" sin key er: "+v1.keyValue+ " og " +v2.id+" sin key er: "+v2.keyValue);
+                return (v1.keyValue-v2.keyValue);
         }
     }
 
@@ -67,9 +67,9 @@ public class PrimsUtgaar {
 
             for(Vertex v:q){
                 if(v.equals(root)){
-                    v.key=0;
+                    v.keyValue=0;
                 }
-                System.out.println("I queue ligger: "+v.id+" og har key: "+v.key);
+                System.out.println("I queue ligger: "+v.id+" og har key: "+v.keyValue);
             }
             Vertex u;
             //path.add(root);
@@ -88,11 +88,11 @@ public class PrimsUtgaar {
                         System.out.println("q inneholder "+neighbor.id+" og den er ikke allerede besøkt");
                         for (weightedEdge edge : wGraph.edges) { //Finner kanten mellom noden og naboen dens
                             if (((edge.getDestination().equals(neighbor) && (edge.getSource().equals(u))) || ((edge.getDestination().equals(u)) && (edge.getSource().equals(neighbor))))) {
-                                if(edge.weight<neighbor.key){
+                                if(edge.weight<neighbor.keyValue){
                                     System.out.println("i forløkke, og nabo er "+neighbor.id+" og u er: "+u.id+" og key blir oppdatert til: "+edge.weight);
                                     for(Vertex n:q) {
                                         if (n.equals(neighbor)) {
-                                            n.key = edge.weight;
+                                            n.keyValue = edge.weight;
                                             n.parent = u;
                                         }
                                     }
@@ -107,7 +107,7 @@ public class PrimsUtgaar {
 
 
             for (Vertex v : wGraph.vertices) {  //Resetter alle nodenes verdier
-                v.key = 9999;
+                v.keyValue = 9999;
                 v.parent = null;
             }
             path.add(closest);
@@ -161,7 +161,7 @@ public class PrimsUtgaar {
 
     public void setInfiniteKeys(){
         for(Vertex v:wGraph.vertices){
-            v.key=9999;
+            v.keyValue=9999;
         }
     }
 

@@ -15,7 +15,7 @@ public class Vertex extends Model{
     @Id
     public int id;
     public int xPos,yPos;
-    public int key;
+    public int keyValue;
     public Vertex parent;
     public String beskrivelse;
     public int x,y;
@@ -60,7 +60,7 @@ public class Vertex extends Model{
     }
 
     public void setKey(Integer key){
-        this.key=key;
+        this.keyValue=key;
     }
 
 }
