@@ -29,8 +29,8 @@ var init = function() {
     var inngangIcon = L.icon({
         iconUrl: 'http://goo.gl/eib74S',
 
-        iconSize:     [73, 73], // size of the icon
-        iconAnchor:   [20, 52], // point of the icon which will correspond to marker's location
+        iconSize:     [65, 65], // size of the icon
+        iconAnchor:   [10, 45], // point of the icon which will correspond to marker's location
         popupAnchor:  [0, -50] // point from which the popup should open relative to the iconAnchor
     });
 
@@ -71,8 +71,8 @@ var init = function() {
         var kasse = L.marker([60, 204],{icon: kasseIcon}).bindPopup("Kasse").addTo(map);
 
         map2 = L.map('leaflet-kart_close', {
-            maxZoom: 0.45,
-            minZoom: 0.45,
+            maxZoom: 0.2,
+            minZoom: 0.2,
             zoomControl: false,
             dragging: false,
             crs: L.CRS.Simple
