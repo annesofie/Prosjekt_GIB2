@@ -62,14 +62,14 @@ var init = function() {
     }).setView([0, 0], 1);
 
     map.setMaxBounds(new L.LatLngBounds([0,500], [500,0]));
-    var imageUrl = 'http://i61.tinypic.com/30ucvfc.jpg';
+    var imageUrl = 'http://i58.tinypic.com/33k7qq8.jpg';
     var imageBounds = [[500,0], [0,370]];
     L.imageOverlay(imageUrl, imageBounds).addTo(map);
 
-    var inngang = L.marker([60, 317],{icon: inngangIcon}).bindPopup("Inngang").addTo(map);
-    var kasse = L.marker([60, 204],{icon: kasseIcon}).bindPopup("Kasse").addTo(map);
-
     if (window.location.pathname == '/shoppingPath') {
+        var inngang = L.marker([60, 317],{icon: inngangIcon}).bindPopup("Inngang").addTo(map);
+        var kasse = L.marker([60, 204],{icon: kasseIcon}).bindPopup("Kasse").addTo(map);
+
         map2 = L.map('leaflet-kart_close', {
             maxZoom: 0.45,
             minZoom: 0.45,
@@ -141,6 +141,7 @@ var init = function() {
         var vertex18 = L.marker([60, 204]).bindPopup("18").addTo(map);
         var vertex19 = L.marker([225, 147]).bindPopup("19").addTo(map);
         var vertex20 = L.marker([225, 204]).bindPopup("20").addTo(map);
+
     });
 };
 
