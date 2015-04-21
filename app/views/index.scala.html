@@ -8,256 +8,266 @@
         loginForm: Form[Application.Login],
         createUserForm: Form[User])
 
-@main("Varer/index") {
+    @main("Varer/index") {
 
 
-    <div class="container">
-        <div class="row toppen">
+        <div class="container">
+            <div class="row toppen">
                 <div class="col-xs-3 navn">
                     <h1 class="text">ChopShop</h1>
                 </div>
                 <div class="col-xs-5 slagord">
                     <h3 class="text-field">- Finn dine varer på kortest tid!</h3>
                 </div>
-            <div class="col-xs-4">
-                <div class="login">
-                    <ul>
-                        @if(flash().contains("success")){
-                            @flash.get("success")
-                        }
-                        @if(useremail == null){
-                            <li><a class="overlayLink-login" data-action="login-form.html">Logg inn</a></li>
-                            <li> | </li>
-                            <li><a class="overlayLink-new-user" data-action="registration-form.html">Opprett ny bruker</a></li>
-                        }else{
-                            <li>@useremail</li>
-                            <li> | </li>
-                            <li><a href="@routes.Application.logout()">Logg ut</a></li>
-                        }
-                    </ul>
-                </div>
-            </div>
-        </div>
-
-        <div class="row">
-            <div class="col-xs-12">
-                <div class="boxed">
-                </div>
-            </div>
-        </div>
-
-        <div class="row">
-            <div class="col-xs-6">
-                <div class="kart">
-                    <h3>Butikk-kart</h3>
-                    <div id="leaflet-kart">
+                <div class="col-xs-4">
+                    <div class="login">
+                        <ul>
+                            @if(flash().contains("success")){
+                                @flash.get("success")
+                            }
+                            @if(useremail == null){
+                                <li><a class="overlayLink-login" data-action="login-form.html">Logg inn</a></li>
+                                <li> | </li>
+                                <li><a class="overlayLink-new-user" data-action="registration-form.html">Opprett ny bruker</a></li>
+                            }else{
+                                <li>@useremail</li>
+                                <li> | </li>
+                                <li><a href="@routes.Application.logout()">Logg ut</a></li>
+                            }
+                        </ul>
                     </div>
                 </div>
             </div>
 
-            <div class="col-xs-6">
+            <div class="row">
+                <div class="col-xs-12">
+                    <div class="boxed">
+                    </div>
+                </div>
+            </div>
 
-                <div class="row">
-                    <div class="col-xs-12">
-                        <div class="varevalg">
-                            <h3 class="text-center"> Finn ønsket vare </h3>
+            <div class="row">
+                <div class="col-xs-6">
+                    <div class="kart">
+                        <h3>Butikk-kart</h3>
+                        <div id="leaflet-kart">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-xs-6">
+
+                    <div class="row">
+                        <div class="col-xs-12">
+                            <div class="varevalg">
+                                <h3 class="text-center"> Finn ønsket vare </h3>
 
                                 <div class="søkefelt">
                                     <input type="text" class="searchSquare" placeholder="Søk etter varer her">
                                     <input type="submit" class="søk-knapp" value= "søk">
                                 </div>
 
-                            <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true" >
-                                <div class="panel panel-default">
-                                    <div class="panel-heading" role="tab" id="headingOne">
-                                        <h4 class="panel-title">
-                                            <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
-                                                Hjem
-                                            </a>
-                                        </h4>
+                                <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true" >
+                                    <div class="panel panel-default">
+                                        <div class="panel-heading" role="tab" id="headingOne">
+                                            <h4 class="panel-title">
+                                                <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
+                                                    Hjem
+                                                </a>
+                                            </h4>
+                                        </div>
+
+                                        <div id="collapseOne" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingOne">
+                                            <div class="list-group">
+                                                <div class="scroll">
+                                                    <table class="table table-condensed hjemTabell">
+                                                    @for(vare <- hjem) {
+                                                        <tr class="vareTabell" onMouseOver="highlight(this)" onMouseOut="normal(this)">
+                                                            <td><img src=@vare.pic alt"pic" height="30px" width="30px"></img></td>
+                                                            <td class="vareNavn">@vare.navn </td>
+                                                            <td id="varePris">@vare.pris kr </td>
+                                                                <!-- @if(vare.in_shoppinglist) {
+                                                            <td><a href="#" class="btn btn-default btn-xs disabled" role="button"><span class="glyphicon glyphicon-check" aria-hidden="true"></span></a></td>
+                                                        } else { } -->
+                                                            <td><a href="@routes.ShoppingList.addItem(vare.vareid)" class="btn btn-xs addVareKnappJernvare" id="addVareKnapp" onclick="this.disabled='disabled'; this.form.submit();"><span class="glyphicon glyphicon-ok" aria-hidden="true"></span></a></td>
+
+                                                        </tr>
+                                                    }
+                                                    </table>
+                                                </div>
+                                            </div>
+                                        </div>
+
                                     </div>
+                                    <div class="panel panel-default">
+                                        <div class="panel-heading" role="tab" id="headingTwo">
+                                            <h4 class="panel-title">
+                                                <a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                                                    Elektro
+                                                </a>
+                                            </h4>
+                                        </div>
 
-                                    <div id="collapseOne" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingOne">
-                                        <div class="list-group">
-                                            <table class="table table-condensed hjemTabell">
-                                            @for(vare <- hjem) {
-                                                <tr class="vareTabell" onMouseOver="highlight(this)" onMouseOut="normal(this)">
-                                                    <td><img src=@vare.pic alt"pic" height="30px" width="30px"></img></td>
-                                                    <td class="vareNavn">@vare.navn </td>
-                                                    <td id="varePris">@vare.pris kr </td>
-                                                    <!-- @if(vare.in_shoppinglist) {
-                                                        <td><a href="#" class="btn btn-default btn-xs disabled" role="button"><span class="glyphicon glyphicon-check" aria-hidden="true"></span></a></td>
-                                                    } else { } -->
-                                                        <td><a href="@routes.ShoppingList.addItem(vare.vareid)" class="btn btn-xs addVareKnappJernvare" id="addVareKnapp" onclick="this.disabled='disabled'; this.form.submit();"><span class="glyphicon glyphicon-ok" aria-hidden="true"></span></a></td>
+                                        <div id="collapseTwo" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo">
+                                            <div class="list-group">
+                                                <div class="scroll">
+                                                    <table class="table table-condensed">
+                                                    @for(vare <- elektro) {
+                                                        <tr class="elektroTabell">
+                                                            <td><img src=@vare.pic alt"pic" height="30px" width="30px"></img></td>
+                                                            <td class="vareNavn">@vare.navn </td>
+                                                            <td id="varePris">@vare.pris kr </td>
+                                                                <!--@if(vare.in_shoppinglist) {
+                                                            <td><a href="#" class="btn btn-default btn-xs disabled" role="button"><span class="glyphicon glyphicon-check" aria-hidden="true"></span></a></td>
+                                                        } else { } -->
+                                                            <td><a href="@routes.ShoppingList.addItem(vare.vareid)" class="btn btn-xs addVareKnappJernvare" id="addVareKnapp" onclick="this.disabled='disabled'; this.form.submit();"><span class="glyphicon glyphicon-ok" aria-hidden="true"></span></a></td>
 
-                                                </tr>
-                                            }
-                                            </table>
+                                                        </tr>
+                                                    }
+                                                    </table>
+                                                </div>
+                                            </div>
+                                        </div>
+
+
+                                    </div>
+                                    <div class="panel panel-default">
+                                        <div class="panel-heading" role="tab" id="headingThree">
+                                            <h4 class="panel-title">
+                                                <a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                                                    Fritid
+                                                </a>
+                                            </h4>
+                                        </div>
+                                        <div id="collapseThree" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingThree">
+                                            <div class="list-group">
+                                                <div class="scroll">
+                                                    <table class="table table-condensed">
+                                                    @for(vare <- fritid) {
+                                                        <tr class="fritidTabell">
+                                                            <td><img src=@vare.pic alt"pic" height="30px" width="30px"></img></td>
+                                                            <td class="vareNavn">@vare.navn </td>
+                                                            <td id="varePris">@vare.pris kr </td>
+                                                                <!-- @if(vare.in_shoppinglist) {
+                                                            <td><a href="#" class="btn btn-default btn-xs disabled" role="button"><span class="glyphicon glyphicon-check" aria-hidden="true"></span></a></td>
+                                                        } else { } -->
+                                                            <td><a href="@routes.ShoppingList.addItem(vare.vareid)" class="btn btn-xs addVareKnappJernvare" id="addVareKnapp" onclick="this.disabled='disabled'; this.form.submit();"><span class="glyphicon glyphicon-ok" aria-hidden="true"></span></a></td
+                                                        </tr>
+                                                    }
+                                                    </table>
+                                                </div>
+                                            </div>
                                         </div>
                                     </div>
+                                    <div class="panel panel-default">
+                                        <div class="panel-heading" role="tab" id="headingFour">
+                                            <h4 class="panel-title">
+                                                <a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
+                                                    Jernvare
+                                                </a>
+                                            </h4>
+                                        </div>
+                                        <div id="collapseFour" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingFour">
+                                            <div class="list-group">
+                                                <div class="scroll">
+                                                    <table class="table table-condensed">
+                                                    @for(vare <- jernvare) {
+                                                        <tr class="jernvareTabell">
+                                                            <td><img src=@vare.pic alt"pic" height="30px" width="30px"></img></td>
+                                                            <td class="vareNavn">@vare.navn </td>
+                                                            <td id="varePris">@vare.pris kr </td>
+                                                                <!-- @if(vare.in_shoppinglist) {
+                                                            <td><a href="#" class="btn btn-default btn-xs disabled" role="button"><span class="glyphicon glyphicon-check" aria-hidden="true"></span></a></td>
+                                                        } else { } -->
+                                                            <td><a href="@routes.ShoppingList.addItem(vare.vareid)" class="btn btn-xs addVareKnappJernvare" id="addVareKnapp" onclick="this.disabled='disabled'; this.form.submit();"><span class="glyphicon glyphicon-ok" aria-hidden="true"></span></a></td>
 
-                                </div>
-                                <div class="panel panel-default">
-                                    <div class="panel-heading" role="tab" id="headingTwo">
-                                        <h4 class="panel-title">
-                                            <a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-                                                Elektro
-                                            </a>
-                                        </h4>
-                                    </div>
-
-                                    <div id="collapseTwo" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo">
-                                        <div class="list-group">
-                                            <table class="table table-condensed">
-                                            @for(vare <- elektro) {
-                                                <tr class="elektroTabell">
-                                                    <td><img src=@vare.pic alt"pic" height="30px" width="30px"></img></td>
-                                                    <td class="vareNavn">@vare.navn </td>
-                                                    <td id="varePris">@vare.pris kr </td>
-                                                    <!--@if(vare.in_shoppinglist) {
-                                                        <td><a href="#" class="btn btn-default btn-xs disabled" role="button"><span class="glyphicon glyphicon-check" aria-hidden="true"></span></a></td>
-                                                    } else { } -->
-                                                        <td><a href="@routes.ShoppingList.addItem(vare.vareid)" class="btn btn-xs addVareKnappJernvare" id="addVareKnapp" onclick="this.disabled='disabled'; this.form.submit();"><span class="glyphicon glyphicon-ok" aria-hidden="true"></span></a></td>
-
-                                                </tr>
-                                            }
-                                            </table>
+                                                        </tr>
+                                                    }
+                                                    </table>
+                                                </div>
+                                            </div>
                                         </div>
                                     </div>
-
-
-                                </div>
-                                <div class="panel panel-default">
-                                    <div class="panel-heading" role="tab" id="headingThree">
-                                        <h4 class="panel-title">
-                                            <a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
-                                                Fritid
-                                            </a>
-                                        </h4>
-                                    </div>
-                                    <div id="collapseThree" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingThree">
-                                        <div class="list-group">
-                                            <table class="table table-condensed">
-                                            @for(vare <- fritid) {
-                                                <tr class="fritidTabell">
-                                                    <td><img src=@vare.pic alt"pic" height="30px" width="30px"></img></td>
-                                                    <td class="vareNavn">@vare.navn </td>
-                                                    <td id="varePris">@vare.pris kr </td>
-                                                    <!-- @if(vare.in_shoppinglist) {
-                                                        <td><a href="#" class="btn btn-default btn-xs disabled" role="button"><span class="glyphicon glyphicon-check" aria-hidden="true"></span></a></td>
-                                                    } else { } -->
-                                                        <td><a href="@routes.ShoppingList.addItem(vare.vareid)" class="btn btn-xs addVareKnappJernvare" id="addVareKnapp" onclick="this.disabled='disabled'; this.form.submit();"><span class="glyphicon glyphicon-ok" aria-hidden="true"></span></a></td
-                                                </tr>
-                                            }
-                                            </table>
+                                    <div class="panel panel-default">
+                                        <div class="panel-heading" role="tab" id="headingFive">
+                                            <h4 class="panel-title">
+                                                <a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseFive" aria-expanded="false" aria-controls="collapseFive">
+                                                    Multimedia
+                                                </a>
+                                            </h4>
                                         </div>
-                                    </div>
-                                </div>
-                                <div class="panel panel-default">
-                                    <div class="panel-heading" role="tab" id="headingFour">
-                                        <h4 class="panel-title">
-                                            <a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
-                                                Jernvare
-                                            </a>
-                                        </h4>
-                                    </div>
-                                    <div id="collapseFour" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingFour">
-                                        <div class="list-group">
-                                            <table class="table table-condensed">
-                                            @for(vare <- jernvare) {
-                                                <tr class="jernvareTabell">
-                                                    <td><img src=@vare.pic alt"pic" height="30px" width="30px"></img></td>
-                                                    <td class="vareNavn">@vare.navn </td>
-                                                    <td id="varePris">@vare.pris kr </td>
-                                                    <!-- @if(vare.in_shoppinglist) {
-                                                        <td><a href="#" class="btn btn-default btn-xs disabled" role="button"><span class="glyphicon glyphicon-check" aria-hidden="true"></span></a></td>
-                                                    } else { } -->
-                                                        <td><a href="@routes.ShoppingList.addItem(vare.vareid)" class="btn btn-xs addVareKnappJernvare" id="addVareKnapp" onclick="this.disabled='disabled'; this.form.submit();"><span class="glyphicon glyphicon-ok" aria-hidden="true"></span></a></td>
-
-                                                </tr>
-                                            }
-                                            </table>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="panel panel-default">
-                                     <div class="panel-heading" role="tab" id="headingFive">
-                                        <h4 class="panel-title">
-                                            <a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseFive" aria-expanded="false" aria-controls="collapseFive">
-                                                Multimedia
-                                            </a>
-                                        </h4>
-                                    </div>
-                                    <div id="collapseFive" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingFive">
-                                        <div class="list-group">
-                                            <table class="table table-condensed">
-                                            @for(vare <- multimedia) {
-                                                <tr class="multimediaTabell">
-                                                    <td><img src=@vare.pic alt"pic" height="30px" width="30px"></img></td>
-                                                    <td class="vareNavn">@vare.navn </td>
-                                                    <td id="varePris">@vare.pris kr </td>
-                                                    <!-- @if(vare.in_shoppinglist) {
-                                                        <td><a href="#" class="btn btn-default btn-xs disabled" role="button"><span class="glyphicon glyphicon-check" aria-hidden="true"></span></a></td>
-                                                    } else {} -->
-                                                        <td><a href="@routes.ShoppingList.addItem(vare.vareid)" class="btn btn-xs addVareKnappJernvare" id="addVareKnapp" onclick="this.disabled='disabled'; this.form.submit();"><span class="glyphicon glyphicon-ok" aria-hidden="true"></span></a></td>
-                                                </tr>
-                                            }
-                                            </table>
+                                        <div id="collapseFive" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingFive">
+                                            <div class="list-group">
+                                                <div class="scroll">
+                                                    <table class="table table-condensed">
+                                                    @for(vare <- multimedia) {
+                                                        <tr class="multimediaTabell">
+                                                            <td><img src=@vare.pic alt"pic" height="30px" width="30px"></img></td>
+                                                            <td class="vareNavn">@vare.navn </td>
+                                                            <td id="varePris">@vare.pris kr </td>
+                                                                <!-- @if(vare.in_shoppinglist) {
+                                                            <td><a href="#" class="btn btn-default btn-xs disabled" role="button"><span class="glyphicon glyphicon-check" aria-hidden="true"></span></a></td>
+                                                        } else {} -->
+                                                            <td><a href="@routes.ShoppingList.addItem(vare.vareid)" class="btn btn-xs addVareKnappJernvare" id="addVareKnapp" onclick="this.disabled='disabled'; this.form.submit();"><span class="glyphicon glyphicon-ok" aria-hidden="true"></span></a></td>
+                                                        </tr>
+                                                    }
+                                                    </table>
+                                                </div>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-                </div>
 
 
-                <div class="handleliste-overskrift">
-                    <div class="row">
-                        <div class="col-xs-12">
-                        @if(useremail != null) {
-                            <h3 class="text-center">Handleliste</h3>
-                        }
-                        </div>
-                    </div>
-                </div>
-
-                <div class="scroll">
-                    <div class="row">
-                        <div class="col-xs-12">
-                        @if(useremail != null){
-                            <div class="handleliste">
-                                <table class="table table-condensed">
-                                    @if(handleliste.isEmpty) {
-                                        <h6>Det finnes ingen varer i din handleliste</h6>
-                                    }
-
-                                    @for(vare <- handleliste) {
-                                        <tr class="handlelisteVarer">
-                                            <td><img src=@vare.pic alt"pic" height="30px" width="30px"></img></td>
-                                            <td><strong>@vare.navn</strong></td>
-                                            <td>@vare.pris kr </td>
-                                            <td><a href="@routes.ShoppingList.removeItem(vare.vareid)" class="btn btn-xs removeVareKnapp" id="removeVareKnapp">
-                                                <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
-                                            </a>
-                                            </td>
-                                        </tr>
-                                    }
-                                </table>
+                    <div class="handleliste-overskrift">
+                        <div class="row">
+                            <div class="col-xs-12">
+                            @if(useremail != null) {
+                                <h3 class="text-center">Handleliste</h3>
+                            }
                             </div>
-                        }
                         </div>
                     </div>
-                </div>
-                <div class="row">
-                    <div class="col-xs-12">
+
+                    <div class="handleliste-innhold">
+                        <div class="row">
+                            <div class="col-xs-12">
+                            @if(useremail != null){
+                                <div class="handleliste">
+                                    <table class="table table-condensed">
+                                        @if(handleliste.isEmpty) {
+                                            <h6>Det finnes ingen varer i din handleliste</h6>
+                                        }
+
+                                        @for(vare <- handleliste) {
+                                            <tr class="handlelisteVarer">
+                                                <td><img src=@vare.pic alt"pic" height="30px" width="30px"></img></td>
+                                                <td><strong>@vare.navn</strong></td>
+                                                <td>@vare.pris kr </td>
+                                                <td><a href="@routes.ShoppingList.removeItem(vare.vareid)" class="btn btn-xs removeVareKnapp" id="removeVareKnapp">
+                                                    <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
+                                                </a>
+                                                </td>
+                                            </tr>
+                                        }
+                                    </table>
+                                </div>
+                            }
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-xs-12">
                         @if(!(User.handleliste.isEmpty())) {
                             <a href="@routes.Application.shoppingPath()" class="btn btn-xs finnSti" id="finnSti" onclick="disable = true ;" value="disabled">Finn din handlerute</a>
                         }
+                        </div>
                     </div>
-                </div>
 
+                </div>
             </div>
         </div>
-    </div>
-}
+    }
