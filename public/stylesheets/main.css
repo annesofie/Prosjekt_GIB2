@@ -587,13 +587,18 @@ form button:hover {
     /* Den som er på closeUpVare siden */
 }
 
-h6 {
+#loggInnInfo {
     text-align: center;
 }
 
 .info-content h3{
     font-size: medium;
     padding:3px;
+}
+
+#infoOmHylleKart {
+    text-align: center;
+    color: #0078a5;
 }
 
 

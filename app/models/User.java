@@ -14,8 +14,6 @@ public class User extends Model  {
     @Id
     public String email;
     public String password;
-
-    @ManyToMany
     public static List<Vare> handleliste = new ArrayList<>();
 
 

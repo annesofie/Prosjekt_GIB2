@@ -36,8 +36,6 @@ public class Application extends Controller {
         List<Vare> jernvare = new ArrayList<>();
         List<Vare> multimedia = new ArrayList<>();
         List<Vare> hjem = new ArrayList<>();
-        List<Vare> shoppingList = new ArrayList<>();
-
 
 
         for(Vare vare:alleVarer){
@@ -59,21 +57,21 @@ public class Application extends Controller {
             }
 
         }
-        return ok(home.render(request().username(),shoppingList ,alleVarer, elektro, fritid, hjem, jernvare, multimedia, play.data.Form.form(Login.class), play.data.Form.form(User.class)));
+        return ok(home.render(request().username(),alleVarer, elektro, fritid, hjem, jernvare, multimedia, play.data.Form.form(Login.class), play.data.Form.form(User.class)));
     }
 
     @Security.Authenticated(Secured.class)
     public static Result index(){
 
-        User user = User.find.byId(request().username());
+
         List<Vare> alleVarer = Vare.find.all();
         List<Vare> elektro = new ArrayList<>();
         List<Vare> fritid = new ArrayList<>();
         List<Vare> jernvare = new ArrayList<>();
         List<Vare> multimedia = new ArrayList<>();
         List<Vare> hjem = new ArrayList<>();
+        User user = User.find.byId(request().username());
         List<Vare> shoppingList = user.getShoppingList();
-
 
 
         for(Vare vare:alleVarer){
@@ -93,6 +91,7 @@ public class Application extends Controller {
             if(vare.kategori.equals("hjem")){
                 hjem.add(vare);
             }
+
 
         }
 
@@ -109,7 +108,6 @@ public class Application extends Controller {
         List<Vare> jernvare = new ArrayList<>();
         List<Vare> multimedia = new ArrayList<>();
         List<Vare> hjem = new ArrayList<>();
-        List<Vare> shoppingList = new ArrayList<>();
 
         for(Vare vare:alleVarer) {
 
@@ -133,7 +131,7 @@ public class Application extends Controller {
 
         Form<Login> loginForm = Form.form(Login.class).bindFromRequest();
         if (loginForm.hasErrors()) {
-            return badRequest(home.render(request().username(), shoppingList, alleVarer, elektro, fritid, hjem, jernvare, multimedia, loginForm, Form.form(User.class)));
+            return badRequest(home.render(request().username(), alleVarer, elektro, fritid, hjem, jernvare, multimedia, loginForm, Form.form(User.class)));
         } else {
             session().clear();
             session("email", loginForm.get().email);
@@ -152,7 +150,9 @@ public class Application extends Controller {
         List<Vare> jernvare = new ArrayList<>();
         List<Vare> multimedia = new ArrayList<>();
         List<Vare> hjem = new ArrayList<>();
-        List<Vare> shoppingList = new ArrayList<>();
+        User user = User.find.byId(request().username());
+        List<Vare> shoppingList = user.getShoppingList();
+
 
         for(Vare vare:alleVarer) {
 
@@ -171,11 +171,20 @@ public class Application extends Controller {
             if (vare.kategori.equals("hjem")) {
                 hjem.add(vare);
             }
+            if(vare.in_shoppinglist) {
+                vare.in_shoppinglist=false;
+                vare.save();
+            }
         }
+
+        if(!shoppingList.isEmpty()){
+            shoppingList.clear();
+        }
+
 
         session().clear();
         flash("success");
-        return ok(home.render(request().username(),shoppingList ,alleVarer, elektro, fritid, hjem, jernvare, multimedia, play.data.Form.form(Login.class), Form.form(User.class)));
+        return ok(home.render(request().username(),alleVarer, elektro, fritid, hjem, jernvare, multimedia, play.data.Form.form(Login.class), Form.form(User.class)));
 
     }
 
@@ -279,7 +288,7 @@ public class Application extends Controller {
 
         Form<User> createUserForm = Form.form(User.class).bindFromRequest();
         if (createUserForm.hasErrors()) {
-                return badRequest(home.render(request().username(), shoppingList, alleVarer, elektro, fritid, hjem, jernvare, multimedia, Form.form(Login.class), createUserForm));
+                return badRequest(home.render(request().username(), alleVarer, elektro, fritid, hjem, jernvare, multimedia, Form.form(Login.class), createUserForm));
         } else {
             User.createUser(createUserForm.get().email, createUserForm.get().password);
             return redirect(

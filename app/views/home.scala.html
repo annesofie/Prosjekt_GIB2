@@ -1,5 +1,4 @@
-@(useremail: String, handleliste: List[Vare],
-        vareList: List[Vare],
+@(useremail: String, vareList: List[Vare],
         elektro: List[Vare],
         fritid:List[Vare],
         hjem: List[Vare],
@@ -150,6 +149,7 @@
                                                     <td><img src=@vare.pic alt"pic" height="30px" width="30px"></img></td>
                                                     <td class="vareNavn">@vare.navn </td>
                                                     <td id="varePris">@vare.pris kr </td>
+                                                    <td><a href="#" class="btn btn-default btn-xs disabled" role="button"><span class="glyphicon glyphicon-ok" aria-hidden="true"></span></a></td>
                                                 </tr>
                                             }
                                             </table>
@@ -174,6 +174,7 @@
                                                     <td><img src=@vare.pic alt"pic" height="30px" width="30px"></img></td>
                                                     <td class="vareNavn">@vare.navn </td>
                                                     <td id="varePris">@vare.pris kr </td>
+                                                    <td><a href="#" class="btn btn-default btn-xs disabled" role="button"><span class="glyphicon glyphicon-ok" aria-hidden="true"></span></a></td>
                                                 </tr>
                                             }
                                             </table>
@@ -198,6 +199,8 @@
                                                     <td><img src=@vare.pic alt"pic" height="30px" width="30px"></img></td>
                                                     <td class="vareNavn">@vare.navn </td>
                                                     <td id="varePris">@vare.pris kr </td>
+                                                    <td><a href="#" class="btn btn-default btn-xs disabled" role="button"><span class="glyphicon glyphicon-ok" aria-hidden="true"></span></a></td>
+                                                </tr>
                                             }
                                             </table>
                                         </div>
@@ -219,6 +222,7 @@
                                                     <td><img src=@vare.pic alt"pic" height="30px" width="30px"></img></td>
                                                     <td class="vareNavn">@vare.navn </td>
                                                     <td id="varePris">@vare.pris kr </td>
+                                                    <td><a href="#" class="btn btn-default btn-xs disabled" role="button"><span class="glyphicon glyphicon-ok" aria-hidden="true"></span></a></td>
                                                 </tr>
                                             }
                                             </table>
@@ -241,6 +245,7 @@
                                                     <td><img src=@vare.pic alt"pic" height="30px" width="30px"></img></td>
                                                     <td class="vareNavn">@vare.navn </td>
                                                     <td id="varePris">@vare.pris kr </td>
+                                                    <td><a href="#" class="btn btn-default btn-xs disabled" role="button"><span class="glyphicon glyphicon-ok" aria-hidden="true"></span></a></td>
                                                 </tr>
                                             }
                                             </table>
@@ -252,7 +257,7 @@
                     </div>
                 </div>
                 <div>
-                    <h6>Venligst logg inn for å kunne legge inn varer i handlelisten. </h6>
+                    <h4 id="loggInnInfo"><b>Venligst logg inn for å kunne legge inn varer i handlelisten.</b> </h4>
                 </div>
             </div>
         </div>
