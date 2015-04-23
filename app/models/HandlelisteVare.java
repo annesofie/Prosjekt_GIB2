@@ -43,9 +43,9 @@ public class HandlelisteVare extends Model{
 
     public static void removeFromHandleliste(HandlelisteVare vare){
 
-        HandlelisteVare v = HandlelisteVare.find.byId(vare.handlelisteId);
-        chosen=ShoppingList.setChosen();
-        vare.save();
+        //HandlelisteVare v = HandlelisteVare.find.byId(vare.handlelisteId);
+        //chosen=ShoppingList.setChosen();
+        //vare.save();
 
         Ebean.delete(vare);
 
