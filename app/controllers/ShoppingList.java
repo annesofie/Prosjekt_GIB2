@@ -64,16 +64,14 @@ public class ShoppingList extends Controller {
 
         User user = User.find.byId(request().username());
         List<HandlelisteVare> h = HandlelisteVare.usersShoppingList(user.email);
-        HandlelisteVare vare;
+        HandlelisteVare vare=null;
 
         for(HandlelisteVare hv:h){
             if(hv.vareId.equals(vareId)){
                 vare=hv;
             }
         }
-
-        HandlelisteVare hv= new HandlelisteVare(user.email,handlelisteVareId);
-        hv.removeFromHandleliste(user.email, handlelisteVareId);
+        HandlelisteVare.removeFromHandleliste(vare);
 
         return redirect(routes.Application.index());
 
