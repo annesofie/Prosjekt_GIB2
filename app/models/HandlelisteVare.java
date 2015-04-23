@@ -1,6 +1,8 @@
 package models;
 
 import com.avaje.ebean.Ebean;
+import com.avaje.ebean.annotation.ConcurrencyMode;
+import com.avaje.ebean.annotation.EntityConcurrencyMode;
 import play.db.ebean.Model;
 
 import javax.persistence.*;
@@ -13,6 +15,7 @@ import java.util.*;
  */
 
 @Entity
+
 public class HandlelisteVare extends Model{
 
     @Id
@@ -41,8 +44,11 @@ public class HandlelisteVare extends Model{
         Vare vare = Vare.find.byId(vareId);
         vare.in_shoppinglist=false;
         vare.save();
+
         HandlelisteVare handleliste=new HandlelisteVare(email,vareId);
-        Ebean.delete(handleliste);
+        HandlelisteVare h=HandlelisteVare.find.byId(handleliste.handlelisteId);
+        Ebean.delete(h);
+
     }
 
     public static List<HandlelisteVare> usersShoppingList(String email){

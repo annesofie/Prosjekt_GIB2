@@ -60,9 +60,18 @@ public class ShoppingList extends Controller {
 */
 
     @Security.Authenticated(Secured.class)
-    public static Result removeItem(Long handlelisteVareId){ // husk å endre input!!!!
+    public static Result removeItem(Long vareId){ // husk å endre input!!!!
 
         User user = User.find.byId(request().username());
+        List<HandlelisteVare> h = HandlelisteVare.usersShoppingList(user.email);
+        HandlelisteVare vare;
+
+        for(HandlelisteVare hv:h){
+            if(hv.vareId.equals(vareId)){
+                vare=hv;
+            }
+        }
+
         HandlelisteVare hv= new HandlelisteVare(user.email,handlelisteVareId);
         hv.removeFromHandleliste(user.email, handlelisteVareId);
 
