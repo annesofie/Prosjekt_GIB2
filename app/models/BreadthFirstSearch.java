@@ -111,7 +111,9 @@ public class BreadthFirstSearch {
 
         List<Vare> handleVarer= ShoppingList.getVarerInShoppingList(user.email);
         for (Vare vare:handleVarer){
-            targets.add(vare.findVareVertex());
+            if(!targets.contains(vare.findVareVertex())) {
+                targets.add(vare.findVareVertex());
+            }
         }
 
 
