@@ -39,15 +39,14 @@ public class HandlelisteVare extends Model{
         Ebean.save(handleliste);
     }
 
-    public void removeFromHandleliste(String email, Long vareId){
+    public void removeFromHandleliste(HandlelisteVare vare){
 
-        Vare vare = Vare.find.byId(vareId);
-        vare.in_shoppinglist=false;
+        Vare v = Vare.find.byId(vareId);
+        v.in_shoppinglist=false;
         vare.save();
 
-        HandlelisteVare handleliste=new HandlelisteVare(email,vareId);
-        HandlelisteVare h=HandlelisteVare.find.byId(handleliste.handlelisteId);
-        Ebean.delete(h);
+
+        Ebean.delete(vare);
 
     }
 
