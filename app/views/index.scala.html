@@ -247,7 +247,7 @@
                                         }
                                         @for(vare <- handleliste) {
                                             <tr class="handlelisteVarer">
-                                                <td><img src=vare.pic alt"pic" height="30px" width="30px"></img></td>
+                                                <td><img src=@vare.pic alt"pic" height="30px" width="30px"></img></td>
                                                 <td><strong>@vare.navn</strong></td>
                                                 <td>@vare.pris kr </td>
                                                 <td><a href="@routes.ShoppingList.removeItem(vare.vareid)" class="btn btn-xs removeVareKnapp" id="removeVareKnapp">
