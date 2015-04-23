@@ -138,7 +138,7 @@ public class BreadthFirstSearch {
                 children.add(destinations.get(edge));
             }
             if(destinations.get(edge).equals(vertex)){
-                children.add(sources.get(vertex));
+                children.add(sources.get(edge));
             }
         }
         for(Vertex child:children) {
