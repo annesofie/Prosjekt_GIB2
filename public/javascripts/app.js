@@ -99,7 +99,7 @@ var init = function() {
                         });
 
                         for (i = 0; i < markers.length; i++) {
-                            window.alert(L.latLng(vertex.xPos, vertex.yPos) + markers[i].getLatLng() + markers.length);
+                            //window.alert(L.latLng(vertex.xPos, vertex.yPos) + markers[i].getLatLng() + markers.length);
                             if(markers[i].getLatLng().equals(L.latLng(vertex.xPos, vertex.yPos))) {
                                 markers[i].getPopup().setContent(markers[i].getPopup().getContent() + "</p>" + varenr + ": " + vertex.beskrivelse);
                                 break;
