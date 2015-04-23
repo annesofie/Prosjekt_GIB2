@@ -87,6 +87,8 @@ var init = function() {
         var varenr = 1;
         var inngang = L.marker([-20,-20],{icon: pilIcon}).addTo(map);
         var markerLayer = L.layerGroup();
+        var markers = Array();
+        markers.push(L.marker([-20,-20]));
         appRoutes.controllers.Application.getTargetVertices().ajax({
             success: function (data) {
                 $(data).each(function (index, vertex) {
@@ -95,24 +97,36 @@ var init = function() {
                         var marker = L.marker([vertex.x,vertex.y]).bindPopup(vertex.beskrivelse).on('click', function(e) {
                           map2.panTo(new L.LatLng(280, 0));
                         });
-                        L.marker([vertex.xPos, vertex.yPos]).bindPopup('<p align="center">' + varenr + ": " + vertex.beskrivelse + "</p>" + "Klikk for å se plassering"
-                        ).on('mouseover', function(e){
-                            this.openPopup();
-                        }).on('mouseout', function(e) {
-                            this.closePopup();
-                        }).on('click', function(e) {
-                                if(vertex.id == 3 || vertex.id == 4) {
-                                    $("#leaflet-kart_close").fadeIn();
-                                    markerLayer.clearLayers();
-                                    inngang.setLatLng(this.getLatLng());
-                                    markerLayer.addLayer(marker).addTo(map2);
-                                    marker.openPopup();
-                                    map2.panTo(new L.LatLng(280, 0));
-                                } else {
-                                    window.alert("Hyllekart finnes dessverre ikke for denne delen av butikken.")
-                                }
-                        }).addTo(map);
-                        varenr++;
+
+                        for (i = 0; i < markers.length; i++) {
+                            window.alert(L.latLng(vertex.xPos, vertex.yPos) + markers[i].getLatLng() + markers.length);
+                            if(markers[i].getLatLng().equals(L.latLng(vertex.xPos, vertex.yPos))) {
+                                markers[i].getPopup().setContent(markers[i].getPopup().getContent() + "</p>" + varenr + ": " + vertex.beskrivelse);
+                                break;
+                            } else {
+                                markers.push(L.marker([vertex.xPos, vertex.yPos]).bindPopup(varenr + ": " + vertex.beskrivelse
+                                ).on('mouseover', function(e){
+                                        this.openPopup();
+                                    }).on('mouseout', function(e) {
+                                        this.closePopup();
+                                    }).on('click', function(e) {
+                                        if(vertex.id == 3 || vertex.id == 4) {
+                                            $("#leaflet-kart_close").fadeIn();
+                                            markerLayer.clearLayers();
+                                            inngang.setLatLng(this.getLatLng());
+                                            markerLayer.addLayer(marker).addTo(map2);
+                                            marker.openPopup();
+                                            map2.panTo(new L.LatLng(280, 0));
+                                        } else {
+                                            window.alert("Hyllekart finnes dessverre ikke for denne delen av butikken.")
+                                        }
+                                    }).addTo(map));
+                            }
+
+                            varenr++;
+                        }
+
+
                     }
                 });
                 var polyline = L.polyline(latlngs, {color: 'red'}).addTo(map);
@@ -141,7 +155,6 @@ var init = function() {
         var vertex18 = L.marker([60, 204]).bindPopup("18").addTo(map);
         var vertex19 = L.marker([225, 147]).bindPopup("19").addTo(map);
         var vertex20 = L.marker([225, 204]).bindPopup("20").addTo(map);
-
     });
 };
 
