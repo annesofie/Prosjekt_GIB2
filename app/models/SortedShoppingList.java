@@ -2,7 +2,6 @@ package models;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.*;
 
 /**
  * Created by mathilde on 07/04/15.
@@ -12,9 +11,15 @@ public class SortedShoppingList {
 
 
 
-    public static List<Vare> sortShoppingList() {
-        Path path = new Path();
+    public static List<Vare> sortShoppingList(String email) {
+        User user = User.find.byId(email);
+        Path path = new Path(user);
         List<Vare> sortedShoppingList = new ArrayList<>();
+        List<Vare> shoppingList = new ArrayList<>();
+        List<HandlelisteVare> handlelisteV = (HandlelisteVare.usersShoppingList(email));
+        for(HandlelisteVare hv:handlelisteV){
+            shoppingList.add(Vare.find.byId(hv.vareId));
+        }
 
         System.out.println("Final path er: ");
         for(Vertex v:path.finalPath) {
@@ -22,7 +27,7 @@ public class SortedShoppingList {
         }
 
         for (Vertex vertex: path.finalPath) {
-            for (Vare vare: User.handleliste) {
+            for (Vare vare: shoppingList) {
 
                 if (vare.findVareVertex().equals(vertex)) {
                     sortedShoppingList.add(vare);

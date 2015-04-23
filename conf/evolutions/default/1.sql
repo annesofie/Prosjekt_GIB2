@@ -10,6 +10,13 @@ create table edge (
   constraint pk_edge primary key (id))
 ;
 
+create table handleliste_vare (
+  handleliste_id            bigint auto_increment not null,
+  user_email                varchar(255),
+  vare_id                   bigint,
+  constraint pk_handleliste_vare primary key (handleliste_id))
+;
+
 create table kategori (
   kategori_navn             varchar(255) not null,
   closest_node              integer,
@@ -56,6 +63,8 @@ create table vertex (
 SET FOREIGN_KEY_CHECKS=0;
 
 drop table edge;
+
+drop table handleliste_vare;
 
 drop table kategori;
 

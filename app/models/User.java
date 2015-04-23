@@ -14,14 +14,14 @@ public class User extends Model  {
     @Id
     public String email;
     public String password;
-    public static List<Vare> handleliste = new ArrayList<>();
 
+    //@OneToMany(cascade=CascadeType.ALL, mappedBy="Vare")
+    //public List<Long> handleliste;
 
     public User(String email, String password){
         this.email = email;
         this.password = password;
-        this.handleliste = new ArrayList<>();
-        //this.sortedHandleliste=sortShoppingList(Path.finalPath);
+        //this.handleliste = new ArrayList<>();
     }
 
     public static Finder<String,User> find = new Model.Finder(String.class, User.class);
@@ -34,6 +34,7 @@ public class User extends Model  {
 
     }
 
+
     public static User createUser(String email, String passord){
 
         User user = new User(email, passord);
@@ -41,44 +42,29 @@ public class User extends Model  {
         return user;
     }
 
-
+/*
     public void addToHandleliste(Long vareid){
 
         Vare vare = Vare.find.byId(vareid);
         vare.in_shoppinglist=true;
         vare.save();
-        this.handleliste.add(vare);
+        this.handleliste.add(vare.vareid);
         this.save();
 
-    }
+    }*/
 
-    public static List<Vare> getShoppingList(){
+   /* public List<Long> getShoppingList(){
         return handleliste;
     }
-
-    public void removeFromHandleliste(Long vareid){
+*/
+    /*public void removeFromHandleliste(Long vareid){
 
         Vare vare = Vare.find.byId(vareid);
         vare.in_shoppinglist=false;
         vare.save();
-        this.handleliste.remove(vare);
+        this.handleliste.remove(vare.vareid);
         this.save();
-    }
-
-    public static List<Vare> sortShoppingList(List<Vertex> vertices) {
-
-        List<Vare> sortedShoppingList = new ArrayList<Vare>();
-
-        for (Vertex vertex: vertices) {
-            for (Vare vare: handleliste) {
-                if (vare.vertex == vertex) {
-                    sortedShoppingList.add(vare);
-                }
-            }
-        }
-
-        return sortedShoppingList;
-    }
+    }*/
 
 
 }

@@ -23,8 +23,6 @@ public class Vare extends Model {
     public boolean in_shoppinglist;
 
 
-
-
     public static Model.Finder<Long,Vare> find = new Model.Finder(Long.class, Vare.class);
 
     public Vare(String navn, String kategori, double pris, Integer vertexId, Integer x, Integer y, Integer z, String pic){
@@ -43,12 +41,12 @@ public class Vare extends Model {
         return Vertex.find.byId(this.vertexId);
     }
 
-    public static List<Vare> vareFraKategori(String kategori){
+/*    public static List<Vare> vareFraKategori(String kategori){
 
         return find.where()
                 .eq("kategori", kategori)
                 .findList();
-    }
+    }*/
 
 
 }

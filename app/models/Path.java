@@ -19,15 +19,17 @@ public class Path{
 
     public static List<Vertex> closeToEnd;
     public static List<Vertex> closeToStart;
+    public User user;
 
-    public Path(){
+    public Path(User user){
         this.end=Vertex.find.byId(18);
         this.root=Vertex.find.byId(1);
+        this.user=user;
 
         long startTime=System.nanoTime();
 
         //finner en graf som innkluderer kun targetnodene
-        wGraph=bfs.bfsAllToAll(root,end);
+        wGraph=bfs.bfsAllToAll(root,end, user);
 
         for(weightedEdge e:wGraph.edges) {
             System.out.println("kant destination: "+e.getDestination().id+" soruce: "+e.getSource().id+ " og vekt: "+e.weight);

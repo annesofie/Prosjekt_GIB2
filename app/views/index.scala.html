@@ -1,4 +1,6 @@
-@(useremail: String,handleliste: List[Vare],
+@(useremail: String,
+        user: User,
+        handleliste: List[Vare],
         vareList: List[Vare],
         elektro: List[Vare],
         fritid:List[Vare],
@@ -243,14 +245,13 @@
                                         @if(handleliste.isEmpty) {
                                             <h6>Det finnes ingen varer i din handleliste</h6>
                                         }
-
                                         @for(vare <- handleliste) {
                                             <tr class="handlelisteVarer">
-                                                <td><img src=@vare.pic alt"pic" height="30px" width="30px"></img></td>
+                                                <td><img src=vare.pic alt"pic" height="30px" width="30px"></img></td>
                                                 <td><strong>@vare.navn</strong></td>
                                                 <td>@vare.pris kr </td>
                                                 <td><a href="@routes.ShoppingList.removeItem(vare.vareid)" class="btn btn-xs removeVareKnapp" id="removeVareKnapp">
-                                                    <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
+                                                <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
                                                 </a>
                                                 </td>
                                             </tr>
@@ -263,9 +264,7 @@
                     </div>
                     <div class="row">
                         <div class="col-xs-12">
-                        @if(!(User.handleliste.isEmpty())) {
                             <a href="@routes.Application.shoppingPath()" class="btn btn-xs finnSti" id="finnSti" onclick="disable = true ;" value="disabled">Finn din handlerute</a>
-                        }
                         </div>
                     </div>
 

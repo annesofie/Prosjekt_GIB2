@@ -71,7 +71,13 @@ public class Application extends Controller {
         List<Vare> multimedia = new ArrayList<>();
         List<Vare> hjem = new ArrayList<>();
         User user = User.find.byId(request().username());
-        List<Vare> shoppingList = user.getShoppingList();
+        List<HandlelisteVare> hl = HandlelisteVare.usersShoppingList(request().username());
+        List<Vare> shoppingList=new ArrayList<>();
+
+        for(HandlelisteVare v: hl){
+            shoppingList.add(Vare.find.byId(v.vareId));
+        }
+
 
 
         for(Vare vare:alleVarer){
@@ -96,7 +102,7 @@ public class Application extends Controller {
         }
 
 
-        return ok(index.render(request().username(),shoppingList ,alleVarer, elektro, fritid, hjem, jernvare, multimedia, play.data.Form.form(Login.class), Form.form(User.class)));
+        return ok(index.render(request().username(), user, shoppingList, alleVarer, elektro, fritid, hjem, jernvare, multimedia, play.data.Form.form(Login.class), Form.form(User.class)));
     }
 
 
@@ -151,7 +157,6 @@ public class Application extends Controller {
         List<Vare> multimedia = new ArrayList<>();
         List<Vare> hjem = new ArrayList<>();
         User user = User.find.byId(request().username());
-        List<Vare> shoppingList = user.getShoppingList();
 
 
         for(Vare vare:alleVarer) {
@@ -171,15 +176,15 @@ public class Application extends Controller {
             if (vare.kategori.equals("hjem")) {
                 hjem.add(vare);
             }
-            if(vare.in_shoppinglist) {
+          /*  if(vare.in_shoppinglist) {
                 vare.in_shoppinglist=false;
                 vare.save();
-            }
+            }*/
         }
 
-        if(!shoppingList.isEmpty()){
+   /*     if(!shoppingList.isEmpty()){
             shoppingList.clear();
-        }
+        }*/
 
 
         session().clear();
@@ -199,7 +204,7 @@ public class Application extends Controller {
     public static Result getTargetVertices() {
 
         User user = User.find.byId(request().username());
-        List<Vare> varer = user.getShoppingList();
+        List<Vare> varer = ShoppingList.getVarerInShoppingList(user.email);
 
 
         ArrayList<Vertex> allVerticesInPath = new ArrayList<Vertex>();
@@ -233,12 +238,12 @@ public class Application extends Controller {
             }
 
             //Setter markoorer
-            for (Vare va : varer) {
+            for (Vare vare : varer) {
                 for (int j = 0; j < allVerticesInPath.size(); j++) {
-                    if (va.vertexId == allVerticesInPath.get(j).id) {
-                        allVerticesInPath.get(j).setBeskrivelse(va.navn);
-                        allVerticesInPath.get(j).setX(va.x);
-                        allVerticesInPath.get(j).setY(va.y);
+                    if (vare.vertexId == allVerticesInPath.get(j).id) {
+                        allVerticesInPath.get(j).setBeskrivelse(vare.navn);
+                        allVerticesInPath.get(j).setX(vare.x);
+                        allVerticesInPath.get(j).setY(vare.y);
                     }
                 }
             }
@@ -266,6 +271,7 @@ public class Application extends Controller {
         List<Vare> multimedia = new ArrayList<>();
         List<Vare> hjem = new ArrayList<>();
         List<Vare> shoppingList = new ArrayList<>();
+
 
         for (Vare vare : alleVarer) {
 
@@ -300,17 +306,8 @@ public class Application extends Controller {
     @Security.Authenticated(Secured.class)
     public static Result shoppingPath() {
 
-        User user = User.find.byId(request().username());
 
-        return ok(shoppingPath.render(request().username(), SortedShoppingList.sortShoppingList()));
-    }
-
-    @Security.Authenticated(Secured.class)
-    public static Result closeUpVare() {
-
-        User user = User.find.byId(request().username());
-
-        return ok(closeUpVare.render(request().username(), SortedShoppingList.sortShoppingList()));
+        return ok(shoppingPath.render(request().username(), SortedShoppingList.sortShoppingList(request().username())));
     }
 
 
