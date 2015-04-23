@@ -57,7 +57,8 @@ public class Application extends Controller {
             }
 
         }
-        return ok(home.render(request().username(),alleVarer, elektro, fritid, hjem, jernvare, multimedia, play.data.Form.form(Login.class), play.data.Form.form(User.class)));
+        return ok(home.render(request().username(),alleVarer, elektro, fritid, hjem,
+                jernvare, multimedia, play.data.Form.form(Login.class), play.data.Form.form(User.class)));
     }
 
     @Security.Authenticated(Secured.class)

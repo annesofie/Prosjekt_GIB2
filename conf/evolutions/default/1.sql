@@ -14,7 +14,6 @@ create table handleliste_vare (
   handleliste_id            bigint auto_increment not null,
   user_email                varchar(255),
   vare_id                   bigint,
-  chosen                    tinyint(1) default 0,
   constraint pk_handleliste_vare primary key (handleliste_id))
 ;
 

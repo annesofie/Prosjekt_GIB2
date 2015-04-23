@@ -22,21 +22,21 @@ public class HandlelisteVare extends Model{
     public Long handlelisteId;
     public String userEmail;
     public Long vareId;
-    public boolean chosen;
+    //public boolean chosen;
 
     public static Model.Finder<Long, HandlelisteVare> find = new Model.Finder(Long.class, HandlelisteVare.class);
 
     public HandlelisteVare(String userEmail, Long vareId){
         this.userEmail=userEmail;
         this.vareId= vareId;
-        this.chosen=false;
+        //this.chosen=false;
     }
 
     public void addVareToHandleliste(String email, Long vareId){
 
         Vare vare = Vare.find.byId(vareId);
-        vare.in_shoppinglist=true;
-        vare.save();
+        //vare.in_shoppinglist=true;
+        //vare.save();
         HandlelisteVare handleliste=new HandlelisteVare(email,vareId);
         Ebean.save(handleliste);
     }
