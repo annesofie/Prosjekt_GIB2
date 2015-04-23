@@ -141,6 +141,7 @@ var init = function() {
         var vertex18 = L.marker([60, 204]).bindPopup("18").addTo(map);
         var vertex19 = L.marker([225, 147]).bindPopup("19").addTo(map);
         var vertex20 = L.marker([225, 204]).bindPopup("20").addTo(map);
+        var vertex21 = L.marker([60, 90]).bindPopup("21").addTo(map);
 
     });
 };
