@@ -1,5 +1,7 @@
 package models;
 
+import controllers.ShoppingList;
+
 import java.util.PriorityQueue;
 import java.util.*;
 
@@ -14,11 +16,13 @@ public class BreadthFirstSearch {
     List<Edge> edges;
     HashMap<Edge, Vertex> destinations;
     HashMap<Edge, Vertex> sources;
+    public User user;
 
 
 
     //Skal returnere en graf som viser vei fra alle target-noder til alle target-noder, et spenntre
-    public weightedGraph bfsAllToAll(Vertex root, Vertex end) {
+    public weightedGraph bfsAllToAll(Vertex root, Vertex end, User user) {
+        this.user=user;
         edges= Graph.getEdges();
         // BFS uses Queue data structure
         visited=new ArrayList<>();
@@ -71,8 +75,8 @@ public class BreadthFirstSearch {
                         // Hvis det er tilfelle trenger vi ikke lagre kanten på nytt, fordi den aktuelle informasjonene allerede eksisterer
                         for(weightedEdge we:graphEdges){
                             if(we.getDestination().equals(child)&&(we.getSource().equals(rootVertex))){
-                               equal=true;
-                           }
+                                equal=true;
+                            }
                         }
 
                         //Opretter en vektet kant mellom rotnode og targetnoden
@@ -94,7 +98,7 @@ public class BreadthFirstSearch {
 
         }
 
-        //opretter en vektet graf som kun inneholder relevant informasjon
+        //opretter en vektet graf som kunne innoholder relevant informasjon
         return new weightedGraph(graphVertices,graphEdges);
     }
 
@@ -105,7 +109,7 @@ public class BreadthFirstSearch {
         //Target er vertex'en på stien som er nærmest varen man har lagret i handlelisten
         targets=new ArrayList<Vertex>();
 
-        List<Vare> handleVarer=User.handleliste;
+        List<Vare> handleVarer= ShoppingList.getVarerInShoppingList(user.email);
         for (Vare vare:handleVarer){
             targets.add(vare.findVareVertex());
         }
@@ -134,7 +138,7 @@ public class BreadthFirstSearch {
                 children.add(destinations.get(edge));
             }
             if(destinations.get(edge).equals(vertex)){
-                children.add(sources.get(edge));
+                children.add(sources.get(vertex));
             }
         }
         for(Vertex child:children) {
@@ -149,7 +153,7 @@ public class BreadthFirstSearch {
     public HashMap<Edge,Vertex> makeHashMapForEdgeSources(){
         HashMap<Edge, Vertex> s=new HashMap<>();
         for (Edge edge : Graph.getEdges()) {
-               s.put(edge,edge.getSource());
+            s.put(edge,edge.getSource());
         }
         return s;
     }
@@ -163,4 +167,3 @@ public class BreadthFirstSearch {
 
     }
 }
-
