@@ -69,11 +69,11 @@ public class BreadthFirstSearch {
 
                         //sjekker om det finnes en kant mellom samme sett med noder, men motsatt vei.
                         // Hvis det er tilfelle trenger vi ikke lagre kanten på nytt, fordi den aktuelle informasjonene allerede eksisterer
-                        for(weightedEdge we:graphEdges){
-                            if(we.getDestination().equals(child)&&(we.getSource().equals(rootVertex))){
-                                equal=true;
-                            }
-                        }
+                       // for(weightedEdge we:graphEdges){
+                       //     if(we.getDestination().equals(child)&&(we.getSource().equals(rootVertex))){
+                        //        equal=true;
+                       //     }
+                       // }
 
                         //Opretter en vektet kant mellom rotnode og targetnoden
 
@@ -94,7 +94,7 @@ public class BreadthFirstSearch {
 
         }
 
-        //opretter en vektet graf som kunne innoholder relevant informasjon
+        //opretter en vektet graf som kun inneholder relevant informasjon
         return new weightedGraph(graphVertices,graphEdges);
     }
 
@@ -132,6 +132,9 @@ public class BreadthFirstSearch {
         for (Edge edge : edges) {
             if (sources.get(edge).equals(vertex)){
                 children.add(destinations.get(edge));
+            }
+            if(destinations.get(edge).equals(vertex)){
+                children.add(sources.get(edge));
             }
         }
         for(Vertex child:children) {
