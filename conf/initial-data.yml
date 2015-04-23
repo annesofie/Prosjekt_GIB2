@@ -216,6 +216,18 @@
       xPos: 225
       yPos: 204
 
+    - !!models.Vertex
+      xPos: 60
+      yPos: 90
+
+    - !!models.Edge
+      sourceId:       21
+      destinationId:  17
+
+    - !!models.Edge
+      sourceId:       21
+      destinationId:  16
+
     - !!models.Edge
       sourceId:       1
       destinationId:  2
@@ -298,4 +310,3 @@
     - !!models.Edge
       sourceId:       19
       destinationId:  14
-

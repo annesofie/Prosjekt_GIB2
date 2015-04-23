@@ -86,7 +86,16 @@ public class ShoppingList extends Controller {
         return shoppingList;
     }
 
+    public boolean chosen;
 
+    public void changeChosen(){
+        if(chosen) {
+            this.chosen = false;
+        }
+        else{
+            this.chosen=true;
+        }
+    }
 
 
 
