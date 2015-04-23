@@ -26,6 +26,7 @@ var init = function() {
 
     $("td > a").removeAttr("disabled");
 
+    //Inngangsikon
     var inngangIcon = L.icon({
         iconUrl: 'http://goo.gl/eib74S',
 
@@ -34,6 +35,7 @@ var init = function() {
         popupAnchor:  [0, -50] // point from which the popup should open relative to the iconAnchor
     });
 
+    //Kasseikon
     var kasseIcon = L.icon({
         iconUrl: 'http://i62.tinypic.com/2zel3sg.png',
 
@@ -42,6 +44,7 @@ var init = function() {
         popupAnchor:  [0, -50] // point from which the popup should open relative to the iconAnchor
     });
 
+    //Pil-ikon
     var pilIcon = L.icon({
         iconUrl: 'http://i61.tinypic.com/2w7gtxt.png',
 
@@ -53,6 +56,7 @@ var init = function() {
     var map;
     var map2;
 
+    //Konfigurasjon hovedkart
     map = L.map('leaflet-kart', {
         maxZoom: 0.45,
         minZoom: 0.45,
@@ -70,6 +74,7 @@ var init = function() {
         var inngang = L.marker([60, 317],{icon: inngangIcon}).bindPopup("Inngang").addTo(map);
         var kasse = L.marker([60, 204],{icon: kasseIcon}).bindPopup("Kasse").addTo(map);
 
+        //Konfigurasjon hyllebilde
         map2 = L.map('leaflet-kart_close', {
             maxZoom: 0.2,
             minZoom: 0.2,
@@ -87,44 +92,38 @@ var init = function() {
         var varenr = 1;
         var inngang = L.marker([-20,-20],{icon: pilIcon}).addTo(map);
         var markerLayer = L.layerGroup();
-        var markers = Array();
-        markers.push(L.marker([-20,-20]));
+
+        //Route til Application.java for uthenting av korteste sti
         appRoutes.controllers.Application.getTargetVertices().ajax({
             success: function (data) {
                 $(data).each(function (index, vertex) {
                     latlngs.push(L.latLng(vertex.xPos, vertex.yPos));
                     if (vertex.beskrivelse != null) {
-                        var marker = L.marker([vertex.x,vertex.y]).bindPopup(vertex.beskrivelse).on('click', function(e) {
-                          map2.panTo(new L.LatLng(280, 0));
+                        var marker = L.marker([vertex.hylleX,vertex.hylleY]).bindPopup(vertex.beskrivelse).on('click', function(e) {
+                            map2.panTo(new L.LatLng(280, 0));
                         });
 
-                        for (i = 0; i < markers.length; i++) {
-                            //window.alert(L.latLng(vertex.xPos, vertex.yPos) + markers[i].getLatLng() + markers.length);
-                            if(markers[i].getLatLng().equals(L.latLng(vertex.xPos, vertex.yPos))) {
-                                markers[i].getPopup().setContent(markers[i].getPopup().getContent() + "</p>" + varenr + ": " + vertex.beskrivelse);
-                                break;
-                            } else {
-                                markers.push(L.marker([vertex.xPos, vertex.yPos]).bindPopup(varenr + ": " + vertex.beskrivelse
-                                ).on('mouseover', function(e){
-                                        this.openPopup();
-                                    }).on('mouseout', function(e) {
-                                        this.closePopup();
-                                    }).on('click', function(e) {
-                                        if(vertex.id == 3 || vertex.id == 4) {
-                                            $("#leaflet-kart_close").fadeIn();
-                                            markerLayer.clearLayers();
-                                            inngang.setLatLng(this.getLatLng());
-                                            markerLayer.addLayer(marker).addTo(map2);
-                                            marker.openPopup();
-                                            map2.panTo(new L.LatLng(280, 0));
-                                        } else {
-                                            window.alert("Hyllekart finnes dessverre ikke for denne delen av butikken.")
-                                        }
-                                    }).addTo(map));
-                            }
+                        L.marker([vertex.xPos, vertex.yPos]).bindPopup(varenr + ": " + vertex.beskrivelse
+                        ).on('mouseover', function(e){
+                                this.openPopup();
+                            }).on('mouseout', function(e) {
+                                this.closePopup();
+                            }).on('click', function(e) {
+                                if(vertex.id == 3 || vertex.id == 4) {
+                                    $("#leaflet-kart_close").fadeIn();
+                                    markerLayer.clearLayers();
+                                    inngang.setLatLng(this.getLatLng());
+                                    markerLayer.addLayer(marker).addTo(map2);
+                                    marker.openPopup();
+                                    map2.panTo(new L.LatLng(280, 0));
+                                } else {
+                                    window.alert("Hyllekart finnes dessverre ikke for denne delen av butikken.")
+                                }
+                            }).addTo(map);
 
-                            varenr++;
-                        }
+
+                        varenr++;
+
 
 
                     }
@@ -134,6 +133,7 @@ var init = function() {
         });
     }
 
+    //"Easter-egg" brukt for feilsøking under utvikling av algoritmene
     $('.søk-knapp').click(function() {
         var inngang = L.marker([60, 317]).bindPopup("Inngang").addTo(map);
         var vertex2 = L.marker([60, 260]).bindPopup("2").addTo(map);
