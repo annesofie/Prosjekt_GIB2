@@ -18,7 +18,7 @@ public class Vertex extends Model{
     public int keyValue;
     public Vertex parent;
     public String beskrivelse;
-    public int x,y;
+    public int hylleX,hylleY;
     public Vertex prev;
 
 //lagt til key-verdi for å kunne kjoore prims
@@ -40,28 +40,22 @@ public class Vertex extends Model{
     }
 
     public void setX(int x) {
-        this.x = x;
+        this.hylleX = x;
     }
 
     public void setY(int y) {
-        this.y = y;
+        this.hylleY = y;
     }
 
     public void setBeskrivelse(String beskrivelse) {
         this.beskrivelse = beskrivelse;
     }
 
-    public static Vertex getById(int id) {
-        return find.byId(id);
-    }
 
     public void setPrevVertex(Vertex v){
         prev=v;
     }
-
-    public void setKey(Integer key){
-        this.keyValue=key;
-    }
+    
 
 }
 
