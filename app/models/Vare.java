@@ -18,7 +18,6 @@ public class Vare extends Model {
     public double pris;
     public Vertex vertex;
     public String pic;
-    public String hyllePic;
     public Integer vertexId;
     public boolean in_shoppinglist;
 
@@ -40,13 +39,6 @@ public class Vare extends Model {
     public Vertex findVareVertex(){
         return Vertex.find.byId(this.vertexId);
     }
-
-/*    public static List<Vare> vareFraKategori(String kategori){
-
-        return find.where()
-                .eq("kategori", kategori)
-                .findList();
-    }*/
 
 
 }

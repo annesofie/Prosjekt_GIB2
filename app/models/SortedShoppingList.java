@@ -10,22 +10,18 @@ import java.util.List;
 public class SortedShoppingList {
 
 
-
     public static List<Vare> sortShoppingList(String email) {
         User user = User.find.byId(email);
         Path path = new Path(user);
         List<Vare> sortedShoppingList = new ArrayList<>();
         List<Vare> shoppingList = new ArrayList<>();
         List<HandlelisteVare> handlelisteV = (HandlelisteVare.usersShoppingList(email));
+
         for(HandlelisteVare hv:handlelisteV){
             shoppingList.add(Vare.find.byId(hv.vareId));
         }
 
-        System.out.println("Final path er: ");
-        for(Vertex v:path.finalPath) {
-            System.out.println(v.id);
-        }
-
+        //Sorterer handlelisten i riktig rekkefoelge
         for (Vertex vertex: path.finalPath) {
             for (Vare vare: shoppingList) {
 
@@ -33,10 +29,6 @@ public class SortedShoppingList {
                     sortedShoppingList.add(vare);
                 }
             }
-        }
-        System.out.println("Varer i handlelisten er: ");
-        for(Vare v:sortedShoppingList) {
-            System.out.println(v.navn);
         }
 
         return sortedShoppingList;

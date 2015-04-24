@@ -15,13 +15,10 @@ public class User extends Model  {
     public String email;
     public String password;
 
-    //@OneToMany(cascade=CascadeType.ALL, mappedBy="Vare")
-    //public List<Long> handleliste;
 
     public User(String email, String password){
         this.email = email;
         this.password = password;
-        //this.handleliste = new ArrayList<>();
     }
 
     public static Finder<String,User> find = new Model.Finder(String.class, User.class);
@@ -41,30 +38,5 @@ public class User extends Model  {
         user.save();
         return user;
     }
-
-/*
-    public void addToHandleliste(Long vareid){
-
-        Vare vare = Vare.find.byId(vareid);
-        vare.in_shoppinglist=true;
-        vare.save();
-        this.handleliste.add(vare.vareid);
-        this.save();
-
-    }*/
-
-   /* public List<Long> getShoppingList(){
-        return handleliste;
-    }
-*/
-    /*public void removeFromHandleliste(Long vareid){
-
-        Vare vare = Vare.find.byId(vareid);
-        vare.in_shoppinglist=false;
-        vare.save();
-        this.handleliste.remove(vare.vareid);
-        this.save();
-    }*/
-
 
 }

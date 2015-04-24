@@ -13,7 +13,6 @@ GET         /logout                  controllers.Application.logout()
 GET         /addVare/:vare           controllers.ShoppingList.addItem(vare: Long)
 GET         /removeVare/:vare        controllers.ShoppingList.removeItem(vare: Long)
 GET         /vertex                  controllers.Application.getTargetVertices()
-GET         /vertex                  controllers.Application.getFinalPath()
 GET         /shoppingPath            controllers.Application.shoppingPath()
 
 

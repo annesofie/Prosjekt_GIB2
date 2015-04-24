@@ -17,34 +17,30 @@ import java.util.List;
 
 public class ShoppingList extends Controller {
 
-    //Må ha @security over alle funksjoner som kaller på request().username()
+    //Må ha @security over alle funksjoner som må kaller på request().username()
     @Security.Authenticated(Secured.class)
-    public static Result addItem(Long handlelisteVareId){ // husk å endre input!!!!
+    public static Result addItem(Long handlelisteVareId){
 
         User user = User.find.byId(request().username());
 
         HandlelisteVare hv= new HandlelisteVare(user.email,handlelisteVareId);
 
         if(HandlelisteVare.usersShoppingList(user.email).contains(hv)){
-            //ingenting skjer, varen er allerede i listen
-            System.out.println("Varen kan ikke legges til");
+            //ingenting skjer, varen er allerede lagret på brukeren
         }
         else{
-
             hv.addVareToHandleliste(user.email, handlelisteVareId);
-            //System.out.println("Varen kan legges til");
+            //Varen lagres som et handlelisteVare-objekt med brukerens email
         }
-
 
         return redirect(routes.Application.index());
 
     }
 
-
     @Security.Authenticated(Secured.class)
-    public static Result removeItem(Long vareId){ // husk å endre input!!!!
-
+    public static Result removeItem(Long vareId){
         User user = User.find.byId(request().username());
+        //Oppretter en liste med brukerens handlelistevarer
         List<HandlelisteVare> h = HandlelisteVare.usersShoppingList(user.email);
         HandlelisteVare vare=null;
 
@@ -67,18 +63,5 @@ public class ShoppingList extends Controller {
 
         return shoppingList;
     }
-
-/*    public boolean chosen;
-
-    public void changeChosen(){
-        if(chosen) {
-            this.chosen = false;
-        }
-        else{
-            this.chosen=true;
-        }
-    }*/
-
-
 
 }

@@ -17,12 +17,6 @@ create table handleliste_vare (
   constraint pk_handleliste_vare primary key (handleliste_id))
 ;
 
-create table kategori (
-  kategori_navn             varchar(255) not null,
-  closest_node              integer,
-  constraint pk_kategori primary key (kategori_navn))
-;
-
 create table user (
   email                     varchar(255) not null,
   password                  varchar(255),
@@ -38,7 +32,6 @@ create table vare (
   z                         integer,
   pris                      double,
   pic                       varchar(255),
-  hylle_pic                 varchar(255),
   vertex_id                 integer,
   in_shoppinglist           tinyint(1) default 0,
   constraint pk_vare primary key (vareid))
@@ -65,8 +58,6 @@ SET FOREIGN_KEY_CHECKS=0;
 drop table edge;
 
 drop table handleliste_vare;
-
-drop table kategori;
 
 drop table user;
 

@@ -7,15 +7,10 @@ import java.util.*;
 public class weightedEdge {
 
 
-        //Vi må huske å lagre to kanter mellom nodene, fordi dijsktra kjører på directed graphs, og vi oonsker at man skal kunne gå begge retninger
-
-
         public Vertex source;
         public Vertex destination;
         public int weight;
         public ArrayList<Vertex> visitedVertices;
-
-
 
 
         public weightedEdge(Vertex source, Vertex destination, Integer weight, ArrayList<Vertex>visitedVertices) {
@@ -34,8 +29,6 @@ public class weightedEdge {
         public Vertex getSource() {
             return source;
         }
-
-
 
         @Override
         public String toString() {

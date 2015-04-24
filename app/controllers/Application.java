@@ -28,6 +28,7 @@ public class Application extends Controller {
 
     }
 
+    //Kontroller-metoden som sender data inn til home html-filen, som er startvinduet
     public static Result home() {
 
         List<Vare> alleVarer = Vare.find.all();
@@ -61,6 +62,7 @@ public class Application extends Controller {
                 jernvare, multimedia, play.data.Form.form(Login.class), play.data.Form.form(User.class)));
     }
 
+    //Kontroller metoden som sender data inn til index html-filen, her sendes det samme inn som i home pluss en handleliste
     @Security.Authenticated(Secured.class)
     public static Result index(){
 
@@ -72,14 +74,15 @@ public class Application extends Controller {
         List<Vare> multimedia = new ArrayList<>();
         List<Vare> hjem = new ArrayList<>();
         User user = User.find.byId(request().username());
+
+        //Finner handlelisteVare-objektene som tilhører paalogget bruker
         List<HandlelisteVare> hl = HandlelisteVare.usersShoppingList(request().username());
         List<Vare> shoppingList=new ArrayList<>();
 
+        //Legger handlelisteVarene, om brukeren har, inn i en egen shoppingList som sendes inn til index (se nederst)
         for(HandlelisteVare v: hl){
             shoppingList.add(Vare.find.byId(v.vareId));
         }
-
-
 
         for(Vare vare:alleVarer){
 
@@ -102,11 +105,10 @@ public class Application extends Controller {
 
         }
 
-
         return ok(index.render(request().username(), user, shoppingList, alleVarer, elektro, fritid, hjem, jernvare, multimedia, play.data.Form.form(Login.class), Form.form(User.class)));
     }
 
-
+    //Paaloggings kontroller-metoden. Denne tar imot et loginForm fra home.html og undersoeker om paalogging er godkjent
     public static Result authenticate() {
 
         List<Vare> alleVarer = Vare.find.all();
@@ -138,8 +140,10 @@ public class Application extends Controller {
 
         Form<Login> loginForm = Form.form(Login.class).bindFromRequest();
         if (loginForm.hasErrors()) {
+            //Paaloggingen gikk ikke, sendes tilbake til startsiden, home.
             return badRequest(home.render(request().username(), alleVarer, elektro, fritid, hjem, jernvare, multimedia, loginForm, Form.form(User.class)));
         } else {
+            //Paaloggingen er vellykket, sendes videre til index.
             session().clear();
             session("email", loginForm.get().email);
             return redirect(
@@ -148,6 +152,7 @@ public class Application extends Controller {
         }
     }
 
+    //Logg-ut metoden i kontrolleren, sender vinduet tilbake til home.
     @Security.Authenticated(Secured.class)
     public static Result logout() {
 
@@ -177,16 +182,8 @@ public class Application extends Controller {
             if (vare.kategori.equals("hjem")) {
                 hjem.add(vare);
             }
-          /*  if(vare.in_shoppinglist) {
-                vare.in_shoppinglist=false;
-                vare.save();
-            }*/
+
         }
-
-   /*     if(!shoppingList.isEmpty()){
-            shoppingList.clear();
-        }*/
-
 
         session().clear();
         flash("success");
@@ -197,8 +194,7 @@ public class Application extends Controller {
     public static Result jsRoutes() {
         response().setContentType("text/javascript");
         return ok(Routes.javascriptRouter("appRoutes", //appRoutes will be the JS object available in our view
-                routes.javascript.Application.getTargetVertices(),
-                routes.javascript.Application.getFinalPath()));
+                routes.javascript.Application.getTargetVertices()));
     }
 
     @Security.Authenticated(Secured.class)
@@ -214,29 +210,16 @@ public class Application extends Controller {
                 allVerticesInPath.add(Path.finalPath.get(i));
                 for (weightedEdge e : Path.wGraph.edges) {
                     if(e.getDestination().equals(Path.finalPath.get(i+1))&&(e.getSource().equals(Path.finalPath.get(i)))){
-                       // System.out.println("trenger ikke reversere, source er "+e.getSource().id+" og destination er "+e.getDestination().id);
-
                         allVerticesInPath.addAll(e.visitedVertices);
                     }
                     if(e.getDestination().equals(Path.finalPath.get(i)) && (e.getSource().equals(Path.finalPath.get(i+1)))){
-                        //System.out.println("Må reversere - source er "+e.getSource().id+" og destination er "+e.getDestination().id);
-
                         ArrayList<Vertex>reversed=e.visitedVertices;
                         Collections.reverse(reversed);
-                        //System.out.println("Reversed liste er: ");
-                        for(Vertex v:reversed){
-                            //System.out.println(v.id);
-                        }
                         allVerticesInPath.addAll(reversed);
                     }
                 }
             }
-
             allVerticesInPath.add(Vertex.find.byId(18));
-            //System.out.println("alle noder i stien er: ");
-            for(Vertex v:allVerticesInPath){
-                //System.out.println(v.id);
-            }
 
             //Setter markoorer
             for (Vare vare : varer) {
@@ -254,13 +237,6 @@ public class Application extends Controller {
             return ok(Json.toJson(allVerticesInPath));
         }
 
-    }
-
-
-    @Security.Authenticated(Secured.class)
-    public static Result getFinalPath() {
-        ArrayList<Vertex>allVerticesInPath=new ArrayList<Vertex>();
-        return ok(Json.toJson(allVerticesInPath));
     }
 
     public static Result createUser() {
@@ -304,10 +280,12 @@ public class Application extends Controller {
             }
 
     }
+
+    //Finn din handleliste knappen trykkes, det routes til denne metoden, som sender informasjon til shoppingpath-siden
     @Security.Authenticated(Secured.class)
     public static Result shoppingPath() {
-
-
+        //Kaller paa SortetShoppingList.sortShoppingList(brukers email), som er det metode-kallet som finner handleruten
+        //Sorterer handlelisten slik at varene staar i riktig rekkefoelge
         return ok(shoppingPath.render(request().username(), SortedShoppingList.sortShoppingList(request().username())));
     }
 

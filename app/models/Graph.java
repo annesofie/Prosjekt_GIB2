@@ -12,13 +12,11 @@ public class Graph extends Model{
 
     public final List<Vertex> vertexes;
     public final List<Edge> edges;
-    public Vertex rootNode;
 
 
     public Graph() {
         this.vertexes = getVertices();
         this.edges=getEdges();
-        this.rootNode= rootNode;//hent ut startnoden i butikken
     }
 
 

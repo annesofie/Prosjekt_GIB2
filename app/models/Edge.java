@@ -10,7 +10,6 @@ import javax.persistence.*;
 @Entity
 public class Edge extends Model{
 
-    //Vi må huske å lagre to kanter mellom nodene, fordi dijsktra kjører på directed graphs, og vi oonsker at man skal kunne gå begge retninger
     @Id
     public int id;
     public int sourceId;
@@ -35,3 +34,4 @@ public class Edge extends Model{
     }
 
 }
+

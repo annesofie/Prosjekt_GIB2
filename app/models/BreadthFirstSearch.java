@@ -37,7 +37,6 @@ public class BreadthFirstSearch {
             graphVertices.add(t);
         }
 
-
         //Legger ogsaa til start og sluttnoden, fordi de ogsaa alltid er en del av den nye grafen
         graphVertices.add(root);
         graphVertices.add(end);
@@ -47,7 +46,7 @@ public class BreadthFirstSearch {
             queue.add(rootVertex);
             visited.add(rootVertex);
 
-            while (!(queue.isEmpty())) { //Så lenge det finnes ubesøkte noder
+            while (!(queue.isEmpty())) { //Så lenge det finnes ubesoekte noder
                 Vertex vertex = (Vertex)queue.remove();
                 Vertex child = null;
                 while ((child = getUnvisitedChildNodeInGraph(vertex)) != null) { //Så lenge "vertex" har ubesøkte barn
@@ -80,7 +79,6 @@ public class BreadthFirstSearch {
                         }
 
                         //Opretter en vektet kant mellom rotnode og targetnoden
-
                         weightedEdge e=new weightedEdge(child, rootVertex, visitedVertices.size()+1, visitedVertices);
 
                         if(!equal){
@@ -98,12 +96,10 @@ public class BreadthFirstSearch {
 
         }
 
-        //opretter en vektet graf som kunne innoholder relevant informasjon
+        //Opretter en vektet graf som kunne innoholder relevant informasjon
         return new weightedGraph(graphVertices,graphEdges);
     }
 
-
-    //TESTET OG OK!!!
     public ArrayList<Vertex> findTargets(){
 
         //Target er vertex'en på stien som er nærmest varen man har lagret i handlelisten
@@ -118,8 +114,6 @@ public class BreadthFirstSearch {
         return targets;
     }
 
-
-    //TESTET ok:)
     public Vertex getUnvisitedChildNodeInGraph(Vertex vertex) {
         for (Vertex child:getChildren(vertex)){
             if(!visited.contains(child)){
@@ -146,10 +140,8 @@ public class BreadthFirstSearch {
         return children;
     }
 
-    // <3<3<3<3<3<3<3<3<3<3 reddet alt
-
-    //opretter en lokal hashmap som inneholder alle sources og destinations til alle kantene, slik at man slipper å kalle på databasen hver gang
-
+    //opretter en lokal hashmap som inneholder alle sources og destinations til alle kantene,
+    //slik at man slipper å kalle på databasen hver gang
     public HashMap<Edge,Vertex> makeHashMapForEdgeSources(){
         HashMap<Edge, Vertex> s=new HashMap<>();
         for (Edge edge : Graph.getEdges()) {
