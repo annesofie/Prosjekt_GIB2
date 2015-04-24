@@ -35,29 +35,11 @@ public class ShoppingList extends Controller {
             //System.out.println("Varen kan legges til");
         }
 
-       /* if(user.handleliste.contains(Vare.find.byId(itemid))){
-            //ingenting skjer, varen er allerede i listen
-           System.out.println("Varen kan ikke legges til");
-        }else{
-            user.addToHandleliste(itemid);
-            //System.out.println("Varen kan legges til");
-
-        }*/
 
         return redirect(routes.Application.index());
 
     }
-/*
 
-    @Security.Authenticated(Secured.class)
-    public static Result removeItem(Long itemid) {
-
-        User user = User.find.byId(request().username());
-        user.removeFromHandleliste(itemid);
-
-        return redirect(routes.Application.index());
-    }
-*/
 
     @Security.Authenticated(Secured.class)
     public static Result removeItem(Long vareId){ // husk å endre input!!!!
@@ -86,7 +68,7 @@ public class ShoppingList extends Controller {
         return shoppingList;
     }
 
-    public boolean chosen;
+/*    public boolean chosen;
 
     public void changeChosen(){
         if(chosen) {
@@ -95,7 +77,7 @@ public class ShoppingList extends Controller {
         else{
             this.chosen=true;
         }
-    }
+    }*/
 
 
 

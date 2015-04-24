@@ -35,17 +35,21 @@ public class HandlelisteVare extends Model{
     public void addVareToHandleliste(String email, Long vareId){
 
         Vare vare = Vare.find.byId(vareId);
-        //vare.in_shoppinglist=true;
-        //vare.save();
+        vare.in_shoppinglist=true;
+        vare.save();
         HandlelisteVare handleliste=new HandlelisteVare(email,vareId);
         Ebean.save(handleliste);
     }
 
     public static void removeFromHandleliste(HandlelisteVare vare){
 
-        //HandlelisteVare v = HandlelisteVare.find.byId(vare.handlelisteId);
+        HandlelisteVare hv = HandlelisteVare.find.byId(vare.handlelisteId);
         //chosen=ShoppingList.setChosen();
         //vare.save();
+
+        Vare vareTo = Vare.find.byId(hv.vareId);
+        vareTo.in_shoppinglist=false;
+        vareTo.save();
 
         Ebean.delete(vare);
 
